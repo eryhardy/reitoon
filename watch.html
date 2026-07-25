@@ -1,598 +1,226 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8">
+    <title>Watch - Reitoon</title>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Reitoon — Watch</title>
-
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-
-<div class="watch-page">
-
-
-  <!-- HERO WATCH -->
-  <section class="watch-hero">
-
+<main class="watch-page">
 
     <!-- HEADER -->
     <header class="watch-header">
 
-      <div class="watch-brand">
-        Rei<span>toon</span>
-      </div>
+        <a href="index.html" class="reitoon-logo">
+            <img
+                src="reitoon-logo.png"
+                alt="Reitoon"
+            >
+        </a>
 
-      <div class="watch-actions">
-
-        <button
-          class="watch-action"
-          onclick="searchMovie()"
-        >
-          🔍
+        <button class="notification-btn" type="button">
+            🔔
         </button>
-
-        <button
-          class="watch-action"
-          onclick="showNotification()"
-        >
-          🔔
-        </button>
-
-      </div>
 
     </header>
 
 
-    <!-- MENU -->
-    <nav class="watch-menu">
+    <!-- SEARCH -->
+    <div class="watch-search">
 
-      <span class="active">
-        Home
-      </span>
+        <span class="search-icon">🔍</span>
 
-      <span>
-        Categories
-      </span>
-
-      <span>
-        Random
-      </span>
-
-      <span>
-        Brand
-      </span>
-
-    </nav>
-
-
-    <!-- HERO INFO -->
-    <div class="watch-info">
-
-      <h1>
-        Love Beyond Time
-      </h1>
-
-      <button
-        class="play-button"
-        onclick="playMovie('Love Beyond Time')"
-      >
-        ▶ Play
-      </button>
-
-
-      <!-- CAROUSEL -->
-      <div class="carousel-dots">
-
-        <span></span>
-        <span></span>
-
-        <span class="active"></span>
-
-        <span></span>
-        <span></span>
-        <span></span>
-
-      </div>
+        <input
+            type="search"
+            placeholder="Cari film, drama, atau creator..."
+            aria-label="Cari film, drama, atau creator"
+        >
 
     </div>
 
 
-  </section>
+    <!-- HERO -->
+    <section class="watch-hero">
+
+        <div class="hero-content">
+
+            <span class="hero-label">
+                🎬 REITOON ORIGINAL
+            </span>
+
+            <h1>
+                I Accidentally Sexted My Enemy
+            </h1>
+
+            <button class="play-btn" type="button">
+                ▶ Play
+            </button>
+
+        </div>
+
+    </section>
 
 
+    <!-- CAROUSEL INDICATOR -->
+    <div class="carousel-dots" aria-label="Hero carousel">
 
-  <!-- CONTENT -->
-  <main class="watch-content">
+        <span></span>
+        <span></span>
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
 
 
     <!-- NEW RELEASE -->
-    <section class="watch-section">
+    <section class="movie-section">
 
-      <div class="watch-title">
+        <div class="section-title">
 
-        <h2>
-          New Release
-        </h2>
+            <h2>New Release</h2>
 
-        <button onclick="viewAll('New Release')">
-          View all ›
-        </button>
+            <a href="#">
+                View all ›
+            </a>
 
-      </div>
+        </div>
 
 
-      <div class="watch-movie-row">
+        <div class="movie-row">
 
+            <article class="movie-card">
+                <div class="poster poster-one"></div>
+            </article>
 
-        <article
-          class="watch-card"
-          onclick="playMovie('Love Beyond Time')"
-        >
+            <article class="movie-card">
 
-          <div class="watch-card-poster one">
+                <div class="poster poster-two">
 
-            <span class="watch-tag">
-              New
-            </span>
+                    <span class="trending">
+                        Trending
+                    </span>
 
-            <span class="watch-play">
-              ▶
-            </span>
+                </div>
 
-          </div>
+            </article>
 
-          <h3>
-            Love Beyond Time
-          </h3>
+            <article class="movie-card">
 
-          <p>
-            Romance • Drama
-          </p>
+                <div class="poster poster-three">
 
-        </article>
+                    <span class="trending">
+                        Trending
+                    </span>
 
+                </div>
 
+            </article>
 
-        <article
-          class="watch-card"
-          onclick="playMovie('The Last Kingdom')"
-        >
-
-          <div class="watch-card-poster two">
-
-            <span class="watch-tag">
-              Trending
-            </span>
-
-            <span class="watch-play">
-              ▶
-            </span>
-
-          </div>
-
-          <h3>
-            The Last Kingdom
-          </h3>
-
-          <p>
-            Action • Fantasy
-          </p>
-
-        </article>
-
-
-
-        <article
-          class="watch-card"
-          onclick="playMovie('Hidden Truth')"
-        >
-
-          <div class="watch-card-poster three">
-
-            <span class="watch-tag">
-              New
-            </span>
-
-            <span class="watch-play">
-              ▶
-            </span>
-
-          </div>
-
-          <h3>
-            Hidden Truth
-          </h3>
-
-          <p>
-            Mystery • Drama
-          </p>
-
-        </article>
-
-
-
-        <article
-          class="watch-card"
-          onclick="playMovie('First Meeting')"
-        >
-
-          <div class="watch-card-poster four">
-
-            <span class="watch-play">
-              ▶
-            </span>
-
-          </div>
-
-          <h3>
-            First Meeting
-          </h3>
-
-          <p>
-            Romance
-          </p>
-
-        </article>
-
-
-      </div>
+        </div>
 
     </section>
-
 
 
     <!-- TRENDING -->
-    <section class="watch-section">
+    <section class="movie-section">
 
-      <div class="watch-title">
+        <div class="section-title">
 
-        <h2>
-          Trending
-        </h2>
+            <h2>Trending</h2>
 
-        <button onclick="viewAll('Trending')">
-          View all ›
-        </button>
+            <a href="#">
+                View all ›
+            </a>
 
-      </div>
+        </div>
 
 
-      <div class="watch-movie-row">
+        <div class="movie-row">
 
+            <article class="movie-card">
+                <div class="poster poster-four"></div>
+            </article>
 
-        <article
-          class="watch-card"
-          onclick="playMovie('One Last Chance')"
-        >
+            <article class="movie-card">
+                <div class="poster poster-five"></div>
+            </article>
 
-          <div class="watch-card-poster five">
+            <article class="movie-card">
+                <div class="poster poster-six"></div>
+            </article>
 
-            <span class="watch-tag">
-              Trending
-            </span>
-
-            <span class="watch-play">
-              ▶
-            </span>
-
-          </div>
-
-          <h3>
-            One Last Chance
-          </h3>
-
-          <p>
-            Drama
-          </p>
-
-        </article>
-
-
-
-        <article
-          class="watch-card"
-          onclick="playMovie('Hidden Truth')"
-        >
-
-          <div class="watch-card-poster three">
-
-            <span class="watch-tag">
-              Trending
-            </span>
-
-            <span class="watch-play">
-              ▶
-            </span>
-
-          </div>
-
-          <h3>
-            Hidden Truth
-          </h3>
-
-          <p>
-            Mystery • Drama
-          </p>
-
-        </article>
-
-
-
-        <article
-          class="watch-card"
-          onclick="playMovie('The Last Kingdom')"
-        >
-
-          <div class="watch-card-poster two">
-
-            <span class="watch-tag">
-              Trending
-            </span>
-
-            <span class="watch-play">
-              ▶
-            </span>
-
-          </div>
-
-          <h3>
-            The Last Kingdom
-          </h3>
-
-          <p>
-            Action • Fantasy
-          </p>
-
-        </article>
-
-
-
-        <article
-          class="watch-card"
-          onclick="playMovie('Love Beyond Time')"
-        >
-
-          <div class="watch-card-poster one">
-
-            <span class="watch-play">
-              ▶
-            </span>
-
-          </div>
-
-          <h3>
-            Love Beyond Time
-          </h3>
-
-          <p>
-            Romance • Drama
-          </p>
-
-        </article>
-
-
-      </div>
+        </div>
 
     </section>
 
-
-
-    <!-- SHORT DRAMA -->
-    <section class="watch-section">
-
-      <div class="watch-title">
-
-        <h2>
-          Short Drama
-        </h2>
-
-        <button onclick="viewAll('Short Drama')">
-          View all ›
-        </button>
-
-      </div>
-
-
-      <div class="watch-movie-row">
-
-
-        <article
-          class="watch-card"
-          onclick="playMovie('First Meeting')"
-        >
-
-          <div class="watch-card-poster four">
-
-            <span class="watch-play">
-              ▶
-            </span>
-
-          </div>
-
-          <h3>
-            First Meeting
-          </h3>
-
-          <p>
-            Romance
-          </p>
-
-        </article>
-
-
-
-        <article
-          class="watch-card"
-          onclick="playMovie('One Last Chance')"
-        >
-
-          <div class="watch-card-poster five">
-
-            <span class="watch-play">
-              ▶
-            </span>
-
-          </div>
-
-          <h3>
-            One Last Chance
-          </h3>
-
-          <p>
-            Drama
-          </p>
-
-        </article>
-
-
-      </div>
-
-    </section>
-
-
-  </main>
-
-</div>
-
+</main>
 
 
 <!-- BOTTOM NAVIGATION -->
-
 <nav class="bottom-nav">
 
+    <a href="index.html">
 
-  <button
-    class="nav-item"
-    onclick="goHome()"
-  >
+        <span>⌂</span>
 
-    <span>🏠</span>
+        <small>
+            Home
+        </small>
 
-    <label>
-      Home
-    </label>
-
-  </button>
+    </a>
 
 
+    <a href="watch.html" class="active">
 
-  <button
-    class="nav-item active"
-    onclick="goWatch()"
-  >
+        <span>🎬</span>
 
-    <span>🎬</span>
+        <small>
+            Watch
+        </small>
 
-    <label>
-      Watch
-    </label>
-
-  </button>
+    </a>
 
 
+    <a href="#">
 
-  <button
-    class="create-nav"
-    onclick="createFilm()"
-  >
+        <span>＋</span>
 
-    <span>＋</span>
+        <small>
+            Create
+        </small>
 
-    <label>
-      Create
-    </label>
-
-  </button>
+    </a>
 
 
+    <a href="#">
 
-  <button
-    class="nav-item"
-    onclick="goStudio()"
-  >
+        <span>▣</span>
 
-    <span>🎞️</span>
+        <small>
+            Studio
+        </small>
 
-    <label>
-      Studio
-    </label>
-
-  </button>
+    </a>
 
 
+    <a href="#">
 
-  <button
-    class="nav-item"
-    onclick="goProfile()"
-  >
+        <span>♟</span>
 
-    <span>👤</span>
+        <small>
+            Profile
+        </small>
 
-    <label>
-      Profile
-    </label>
-
-  </button>
-
+    </a>
 
 </nav>
-
-
-
-<script>
-
-function goHome() {
-  window.location.href = "index.html";
-}
-
-function goWatch() {
-  window.location.href = "watch.html";
-}
-
-function createFilm() {
-  alert("Halaman Create Reitoon");
-}
-
-function goStudio() {
-  alert("Halaman Studio Reitoon");
-}
-
-function goProfile() {
-  alert("Halaman Profile Reitoon");
-}
-
-function showNotification() {
-  alert("Belum ada notifikasi baru.");
-}
-
-function searchMovie() {
-  alert("Fitur pencarian Reitoon");
-}
-
-function viewAll(category) {
-  alert("Menampilkan semua: " + category);
-}
-
-function playMovie(title) {
-  alert("Memutar: " + title);
-}
-
-</script>
 
 
 </body>
