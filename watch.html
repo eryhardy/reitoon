@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Watch — Reitoon</title>
 
   <style>
@@ -12,152 +13,199 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: #09070d;
-      color: #fff;
+      color: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
       min-height: 100vh;
-      padding-bottom: 95px;
+      padding-bottom: 105px;
+      overflow-x: hidden;
     }
+
+    /* =========================
+       MAIN
+    ========================= */
 
     .watch-page {
       width: 100%;
       max-width: 720px;
-      margin: auto;
-      padding: 28px 20px 30px;
+      margin: 0 auto;
+      padding: 30px 28px 40px;
     }
 
-    /* HEADER */
+    /* =========================
+       HEADER
+    ========================= */
+
     .top-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 30px;
+      margin-bottom: 38px;
     }
 
-    .reitoon-logo {
-      width: 170px;
-      height: auto;
-      display: block;
+    .logo {
+      width: 185px;
+      height: 65px;
       object-fit: contain;
+      object-position: left center;
+      display: block;
     }
 
     .notification {
-      width: 58px;
-      height: 58px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       background: #17151e;
-      border: 1px solid #34313d;
+      border: 1px solid #35313d;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 29px;
       box-shadow: 0 8px 25px rgba(0,0,0,.35);
+      flex-shrink: 0;
     }
 
-    /* SEARCH */
+    /* =========================
+       SEARCH
+    ========================= */
+
     .search-box {
+      width: 100%;
       height: 82px;
       border-radius: 28px;
       background: #1b1923;
-      border: 1px solid #373340;
+      border: 1px solid #393541;
       display: flex;
       align-items: center;
-      padding: 0 25px;
-      margin-bottom: 42px;
+      padding: 0 24px;
+      margin-bottom: 38px;
     }
 
     .search-icon {
       font-size: 34px;
-      margin-right: 16px;
+      line-height: 1;
+      margin-right: 17px;
+      flex-shrink: 0;
     }
 
     .search-box input {
       width: 100%;
-      border: none;
-      outline: none;
+      min-width: 0;
+      border: 0;
+      outline: 0;
       background: transparent;
-      color: #fff;
+      color: #ffffff;
       font-size: 21px;
     }
 
     .search-box input::placeholder {
-      color: #97939f;
+      color: #9995a2;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================= */
+
     .hero {
       position: relative;
-      height: 510px;
+      width: 100%;
+      height: 505px;
       border-radius: 30px;
       overflow: hidden;
-      margin-bottom: 20px;
-      background:
+      border: 1px solid #3b3345;
+
+      background-image:
         linear-gradient(
-          to top,
-          rgba(0,0,0,.9) 0%,
-          rgba(0,0,0,.2) 65%,
-          rgba(0,0,0,.05) 100%
+          to bottom,
+          rgba(0,0,0,.02) 10%,
+          rgba(0,0,0,.08) 35%,
+          rgba(0,0,0,.52) 68%,
+          rgba(0,0,0,.94) 100%
         ),
-        url("reitoon-logo.png") center / cover no-repeat;
-      border: 1px solid #302c38;
+        url("https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85");
+
+      background-size: cover;
+      background-position: center;
     }
 
-    .hero-overlay {
+    .hero::after {
+      content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(
-          180deg,
-          rgba(8,5,12,.05) 20%,
-          rgba(8,5,12,.18) 45%,
-          rgba(8,5,12,.95) 100%
+        radial-gradient(
+          circle at 75% 20%,
+          rgba(255,35,145,.24),
+          transparent 38%
         );
+      pointer-events: none;
     }
 
     .hero-content {
       position: absolute;
+      z-index: 2;
       left: 25px;
       right: 25px;
       bottom: 25px;
-      z-index: 2;
       text-align: center;
     }
 
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 17px;
+      border: 1px solid rgba(255,61,157,.45);
+      background: rgba(255,35,140,.15);
+      border-radius: 30px;
+      color: #ff62ad;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
     .hero-title {
-      font-size: 31px;
-      line-height: 1.15;
+      font-size: 32px;
+      line-height: 1.12;
       font-weight: 800;
       margin-bottom: 20px;
     }
 
     .play-button {
+      width: 100%;
+      height: 59px;
+      border: none;
+      border-radius: 13px;
+      background: #ffffff;
+      color: #111111;
+      font-size: 21px;
+      font-weight: 800;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      width: 100%;
-      height: 58px;
-      border: none;
-      border-radius: 12px;
-      background: #fff;
-      color: #111;
-      font-size: 21px;
-      font-weight: 700;
-      cursor: pointer;
     }
 
-    .play-button span {
-      font-size: 22px;
+    .play-icon {
+      font-size: 19px;
     }
 
-    /* CAROUSEL INDICATOR */
+    /* =========================
+       CAROUSEL DOTS
+    ========================= */
+
     .carousel-dots {
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      margin-bottom: 38px;
+      margin: 17px 0 38px;
     }
 
     .dot {
@@ -168,14 +216,17 @@
     }
 
     .dot.active {
-      width: 38px;
+      width: 36px;
       border-radius: 10px;
-      background: #fff;
+      background: #ffffff;
     }
 
-    /* SECTION */
+    /* =========================
+       SECTION
+    ========================= */
+
     .section {
-      margin-bottom: 34px;
+      margin-bottom: 36px;
     }
 
     .section-header {
@@ -187,24 +238,30 @@
 
     .section-title {
       font-size: 25px;
+      line-height: 1.2;
       font-weight: 800;
     }
 
     .view-all {
-      color: #fff;
+      color: #ffffff;
       text-decoration: none;
       font-size: 16px;
+      white-space: nowrap;
     }
 
-    .view-all span {
-      font-size: 20px;
-      margin-left: 4px;
+    .view-all-arrow {
+      font-size: 21px;
+      margin-left: 3px;
     }
 
-    /* HORIZONTAL CARDS */
+    /* =========================
+       MOVIE ROW
+    ========================= */
+
     .movie-row {
+      width: 100%;
       display: flex;
-      gap: 13px;
+      gap: 14px;
       overflow-x: auto;
       scrollbar-width: none;
       padding-bottom: 5px;
@@ -215,92 +272,110 @@
     }
 
     .movie-card {
-      flex: 0 0 145px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #17151c;
       position: relative;
+      flex: 0 0 145px;
+      overflow: hidden;
+      border-radius: 13px;
+      background: #17151d;
+      border: 1px solid #292631;
     }
 
-    .movie-card img {
+    .poster {
       width: 100%;
       height: 205px;
-      display: block;
       object-fit: cover;
+      display: block;
     }
 
     .movie-info {
-      padding: 10px;
+      padding: 10px 10px 12px;
     }
 
     .movie-title {
+      color: #ffffff;
       font-size: 14px;
       line-height: 1.3;
       font-weight: 700;
     }
 
     .movie-meta {
-      color: #aaa5b1;
-      font-size: 12px;
+      color: #9995a1;
+      font-size: 11px;
       margin-top: 5px;
     }
 
     .trending-badge {
       position: absolute;
+      z-index: 3;
       top: 8px;
       left: 8px;
-      padding: 5px 8px;
       background: #ff315f;
-      color: #fff;
+      color: #ffffff;
       border-radius: 5px;
+      padding: 5px 8px;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    /* TRENDING */
-    .trending-heading {
+    /* =========================
+       TRENDING
+    ========================= */
+
+    .trending-title {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 8px;
     }
 
     .fire {
       font-size: 27px;
     }
 
-    /* BOTTOM NAV */
+    /* =========================
+       BOTTOM NAV
+    ========================= */
+
     .bottom-nav {
       position: fixed;
+      z-index: 100;
       left: 50%;
-      bottom: 12px;
+      bottom: 13px;
       transform: translateX(-50%);
-      width: calc(100% - 30px);
-      max-width: 690px;
-      height: 76px;
-      background: rgba(23,21,29,.96);
-      border: 1px solid #34313b;
-      border-radius: 27px;
+
+      width: calc(100% - 42px);
+      max-width: 680px;
+      height: 78px;
+
       display: flex;
       align-items: center;
       justify-content: space-around;
-      z-index: 99;
-      box-shadow: 0 12px 35px rgba(0,0,0,.5);
+
+      background: rgba(24,22,30,.97);
+      border: 1px solid #38343e;
+      border-radius: 28px;
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,.55);
+
       backdrop-filter: blur(15px);
     }
 
     .nav-item {
       width: 62px;
-      height: 60px;
+      height: 62px;
+      border-radius: 18px;
+
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
-      color: #8d8995;
+      gap: 5px;
+
+      color: #898590;
       text-decoration: none;
+
       font-size: 11px;
-      font-weight: 600;
-      border-radius: 18px;
+      font-weight: 700;
     }
 
     .nav-icon {
@@ -309,58 +384,81 @@
     }
 
     .nav-item.active {
-      color: #ff3c8a;
-      background: rgba(255,45,130,.1);
+      color: #ff3d91;
+      background: rgba(255,44,135,.11);
     }
 
     .create-button {
-      width: 64px;
-      height: 64px;
+      width: 68px;
+      height: 68px;
       margin-top: -28px;
-      border-radius: 22px;
-      background: #ff2f86;
-      color: #fff;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 38px;
+
+      border-radius: 23px;
+
+      background: #ff2f86;
+      color: #ffffff;
+
+      font-size: 43px;
+      font-weight: 300;
       text-decoration: none;
-      box-shadow: 0 8px 25px rgba(255,47,134,.35);
+
+      box-shadow:
+        0 8px 28px rgba(255,47,134,.38);
     }
 
-    /* MOBILE */
+    /* =========================
+       MOBILE
+    ========================= */
+
     @media (max-width: 480px) {
 
       .watch-page {
-        padding: 28px 20px 25px;
+        padding: 28px 28px 35px;
       }
 
-      .reitoon-logo {
-        width: 155px;
+      .top-header {
+        margin-bottom: 34px;
+      }
+
+      .logo {
+        width: 180px;
+        height: 60px;
       }
 
       .notification {
-        width: 55px;
-        height: 55px;
+        width: 58px;
+        height: 58px;
       }
 
       .search-box {
-        height: 80px;
+        height: 82px;
+        margin-bottom: 38px;
         padding: 0 22px;
-        margin-bottom: 42px;
+      }
+
+      .search-box input {
+        font-size: 20px;
       }
 
       .hero {
         height: 505px;
-        border-radius: 28px;
+        border-radius: 29px;
       }
 
       .hero-title {
-        font-size: 29px;
+        font-size: 30px;
       }
 
       .movie-card {
         flex-basis: 145px;
+      }
+
+      .bottom-nav {
+        width: calc(100% - 42px);
       }
     }
   </style>
@@ -370,61 +468,92 @@
 
   <main class="watch-page">
 
-    <!-- HEADER -->
+    <!-- =====================
+         HEADER
+    ====================== -->
+
     <header class="top-header">
+
+      <!-- Logo Reitoon -->
       <img
+        class="logo"
         src="reitoon-logo.png"
         alt="Reitoon"
-        class="reitoon-logo"
       >
 
-      <div class="notification">🔔</div>
+      <div class="notification">
+        🔔
+      </div>
+
     </header>
 
 
-    <!-- SEARCH -->
+    <!-- =====================
+         SEARCH
+    ====================== -->
+
     <div class="search-box">
-      <div class="search-icon">🔍</div>
+
+      <div class="search-icon">
+        🔍
+      </div>
 
       <input
-        type="text"
+        type="search"
         placeholder="Cari film, drama, atau creator..."
+        aria-label="Cari film"
       >
+
     </div>
 
 
-    <!-- HERO -->
-    <section class="hero">
+    <!-- =====================
+         HERO FILM
+    ====================== -->
 
-      <div class="hero-overlay"></div>
+    <section class="hero">
 
       <div class="hero-content">
 
+        <div class="hero-label">
+          🎬 REITOON ORIGINAL
+        </div>
+
         <h1 class="hero-title">
-          Create Your Story
+          The Story Begins
         </h1>
 
-        <button class="play-button">
-          <span>▶</span>
+        <button class="play-button" type="button">
+          <span class="play-icon">▶</span>
           Play
         </button>
 
       </div>
+
     </section>
 
 
-    <!-- CAROUSEL -->
+    <!-- =====================
+         CAROUSEL INDICATOR
+    ====================== -->
+
     <div class="carousel-dots">
+
       <span class="dot"></span>
       <span class="dot"></span>
       <span class="dot active"></span>
       <span class="dot"></span>
       <span class="dot"></span>
       <span class="dot"></span>
+      <span class="dot"></span>
+
     </div>
 
 
-    <!-- NEW RELEASE -->
+    <!-- =====================
+         NEW RELEASE
+    ====================== -->
+
     <section class="section">
 
       <div class="section-header">
@@ -434,7 +563,8 @@
         </h2>
 
         <a href="#" class="view-all">
-          View all <span>›</span>
+          View all
+          <span class="view-all-arrow">›</span>
         </a>
 
       </div>
@@ -442,21 +572,33 @@
 
       <div class="movie-row">
 
+
+        <!-- CARD 1 -->
+
         <article class="movie-card">
+
           <img
-            src="reitoon-logo.png"
-            alt="Film Reitoon"
+            class="poster"
+            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80"
+            alt="The Story Begins"
           >
+
           <div class="movie-info">
+
             <div class="movie-title">
-              Reitoon Original
+              The Story Begins
             </div>
+
             <div class="movie-meta">
               Drama • 2026
             </div>
+
           </div>
+
         </article>
 
+
+        <!-- CARD 2 -->
 
         <article class="movie-card">
 
@@ -465,40 +607,75 @@
           </span>
 
           <img
-            src="reitoon-logo.png"
-            alt="Film Reitoon"
+            class="poster"
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80"
+            alt="Love Again"
           >
 
           <div class="movie-info">
-            <div class="movie-title">
-              The Last Story
-            </div>
-            <div class="movie-meta">
-              Romance • 2026
-            </div>
-          </div>
 
-        </article>
-
-
-        <article class="movie-card">
-
-          <span class="trending-badge">
-            Trending
-          </span>
-
-          <img
-            src="reitoon-logo.png"
-            alt="Film Reitoon"
-          >
-
-          <div class="movie-info">
             <div class="movie-title">
               Love Again
             </div>
+
+            <div class="movie-meta">
+              Romance • 2026
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- CARD 3 -->
+
+        <article class="movie-card">
+
+          <span class="trending-badge">
+            Trending
+          </span>
+
+          <img
+            class="poster"
+            src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=500&q=80"
+            alt="Secret Story"
+          >
+
+          <div class="movie-info">
+
+            <div class="movie-title">
+              Secret Story
+            </div>
+
             <div class="movie-meta">
               Drama • 2026
             </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- CARD 4 -->
+
+        <article class="movie-card">
+
+          <img
+            class="poster"
+            src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=500&q=80"
+            alt="My New Story"
+          >
+
+          <div class="movie-info">
+
+            <div class="movie-title">
+              My New Story
+            </div>
+
+            <div class="movie-meta">
+              Romance • 2026
+            </div>
+
           </div>
 
         </article>
@@ -508,24 +685,31 @@
     </section>
 
 
-    <!-- TRENDING -->
+    <!-- =====================
+         TRENDING
+    ====================== -->
+
     <section class="section">
 
       <div class="section-header">
 
-        <h2 class="section-title trending-heading">
+        <h2 class="section-title trending-title">
           <span class="fire">🔥</span>
           Trending
         </h2>
 
         <a href="#" class="view-all">
-          View all <span>›</span>
+          View all
+          <span class="view-all-arrow">›</span>
         </a>
 
       </div>
 
 
       <div class="movie-row">
+
+
+        <!-- TRENDING 1 -->
 
         <article class="movie-card">
 
@@ -534,21 +718,27 @@
           </span>
 
           <img
-            src="reitoon-logo.png"
-            alt="Trending Reitoon"
+            class="poster"
+            src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=500&q=80"
+            alt="Reitoon Story"
           >
 
           <div class="movie-info">
+
             <div class="movie-title">
               Reitoon Story
             </div>
+
             <div class="movie-meta">
               Popular Now
             </div>
+
           </div>
 
         </article>
 
+
+        <!-- TRENDING 2 -->
 
         <article class="movie-card">
 
@@ -557,21 +747,27 @@
           </span>
 
           <img
-            src="reitoon-logo.png"
-            alt="Trending Reitoon"
+            class="poster"
+            src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=500&q=80"
+            alt="My Secret Love"
           >
 
           <div class="movie-info">
+
             <div class="movie-title">
               My Secret Love
             </div>
+
             <div class="movie-meta">
               Romance
             </div>
+
           </div>
 
         </article>
 
+
+        <!-- TRENDING 3 -->
 
         <article class="movie-card">
 
@@ -580,17 +776,46 @@
           </span>
 
           <img
-            src="reitoon-logo.png"
-            alt="Trending Reitoon"
+            class="poster"
+            src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=500&q=80"
+            alt="New Beginning"
           >
 
           <div class="movie-info">
+
             <div class="movie-title">
               New Beginning
             </div>
+
             <div class="movie-meta">
               Drama
             </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- TRENDING 4 -->
+
+        <article class="movie-card">
+
+          <img
+            class="poster"
+            src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80"
+            alt="Only You"
+          >
+
+          <div class="movie-info">
+
+            <div class="movie-title">
+              Only You
+            </div>
+
+            <div class="movie-meta">
+              Romance
+            </div>
+
           </div>
 
         </article>
@@ -602,33 +827,56 @@
   </main>
 
 
-  <!-- BOTTOM NAV -->
+  <!-- =====================
+       BOTTOM NAVIGATION
+  ====================== -->
+
   <nav class="bottom-nav">
 
-    <a href="index.html" class="nav-item">
+    <a
+      href="index.html"
+      class="nav-item"
+    >
       <span class="nav-icon">🏠</span>
       <span>Home</span>
     </a>
 
 
-    <a href="watch.html" class="nav-item active">
+    <!-- WATCH AKTIF -->
+
+    <a
+      href="watch.html"
+      class="nav-item active"
+    >
       <span class="nav-icon">🎬</span>
       <span>Watch</span>
     </a>
 
 
-    <a href="#" class="create-button">
+    <!-- CREATE -->
+
+    <a
+      href="#"
+      class="create-button"
+      aria-label="Create"
+    >
       +
     </a>
 
 
-    <a href="#" class="nav-item">
+    <a
+      href="#"
+      class="nav-item"
+    >
       <span class="nav-icon">🎞️</span>
       <span>Studio</span>
     </a>
 
 
-    <a href="#" class="nav-item">
+    <a
+      href="#"
+      class="nav-item"
+    >
       <span class="nav-icon">👤</span>
       <span>Profile</span>
     </a>
