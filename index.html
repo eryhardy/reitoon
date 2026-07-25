@@ -4,27 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Reitoon</title>
+  <title>Reitoon — Home</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="app">
+  <main class="app">
 
     <!-- HEADER -->
-    <header class="header">
+    <header class="top-header">
 
-      <div class="logo">
-        Rei<span>toon</span>
-      </div>
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="Reitoon">
+      </a>
 
-      <button
-        class="notification"
-        onclick="showNotification()"
-        aria-label="Notifikasi"
-      >
+      <button class="notification" aria-label="Notifikasi">
         🔔
       </button>
 
@@ -32,24 +28,15 @@
 
 
     <!-- SEARCH -->
-    <div class="search-wrapper">
+    <div class="search-box">
 
-      <div class="search">
-        <span class="search-icon">🔍</span>
+      <span class="search-icon">🔍</span>
 
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Cari film, drama, atau creator..."
-          autocomplete="off"
-          oninput="searchMovie()"
-        >
-      </div>
-
-      <div
-        class="search-results"
-        id="searchResults"
-      ></div>
+      <input
+        type="text"
+        placeholder="Cari film, drama, atau creator..."
+        aria-label="Cari"
+      >
 
     </div>
 
@@ -57,14 +44,11 @@
     <!-- HERO -->
     <section class="hero">
 
-      <div class="hero-decoration hero-decoration-one"></div>
-      <div class="hero-decoration hero-decoration-two"></div>
-
       <div class="hero-content">
 
-        <span class="hero-label">
+        <div class="hero-label">
           🎬 REITOON ORIGINAL
-        </span>
+        </div>
 
         <h1>
           Create Your Story
@@ -74,10 +58,7 @@
           Buat, tonton, dan bagikan film kamu sendiri.
         </p>
 
-        <button
-          class="primary"
-          onclick="createFilm()"
-        >
+        <button class="primary-button">
           ✨ Mulai Membuat Film
         </button>
 
@@ -89,7 +70,7 @@
     <!-- TRENDING -->
     <section class="content-section">
 
-      <div class="section-title">
+      <div class="section-heading">
 
         <div>
           <span class="section-label">
@@ -101,112 +82,38 @@
           </h2>
         </div>
 
-        <button
-          class="see-all"
-          onclick="showAll('trending')"
-        >
+        <a href="watch.html" class="see-all">
           Lihat semua
-        </button>
+        </a>
 
       </div>
 
 
-      <div class="cards">
+      <div class="movie-list">
 
-        <article
-          class="card"
-          onclick="openMovie('Love Beyond Time')"
-        >
+        <article class="movie-card">
 
-          <div class="card-image romance">
-            ❤️
+          <div class="movie-placeholder">
+            🎬
           </div>
 
-          <div class="card-content">
-
-            <span class="card-number">
-              01
-            </span>
-
-            <h3>
-              Love Beyond Time
-            </h3>
-
-            <p>
-              Romance • Drama
-            </p>
-
-            <div class="card-footer">
-              <span>⭐ 9.2</span>
-              <span>▶ Watch</span>
-            </div>
-
+          <div class="movie-info">
+            <h3>Reitoon Original</h3>
+            <p>Film pilihan terbaru</p>
           </div>
 
         </article>
 
 
-        <article
-          class="card"
-          onclick="openMovie('The Last Kingdom')"
-        >
+        <article class="movie-card">
 
-          <div class="card-image fantasy">
-            ⚔️
+          <div class="movie-placeholder">
+            🎞️
           </div>
 
-          <div class="card-content">
-
-            <span class="card-number">
-              02
-            </span>
-
-            <h3>
-              The Last Kingdom
-            </h3>
-
-            <p>
-              Action • Fantasy
-            </p>
-
-            <div class="card-footer">
-              <span>⭐ 8.9</span>
-              <span>▶ Watch</span>
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article
-          class="card"
-          onclick="openMovie('Hidden Truth')"
-        >
-
-          <div class="card-image mystery">
-            🕵️
-          </div>
-
-          <div class="card-content">
-
-            <span class="card-number">
-              03
-            </span>
-
-            <h3>
-              Hidden Truth
-            </h3>
-
-            <p>
-              Mystery • Drama
-            </p>
-
-            <div class="card-footer">
-              <span>⭐ 8.7</span>
-              <span>▶ Watch</span>
-            </div>
-
+          <div class="movie-info">
+            <h3>Trending Story</h3>
+            <p>Film yang sedang populer</p>
           </div>
 
         </article>
@@ -215,637 +122,53 @@
 
     </section>
 
-
-    <!-- SHORT DRAMA -->
-    <section class="content-section">
-
-      <div class="section-title">
-
-        <div>
-          <span class="section-label">
-            CERITA SINGKAT
-          </span>
-
-          <h2>
-            🎬 Short Drama
-          </h2>
-        </div>
-
-        <button
-          class="see-all"
-          onclick="showAll('short')"
-        >
-          Lihat semua
-        </button>
-
-      </div>
+  </main>
 
 
-      <div class="cards">
-
-        <article
-          class="card"
-          onclick="openMovie('First Meeting')"
-        >
-
-          <div class="card-image meeting">
-            💕
-          </div>
-
-          <div class="card-content">
-
-            <span class="card-number">
-              01
-            </span>
-
-            <h3>
-              First Meeting
-            </h3>
-
-            <p>
-              Romance
-            </p>
-
-            <div class="card-footer">
-              <span>⭐ 8.8</span>
-              <span>▶ Watch</span>
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article
-          class="card"
-          onclick="openMovie('One Last Chance')"
-        >
-
-          <div class="card-image drama">
-            🌧️
-          </div>
-
-          <div class="card-content">
-
-            <span class="card-number">
-              02
-            </span>
-
-            <h3>
-              One Last Chance
-            </h3>
-
-            <p>
-              Drama
-            </p>
-
-            <div class="card-footer">
-              <span>⭐ 8.5</span>
-              <span>▶ Watch</span>
-            </div>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- CREATE PROJECT -->
-    <section class="content-section">
-
-      <div class="create-box">
-
-        <div class="create-icon">
-          ✨
-        </div>
-
-        <div class="create-content">
-
-          <span class="section-label">
-            YOUR NEXT PROJECT
-          </span>
-
-          <h2>
-            Buat Film Kamu
-          </h2>
-
-          <p>
-            Jadikan ide cerita kamu menjadi sebuah karya film
-            dan bagikan kepada dunia.
-          </p>
-
-          <button
-            class="primary"
-            onclick="createFilm()"
-          >
-            + Create Project
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer class="footer">
-
-      <div class="footer-logo">
-        Rei<span>toon</span>
-      </div>
-
-      <p>
-        Ceritamu. Film kamu. Duniamu.
-      </p>
-
-      <div class="footer-links">
-        <span onclick="showMessage('Tentang Reitoon')">
-          Tentang
-        </span>
-
-        <span onclick="showMessage('Bantuan')">
-          Bantuan
-        </span>
-
-        <span onclick="showMessage('Kebijakan Privasi')">
-          Privasi
-        </span>
-      </div>
-
-      <small>
-        © 2026 Reitoon. All rights reserved.
-      </small>
-
-    </footer>
-
-  </div>
-
-
-  <!-- BOTTOM NAVIGATION -->
+  <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
 
-    <button
-      class="nav-item active"
-      onclick="goHome(this)"
-    >
+    <a href="index.html" class="nav-item active">
+
       <span class="nav-icon">🏠</span>
       <span>Home</span>
-    </button>
+
+    </a>
 
 
-    <button
-      class="nav-item"
-      onclick="goWatch(this)"
-    >
+    <a href="watch.html" class="nav-item">
+
       <span class="nav-icon">🎬</span>
       <span>Watch</span>
-    </button>
+
+    </a>
 
 
-    <button
-      class="nav-item create-nav"
-      onclick="createFilm()"
-    >
-      <span class="create-nav-icon">＋</span>
+    <a href="#" class="nav-create">
+
+      <span class="plus">+</span>
       <span>Create</span>
-    </button>
+
+    </a>
 
 
-    <button
-      class="nav-item"
-      onclick="goStudio(this)"
-    >
+    <a href="#" class="nav-item">
+
       <span class="nav-icon">🎞️</span>
       <span>Studio</span>
-    </button>
+
+    </a>
 
 
-    <button
-      class="nav-item"
-      onclick="goProfile(this)"
-    >
+    <a href="#" class="nav-item">
+
       <span class="nav-icon">👤</span>
       <span>Profile</span>
-    </button>
+
+    </a>
 
   </nav>
 
-
-  <!-- TOAST -->
-  <div
-    class="toast"
-    id="toast"
-  >
-    <span id="toastIcon">✨</span>
-    <span id="toastText">Berhasil!</span>
-  </div>
-
-
-  <!-- MODAL -->
-  <div
-    class="modal-overlay"
-    id="modal"
-    onclick="closeModal(event)"
-  >
-
-    <div
-      class="modal"
-      onclick="event.stopPropagation()"
-    >
-
-      <button
-        class="modal-close"
-        onclick="closeModal()"
-      >
-        ×
-      </button>
-
-      <div
-        class="modal-icon"
-        id="modalIcon"
-      >
-        🎬
-      </div>
-
-      <h2 id="modalTitle">
-        Reitoon
-      </h2>
-
-      <p id="modalText">
-        Selamat datang di Reitoon.
-      </p>
-
-      <button
-        class="primary modal-button"
-        onclick="closeModal()"
-      >
-        Oke
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <script>
-
-    /* =========================
-       DATA FILM
-    ========================= */
-
-    const movies = [
-      {
-        title: "Love Beyond Time",
-        genre: "Romance • Drama"
-      },
-      {
-        title: "The Last Kingdom",
-        genre: "Action • Fantasy"
-      },
-      {
-        title: "Hidden Truth",
-        genre: "Mystery • Drama"
-      },
-      {
-        title: "First Meeting",
-        genre: "Romance"
-      },
-      {
-        title: "One Last Chance",
-        genre: "Drama"
-      }
-    ];
-
-
-    /* =========================
-       TOAST
-    ========================= */
-
-    function showToast(message, icon = "✨") {
-
-      const toast = document.getElementById("toast");
-      const text = document.getElementById("toastText");
-      const toastIcon = document.getElementById("toastIcon");
-
-      text.textContent = message;
-      toastIcon.textContent = icon;
-
-      toast.classList.add("show");
-
-      clearTimeout(window.toastTimer);
-
-      window.toastTimer = setTimeout(() => {
-        toast.classList.remove("show");
-      }, 2500);
-
-    }
-
-
-    /* =========================
-       MODAL
-    ========================= */
-
-    function openModal(title, text, icon = "🎬") {
-
-      document.getElementById("modalTitle").textContent = title;
-      document.getElementById("modalText").textContent = text;
-      document.getElementById("modalIcon").textContent = icon;
-
-      document
-        .getElementById("modal")
-        .classList.add("show");
-
-      document.body.classList.add("modal-open");
-
-    }
-
-
-    function closeModal(event) {
-
-      if (
-        event &&
-        event.target !== document.getElementById("modal")
-      ) {
-        return;
-      }
-
-      document
-        .getElementById("modal")
-        .classList.remove("show");
-
-      document.body.classList.remove("modal-open");
-
-    }
-
-
-    /* =========================
-       NOTIFICATION
-    ========================= */
-
-    function showNotification() {
-
-      openModal(
-        "Notifikasi",
-        "Belum ada notifikasi baru. Nanti film terbaru akan muncul di sini.",
-        "🔔"
-      );
-
-    }
-
-
-    /* =========================
-       CREATE FILM
-    ========================= */
-
-    function createFilm() {
-
-      openModal(
-        "Create Your Story",
-        "Fitur pembuatan film siap digunakan. Masukkan ide cerita kamu untuk memulai project baru.",
-        "✨"
-      );
-
-    }
-
-
-    /* =========================
-       OPEN MOVIE
-    ========================= */
-
-    function openMovie(title) {
-
-      const movie = movies.find(
-        item => item.title === title
-      );
-
-      if (!movie) {
-        showToast("Film tidak ditemukan", "⚠️");
-        return;
-      }
-
-      openModal(
-        movie.title,
-        `${movie.genre}. Film ini siap untuk ditonton.`,
-        "🎬"
-      );
-
-    }
-
-
-    /* =========================
-       SEARCH
-    ========================= */
-
-    function searchMovie() {
-
-      const input =
-        document.getElementById("searchInput");
-
-      const results =
-        document.getElementById("searchResults");
-
-      const keyword =
-        input.value.trim().toLowerCase();
-
-      results.innerHTML = "";
-
-      if (!keyword) {
-
-        results.classList.remove("show");
-
-        return;
-      }
-
-
-      const filtered =
-        movies.filter(movie =>
-          movie.title.toLowerCase().includes(keyword) ||
-          movie.genre.toLowerCase().includes(keyword)
-        );
-
-
-      if (filtered.length === 0) {
-
-        results.innerHTML = `
-          <div class="no-result">
-            😔 Film tidak ditemukan
-          </div>
-        `;
-
-      } else {
-
-        filtered.forEach(movie => {
-
-          const item =
-            document.createElement("div");
-
-          item.className = "search-result";
-
-          item.innerHTML = `
-            <div class="result-icon">🎬</div>
-            <div>
-              <strong>${movie.title}</strong>
-              <small>${movie.genre}</small>
-            </div>
-          `;
-
-          item.onclick = () => {
-
-            openMovie(movie.title);
-
-            input.value = "";
-            results.classList.remove("show");
-
-          };
-
-          results.appendChild(item);
-
-        });
-
-      }
-
-      results.classList.add("show");
-
-    }
-
-
-    /* =========================
-       SHOW ALL
-    ========================= */
-
-    function showAll(category) {
-
-      if (category === "trending") {
-
-        openModal(
-          "Trending",
-          "Semua film trending akan tersedia di halaman Watch.",
-          "🔥"
-        );
-
-      } else {
-
-        openModal(
-          "Short Drama",
-          "Semua koleksi short drama akan tersedia di halaman Watch.",
-          "🎬"
-        );
-
-      }
-
-    }
-
-
-    /* =========================
-       NAVIGATION
-    ========================= */
-
-    function setActiveNav(element) {
-
-      document
-        .querySelectorAll(".nav-item")
-        .forEach(item => {
-          item.classList.remove("active");
-        });
-
-      if (element) {
-        element.classList.add("active");
-      }
-
-    }
-
-
-    function goHome(element) {
-
-      setActiveNav(element);
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-    }
-
-
-    function goWatch(element) {
-
-      setActiveNav(element);
-
-      showToast(
-        "Halaman Watch akan segera tersedia",
-        "🎬"
-      );
-
-    }
-
-
-    function goStudio(element) {
-
-      setActiveNav(element);
-
-      showToast(
-        "Studio sedang disiapkan",
-        "🎞️"
-      );
-
-    }
-
-
-    function goProfile(element) {
-
-      setActiveNav(element);
-
-      showToast(
-        "Halaman Profile sedang disiapkan",
-        "👤"
-      );
-
-    }
-
-
-    /* =========================
-       CLOSE SEARCH WHEN CLICK OUTSIDE
-    ========================= */
-
-    document.addEventListener(
-      "click",
-      function(event) {
-
-        const wrapper =
-          document.querySelector(".search-wrapper");
-
-        if (!wrapper.contains(event.target)) {
-
-          document
-            .getElementById("searchResults")
-            .classList.remove("show");
-
-        }
-
-      }
-    );
-
-
-    /* =========================
-       ESC CLOSE MODAL
-    ========================= */
-
-    document.addEventListener(
-      "keydown",
-      function(event) {
-
-        if (event.key === "Escape") {
-          closeModal();
-        }
-
-      }
-    );
-
-  </script>
 
 </body>
 </html>
