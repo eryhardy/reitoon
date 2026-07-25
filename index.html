@@ -3,229 +3,211 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reitoon — Home</title>
+
+  <title>Reitoon - Home</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="app">
-
   <!-- HEADER -->
   <header class="top-header">
-    <div class="brand">
-      Rei<span>toon</span>
-    </div>
 
-    <button class="icon-button" onclick="showNotification()">
+    <a href="index.html" class="reitoon-logo">
+      <img src="reitoon-logo.png" alt="Reitoon">
+    </a>
+
+    <button class="notification-btn" type="button">
       🔔
     </button>
+
   </header>
 
-  <!-- SEARCH -->
-  <div class="search-box">
-    <span>🔍</span>
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Cari film, drama, atau creator..."
-    >
-  </div>
 
-  <!-- HERO -->
-  <section class="home-hero">
+  <main class="page">
 
-    <div class="hero-content">
+    <!-- SEARCH -->
+    <div class="search-box">
 
-      <div class="original-badge">
-        🎬 REITOON ORIGINAL
+      <span class="search-icon">🔍</span>
+
+      <input
+        type="search"
+        placeholder="Cari film, drama, atau creator..."
+        aria-label="Cari film"
+      >
+
+    </div>
+
+
+    <!-- CREATE YOUR STORY -->
+    <section class="create-card">
+
+      <div class="create-content">
+
+        <div class="create-badge">
+          🎬 REITOON ORIGINAL
+        </div>
+
+        <h1>
+          Create Your Story
+        </h1>
+
+        <p>
+          Buat, tonton, dan bagikan film kamu sendiri.
+        </p>
+
+        <button class="create-button" type="button">
+          ✨ Mulai Membuat Film
+        </button>
+
       </div>
 
-      <h1>Create Your Story</h1>
+    </section>
 
-      <p>
-        Buat, tonton, dan bagikan film kamu sendiri.
-      </p>
 
-      <button class="pink-button" onclick="createFilm()">
-        ✨ Mulai Membuat Film
-      </button>
+    <!-- TRENDING -->
+    <section class="trending-section">
 
-    </div>
-
-  </section>
-
-  <!-- TRENDING -->
-  <section class="content-section">
-
-    <div class="section-heading">
-
-      <div>
-        <small>POPULER SEKARANG</small>
-        <h2>🔥 Trending</h2>
+      <div class="popular-label">
+        POPULER SEKARANG
       </div>
 
-      <button onclick="goWatch()">Lihat semua</button>
+      <div class="section-heading">
 
-    </div>
+        <h2 class="trending-title">
+          🔥 Trending
+        </h2>
 
-    <div class="movie-row">
+        <a href="watch.html" class="view-all">
+          Lihat semua
+        </a>
 
-      <article class="movie-card" onclick="openMovie('Love Beyond Time')">
-        <div class="movie-poster poster-one">
-          <span class="tag">Trending</span>
-          <span class="play-small">▶</span>
-        </div>
-
-        <h3>Love Beyond Time</h3>
-        <p>Romance • Drama</p>
-      </article>
-
-      <article class="movie-card" onclick="openMovie('The Last Kingdom')">
-        <div class="movie-poster poster-two">
-          <span class="tag">Trending</span>
-          <span class="play-small">▶</span>
-        </div>
-
-        <h3>The Last Kingdom</h3>
-        <p>Action • Fantasy</p>
-      </article>
-
-      <article class="movie-card" onclick="openMovie('Hidden Truth')">
-        <div class="movie-poster poster-three">
-          <span class="play-small">▶</span>
-        </div>
-
-        <h3>Hidden Truth</h3>
-        <p>Mystery • Drama</p>
-      </article>
-
-    </div>
-
-  </section>
-
-
-  <!-- SHORT DRAMA -->
-  <section class="content-section">
-
-    <div class="section-heading">
-      <div>
-        <small>UNTUK KAMU</small>
-        <h2>🎬 Short Drama</h2>
       </div>
 
-      <button onclick="goWatch()">Lihat semua</button>
-    </div>
 
-    <div class="movie-row">
+      <div class="movie-row">
 
-      <article class="movie-card" onclick="openMovie('First Meeting')">
-        <div class="movie-poster poster-four">
-          <span class="play-small">▶</span>
-        </div>
+        <article class="movie-card">
 
-        <h3>First Meeting</h3>
-        <p>Romance</p>
-      </article>
+          <img
+            src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=85"
+            alt="Film Trending"
+          >
 
-      <article class="movie-card" onclick="openMovie('One Last Chance')">
-        <div class="movie-poster poster-five">
-          <span class="play-small">▶</span>
-        </div>
+          <div class="movie-info">
+            <h3>Future Love</h3>
+          </div>
 
-        <h3>One Last Chance</h3>
-        <p>Drama</p>
-      </article>
-
-    </div>
-
-  </section>
-
-</div>
+        </article>
 
 
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav">
+        <article class="movie-card">
 
-  <button class="nav-item active" onclick="goHome()">
-    <span>🏠</span>
-    <label>Home</label>
-  </button>
+          <span class="trending-label">
+            Trending
+          </span>
 
-  <button class="nav-item" onclick="goWatch()">
-    <span>🎬</span>
-    <label>Watch</label>
-  </button>
+          <img
+            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=85"
+            alt="Film Trending"
+          >
 
-  <button class="create-nav" onclick="createFilm()">
-    <span>＋</span>
-    <label>Create</label>
-  </button>
+          <div class="movie-info">
+            <h3>Royal Story</h3>
+          </div>
 
-  <button class="nav-item" onclick="goStudio()">
-    <span>🎞️</span>
-    <label>Studio</label>
-  </button>
-
-  <button class="nav-item" onclick="goProfile()">
-    <span>👤</span>
-    <label>Profile</label>
-  </button>
-
-</nav>
+        </article>
 
 
-<script>
+        <article class="movie-card">
 
-function goHome() {
-  window.location.href = "index.html";
-}
+          <span class="trending-label">
+            Trending
+          </span>
 
-function goWatch() {
-  window.location.href = "watch.html";
-}
+          <img
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=85"
+            alt="Film Trending"
+          >
 
-function createFilm() {
-  alert("Halaman Create akan segera dibuka.");
-}
+          <div class="movie-info">
+            <h3>Summer Dream</h3>
+          </div>
 
-function goStudio() {
-  alert("Studio Reitoon");
-}
+        </article>
 
-function goProfile() {
-  alert("Profile Reitoon");
-}
 
-function showNotification() {
-  alert("Belum ada notifikasi baru.");
-}
+        <article class="movie-card">
 
-function openMovie(title) {
-  alert("Membuka: " + title);
-}
+          <img
+            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=85"
+            alt="Film Trending"
+          >
 
-document
-  .getElementById("searchInput")
-  .addEventListener("input", function () {
+          <div class="movie-info">
+            <h3>Last Episode</h3>
+          </div>
 
-    const keyword = this.value.toLowerCase();
+        </article>
 
-    document.querySelectorAll(".movie-card").forEach(card => {
+      </div>
 
-      const title = card
-        .querySelector("h3")
-        .textContent
-        .toLowerCase();
+    </section>
 
-      card.style.display =
-        title.includes(keyword) ? "" : "none";
+  </main>
 
-    });
 
-  });
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
 
-</script>
+    <a href="index.html" class="nav-item active">
+
+      <span class="nav-icon">🏠</span>
+
+      <span>Home</span>
+
+    </a>
+
+
+    <a href="watch.html" class="nav-item">
+
+      <span class="nav-icon">🎬</span>
+
+      <span>Watch</span>
+
+    </a>
+
+
+    <a href="#" class="nav-item create-nav">
+
+      <span class="nav-icon">＋</span>
+
+      <span>Create</span>
+
+    </a>
+
+
+    <a href="#" class="nav-item">
+
+      <span class="nav-icon">🎞️</span>
+
+      <span>Studio</span>
+
+    </a>
+
+
+    <a href="#" class="nav-item">
+
+      <span class="nav-icon">👤</span>
+
+      <span>Profile</span>
+
+    </a>
+
+  </nav>
+
 
 </body>
 </html>
