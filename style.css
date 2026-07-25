@@ -87,8 +87,14 @@ header {
   margin-bottom: 46px;
 }
 
+/* LOGO IMAGE
+   Dibuat sedikit lebih besar,
+   tanpa membesarkan header/elemen lain.
+*/
+
 .logo {
-  width: 260px;
+  width: 280px;
+  max-width: 62%;
   height: auto;
   object-fit: contain;
   display: block;
@@ -105,6 +111,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-shrink: 0;
 
   border-radius: 50%;
 
@@ -205,8 +213,6 @@ header {
   box-shadow:
     0 28px 70px rgba(0,0,0,.35);
 }
-
-/* decorative circles */
 
 .hero::before {
   content: "";
@@ -640,8 +646,6 @@ section {
   line-height: 1;
 }
 
-/* active */
-
 .nav-item.active {
   color: var(--pink);
 
@@ -734,8 +738,16 @@ section {
     margin-bottom: 34px;
   }
 
+  /*
+    LOGO MOBILE
+    Ukuran logo sedikit lebih besar.
+    Tidak mempengaruhi search/hero/navbar.
+  */
+
   .logo {
-    font-size: 38px;
+    width: 210px;
+    max-width: 65%;
+    height: auto;
   }
 
   .notification {
@@ -897,7 +909,9 @@ section {
   }
 
   .logo {
-    font-size: 34px;
+    width: 190px;
+    max-width: 65%;
+    height: auto;
   }
 
   .notification {
