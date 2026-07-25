@@ -3,154 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Reitoon - Home</title>
-
+  <title>Reitoon</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header class="top-header">
+    <img src="assets/reitoon-logo.png" class="reitoon-logo" alt="Reitoon">
 
-    <a href="index.html" class="reitoon-logo">
-      <img src="reitoon-logo.png" alt="Reitoon">
-    </a>
-
-    <button class="notification-btn" type="button">
-      🔔
-    </button>
-
+    <button class="notification">🔔</button>
   </header>
 
+  <main>
 
-  <main class="page">
-
-    <!-- SEARCH -->
     <div class="search-box">
-
-      <span class="search-icon">🔍</span>
-
+      <span>🔍</span>
       <input
-        type="search"
+        type="text"
         placeholder="Cari film, drama, atau creator..."
-        aria-label="Cari film"
       >
-
     </div>
 
+    <section class="hero-card">
 
-    <!-- CREATE YOUR STORY -->
-    <section class="create-card">
-
-      <div class="create-content">
-
-        <div class="create-badge">
-          🎬 REITOON ORIGINAL
-        </div>
-
-        <h1>
-          Create Your Story
-        </h1>
-
-        <p>
-          Buat, tonton, dan bagikan film kamu sendiri.
-        </p>
-
-        <button class="create-button" type="button">
-          ✨ Mulai Membuat Film
-        </button>
-
+      <div class="hero-badge">
+        🎬 REITOON ORIGINAL
       </div>
+
+      <h1>Create Your Story</h1>
+
+      <p>
+        Buat, tonton, dan bagikan film kamu sendiri.
+      </p>
+
+      <button class="create-button">
+        ✨ Mulai Membuat Film
+      </button>
 
     </section>
 
+    <section class="section">
 
-    <!-- TRENDING -->
-    <section class="trending-section">
+      <div class="section-title">
+        <div>
+          <small>POPULER SEKARANG</small>
+          <h2>🔥 Trending</h2>
+        </div>
 
-      <div class="popular-label">
-        POPULER SEKARANG
+        <a href="#">Lihat semua</a>
       </div>
-
-      <div class="section-heading">
-
-        <h2 class="trending-title">
-          🔥 Trending
-        </h2>
-
-        <a href="watch.html" class="view-all">
-          Lihat semua
-        </a>
-
-      </div>
-
 
       <div class="movie-row">
 
-        <article class="movie-card">
+        <div class="movie-card">
+          <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=500&q=80">
+          <h3>Movie Story</h3>
+        </div>
 
-          <img
-            src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=85"
-            alt="Film Trending"
-          >
+        <div class="movie-card">
+          <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=80">
+          <h3>Dream Night</h3>
+        </div>
 
-          <div class="movie-info">
-            <h3>Future Love</h3>
-          </div>
-
-        </article>
-
-
-        <article class="movie-card">
-
-          <span class="trending-label">
-            Trending
-          </span>
-
-          <img
-            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=85"
-            alt="Film Trending"
-          >
-
-          <div class="movie-info">
-            <h3>Royal Story</h3>
-          </div>
-
-        </article>
-
-
-        <article class="movie-card">
-
-          <span class="trending-label">
-            Trending
-          </span>
-
-          <img
-            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=85"
-            alt="Film Trending"
-          >
-
-          <div class="movie-info">
-            <h3>Summer Dream</h3>
-          </div>
-
-        </article>
-
-
-        <article class="movie-card">
-
-          <img
-            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=85"
-            alt="Film Trending"
-          >
-
-          <div class="movie-info">
-            <h3>Last Episode</h3>
-          </div>
-
-        </article>
+        <div class="movie-card">
+          <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80">
+          <h3>New Story</h3>
+        </div>
 
       </div>
 
@@ -158,56 +77,34 @@
 
   </main>
 
-
-  <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
 
-    <a href="index.html" class="nav-item active">
-
-      <span class="nav-icon">🏠</span>
-
-      <span>Home</span>
-
+    <a class="nav-item active" href="index.html">
+      <span>🏠</span>
+      <small>Home</small>
     </a>
 
-
-    <a href="watch.html" class="nav-item">
-
-      <span class="nav-icon">🎬</span>
-
-      <span>Watch</span>
-
+    <a class="nav-item" href="watch.html">
+      <span>🎬</span>
+      <small>Watch</small>
     </a>
 
-
-    <a href="#" class="nav-item create-nav">
-
-      <span class="nav-icon">＋</span>
-
-      <span>Create</span>
-
+    <a class="create-nav" href="#">
+      <strong>＋</strong>
+      <small>Create</small>
     </a>
 
-
-    <a href="#" class="nav-item">
-
-      <span class="nav-icon">🎞️</span>
-
-      <span>Studio</span>
-
+    <a class="nav-item" href="#">
+      <span>🎞️</span>
+      <small>Studio</small>
     </a>
 
-
-    <a href="#" class="nav-item">
-
-      <span class="nav-icon">👤</span>
-
-      <span>Profile</span>
-
+    <a class="nav-item" href="#">
+      <span>👤</span>
+      <small>Profile</small>
     </a>
 
   </nav>
-
 
 </body>
 </html>
