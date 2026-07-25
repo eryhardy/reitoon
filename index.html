@@ -1,174 +1,295 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Reitoon — Home</title>
+<title>Reitoon</title>
 
-  <link rel="stylesheet" href="style.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    background:#000;
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Container tetap ukuran asli */
+.reels-container{
+    width:100%;
+    max-width:400px;
+    height:100%;
+    max-height:850px;
+    background:#000;
+    position:relative;
+    overflow-y:scroll;
+    scroll-snap-type:y mandatory;
+    scrollbar-width:none;
+}
+
+.reels-container::-webkit-scrollbar{
+    display:none;
+}
+
+/* Header Logo */
+.header{
+    position:fixed;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:400px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 15px;
+    z-index:999;
+    pointer-events:none;
+}
+
+.logo{
+    width:150px;
+    height:auto;
+}
+
+.notif{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:rgba(20,20,20,.8);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    border:1px solid rgba(255,255,255,.15);
+}
+
+/* Reel */
+
+.reel-card{
+    width:100%;
+    height:100%;
+    scroll-snap-align:start;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.reel-card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Overlay */
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+    to top,
+    rgba(0,0,0,.75),
+    transparent 40%,
+    rgba(0,0,0,.15));
+}
+
+/* Info */
+
+.reel-info{
+    position:absolute;
+    bottom:25px;
+    left:15px;
+    color:#fff;
+    z-index:5;
+    width:70%;
+}
+
+.reel-info h3{
+    font-size:18px;
+    margin-bottom:6px;
+}
+
+.reel-info p{
+    font-size:14px;
+    color:#ddd;
+}
+
+/* Aksi kanan */
+
+.actions{
+    position:absolute;
+    right:12px;
+    bottom:30px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    z-index:5;
+}
+
+.action{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    color:#fff;
+    font-size:12px;
+}
+
+.icon{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:rgba(0,0,0,.35);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    margin-bottom:5px;
+}
+</style>
+
 </head>
-
 <body>
 
-  <main class="app">
+<div class="header">
 
-    <!-- HEADER -->
-    <header class="top-header">
+    <img src="logo.png" class="logo" alt="Reitoon">
 
-      <a href="index.html" class="brand">
-        <img src="logo.png" alt="Reitoon">
-      </a>
-
-      <button class="notification" aria-label="Notifikasi">
+    <div class="notif">
         🔔
-      </button>
+    </div>
 
-    </header>
+</div>
 
+<div class="reels-container">
 
-    <!-- SEARCH -->
-    <div class="search-box">
+    <!-- Reel 1 -->
 
-      <span class="search-icon">🔍</span>
+    <div class="reel-card">
 
-      <input
-        type="text"
-        placeholder="Cari film, drama, atau creator..."
-        aria-label="Cari"
-      >
+        <video
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+        loop
+        muted
+        playsinline>
+        </video>
+
+        <div class="overlay"></div>
+
+        <div class="reel-info">
+            <h3>@ReitoonOriginal</h3>
+            <p>Episode 1 • Mini Drama Reitoon</p>
+        </div>
+
+        <div class="actions">
+
+            <div class="action">
+                <div class="icon">❤</div>
+                <span>12K</span>
+            </div>
+
+            <div class="action">
+                <div class="icon">💬</div>
+                <span>340</span>
+            </div>
+
+            <div class="action">
+                <div class="icon">↗</div>
+                <span>Bagikan</span>
+            </div>
+
+        </div>
 
     </div>
 
+    <!-- Reel 2 -->
 
-    <!-- HERO -->
-    <section class="hero">
+    <div class="reel-card">
 
-      <div class="hero-content">
+        <video
+        src="https://www.w3schools.com/html/mov_bbb.mp4"
+        loop
+        muted
+        playsinline>
+        </video>
 
-        <div class="hero-label">
-          🎬 REITOON ORIGINAL
+        <div class="overlay"></div>
+
+        <div class="reel-info">
+            <h3>@ReitoonStudio</h3>
+            <p>Episode 2 • Trending Drama</p>
         </div>
 
-        <h1>
-          Create Your Story
-        </h1>
+        <div class="actions">
 
-        <p>
-          Buat, tonton, dan bagikan film kamu sendiri.
-        </p>
+            <div class="action">
+                <div class="icon">❤</div>
+                <span>9K</span>
+            </div>
 
-        <button class="primary-button">
-          ✨ Mulai Membuat Film
-        </button>
+            <div class="action">
+                <div class="icon">💬</div>
+                <span>201</span>
+            </div>
 
-      </div>
+            <div class="action">
+                <div class="icon">↗</div>
+                <span>Bagikan</span>
+            </div>
 
-    </section>
-
-
-    <!-- TRENDING -->
-    <section class="content-section">
-
-      <div class="section-heading">
-
-        <div>
-          <span class="section-label">
-            POPULER SEKARANG
-          </span>
-
-          <h2>
-            🔥 Trending
-          </h2>
         </div>
 
-        <a href="watch.html" class="see-all">
-          Lihat semua
-        </a>
+    </div>
 
-      </div>
+</div>
 
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
 
-      <div class="movie-list">
+const videos=document.querySelectorAll("video");
 
-        <article class="movie-card">
+const observer=new IntersectionObserver((entries)=>{
 
-          <div class="movie-placeholder">
-            🎬
-          </div>
+entries.forEach(entry=>{
 
-          <div class="movie-info">
-            <h3>Reitoon Original</h3>
-            <p>Film pilihan terbaru</p>
-          </div>
+if(entry.isIntersecting){
 
-        </article>
+entry.target.play().catch(()=>{});
 
+}else{
 
-        <article class="movie-card">
+entry.target.pause();
 
-          <div class="movie-placeholder">
-            🎞️
-          </div>
+}
 
-          <div class="movie-info">
-            <h3>Trending Story</h3>
-            <p>Film yang sedang populer</p>
-          </div>
+});
 
-        </article>
+},{threshold:0.6});
 
-      </div>
+videos.forEach(video=>{
 
-    </section>
+observer.observe(video);
 
-  </main>
+video.addEventListener("click",()=>{
 
+video.muted=!video.muted;
 
-  <!-- BOTTOM NAV -->
-  <nav class="bottom-nav">
+});
 
-    <a href="index.html" class="nav-item active">
+});
 
-      <span class="nav-icon">🏠</span>
-      <span>Home</span>
-
-    </a>
-
-
-    <a href="watch.html" class="nav-item">
-
-      <span class="nav-icon">🎬</span>
-      <span>Watch</span>
-
-    </a>
-
-
-    <a href="#" class="nav-create">
-
-      <span class="plus">+</span>
-      <span>Create</span>
-
-    </a>
-
-
-    <a href="#" class="nav-item">
-
-      <span class="nav-icon">🎞️</span>
-      <span>Studio</span>
-
-    </a>
-
-
-    <a href="#" class="nav-item">
-
-      <span class="nav-icon">👤</span>
-      <span>Profile</span>
-
-    </a>
-
-  </nav>
-
+});
+</script>
 
 </body>
 </html>
