@@ -3,19 +3,572 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reitoon - Watch</title>
-  <link rel="stylesheet" href="watch.css">
+
+  <title>Reitoon — Watch</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #08070d;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 760px;
+      margin: auto;
+      padding: 28px 20px 120px;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 52px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -3px;
+    }
+
+    .logo span {
+      color: #ff2f91;
+    }
+
+    .notification {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 29px;
+      background: #171620;
+      border: 1px solid #30303c;
+      box-shadow: 0 8px 25px rgba(0,0,0,.25);
+    }
+
+    /* SEARCH */
+    .search-box {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 25px;
+      border-radius: 28px;
+      background: #1a1922;
+      border: 1px solid #35343f;
+      margin-bottom: 38px;
+    }
+
+    .search-icon {
+      font-size: 34px;
+      flex-shrink: 0;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: #fff;
+      font-size: 24px;
+    }
+
+    .search-box input::placeholder {
+      color: #94929d;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 470px;
+      overflow: hidden;
+      border-radius: 32px;
+      margin-bottom: 34px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(10,8,14,.05) 10%,
+          rgba(8,7,13,.12) 38%,
+          rgba(8,7,13,.94) 100%
+        ),
+        linear-gradient(
+          135deg,
+          #39205c,
+          #b32679 55%,
+          #24112e
+        );
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 20px 55px rgba(0,0,0,.4);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      right: -100px;
+      top: -70px;
+      border-radius: 50%;
+      background: rgba(255, 41, 137, .35);
+      filter: blur(20px);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.15),
+          transparent 55%,
+          rgba(0,0,0,.25)
+        );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: absolute;
+      z-index: 2;
+      left: 28px;
+      right: 28px;
+      bottom: 30px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 15px;
+      margin-bottom: 14px;
+      border-radius: 30px;
+      color: #ff64ac;
+      background: rgba(255,47,145,.12);
+      border: 1px solid rgba(255,72,157,.35);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      max-width: 620px;
+      font-size: 42px;
+      line-height: 1.05;
+      margin-bottom: 9px;
+      font-weight: 900;
+    }
+
+    .hero-meta {
+      color: #d0ced5;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .play-btn {
+      width: 180px;
+      height: 54px;
+      border: 0;
+      border-radius: 15px;
+      background: #fff;
+      color: #111;
+      font-weight: 800;
+      font-size: 18px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .play-btn:active {
+      transform: scale(.97);
+    }
+
+    /* CAROUSEL DOTS */
+    .dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin: -18px 0 42px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #77747e;
+    }
+
+    .dot.active {
+      width: 30px;
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    /* SECTION */
+    section {
+      margin-bottom: 38px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 17px;
+    }
+
+    .section-header h2 {
+      font-size: 27px;
+      font-weight: 900;
+    }
+
+    .view-all {
+      color: #ff3b98;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* HORIZONTAL MOVIES */
+    .movie-row {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+    }
+
+    .movie-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .movie-card {
+      min-width: 155px;
+      width: 155px;
+      cursor: pointer;
+    }
+
+    .poster {
+      position: relative;
+      width: 155px;
+      height: 215px;
+      overflow: hidden;
+      border-radius: 17px;
+      background: linear-gradient(145deg,#321d54,#ff348d);
+      border: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 10px;
+    }
+
+    .poster::before {
+      content: "▶";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.92);
+      color: #ff2f91;
+      font-size: 18px;
+      padding-left: 3px;
+      opacity: 0;
+      transition: .2s;
+      z-index: 2;
+    }
+
+    .movie-card:hover .poster::before {
+      opacity: 1;
+    }
+
+    .poster.one {
+      background:
+        linear-gradient(180deg, transparent 35%, rgba(0,0,0,.85)),
+        linear-gradient(135deg,#7d2d70,#171c4c);
+    }
+
+    .poster.two {
+      background:
+        linear-gradient(180deg, transparent 35%, rgba(0,0,0,.9)),
+        linear-gradient(135deg,#e54a69,#422151);
+    }
+
+    .poster.three {
+      background:
+        linear-gradient(180deg, transparent 35%, rgba(0,0,0,.9)),
+        linear-gradient(135deg,#172c59,#c02c83);
+    }
+
+    .poster.four {
+      background:
+        linear-gradient(180deg, transparent 35%, rgba(0,0,0,.9)),
+        linear-gradient(135deg,#52294f,#151927);
+    }
+
+    .poster-five {
+      background:
+        linear-gradient(180deg, transparent 35%, rgba(0,0,0,.9)),
+        linear-gradient(135deg,#c13973,#241b4e);
+    }
+
+    .poster-title {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      font-size: 17px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+
+    .movie-card h3 {
+      font-size: 16px;
+      line-height: 1.2;
+      margin-bottom: 5px;
+    }
+
+    .movie-card p {
+      color: #97949f;
+      font-size: 13px;
+    }
+
+    /* TRENDING */
+    .trending-card {
+      min-width: 245px;
+      width: 245px;
+    }
+
+    .trending-poster {
+      width: 245px;
+      height: 145px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .trending-poster.a {
+      background:
+        linear-gradient(180deg,transparent 25%,rgba(0,0,0,.9)),
+        linear-gradient(135deg,#43225f,#ff378e);
+    }
+
+    .trending-poster.b {
+      background:
+        linear-gradient(180deg,transparent 25%,rgba(0,0,0,.9)),
+        linear-gradient(135deg,#1c4c67,#d63e78);
+    }
+
+    .trending-poster.c {
+      background:
+        linear-gradient(180deg,transparent 25%,rgba(0,0,0,.9)),
+        linear-gradient(135deg,#783746,#201b48);
+    }
+
+    .trending-poster span {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    /* BOTTOM NAV */
+    .bottom-nav {
+      position: fixed;
+      z-index: 100;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      width: calc(100% - 28px);
+      max-width: 700px;
+      height: 94px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 30px;
+      background: rgba(24,23,31,.95);
+      border: 1px solid #35343e;
+      box-shadow: 0 15px 40px rgba(0,0,0,.55);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-item {
+      height: 76px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      color: #777580;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 22px;
+    }
+
+    .nav-icon {
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .nav-item.active {
+      color: #ff3c98;
+      background: rgba(255,47,145,.10);
+    }
+
+    .nav-item.create {
+      position: relative;
+      color: #fff;
+      background: transparent;
+    }
+
+    .create-icon {
+      width: 62px;
+      height: 62px;
+      margin-top: -28px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ff3190;
+      color: #fff;
+      font-size: 42px;
+      font-weight: 300;
+      box-shadow: 0 10px 28px rgba(255,47,145,.35);
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .app {
+        padding: 28px 20px 125px;
+      }
+
+      .logo {
+        font-size: 50px;
+      }
+
+      .notification {
+        width: 58px;
+        height: 58px;
+      }
+
+      .search-box {
+        height: 82px;
+        margin-bottom: 38px;
+      }
+
+      .search-box input {
+        font-size: 22px;
+      }
+
+      .hero {
+        height: 480px;
+        border-radius: 31px;
+      }
+
+      .hero-content {
+        left: 28px;
+        right: 28px;
+        bottom: 28px;
+      }
+
+      .hero h1 {
+        font-size: 39px;
+      }
+
+      .hero-meta {
+        font-size: 15px;
+      }
+
+      .play-btn {
+        width: 175px;
+      }
+
+      .section-header h2 {
+        font-size: 27px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .app {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .logo {
+        font-size: 44px;
+      }
+
+      .notification {
+        width: 54px;
+        height: 54px;
+      }
+
+      .search-box {
+        padding: 0 18px;
+      }
+
+      .search-box input {
+        font-size: 19px;
+      }
+
+      .hero {
+        height: 450px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .bottom-nav {
+        width: calc(100% - 18px);
+        bottom: 10px;
+      }
+
+      .nav-item {
+        font-size: 11px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <div class="watch-page">
+  <main class="app">
 
     <!-- HEADER -->
-    <header class="watch-header">
-      <a href="index.html" class="logo">
+    <header>
+      <div class="logo">
         Rei<span>toon</span>
-      </a>
+      </div>
 
       <button class="notification" onclick="showNotification()">
         🔔
@@ -25,145 +578,125 @@
 
     <!-- SEARCH -->
     <div class="search-box">
-      <span>🔍</span>
+      <span class="search-icon">🔍</span>
+
       <input
-        type="text"
-        placeholder="Cari film, drama, atau creator..."
         id="searchInput"
+        type="search"
+        placeholder="Cari film, drama, atau creator..."
+        autocomplete="off"
       >
     </div>
 
 
     <!-- HERO -->
-    <section class="hero">
+    <div class="hero">
 
-      <div class="hero-poster">
+      <div class="hero-content">
 
-        <img
-          src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=85"
-          alt="Love Beyond Time"
-        >
-
-        <div class="hero-gradient"></div>
-
-        <div class="hero-info">
-
-          <div class="original-label">
-            REITOON ORIGINAL
-          </div>
-
-          <h1>Love Beyond Time</h1>
-
-          <p>
-            Romance • Drama
-          </p>
-
-          <button
-            class="play-button"
-            onclick="playMovie('Love Beyond Time')"
-          >
-            ▶ Play
-          </button>
-
+        <div class="hero-badge">
+          🎬 REITOON ORIGINAL
         </div>
 
+        <h1 id="heroTitle">
+          Love Beyond Time
+        </h1>
+
+        <p class="hero-meta">
+          Romance • Drama • 2026
+        </p>
+
+        <button class="play-btn" onclick="playMovie()">
+          ▶ Play
+        </button>
+
       </div>
 
-      <!-- CAROUSEL -->
-      <div class="dots">
-        <span></span>
-        <span class="active"></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    </div>
 
-    </section>
+
+    <!-- CAROUSEL INDICATOR -->
+    <div class="dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
 
 
     <!-- NEW RELEASE -->
-    <section class="content-section">
+    <section>
 
       <div class="section-header">
         <h2>New Release</h2>
 
-        <button onclick="viewAll('New Release')">
-          View all <span>›</span>
-        </button>
+        <div class="view-all" onclick="viewAll('new')">
+          View all ›
+        </div>
       </div>
 
 
       <div class="movie-row">
 
-        <article
-          class="movie-card"
-          onclick="openMovie('Love Beyond Time')"
-        >
-          <div class="poster">
-            <img
-              src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=85"
-              alt="Love Beyond Time"
-            >
+        <article class="movie-card"
+          onclick="openMovie('Love Beyond Time')">
 
-            <div class="poster-play">▶</div>
+          <div class="poster one">
+            <div class="poster-title">
+              Love Beyond Time
+            </div>
           </div>
 
           <h3>Love Beyond Time</h3>
           <p>Romance • Drama</p>
+
         </article>
 
 
-        <article
-          class="movie-card"
-          onclick="openMovie('First Meeting')"
-        >
-          <div class="poster">
-            <img
-              src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=85"
-              alt="First Meeting"
-            >
+        <article class="movie-card"
+          onclick="openMovie('The Last Kingdom')">
 
-            <div class="poster-play">▶</div>
+          <div class="poster two">
+            <div class="poster-title">
+              The Last Kingdom
+            </div>
           </div>
 
-          <h3>First Meeting</h3>
-          <p>Romance</p>
+          <h3>The Last Kingdom</h3>
+          <p>Action • Fantasy</p>
+
         </article>
 
 
-        <article
-          class="movie-card"
-          onclick="openMovie('Hidden Truth')"
-        >
-          <div class="poster">
-            <img
-              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=85"
-              alt="Hidden Truth"
-            >
+        <article class="movie-card"
+          onclick="openMovie('Hidden Truth')">
 
-            <div class="poster-play">▶</div>
+          <div class="poster three">
+            <div class="poster-title">
+              Hidden Truth
+            </div>
           </div>
 
           <h3>Hidden Truth</h3>
           <p>Mystery • Drama</p>
+
         </article>
 
 
-        <article
-          class="movie-card"
-          onclick="openMovie('Love Again')"
-        >
-          <div class="poster">
-            <img
-              src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=600&q=85"
-              alt="Love Again"
-            >
+        <article class="movie-card"
+          onclick="openMovie('First Meeting')">
 
-            <div class="poster-play">▶</div>
+          <div class="poster four">
+            <div class="poster-title">
+              First Meeting
+            </div>
           </div>
 
-          <h3>Love Again</h3>
+          <h3>First Meeting</h3>
           <p>Romance</p>
+
         </article>
 
       </div>
@@ -172,273 +705,162 @@
 
 
     <!-- TRENDING -->
-    <section class="content-section">
+    <section>
 
       <div class="section-header">
-        <h2>Trending</h2>
+        <h2>🔥 Trending</h2>
 
-        <button onclick="viewAll('Trending')">
-          View all <span>›</span>
-        </button>
+        <div class="view-all" onclick="viewAll('trending')">
+          View all ›
+        </div>
       </div>
 
 
       <div class="movie-row">
 
-        <article
-          class="movie-card"
-          onclick="openMovie('The Last Kingdom')"
-        >
-          <div class="poster">
+        <article class="trending-card"
+          onclick="openMovie('One Last Chance')">
 
-            <span class="trending-badge">
-              TRENDING
-            </span>
-
-            <img
-              src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=85"
-              alt="The Last Kingdom"
-            >
-
-            <div class="poster-play">▶</div>
-          </div>
-
-          <h3>The Last Kingdom</h3>
-          <p>Action • Fantasy</p>
-        </article>
-
-
-        <article
-          class="movie-card"
-          onclick="openMovie('One Last Chance')"
-        >
-          <div class="poster">
-
-            <span class="trending-badge">
-              TRENDING
-            </span>
-
-            <img
-              src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=85"
-              alt="One Last Chance"
-            >
-
-            <div class="poster-play">▶</div>
+          <div class="trending-poster a">
+            <span>One Last Chance</span>
           </div>
 
           <h3>One Last Chance</h3>
           <p>Drama • Romance</p>
+
         </article>
 
 
-        <article
-          class="movie-card"
-          onclick="openMovie('Dark Promise')"
-        >
-          <div class="poster">
+        <article class="trending-card"
+          onclick="openMovie('Hidden Truth')">
 
-            <span class="trending-badge">
-              TRENDING
-            </span>
-
-            <img
-              src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=85"
-              alt="Dark Promise"
-            >
-
-            <div class="poster-play">▶</div>
+          <div class="trending-poster b">
+            <span>Hidden Truth</span>
           </div>
 
-          <h3>Dark Promise</h3>
-          <p>Mystery • Thriller</p>
+          <h3>Hidden Truth</h3>
+          <p>Mystery • Drama</p>
+
         </article>
 
 
-        <article
-          class="movie-card"
-          onclick="openMovie('The Secret')"
-        >
-          <div class="poster">
+        <article class="trending-card"
+          onclick="openMovie('The Last Kingdom')">
 
-            <span class="trending-badge">
-              TRENDING
-            </span>
-
-            <img
-              src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=85"
-              alt="The Secret"
-            >
-
-            <div class="poster-play">▶</div>
+          <div class="trending-poster c">
+            <span>The Last Kingdom</span>
           </div>
 
-          <h3>The Secret</h3>
-          <p>Drama • Mystery</p>
+          <h3>The Last Kingdom</h3>
+          <p>Action • Fantasy</p>
+
         </article>
 
       </div>
 
     </section>
 
-
-    <!-- SHORT DRAMA -->
-    <section class="content-section">
-
-      <div class="section-header">
-        <h2>Short Drama</h2>
-
-        <button onclick="viewAll('Short Drama')">
-          View all <span>›</span>
-        </button>
-      </div>
+  </main>
 
 
-      <div class="movie-row">
-
-        <article
-          class="movie-card"
-          onclick="openMovie('First Meeting')"
-        >
-          <div class="poster">
-            <img
-              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=85"
-              alt="First Meeting"
-            >
-
-            <div class="poster-play">▶</div>
-          </div>
-
-          <h3>First Meeting</h3>
-          <p>Romance</p>
-        </article>
-
-
-        <article
-          class="movie-card"
-          onclick="openMovie('One Last Chance')"
-        >
-          <div class="poster">
-            <img
-              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=85"
-              alt="One Last Chance"
-            >
-
-            <div class="poster-play">▶</div>
-          </div>
-
-          <h3>One Last Chance</h3>
-          <p>Drama</p>
-        </article>
-
-
-        <article
-          class="movie-card"
-          onclick="openMovie('Falling For You')"
-        >
-          <div class="poster">
-            <img
-              src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=600&q=85"
-              alt="Falling For You"
-            >
-
-            <div class="poster-play">▶</div>
-          </div>
-
-          <h3>Falling For You</h3>
-          <p>Romance • Comedy</p>
-        </article>
-
-      </div>
-
-    </section>
-
-  </div>
-
-
-  <!-- BOTTOM NAV -->
+  <!-- BOTTOM NAVIGATION -->
   <nav class="bottom-nav">
 
-    <a
-      href="index.html"
-      class="nav-item"
-    >
+    <div class="nav-item" onclick="goHome()">
       <span class="nav-icon">🏠</span>
       <span>Home</span>
-    </a>
+    </div>
 
 
-    <a
-      href="watch.html"
-      class="nav-item active"
-    >
+    <div class="nav-item active" onclick="goWatch()">
       <span class="nav-icon">🎬</span>
       <span>Watch</span>
-    </a>
+    </div>
 
 
-    <a
-      href="create.html"
-      class="create-button"
-    >
-      +
-    </a>
+    <div class="nav-item create" onclick="createFilm()">
+      <span class="create-icon">+</span>
+      <span>Create</span>
+    </div>
 
 
-    <a
-      href="studio.html"
-      class="nav-item"
-    >
+    <div class="nav-item" onclick="goStudio()">
       <span class="nav-icon">🎞️</span>
       <span>Studio</span>
-    </a>
+    </div>
 
 
-    <a
-      href="profile.html"
-      class="nav-item"
-    >
+    <div class="nav-item" onclick="goProfile()">
       <span class="nav-icon">👤</span>
       <span>Profile</span>
-    </a>
+    </div>
 
   </nav>
 
 
   <script>
 
-    function playMovie(title) {
-      alert("▶ Memutar " + title);
+    function goHome() {
+      window.location.href = "index.html";
     }
 
+    function goWatch() {
+      window.location.href = "watch.html";
+    }
+
+    function createFilm() {
+      window.location.href = "create.html";
+    }
+
+    function goStudio() {
+      window.location.href = "studio.html";
+    }
+
+    function goProfile() {
+      window.location.href = "profile.html";
+    }
 
     function openMovie(title) {
-      alert("Membuka " + title);
+      alert("Membuka: " + title);
     }
 
-
-    function viewAll(category) {
-      alert("Membuka semua " + category);
+    function playMovie() {
+      openMovie(
+        document.getElementById("heroTitle").textContent
+      );
     }
 
+    function viewAll(type) {
+      alert(
+        type === "new"
+          ? "Menampilkan semua film baru."
+          : "Menampilkan semua film trending."
+      );
+    }
 
     function showNotification() {
       alert("Belum ada notifikasi baru.");
     }
 
-
+    /* SEARCH */
     document
       .getElementById("searchInput")
-      .addEventListener("keypress", function(event) {
+      .addEventListener("input", function () {
 
-        if (event.key === "Enter") {
+        const keyword = this.value.toLowerCase().trim();
 
-          const query = this.value.trim();
+        document
+          .querySelectorAll(".movie-card, .trending-card")
+          .forEach(function(card) {
 
-          if (query !== "") {
-            alert("Mencari: " + query);
-          }
+            const text = card.textContent.toLowerCase();
 
-        }
+            card.style.display =
+              !keyword || text.includes(keyword)
+                ? ""
+                : "none";
+
+          });
 
       });
 
