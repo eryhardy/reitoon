@@ -3,229 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Reitoon - Watch</title>
-
+  <title>Watch - Reitoon</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header class="top-header">
+    <img src="assets/reitoon-logo.png" class="reitoon-logo" alt="Reitoon">
 
-    <a href="index.html" class="reitoon-logo">
-      <img src="reitoon-logo.png" alt="Reitoon">
-    </a>
-
-    <button class="notification-btn" type="button">
-      🔔
-    </button>
-
+    <button class="notification">🔔</button>
   </header>
 
+  <main>
 
-  <main class="page">
-
-    <!-- SEARCH -->
     <div class="search-box">
-
-      <span class="search-icon">🔍</span>
-
+      <span>🔍</span>
       <input
-        type="search"
+        type="text"
         placeholder="Cari film, drama, atau creator..."
-        aria-label="Cari film"
       >
-
     </div>
 
-
     <!-- HERO FILM -->
-    <section class="hero-watch">
+    <section class="watch-hero">
 
       <img
-        class="hero-image"
-        src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85"
-        alt="Film Reitoon"
+        src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=85"
+        alt="Film"
       >
 
-      <div class="hero-content">
+      <div class="watch-overlay"></div>
 
-        <div class="original-badge">
+      <div class="watch-content">
+
+        <div class="hero-badge">
           🎬 REITOON ORIGINAL
         </div>
 
-        <h1 class="hero-title">
-          I Accidentally Sexted My Enemy
-        </h1>
+        <h1>I Accidentally Sexted My Enemy</h1>
 
-        <button class="play-button" type="button">
-          <span>▶</span> Play
+        <button class="play-button">
+          ▶ Play
         </button>
 
       </div>
 
     </section>
 
-
-    <!-- CAROUSEL -->
-    <div class="carousel-dots">
+    <!-- INDICATOR -->
+    <div class="carousel-indicator">
       <span></span>
       <span></span>
       <span class="active"></span>
       <span></span>
       <span></span>
-      <span></span>
     </div>
 
-
     <!-- NEW RELEASE -->
-    <section>
+    <section class="section">
 
-      <div class="section-heading">
-
+      <div class="section-title">
         <h2>New Release</h2>
-
-        <a href="#" class="view-all">
-          View all ›
-        </a>
-
+        <a href="#">View all ›</a>
       </div>
-
 
       <div class="movie-row">
 
-        <article class="movie-card">
-
+        <div class="movie-card">
           <img
-            src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=85"
+            src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=80"
             alt="Movie"
           >
+          <h3>New Adventure</h3>
+        </div>
 
-          <div class="movie-info">
-            <h3>Future Love</h3>
-          </div>
-
-        </article>
-
-
-        <article class="movie-card">
-
-          <span class="trending-label">
-            Trending
-          </span>
-
+        <div class="movie-card">
           <img
-            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=85"
+            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80"
             alt="Movie"
           >
+          <h3>Love Story</h3>
+        </div>
 
-          <div class="movie-info">
-            <h3>Royal Story</h3>
-          </div>
-
-        </article>
-
-
-        <article class="movie-card">
-
-          <span class="trending-label">
-            Trending
-          </span>
-
+        <div class="movie-card">
           <img
-            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=85"
+            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=500&q=80"
             alt="Movie"
           >
-
-          <div class="movie-info">
-            <h3>Summer Dream</h3>
-          </div>
-
-        </article>
-
-
-        <article class="movie-card">
-
-          <img
-            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=85"
-            alt="Movie"
-          >
-
-          <div class="movie-info">
-            <h3>Last Episode</h3>
-          </div>
-
-        </article>
+          <h3>The Mystery</h3>
+        </div>
 
       </div>
 
     </section>
 
-
     <!-- TRENDING -->
-    <section class="trending-section" style="margin-top: 45px;">
+    <section class="section trending-section">
 
-      <div class="popular-label">
-        POPULER SEKARANG
+      <div class="section-title">
+        <h2>🔥 Trending</h2>
+        <a href="#">View all ›</a>
       </div>
-
-      <div class="section-heading">
-
-        <h2 class="trending-title">
-          🔥 Trending
-        </h2>
-
-        <a href="#" class="view-all">
-          Lihat semua
-        </a>
-
-      </div>
-
 
       <div class="movie-row">
 
-        <article class="movie-card">
-
+        <div class="movie-card">
           <img
-            src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=85"
-            alt="Trending movie"
+            src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80"
+            alt="Trending"
           >
+          <h3>Trending Now</h3>
+        </div>
 
-          <div class="movie-info">
-            <h3>The Secret</h3>
-          </div>
-
-        </article>
-
-
-        <article class="movie-card">
-
+        <div class="movie-card">
           <img
-            src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=600&q=85"
-            alt="Trending movie"
+            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=80"
+            alt="Trending"
           >
+          <h3>Popular Story</h3>
+        </div>
 
-          <div class="movie-info">
-            <h3>Hidden Heart</h3>
-          </div>
-
-        </article>
-
-
-        <article class="movie-card">
-
+        <div class="movie-card">
           <img
-            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=85"
-            alt="Trending movie"
+            src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=500&q=80"
+            alt="Trending"
           >
-
-          <div class="movie-info">
-            <h3>Night Story</h3>
-          </div>
-
-        </article>
+          <h3>Tonight</h3>
+        </div>
 
       </div>
 
@@ -233,56 +138,35 @@
 
   </main>
 
-
   <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
 
-    <a href="index.html" class="nav-item">
-
-      <span class="nav-icon">🏠</span>
-
-      <span>Home</span>
-
+    <a class="nav-item" href="index.html">
+      <span>🏠</span>
+      <small>Home</small>
     </a>
 
-
-    <a href="watch.html" class="nav-item active">
-
-      <span class="nav-icon">🎬</span>
-
-      <span>Watch</span>
-
+    <a class="nav-item active" href="watch.html">
+      <span>🎬</span>
+      <small>Watch</small>
     </a>
 
-
-    <a href="#" class="nav-item create-nav">
-
-      <span class="nav-icon">＋</span>
-
-      <span>Create</span>
-
+    <a class="create-nav" href="#">
+      <strong>＋</strong>
+      <small>Create</small>
     </a>
 
-
-    <a href="#" class="nav-item">
-
-      <span class="nav-icon">🎞️</span>
-
-      <span>Studio</span>
-
+    <a class="nav-item" href="#">
+      <span>🎞️</span>
+      <small>Studio</small>
     </a>
 
-
-    <a href="#" class="nav-item">
-
-      <span class="nav-icon">👤</span>
-
-      <span>Profile</span>
-
+    <a class="nav-item" href="#">
+      <span>👤</span>
+      <small>Profile</small>
     </a>
 
   </nav>
-
 
 </body>
 </html>
