@@ -4,325 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Watch — Reitoon</title>
-
-  <link rel="stylesheet" href="style.css">
+  <title>Watch • Reitoon</title>
 
   <style>
-    /* =====================================================
-       REITOON WATCH
-       Tambahan khusus halaman Watch
-       ===================================================== */
+    /* =========================================================
+       REITOON WATCH PAGE
+       Mobile-first
+       ========================================================= */
 
-    .watch-page {
-      width: 100%;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .watch-header {
-      margin-bottom: 30px;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .watch-header h1 {
-      font-size: 38px;
-      line-height: 1.1;
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      margin-bottom: 10px;
-    }
-
-    .watch-header p {
-      color: #a7a4af;
-      font-size: 17px;
-      line-height: 1.5;
-    }
-
-    /* SEARCH */
-
-    .watch-search {
-      width: 100%;
-      min-height: 70px;
-
-      display: flex;
-      align-items: center;
-
-      padding: 0 22px;
-      margin-bottom: 25px;
-
-      border-radius: 22px;
-
-      background: #1c1b26;
-      border: 1px solid rgba(255,255,255,.08);
-
-      color: #aaa7b2;
-      font-size: 17px;
-    }
-
-    .watch-search input {
-      width: 100%;
-
-      border: none;
-      outline: none;
-
-      background: transparent;
-
-      color: white;
-
-      font-size: 17px;
-      margin-left: 10px;
-    }
-
-    .watch-search input::placeholder {
-      color: #77747f;
-    }
-
-    /* FILTER */
-
-    .watch-filters {
-      display: flex;
-      gap: 10px;
-
-      overflow-x: auto;
-
-      margin-bottom: 35px;
-
-      padding-bottom: 5px;
-
-      scrollbar-width: none;
-    }
-
-    .watch-filters::-webkit-scrollbar {
-      display: none;
-    }
-
-    .watch-filter {
-      flex: 0 0 auto;
-
-      padding: 12px 18px;
-
-      border-radius: 999px;
-
-      background: #191822;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      color: #92909a;
-
-      font-size: 14px;
-      font-weight: 700;
-
-      cursor: pointer;
-    }
-
-    .watch-filter.active {
-      background: #ff318d;
-      color: white;
-
-      border-color: #ff318d;
-    }
-
-    /* FEATURED */
-
-    .watch-featured {
-      position: relative;
-
-      min-height: 260px;
-
-      padding: 28px;
-
-      margin-bottom: 48px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-
-      overflow: hidden;
-
-      border-radius: 28px;
-
+    body {
+      min-height: 100vh;
       background:
         radial-gradient(
-          circle at 90% 10%,
-          rgba(255,45,143,.35),
-          transparent 40%
+          circle at 50% 0%,
+          rgba(255, 35, 145, 0.10),
+          transparent 34%
         ),
-        linear-gradient(
-          135deg,
-          #2b1946,
-          #15111d
-        );
+        #09080d;
+      color: #ffffff;
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
 
-      border: 1px solid rgba(255,255,255,.08);
+      padding-bottom: 110px;
+      overflow-x: hidden;
     }
 
-    .watch-featured small {
-      position: relative;
-      z-index: 2;
-
-      color: #ff5da6;
-
-      font-size: 12px;
-      font-weight: 800;
-
-      letter-spacing: 1.5px;
-
-      margin-bottom: 10px;
+    button,
+    input {
+      font: inherit;
     }
 
-    .watch-featured h2 {
-      position: relative;
-      z-index: 2;
-
-      font-size: 28px;
-
-      margin-bottom: 8px;
-    }
-
-    .watch-featured p {
-      position: relative;
-      z-index: 2;
-
-      color: #c2bec9;
-
-      font-size: 15px;
-
-      margin-bottom: 18px;
-    }
-
-    .watch-play {
-      position: relative;
-      z-index: 2;
-
-      width: fit-content;
-
-      padding: 12px 20px;
-
-      border-radius: 14px;
-
-      background: #ff318d;
-
-      color: white;
-
-      font-size: 14px;
-      font-weight: 800;
-
+    button {
+      border: 0;
       cursor: pointer;
     }
 
-    /* SECTIONS */
-
-    .watch-section {
-      margin-bottom: 48px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .watch-section-title {
+
+    /* =========================================================
+       APP
+       ========================================================= */
+
+    .app {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 34px 22px 40px;
+    }
+
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    header {
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      margin-bottom: 20px;
+      margin-bottom: 34px;
     }
 
-    .watch-section-title h2 {
-      font-size: 25px;
+    .logo {
+      font-size: 48px;
+      line-height: 1;
       font-weight: 850;
+      letter-spacing: -3px;
     }
 
-    .watch-section-title span {
-      color: #ff3d95;
-
-      font-size: 14px;
-      font-weight: 700;
+    .logo span {
+      color: #ff2f91;
     }
 
-    /* MOVIE LIST */
-
-    .movie-list {
-      display: flex;
-      flex-direction: column;
-      gap: 13px;
-    }
-
-    .movie-card {
-      width: 100%;
-
-      min-height: 105px;
-
-      display: flex;
-      align-items: center;
-
-      padding: 12px;
-
-      border-radius: 20px;
-
-      background: #15141d;
-
-      border: 1px solid rgba(255,255,255,.06);
-
-      cursor: pointer;
-
-      transition:
-        transform .2s ease,
-        background .2s ease;
-    }
-
-    .movie-card:active {
-      transform: scale(.98);
-    }
-
-    .movie-poster {
-      width: 78px;
-      height: 82px;
-
-      flex: 0 0 78px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 15px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #452263,
-          #191521
-        );
-
-      font-size: 28px;
-    }
-
-    .movie-info {
-      min-width: 0;
-
-      padding-left: 15px;
-      padding-right: 8px;
-
-      flex: 1;
-    }
-
-    .movie-info h3 {
-      font-size: 17px;
-
-      margin-bottom: 7px;
-
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .movie-info p {
-      color: #92909b;
-
-      font-size: 13px;
-
-      line-height: 1.4;
-    }
-
-    .movie-play {
-      width: 43px;
-      height: 43px;
-
-      flex: 0 0 43px;
+    .notification {
+      width: 64px;
+      height: 64px;
 
       display: flex;
       align-items: center;
@@ -330,698 +106,1888 @@
 
       border-radius: 50%;
 
-      background: rgba(255,49,141,.12);
+      background:
+        linear-gradient(
+          145deg,
+          #20202b,
+          #15151e
+        );
 
-      color: #ff3d95;
+      border: 1px solid rgba(255,255,255,0.10);
 
-      font-size: 18px;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.30),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+
+      font-size: 31px;
     }
 
-    /* EMPTY SEARCH */
 
-    .watch-empty {
+    /* =========================================================
+       SEARCH
+       ========================================================= */
+
+    .search-box {
+      position: relative;
+      width: 100%;
+      margin-bottom: 38px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      font-size: 27px;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 78px;
+
+      padding: 0 22px 0 66px;
+
+      border-radius: 25px;
+
+      border: 1px solid rgba(255,255,255,0.10);
+
+      outline: none;
+
+      background:
+        linear-gradient(
+          145deg,
+          #1c1b25,
+          #181720
+        );
+
+      color: #ffffff;
+
+      font-size: 22px;
+      font-weight: 500;
+
+      box-shadow:
+        0 12px 30px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+
+      transition: 0.25s ease;
+    }
+
+    .search-input::placeholder {
+      color: #9997a5;
+    }
+
+    .search-input:focus {
+      border-color: rgba(255,47,145,0.55);
+
+      box-shadow:
+        0 0 0 4px rgba(255,47,145,0.08),
+        0 15px 35px rgba(0,0,0,0.20);
+    }
+
+
+    /* =========================================================
+       PAGE INTRO
+       ========================================================= */
+
+    .page-intro {
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      color: #ff4b9d;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+
+      margin-bottom: 8px;
+    }
+
+    .page-intro h1 {
+      font-size: 34px;
+      line-height: 1.08;
+      letter-spacing: -1.4px;
+      font-weight: 850;
+      margin-bottom: 9px;
+    }
+
+    .page-intro p {
+      color: #9997a5;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+
+    /* =========================================================
+       CATEGORY FILTER
+       ========================================================= */
+
+    .categories {
+      display: flex;
+      gap: 10px;
+
+      overflow-x: auto;
+
+      padding-bottom: 7px;
+      margin-bottom: 38px;
+
+      scrollbar-width: none;
+    }
+
+    .categories::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category {
+      flex: 0 0 auto;
+
+      padding: 11px 18px;
+
+      border-radius: 999px;
+
+      color: #a6a3b0;
+
+      background: #17161f;
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition: 0.2s ease;
+    }
+
+    .category.active {
+      color: #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff2f91,
+          #ff3c82
+        );
+
+      border-color: transparent;
+
+      box-shadow:
+        0 8px 22px rgba(255,47,145,0.22);
+    }
+
+
+    /* =========================================================
+       SECTION
+       ========================================================= */
+
+    section {
+      margin-bottom: 42px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 18px;
+    }
+
+    .section-title h2 {
+      font-size: 25px;
+      line-height: 1.1;
+      font-weight: 850;
+      letter-spacing: -0.7px;
+    }
+
+    .see-all {
+      color: #ff3d94;
+
+      font-size: 14px;
+      font-weight: 750;
+
+      white-space: nowrap;
+    }
+
+
+    /* =========================================================
+       FEATURED MOVIE
+       ========================================================= */
+
+    .featured {
+      position: relative;
+
+      min-height: 280px;
+
+      padding: 28px 24px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      border-radius: 28px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(255,255,255,0.10);
+
+      background:
+        radial-gradient(
+          circle at 90% 15%,
+          rgba(255,44,145,0.65),
+          transparent 42%
+        ),
+        radial-gradient(
+          circle at 10% 100%,
+          rgba(86,42,170,0.70),
+          transparent 48%
+        ),
+        linear-gradient(
+          135deg,
+          #25163c,
+          #11101a 80%
+        );
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.35);
+
+      cursor: pointer;
+    }
+
+    .featured::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(5,5,10,0.88),
+          rgba(5,5,10,0.05) 70%
+        );
+    }
+
+    .featured-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+
+      width: fit-content;
+
+      padding: 8px 13px;
+
+      margin-bottom: 14px;
+
+      border-radius: 999px;
+
+      background: rgba(255,47,145,0.12);
+
+      border: 1px solid rgba(255,47,145,0.30);
+
+      color: #ff62aa;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .featured h3 {
+      font-size: 30px;
+      line-height: 1.08;
+      letter-spacing: -1px;
+
+      margin-bottom: 7px;
+    }
+
+    .featured p {
+      color: #c3c0ca;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .watch-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: fit-content;
+
+      padding: 12px 18px;
+
+      border-radius: 13px;
+
+      background: #ff2f91;
+
+      color: white;
+
+      font-size: 14px;
+      font-weight: 800;
+
+      box-shadow:
+        0 10px 25px rgba(255,47,145,0.25);
+    }
+
+
+    /* =========================================================
+       MOVIE GRID
+       ========================================================= */
+
+    .movie-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 14px;
+    }
+
+    .movie-card {
+      min-width: 0;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .movie-card:active {
+      transform: scale(0.97);
+    }
+
+    .poster {
+      position: relative;
+
+      width: 100%;
+      aspect-ratio: 0.72;
+
+      display: flex;
+      align-items: flex-end;
+
+      padding: 15px;
+
+      border-radius: 19px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      background:
+        radial-gradient(
+          circle at 80% 15%,
+          rgba(255,49,146,0.55),
+          transparent 35%
+        ),
+        linear-gradient(
+          145deg,
+          #34204c,
+          #171522 70%,
+          #0d0c12
+        );
+
+      box-shadow:
+        0 12px 28px rgba(0,0,0,0.28);
+    }
+
+    .poster.purple {
+      background:
+        radial-gradient(
+          circle at 75% 20%,
+          rgba(135,70,255,0.65),
+          transparent 40%
+        ),
+        linear-gradient(
+          145deg,
+          #2b1c54,
+          #12101c
+        );
+    }
+
+    .poster.blue {
+      background:
+        radial-gradient(
+          circle at 75% 20%,
+          rgba(54,148,255,0.52),
+          transparent 42%
+        ),
+        linear-gradient(
+          145deg,
+          #172c50,
+          #11121c
+        );
+    }
+
+    .poster.red {
+      background:
+        radial-gradient(
+          circle at 75% 20%,
+          rgba(255,69,88,0.58),
+          transparent 42%
+        ),
+        linear-gradient(
+          145deg,
+          #4a202c,
+          #151019
+        );
+    }
+
+    .poster.green {
+      background:
+        radial-gradient(
+          circle at 75% 20%,
+          rgba(51,214,143,0.46),
+          transparent 42%
+        ),
+        linear-gradient(
+          145deg,
+          #173e3a,
+          #10151a
+        );
+    }
+
+    .poster::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,0.78),
+          transparent 65%
+        );
+    }
+
+    .poster-icon {
+      position: relative;
+      z-index: 2;
+
+      font-size: 37px;
+    }
+
+    .movie-info {
+      padding: 10px 3px 0;
+    }
+
+    .movie-info h3 {
+      font-size: 16px;
+      line-height: 1.25;
+
+      font-weight: 800;
+
+      margin-bottom: 5px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .movie-info p {
+      color: #92909d;
+
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .rating {
+      color: #ffb83d;
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       HORIZONTAL LIST
+       ========================================================= */
+
+    .horizontal-list {
+      display: flex;
+      gap: 15px;
+
+      overflow-x: auto;
+
+      padding-bottom: 6px;
+
+      scrollbar-width: none;
+    }
+
+    .horizontal-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .small-card {
+      flex: 0 0 150px;
+
+      cursor: pointer;
+    }
+
+    .small-poster {
+      position: relative;
+
+      width: 150px;
+      height: 205px;
+
+      display: flex;
+      align-items: flex-end;
+
+      padding: 14px;
+
+      overflow: hidden;
+
+      border-radius: 18px;
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      background:
+        radial-gradient(
+          circle at 80% 15%,
+          rgba(255,47,145,0.50),
+          transparent 40%
+        ),
+        linear-gradient(
+          145deg,
+          #322047,
+          #111019
+        );
+    }
+
+    .small-poster::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,0.80),
+          transparent 65%
+        );
+    }
+
+    .small-poster span {
+      position: relative;
+      z-index: 2;
+
+      font-size: 32px;
+    }
+
+    .small-card h3 {
+      margin-top: 9px;
+
+      font-size: 15px;
+      line-height: 1.25;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .small-card p {
+      margin-top: 4px;
+
+      color: #92909d;
+      font-size: 12px;
+    }
+
+
+    /* =========================================================
+       EMPTY SEARCH
+       ========================================================= */
+
+    .search-empty {
       display: none;
 
       padding: 45px 20px;
 
       text-align: center;
 
-      color: #85828d;
+      border-radius: 22px;
+
+      background: #15141c;
+
+      border: 1px solid rgba(255,255,255,0.07);
     }
 
-    .watch-empty strong {
+    .search-empty.show {
       display: block;
-
-      color: white;
-
-      font-size: 19px;
-
-      margin-bottom: 8px;
     }
 
-    /* BOTTOM NAV */
-
-    .watch-bottom {
-      margin-top: 20px;
+    .search-empty .empty-icon {
+      font-size: 42px;
+      margin-bottom: 12px;
     }
 
-    /* SMALL PHONE */
+    .search-empty h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
 
-    @media (max-width: 430px) {
+    .search-empty p {
+      color: #8e8b98;
+      font-size: 14px;
+    }
 
-      .watch-header h1 {
-        font-size: 34px;
+
+    /* =========================================================
+       BOTTOM NAVIGATION
+       ========================================================= */
+
+    .bottom-nav {
+      position: fixed;
+
+      left: 50%;
+      bottom: 18px;
+
+      transform: translateX(-50%);
+
+      z-index: 1000;
+
+      width: calc(100% - 28px);
+      max-width: 690px;
+
+      height: 82px;
+
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: center;
+
+      padding: 8px 7px;
+
+      border-radius: 28px;
+
+      background:
+        rgba(23,22,31,0.94);
+
+      border: 1px solid rgba(255,255,255,0.10);
+
+      box-shadow:
+        0 18px 45px rgba(0,0,0,0.50),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-item {
+      position: relative;
+
+      height: 66px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      gap: 4px;
+
+      border-radius: 20px;
+
+      color: #85828f;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition: 0.2s ease;
+    }
+
+    .nav-icon {
+      font-size: 21px;
+      line-height: 1;
+    }
+
+    .nav-item.active {
+      color: #ff3d94;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,47,145,0.14),
+          rgba(255,47,145,0.04)
+        );
+    }
+
+    .nav-item.create {
+      color: #ffffff;
+    }
+
+    .nav-item.create .nav-icon {
+      width: 60px;
+      height: 60px;
+
+      margin-top: -26px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ff3d98,
+          #ff2187
+        );
+
+      box-shadow:
+        0 12px 28px rgba(255,47,145,0.35);
+
+      font-size: 34px;
+
+      border: 5px solid #09080d;
+    }
+
+
+    /* =========================================================
+       TABLET / DESKTOP
+       ========================================================= */
+
+    @media (min-width: 700px) {
+
+      .app {
+        padding-left: 32px;
+        padding-right: 32px;
       }
 
-      .watch-header p {
-        font-size: 16px;
+      .movie-grid {
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
       }
 
-      .watch-featured {
-        min-height: 245px;
-
-        padding: 24px;
-
-        border-radius: 25px;
+      .featured {
+        min-height: 330px;
+        padding: 34px;
       }
 
-      .watch-featured h2 {
-        font-size: 25px;
-      }
-
-      .watch-section-title h2 {
-        font-size: 23px;
-      }
-
-      .movie-card {
-        min-height: 96px;
-      }
-
-      .movie-poster {
-        width: 70px;
-        height: 74px;
-
-        flex-basis: 70px;
+      .featured h3 {
+        font-size: 38px;
       }
     }
 
-    /* DESKTOP */
 
-    @media (min-width: 900px) {
+    /* =========================================================
+       SMALL PHONE
+       ========================================================= */
 
-      .watch-page {
-        max-width: 900px;
-        margin: auto;
+    @media (max-width: 380px) {
+
+      .app {
+        padding-left: 16px;
+        padding-right: 16px;
       }
 
-      .watch-header h1 {
-        font-size: 48px;
+      .logo {
+        font-size: 41px;
       }
 
-      .movie-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+      .notification {
+        width: 56px;
+        height: 56px;
+        font-size: 27px;
+      }
+
+      .search-input {
+        height: 68px;
+        font-size: 18px;
+      }
+
+      .page-intro h1 {
+        font-size: 29px;
+      }
+
+      .featured {
+        min-height: 260px;
+        padding: 22px;
+      }
+
+      .featured h3 {
+        font-size: 27px;
+      }
+
+      .section-title h2 {
+        font-size: 22px;
+      }
+
+      .bottom-nav {
+        width: calc(100% - 18px);
+        bottom: 10px;
       }
     }
   </style>
 </head>
 
+
 <body>
+
+  <!-- =======================================================
+       MAIN APP
+       ======================================================= -->
 
   <main class="app">
 
-    <div class="watch-page">
 
-      <!-- HEADER -->
+    <!-- HEADER -->
+    <header>
 
-      <header class="watch-header">
+      <a href="index.html" class="logo">
+        Rei<span>toon</span>
+      </a>
 
-        <div>
-          <div class="logo">
-            Rei<span>toon</span>
-          </div>
-        </div>
-
-        <div
-          class="notification"
-          onclick="openNotification()"
-        >
-          🔔
-        </div>
-
-      </header>
-
-
-      <!-- TITLE -->
-
-      <div class="watch-header">
-
-        <h1>
-          Watch
-        </h1>
-
-        <p>
-          Temukan film dan drama favoritmu.
-        </p>
-
-      </div>
-
-
-      <!-- SEARCH -->
-
-      <div class="watch-search">
-
-        🔍
-
-        <input
-          id="watchSearch"
-          type="text"
-          placeholder="Cari film, drama..."
-          oninput="searchMovies()"
-        >
-
-      </div>
-
-
-      <!-- FILTER -->
-
-      <div class="watch-filters">
-
-        <button
-          class="watch-filter active"
-          onclick="filterMovies('all', this)"
-        >
-          Semua
-        </button>
-
-        <button
-          class="watch-filter"
-          onclick="filterMovies('romance', this)"
-        >
-          Romance
-        </button>
-
-        <button
-          class="watch-filter"
-          onclick="filterMovies('drama', this)"
-        >
-          Drama
-        </button>
-
-        <button
-          class="watch-filter"
-          onclick="filterMovies('action', this)"
-        >
-          Action
-        </button>
-
-        <button
-          class="watch-filter"
-          onclick="filterMovies('fantasy', this)"
-        >
-          Fantasy
-        </button>
-
-        <button
-          class="watch-filter"
-          onclick="filterMovies('mystery', this)"
-        >
-          Mystery
-        </button>
-
-      </div>
-
-
-      <!-- FEATURED -->
-
-      <div class="watch-featured">
-
-        <small>
-          ✦ REITOON FEATURED
-        </small>
-
-        <h2>
-          Love Beyond Time
-        </h2>
-
-        <p>
-          Romance • Drama • 12 Episode
-        </p>
-
-        <button
-          class="watch-play"
-          onclick="playMovie('Love Beyond Time')"
-        >
-          ▶ Mulai Menonton
-        </button>
-
-      </div>
-
-
-      <!-- TRENDING -->
-
-      <section class="watch-section">
-
-        <div class="watch-section-title">
-
-          <h2>
-            🔥 Trending
-          </h2>
-
-          <span>
-            Lihat semua
-          </span>
-
-        </div>
-
-
-        <div class="movie-list">
-
-          <div
-            class="movie-card"
-            data-category="romance drama"
-            data-title="Love Beyond Time"
-            onclick="playMovie('Love Beyond Time')"
-          >
-
-            <div class="movie-poster">
-              💕
-            </div>
-
-            <div class="movie-info">
-
-              <h3>
-                Love Beyond Time
-              </h3>
-
-              <p>
-                Romance • Drama<br>
-                ⭐ 9.2
-              </p>
-
-            </div>
-
-            <div class="movie-play">
-              ▶
-            </div>
-
-          </div>
-
-
-          <div
-            class="movie-card"
-            data-category="action fantasy"
-            data-title="The Last Kingdom"
-            onclick="playMovie('The Last Kingdom')"
-          >
-
-            <div class="movie-poster">
-              ⚔️
-            </div>
-
-            <div class="movie-info">
-
-              <h3>
-                The Last Kingdom
-              </h3>
-
-              <p>
-                Action • Fantasy<br>
-                ⭐ 8.9
-              </p>
-
-            </div>
-
-            <div class="movie-play">
-              ▶
-            </div>
-
-          </div>
-
-
-          <div
-            class="movie-card"
-            data-category="mystery drama"
-            data-title="Hidden Truth"
-            onclick="playMovie('Hidden Truth')"
-          >
-
-            <div class="movie-poster">
-              🔮
-            </div>
-
-            <div class="movie-info">
-
-              <h3>
-                Hidden Truth
-              </h3>
-
-              <p>
-                Mystery • Drama<br>
-                ⭐ 8.8
-              </p>
-
-            </div>
-
-            <div class="movie-play">
-              ▶
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- SHORT DRAMA -->
-
-      <section class="watch-section">
-
-        <div class="watch-section-title">
-
-          <h2>
-            🎬 Short Drama
-          </h2>
-
-          <span>
-            Lihat semua
-          </span>
-
-        </div>
-
-
-        <div class="movie-list">
-
-          <div
-            class="movie-card"
-            data-category="romance"
-            data-title="First Meeting"
-            onclick="playMovie('First Meeting')"
-          >
-
-            <div class="movie-poster">
-              💗
-            </div>
-
-            <div class="movie-info">
-
-              <h3>
-                First Meeting
-              </h3>
-
-              <p>
-                Romance<br>
-                ⭐ 8.7
-              </p>
-
-            </div>
-
-            <div class="movie-play">
-              ▶
-            </div>
-
-          </div>
-
-
-          <div
-            class="movie-card"
-            data-category="drama"
-            data-title="One Last Chance"
-            onclick="playMovie('One Last Chance')"
-          >
-
-            <div class="movie-poster">
-              🥀
-            </div>
-
-            <div class="movie-info">
-
-              <h3>
-                One Last Chance
-              </h3>
-
-              <p>
-                Drama<br>
-                ⭐ 8.6
-              </p>
-
-            </div>
-
-            <div class="movie-play">
-              ▶
-            </div>
-
-          </div>
-
-
-          <div
-            class="movie-card"
-            data-category="mystery"
-            data-title="Silent Room"
-            onclick="playMovie('Silent Room')"
-          >
-
-            <div class="movie-poster">
-              🕯️
-            </div>
-
-            <div class="movie-info">
-
-              <h3>
-                Silent Room
-              </h3>
-
-              <p>
-                Mystery<br>
-                ⭐ 8.5
-              </p>
-
-            </div>
-
-            <div class="movie-play">
-              ▶
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- EMPTY SEARCH -->
-
-      <div
-        id="watchEmpty"
-        class="watch-empty"
+      <button
+        class="notification"
+        onclick="showNotification()"
+        aria-label="Notifikasi"
       >
+        🔔
+      </button>
 
-        <strong>
-          Film tidak ditemukan
-        </strong>
+    </header>
 
-        Coba cari dengan kata kunci lain.
 
-      </div>
+    <!-- SEARCH -->
+    <div class="search-box">
+
+      <span class="search-icon">
+        🔍
+      </span>
+
+      <input
+        id="searchInput"
+        class="search-input"
+        type="search"
+        placeholder="Cari film, drama, atau creator..."
+        autocomplete="off"
+      >
 
     </div>
 
 
-    <!-- BOTTOM NAVIGATION -->
+    <!-- PAGE INTRO -->
+    <div class="page-intro">
 
-    <nav class="bottom-nav">
+      <div class="eyebrow">
+        REITOON WATCH
+      </div>
 
-      <div
-        class="nav-item"
-        onclick="goHome()"
+      <h1>
+        Mau nonton apa hari ini?
+      </h1>
+
+      <p>
+        Temukan film, drama, dan cerita favorit kamu.
+      </p>
+
+    </div>
+
+
+    <!-- CATEGORY -->
+    <div class="categories">
+
+      <button
+        class="category active"
+        onclick="filterCategory('all', this)"
+      >
+        Semua
+      </button>
+
+      <button
+        class="category"
+        onclick="filterCategory('romance', this)"
+      >
+        💗 Romance
+      </button>
+
+      <button
+        class="category"
+        onclick="filterCategory('drama', this)"
+      >
+        🎭 Drama
+      </button>
+
+      <button
+        class="category"
+        onclick="filterCategory('action', this)"
+      >
+        ⚔️ Action
+      </button>
+
+      <button
+        class="category"
+        onclick="filterCategory('mystery', this)"
+      >
+        🔎 Mystery
+      </button>
+
+      <button
+        class="category"
+        onclick="filterCategory('fantasy', this)"
+      >
+        ✨ Fantasy
+      </button>
+
+    </div>
+
+
+    <!-- FEATURED -->
+    <section>
+
+      <div class="section-title">
+
+        <h2>
+          ⭐ Pilihan Reitoon
+        </h2>
+
+        <div class="see-all">
+          Featured
+        </div>
+
+      </div>
+
+
+      <article
+        class="featured"
+        data-title="Love Beyond Time"
+        data-category="romance drama"
+        onclick="openMovie('Love Beyond Time')"
       >
 
-        <span class="nav-icon">
-          🏠
-        </span>
+        <div class="featured-content">
 
-        Home
+          <div class="featured-badge">
+            🎬 REITOON ORIGINAL
+          </div>
+
+          <h3>
+            Love Beyond Time
+          </h3>
+
+          <p>
+            Romance • Drama &nbsp; ⭐ 4.9
+          </p>
+
+          <span class="watch-button">
+            ▶ Mulai Menonton
+          </span>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- TRENDING -->
+    <section>
+
+      <div class="section-title">
+
+        <h2>
+          🔥 Trending
+        </h2>
+
+        <div
+          class="see-all"
+          onclick="showAll('trending')"
+        >
+          Lihat semua
+        </div>
 
       </div>
 
 
       <div
-        class="nav-item active"
-        onclick="goWatch()"
+        id="movieGrid"
+        class="movie-grid"
       >
 
-        <span class="nav-icon">
-          🎬
-        </span>
 
-        Watch
+        <!-- MOVIE 1 -->
+        <article
+          class="movie-card"
+          data-title="Love Beyond Time"
+          data-category="romance drama"
+          onclick="openMovie('Love Beyond Time')"
+        >
+
+          <div class="poster">
+
+            <span class="poster-icon">
+              💗
+            </span>
+
+          </div>
+
+          <div class="movie-info">
+
+            <h3>
+              Love Beyond Time
+            </h3>
+
+            <p>
+              Romance • Drama
+            </p>
+
+            <p class="rating">
+              ★ 4.9
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- MOVIE 2 -->
+        <article
+          class="movie-card"
+          data-title="The Last Kingdom"
+          data-category="action fantasy"
+          onclick="openMovie('The Last Kingdom')"
+        >
+
+          <div class="poster purple">
+
+            <span class="poster-icon">
+              ⚔️
+            </span>
+
+          </div>
+
+          <div class="movie-info">
+
+            <h3>
+              The Last Kingdom
+            </h3>
+
+            <p>
+              Action • Fantasy
+            </p>
+
+            <p class="rating">
+              ★ 4.8
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- MOVIE 3 -->
+        <article
+          class="movie-card"
+          data-title="Hidden Truth"
+          data-category="mystery drama"
+          onclick="openMovie('Hidden Truth')"
+        >
+
+          <div class="poster blue">
+
+            <span class="poster-icon">
+              🔎
+            </span>
+
+          </div>
+
+          <div class="movie-info">
+
+            <h3>
+              Hidden Truth
+            </h3>
+
+            <p>
+              Mystery • Drama
+            </p>
+
+            <p class="rating">
+              ★ 4.7
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- MOVIE 4 -->
+        <article
+          class="movie-card"
+          data-title="First Meeting"
+          data-category="romance"
+          onclick="openMovie('First Meeting')"
+        >
+
+          <div class="poster red">
+
+            <span class="poster-icon">
+              🌹
+            </span>
+
+          </div>
+
+          <div class="movie-info">
+
+            <h3>
+              First Meeting
+            </h3>
+
+            <p>
+              Romance
+            </p>
+
+            <p class="rating">
+              ★ 4.6
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- MOVIE 5 -->
+        <article
+          class="movie-card"
+          data-title="One Last Chance"
+          data-category="drama"
+          onclick="openMovie('One Last Chance')"
+        >
+
+          <div class="poster">
+
+            <span class="poster-icon">
+              🎭
+            </span>
+
+          </div>
+
+          <div class="movie-info">
+
+            <h3>
+              One Last Chance
+            </h3>
+
+            <p>
+              Drama
+            </p>
+
+            <p class="rating">
+              ★ 4.5
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- MOVIE 6 -->
+        <article
+          class="movie-card"
+          data-title="Moonlight Promise"
+          data-category="romance fantasy"
+          onclick="openMovie('Moonlight Promise')"
+        >
+
+          <div class="poster green">
+
+            <span class="poster-icon">
+              🌙
+            </span>
+
+          </div>
+
+          <div class="movie-info">
+
+            <h3>
+              Moonlight Promise
+            </h3>
+
+            <p>
+              Romance • Fantasy
+            </p>
+
+            <p class="rating">
+              ★ 4.8
+            </p>
+
+          </div>
+
+        </article>
 
       </div>
 
 
+      <!-- SEARCH EMPTY -->
       <div
-        class="nav-item"
-        onclick="createFilm()"
+        id="searchEmpty"
+        class="search-empty"
       >
 
-        <span class="nav-icon">
-          ✨
-        </span>
+        <div class="empty-icon">
+          🔎
+        </div>
 
-        Create
+        <h3>
+          Film tidak ditemukan
+        </h3>
+
+        <p>
+          Coba gunakan kata kunci lain.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SHORT DRAMA -->
+    <section>
+
+      <div class="section-title">
+
+        <h2>
+          🎬 Short Drama
+        </h2>
+
+        <div
+          class="see-all"
+          onclick="showAll('short-drama')"
+        >
+          Lihat semua
+        </div>
 
       </div>
 
 
-      <div
-        class="nav-item"
-        onclick="goStudio()"
-      >
+      <div class="horizontal-list">
 
-        <span class="nav-icon">
-          🎞️
-        </span>
 
-        Studio
+        <article
+          class="small-card"
+          onclick="openMovie('First Meeting')"
+        >
+
+          <div class="small-poster">
+
+            <span>
+              🌹
+            </span>
+
+          </div>
+
+          <h3>
+            First Meeting
+          </h3>
+
+          <p>
+            Romance
+          </p>
+
+        </article>
+
+
+        <article
+          class="small-card"
+          onclick="openMovie('One Last Chance')"
+        >
+
+          <div class="small-poster">
+
+            <span>
+              💔
+            </span>
+
+          </div>
+
+          <h3>
+            One Last Chance
+          </h3>
+
+          <p>
+            Drama
+          </p>
+
+        </article>
+
+
+        <article
+          class="small-card"
+          onclick="openMovie('The Letter')"
+        >
+
+          <div class="small-poster">
+
+            <span>
+              💌
+            </span>
+
+          </div>
+
+          <h3>
+            The Letter
+          </h3>
+
+          <p>
+            Romance
+          </p>
+
+        </article>
+
+
+        <article
+          class="small-card"
+          onclick="openMovie('After Rain')"
+        >
+
+          <div class="small-poster">
+
+            <span>
+              🌧️
+            </span>
+
+          </div>
+
+          <h3>
+            After Rain
+          </h3>
+
+          <p>
+            Drama
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- NEW RELEASE -->
+    <section>
+
+      <div class="section-title">
+
+        <h2>
+          🆕 Baru Ditambahkan
+        </h2>
+
+        <div
+          class="see-all"
+          onclick="showAll('new')"
+        >
+          Lihat semua
+        </div>
 
       </div>
 
 
-      <div
-        class="nav-item"
-        onclick="goProfile()"
-      >
+      <div class="movie-grid">
 
-        <span class="nav-icon">
-          👤
-        </span>
 
-        Profile
+        <article
+          class="movie-card"
+          onclick="openMovie('Midnight Story')"
+        >
+
+          <div class="poster purple">
+
+            <span class="poster-icon">
+              🌃
+            </span>
+
+          </div>
+
+          <div class="movie-info">
+
+            <h3>
+              Midnight Story
+            </h3>
+
+            <p>
+              Mystery • Drama
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="movie-card"
+          onclick="openMovie('Forever Young')"
+        >
+
+          <div class="poster red">
+
+            <span class="poster-icon">
+              💞
+            </span>
+
+          </div>
+
+          <div class="movie-info">
+
+            <h3>
+              Forever Young
+            </h3>
+
+            <p>
+              Romance • Drama
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="movie-card"
+          onclick="openMovie('Beyond The Sky')"
+        >
+
+          <div class="poster blue">
+
+            <span class="poster-icon">
+              🌌
+            </span>
+
+          </div>
+
+          <div class="movie-info">
+
+            <h3>
+              Beyond The Sky
+            </h3>
+
+            <p>
+              Fantasy
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="movie-card"
+          onclick="openMovie('Final Mission')"
+        >
+
+          <div class="poster green">
+
+            <span class="poster-icon">
+              ⚡
+            </span>
+
+          </div>
+
+          <div class="movie-info">
+
+            <h3>
+              Final Mission
+            </h3>
+
+            <p>
+              Action
+            </p>
+
+          </div>
+
+        </article>
 
       </div>
 
-    </nav>
+    </section>
 
   </main>
 
 
-  <!-- JAVASCRIPT -->
+  <!-- =======================================================
+       BOTTOM NAVIGATION
+       ======================================================= -->
+
+  <nav class="bottom-nav">
+
+
+    <!-- HOME -->
+    <div
+      class="nav-item"
+      onclick="goHome()"
+    >
+
+      <span class="nav-icon">
+        🏠
+      </span>
+
+      <span>
+        Home
+      </span>
+
+    </div>
+
+
+    <!-- WATCH -->
+    <div
+      class="nav-item active"
+      onclick="goWatch()"
+    >
+
+      <span class="nav-icon">
+        🎬
+      </span>
+
+      <span>
+        Watch
+      </span>
+
+    </div>
+
+
+    <!-- CREATE -->
+    <div
+      class="nav-item create"
+      onclick="createFilm()"
+    >
+
+      <span class="nav-icon">
+        +
+      </span>
+
+      <span>
+        Create
+      </span>
+
+    </div>
+
+
+    <!-- STUDIO -->
+    <div
+      class="nav-item"
+      onclick="goStudio()"
+    >
+
+      <span class="nav-icon">
+        🎞️
+      </span>
+
+      <span>
+        Studio
+      </span>
+
+    </div>
+
+
+    <!-- PROFILE -->
+    <div
+      class="nav-item"
+      onclick="goProfile()"
+    >
+
+      <span class="nav-icon">
+        👤
+      </span>
+
+      <span>
+        Profile
+      </span>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
 
   <script>
+
+    /* =======================================================
+       NAVIGATION
+       ======================================================= */
 
     function goHome() {
       window.location.href = "index.html";
     }
 
-
     function goWatch() {
       window.location.href = "watch.html";
     }
-
 
     function createFilm() {
       window.location.href = "create.html";
     }
 
-
     function goStudio() {
       window.location.href = "studio.html";
     }
-
 
     function goProfile() {
       window.location.href = "profile.html";
     }
 
 
-    function openNotification() {
-      alert("Belum ada notifikasi baru.");
+    /* =======================================================
+       OPEN MOVIE
+       ======================================================= */
+
+    function openMovie(title) {
+
+      /*
+        Untuk sementara diarahkan ke halaman movie.html
+        dengan nama film di URL.
+
+        Contoh:
+        movie.html?title=Love%20Beyond%20Time
+      */
+
+      window.location.href =
+        "movie.html?title=" +
+        encodeURIComponent(title);
+
     }
 
 
-    function playMovie(title) {
+    /* =======================================================
+       NOTIFICATION
+       ======================================================= */
+
+    function showNotification() {
+
       alert(
-        "🎬 " + title +
-        "\\n\\nPlayer Reitoon akan segera tersedia."
+        "🔔 Belum ada notifikasi baru."
       );
+
     }
 
 
-    function filterMovies(category, button) {
+    /* =======================================================
+       SEARCH
+       ======================================================= */
 
-      const cards =
-        document.querySelectorAll(".movie-card");
+    const searchInput =
+      document.getElementById("searchInput");
 
-      const buttons =
-        document.querySelectorAll(".watch-filter");
+    const movieCards =
+      document.querySelectorAll(".movie-card");
 
-      buttons.forEach(function(item) {
-        item.classList.remove("active");
-      });
+    const searchEmpty =
+      document.getElementById("searchEmpty");
+
+
+    searchInput.addEventListener(
+      "input",
+      function () {
+
+        const keyword =
+          this.value
+            .toLowerCase()
+            .trim();
+
+        let found = false;
+
+
+        movieCards.forEach(
+          function (card) {
+
+            const title =
+              (
+                card.dataset.title ||
+                card.innerText
+              ).toLowerCase();
+
+            const category =
+              (
+                card.dataset.category ||
+                ""
+              ).toLowerCase();
+
+
+            if (
+              title.includes(keyword) ||
+              category.includes(keyword)
+            ) {
+
+              card.style.display = "";
+
+              found = true;
+
+            } else {
+
+              card.style.display = "none";
+
+            }
+
+          }
+        );
+
+
+        if (
+          keyword !== "" &&
+          !found
+        ) {
+
+          searchEmpty.classList.add("show");
+
+        } else {
+
+          searchEmpty.classList.remove("show");
+
+        }
+
+      }
+    );
+
+
+    /* =======================================================
+       CATEGORY FILTER
+       ======================================================= */
+
+    function filterCategory(
+      category,
+      button
+    ) {
+
+      document
+        .querySelectorAll(".category")
+        .forEach(
+          function (item) {
+            item.classList.remove("active");
+          }
+        );
+
 
       button.classList.add("active");
 
-      cards.forEach(function(card) {
 
-        const cardCategory =
-          card.getAttribute("data-category");
+      movieCards.forEach(
+        function (card) {
 
-        if (
-          category === "all" ||
-          cardCategory.includes(category)
-        ) {
-          card.style.display = "flex";
-        } else {
-          card.style.display = "none";
+          if (
+            category === "all"
+          ) {
+
+            card.style.display = "";
+
+            return;
+
+          }
+
+
+          const categories =
+            (
+              card.dataset.category ||
+              ""
+            ).toLowerCase();
+
+
+          if (
+            categories.includes(category)
+          ) {
+
+            card.style.display = "";
+
+          } else {
+
+            card.style.display = "none";
+
+          }
+
         }
+      );
 
-      });
 
-      checkEmpty();
+      searchInput.value = "";
+
+      searchEmpty.classList.remove("show");
+
     }
 
 
-    function searchMovies() {
+    /* =======================================================
+       SEE ALL
+       ======================================================= */
 
-      const searchInput =
-        document.getElementById("watchSearch");
+    function showAll(type) {
 
-      const keyword =
-        searchInput.value.toLowerCase().trim();
+      if (type === "trending") {
 
-      const cards =
-        document.querySelectorAll(".movie-card");
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
 
-      cards.forEach(function(card) {
+        return;
 
-        const title =
-          card.getAttribute("data-title").toLowerCase();
-
-        const category =
-          card.getAttribute("data-category").toLowerCase();
-
-        if (
-          title.includes(keyword) ||
-          category.includes(keyword)
-        ) {
-          card.style.display = "flex";
-        } else {
-          card.style.display = "none";
-        }
-
-      });
-
-      checkEmpty();
-    }
+      }
 
 
-    function checkEmpty() {
+      if (type === "short-drama") {
 
-      const cards =
-        document.querySelectorAll(".movie-card");
+        const section =
+          document.querySelectorAll("section")[2];
 
-      const empty =
-        document.getElementById("watchEmpty");
+        section.scrollIntoView({
+          behavior: "smooth"
+        });
 
-      let visible = 0;
+        return;
 
-      cards.forEach(function(card) {
+      }
 
-        if (card.style.display !== "none") {
-          visible++;
-        }
 
-      });
+      if (type === "new") {
 
-      if (visible === 0) {
-        empty.style.display = "block";
-      } else {
-        empty.style.display = "none";
+        const sections =
+          document.querySelectorAll("section");
+
+        sections[
+          sections.length - 1
+        ].scrollIntoView({
+          behavior: "smooth"
+        });
+
       }
 
     }
+
+
+    /* =======================================================
+       CLEAR SEARCH WITH ESC
+       ======================================================= */
+
+    searchInput.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          searchInput.value = "";
+
+          movieCards.forEach(
+            function (card) {
+              card.style.display = "";
+            }
+          );
+
+          searchEmpty.classList.remove(
+            "show"
+          );
+
+          searchInput.blur();
+
+        }
+
+      }
+    );
 
   </script>
 
