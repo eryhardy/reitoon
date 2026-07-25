@@ -3,514 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Watch - Reitoon</title>
-
+  <title>Reitoon - Watch</title>
   <link rel="stylesheet" href="watch.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       WATCH PAGE
-  ========================== -->
-
   <div class="watch-page">
 
     <!-- HEADER -->
     <header class="watch-header">
-
-      <a href="index.html" class="brand">
+      <a href="index.html" class="logo">
         Rei<span>toon</span>
       </a>
 
-      <button class="notification" type="button" aria-label="Notifikasi">
+      <button class="notification" onclick="showNotification()">
         🔔
       </button>
-
     </header>
 
 
     <!-- SEARCH -->
     <div class="search-box">
-
-      <span class="search-icon">🔍</span>
-
+      <span>🔍</span>
       <input
         type="text"
         placeholder="Cari film, drama, atau creator..."
-        aria-label="Cari film, drama, atau creator"
+        id="searchInput"
       >
-
     </div>
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
-
+    <!-- HERO -->
     <section class="hero">
 
-      <div class="hero-image">
+      <div class="hero-poster">
 
         <img
           src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=85"
-          alt="Film Reitoon"
+          alt="Love Beyond Time"
         >
 
-        <div class="hero-overlay"></div>
+        <div class="hero-gradient"></div>
 
-        <div class="hero-content">
+        <div class="hero-info">
 
-          <span class="hero-category">
-            🎬 Reitoon Original
-          </span>
+          <div class="original-label">
+            REITOON ORIGINAL
+          </div>
 
-          <h1>
-            Love Beyond Time
-          </h1>
+          <h1>Love Beyond Time</h1>
 
           <p>
-            Ketika cinta menembus batas waktu,
-            mereka harus memilih antara masa lalu
-            dan masa depan.
+            Romance • Drama
           </p>
 
           <button
             class="play-button"
-            type="button"
             onclick="playMovie('Love Beyond Time')"
           >
-            ▶ <span>Play</span>
+            ▶ Play
           </button>
 
         </div>
 
       </div>
 
-
-      <!-- CAROUSEL DOTS -->
-
-      <div class="carousel-dots">
-
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-
+      <!-- CAROUSEL -->
+      <div class="dots">
+        <span></span>
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
     </section>
 
 
-    <!-- =========================
-         NEW RELEASE
-    ========================== -->
+    <!-- NEW RELEASE -->
+    <section class="content-section">
 
-    <section class="movie-section">
+      <div class="section-header">
+        <h2>New Release</h2>
 
-      <div class="section-heading">
-
-        <h2>
-          New Release
-        </h2>
-
-        <a href="#" class="view-all">
+        <button onclick="viewAll('New Release')">
           View all <span>›</span>
-        </a>
-
+        </button>
       </div>
 
 
       <div class="movie-row">
 
-        <!-- MOVIE 1 -->
         <article
           class="movie-card"
           onclick="openMovie('Love Beyond Time')"
         >
-
           <div class="poster">
-
             <img
               src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=85"
               alt="Love Beyond Time"
             >
 
-            <span class="badge">
-              New
-            </span>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
+            <div class="poster-play">▶</div>
           </div>
 
-          <h3>
-            Love Beyond Time
-          </h3>
-
-          <p>
-            Romance · Drama
-          </p>
-
+          <h3>Love Beyond Time</h3>
+          <p>Romance • Drama</p>
         </article>
 
 
-        <!-- MOVIE 2 -->
-        <article
-          class="movie-card"
-          onclick="openMovie('The Last Kingdom')"
-        >
-
-          <div class="poster">
-
-            <img
-              src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=85"
-              alt="The Last Kingdom"
-            >
-
-            <span class="badge trending">
-              Trending
-            </span>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <h3>
-            The Last Kingdom
-          </h3>
-
-          <p>
-            Action · Fantasy
-          </p>
-
-        </article>
-
-
-        <!-- MOVIE 3 -->
-        <article
-          class="movie-card"
-          onclick="openMovie('Hidden Truth')"
-        >
-
-          <div class="poster">
-
-            <img
-              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=85"
-              alt="Hidden Truth"
-            >
-
-            <span class="badge">
-              New
-            </span>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <h3>
-            Hidden Truth
-          </h3>
-
-          <p>
-            Mystery · Drama
-          </p>
-
-        </article>
-
-
-        <!-- MOVIE 4 -->
         <article
           class="movie-card"
           onclick="openMovie('First Meeting')"
         >
-
           <div class="poster">
-
             <img
               src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=85"
               alt="First Meeting"
             >
 
-            <span class="badge trending">
-              Trending
-            </span>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
+            <div class="poster-play">▶</div>
           </div>
 
-          <h3>
-            First Meeting
-          </h3>
-
-          <p>
-            Romance
-          </p>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         TRENDING
-    ========================== -->
-
-    <section class="movie-section trending-section">
-
-      <div class="section-heading">
-
-        <h2>
-          Trending
-        </h2>
-
-        <a href="#" class="view-all">
-          View all <span>›</span>
-        </a>
-
-      </div>
-
-
-      <div class="movie-row">
-
-        <!-- TRENDING 1 -->
-        <article
-          class="movie-card"
-          onclick="openMovie('One Last Chance')"
-        >
-
-          <div class="poster">
-
-            <img
-              src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=85"
-              alt="One Last Chance"
-            >
-
-            <span class="badge trending">
-              Trending
-            </span>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <h3>
-            One Last Chance
-          </h3>
-
-          <p>
-            Drama · Romance
-          </p>
-
-        </article>
-
-
-        <!-- TRENDING 2 -->
-        <article
-          class="movie-card"
-          onclick="openMovie('Dark Promise')"
-        >
-
-          <div class="poster">
-
-            <img
-              src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=85"
-              alt="Dark Promise"
-            >
-
-            <span class="badge trending">
-              Trending
-            </span>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <h3>
-            Dark Promise
-          </h3>
-
-          <p>
-            Mystery · Thriller
-          </p>
-
-        </article>
-
-
-        <!-- TRENDING 3 -->
-        <article
-          class="movie-card"
-          onclick="openMovie('Falling For You')"
-        >
-
-          <div class="poster">
-
-            <img
-              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=85"
-              alt="Falling For You"
-            >
-
-            <span class="badge">
-              New
-            </span>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <h3>
-            Falling For You
-          </h3>
-
-          <p>
-            Romance · Comedy
-          </p>
-
-        </article>
-
-
-        <!-- TRENDING 4 -->
-        <article
-          class="movie-card"
-          onclick="openMovie('The Secret')"
-        >
-
-          <div class="poster">
-
-            <img
-              src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=85"
-              alt="The Secret"
-            >
-
-            <span class="badge trending">
-              Trending
-            </span>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <h3>
-            The Secret
-          </h3>
-
-          <p>
-            Drama · Mystery
-          </p>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         SHORT DRAMA
-    ========================== -->
-
-    <section class="movie-section">
-
-      <div class="section-heading">
-
-        <h2>
-          Short Drama
-        </h2>
-
-        <a href="#" class="view-all">
-          View all <span>›</span>
-        </a>
-
-      </div>
-
-
-      <div class="movie-row">
-
-        <article
-          class="movie-card"
-          onclick="openMovie('First Meeting')"
-        >
-
-          <div class="poster">
-
-            <img
-              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=85"
-              alt="First Meeting"
-            >
-
-            <span class="badge">
-              New
-            </span>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <h3>
-            First Meeting
-          </h3>
-
-          <p>
-            Romance
-          </p>
-
+          <h3>First Meeting</h3>
+          <p>Romance</p>
         </article>
 
 
         <article
           class="movie-card"
-          onclick="openMovie('One Last Chance')"
+          onclick="openMovie('Hidden Truth')"
         >
-
           <div class="poster">
-
             <img
-              src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=85"
-              alt="One Last Chance"
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=85"
+              alt="Hidden Truth"
             >
 
-            <span class="badge trending">
-              Trending
-            </span>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
+            <div class="poster-play">▶</div>
           </div>
 
-          <h3>
-            One Last Chance
-          </h3>
-
-          <p>
-            Drama
-          </p>
-
+          <h3>Hidden Truth</h3>
+          <p>Mystery • Drama</p>
         </article>
 
 
@@ -518,32 +153,17 @@
           class="movie-card"
           onclick="openMovie('Love Again')"
         >
-
           <div class="poster">
-
             <img
               src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=600&q=85"
               alt="Love Again"
             >
 
-            <span class="badge">
-              New
-            </span>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
+            <div class="poster-play">▶</div>
           </div>
 
-          <h3>
-            Love Again
-          </h3>
-
-          <p>
-            Romance
-          </p>
-
+          <h3>Love Again</h3>
+          <p>Romance</p>
         </article>
 
       </div>
@@ -551,13 +171,191 @@
     </section>
 
 
+    <!-- TRENDING -->
+    <section class="content-section">
+
+      <div class="section-header">
+        <h2>Trending</h2>
+
+        <button onclick="viewAll('Trending')">
+          View all <span>›</span>
+        </button>
+      </div>
+
+
+      <div class="movie-row">
+
+        <article
+          class="movie-card"
+          onclick="openMovie('The Last Kingdom')"
+        >
+          <div class="poster">
+
+            <span class="trending-badge">
+              TRENDING
+            </span>
+
+            <img
+              src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=85"
+              alt="The Last Kingdom"
+            >
+
+            <div class="poster-play">▶</div>
+          </div>
+
+          <h3>The Last Kingdom</h3>
+          <p>Action • Fantasy</p>
+        </article>
+
+
+        <article
+          class="movie-card"
+          onclick="openMovie('One Last Chance')"
+        >
+          <div class="poster">
+
+            <span class="trending-badge">
+              TRENDING
+            </span>
+
+            <img
+              src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=85"
+              alt="One Last Chance"
+            >
+
+            <div class="poster-play">▶</div>
+          </div>
+
+          <h3>One Last Chance</h3>
+          <p>Drama • Romance</p>
+        </article>
+
+
+        <article
+          class="movie-card"
+          onclick="openMovie('Dark Promise')"
+        >
+          <div class="poster">
+
+            <span class="trending-badge">
+              TRENDING
+            </span>
+
+            <img
+              src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=85"
+              alt="Dark Promise"
+            >
+
+            <div class="poster-play">▶</div>
+          </div>
+
+          <h3>Dark Promise</h3>
+          <p>Mystery • Thriller</p>
+        </article>
+
+
+        <article
+          class="movie-card"
+          onclick="openMovie('The Secret')"
+        >
+          <div class="poster">
+
+            <span class="trending-badge">
+              TRENDING
+            </span>
+
+            <img
+              src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=85"
+              alt="The Secret"
+            >
+
+            <div class="poster-play">▶</div>
+          </div>
+
+          <h3>The Secret</h3>
+          <p>Drama • Mystery</p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- SHORT DRAMA -->
+    <section class="content-section">
+
+      <div class="section-header">
+        <h2>Short Drama</h2>
+
+        <button onclick="viewAll('Short Drama')">
+          View all <span>›</span>
+        </button>
+      </div>
+
+
+      <div class="movie-row">
+
+        <article
+          class="movie-card"
+          onclick="openMovie('First Meeting')"
+        >
+          <div class="poster">
+            <img
+              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=85"
+              alt="First Meeting"
+            >
+
+            <div class="poster-play">▶</div>
+          </div>
+
+          <h3>First Meeting</h3>
+          <p>Romance</p>
+        </article>
+
+
+        <article
+          class="movie-card"
+          onclick="openMovie('One Last Chance')"
+        >
+          <div class="poster">
+            <img
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=85"
+              alt="One Last Chance"
+            >
+
+            <div class="poster-play">▶</div>
+          </div>
+
+          <h3>One Last Chance</h3>
+          <p>Drama</p>
+        </article>
+
+
+        <article
+          class="movie-card"
+          onclick="openMovie('Falling For You')"
+        >
+          <div class="poster">
+            <img
+              src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=600&q=85"
+              alt="Falling For You"
+            >
+
+            <div class="poster-play">▶</div>
+          </div>
+
+          <h3>Falling For You</h3>
+          <p>Romance • Comedy</p>
+        </article>
+
+      </div>
+
+    </section>
+
   </div>
 
 
-  <!-- =========================
-       BOTTOM NAVIGATION
-  ========================== -->
-
+  <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
 
     <a
@@ -580,10 +378,9 @@
 
     <a
       href="create.html"
-      class="nav-create"
-      aria-label="Create"
+      class="create-button"
     >
-      <span>+</span>
+      +
     </a>
 
 
@@ -607,20 +404,43 @@
   </nav>
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
-
   <script>
 
     function playMovie(title) {
-      alert("Memutar: " + title);
+      alert("▶ Memutar " + title);
     }
 
 
     function openMovie(title) {
-      alert("Membuka: " + title);
+      alert("Membuka " + title);
     }
+
+
+    function viewAll(category) {
+      alert("Membuka semua " + category);
+    }
+
+
+    function showNotification() {
+      alert("Belum ada notifikasi baru.");
+    }
+
+
+    document
+      .getElementById("searchInput")
+      .addEventListener("keypress", function(event) {
+
+        if (event.key === "Enter") {
+
+          const query = this.value.trim();
+
+          if (query !== "") {
+            alert("Mencari: " + query);
+          }
+
+        }
+
+      });
 
   </script>
 
