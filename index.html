@@ -3,306 +3,257 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Reitoon</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0b12;
-      color: white;
-      min-height: 100vh;
-    }
-
-    .app {
-      max-width: 600px;
-      margin: auto;
-      padding-bottom: 90px;
-    }
-
-    header {
-      padding: 24px 20px 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 26px;
-      font-weight: bold;
-    }
-
-    .logo span {
-      color: #ff4d8d;
-    }
-
-    .notification {
-      font-size: 22px;
-    }
-
-    .search {
-      margin: 10px 20px 20px;
-      background: #1b1b27;
-      border-radius: 14px;
-      padding: 14px;
-      color: #888;
-    }
-
-    .hero {
-      margin: 0 20px 24px;
-      min-height: 230px;
-      border-radius: 20px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      background: linear-gradient(135deg, #38204f, #12121d);
-    }
-
-    .hero h1 {
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    .hero p {
-      color: #c5c5c5;
-      margin-bottom: 18px;
-    }
-
-    button {
-      border: none;
-      border-radius: 12px;
-      padding: 13px 18px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .primary {
-      background: #ff4d8d;
-      color: white;
-    }
-
-    section {
-      padding: 0 20px;
-      margin-bottom: 26px;
-    }
-
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 14px;
-    }
-
-    .section-title h2 {
-      font-size: 20px;
-    }
-
-    .see-all {
-      color: #ff4d8d;
-      font-size: 13px;
-    }
-
-    .cards {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-    }
-
-    .card {
-      min-width: 145px;
-      height: 190px;
-      background: #1b1b27;
-      border-radius: 14px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-    .card h3 {
-      font-size: 15px;
-      margin-bottom: 5px;
-    }
-
-    .card p {
-      color: #999;
-      font-size: 12px;
-    }
-
-    .create-box {
-      background: #181827;
-      border: 1px solid #34344c;
-      border-radius: 18px;
-      padding: 20px;
-    }
-
-    .create-box h2 {
-      margin-bottom: 8px;
-    }
-
-    .create-box p {
-      color: #aaa;
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 600px;
-      height: 70px;
-      background: #15151f;
-      border-top: 1px solid #292936;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
-
-    .nav-item {
-      color: #888;
-      text-align: center;
-      font-size: 11px;
-      cursor: pointer;
-    }
-
-    .nav-item.active {
-      color: #ff4d8d;
-    }
-
-    .nav-icon {
-      font-size: 22px;
-      display: block;
-      margin-bottom: 4px;
-    }
-  </style>
-</head>
-
-<body>
 
   <div class="app">
 
+    <!-- HEADER -->
     <header>
-      <div class="logo">Rei<span>toon</span></div>
-      <div class="notification">🔔</div>
+      <div class="logo">
+        Rei<span>toon</span>
+      </div>
+
+      <div class="notification">
+        🔔
+      </div>
     </header>
 
+
+    <!-- SEARCH -->
     <div class="search">
       🔍 Cari film, drama, atau creator...
     </div>
 
+
+    <!-- HERO -->
     <div class="hero">
-      <h1>Create Your Story</h1>
-      <p>Buat, tonton, dan bagikan film kamu sendiri.</p>
-      <button class="primary" onclick="createFilm()">
+
+      <h1>
+        Create Your Story
+      </h1>
+
+      <p>
+        Buat, tonton, dan bagikan film kamu sendiri.
+      </p>
+
+      <button
+        class="primary"
+        onclick="createFilm()"
+      >
         ✨ Mulai Membuat Film
       </button>
+
     </div>
 
+
+    <!-- TRENDING -->
     <section>
+
       <div class="section-title">
-        <h2>🔥 Trending</h2>
-        <div class="see-all">Lihat semua</div>
+
+        <h2>
+          🔥 Trending
+        </h2>
+
+        <div class="see-all">
+          Lihat semua
+        </div>
+
       </div>
+
 
       <div class="cards">
-        <div class="card">
-          <h3>Love Beyond Time</h3>
-          <p>Romance • Drama</p>
+
+        <div
+          class="card"
+          onclick="openMovie('Love Beyond Time')"
+        >
+          <h3>
+            Love Beyond Time
+          </h3>
+
+          <p>
+            Romance • Drama
+          </p>
         </div>
 
-        <div class="card">
-          <h3>The Last Kingdom</h3>
-          <p>Action • Fantasy</p>
+
+        <div
+          class="card"
+          onclick="openMovie('The Last Kingdom')"
+        >
+          <h3>
+            The Last Kingdom
+          </h3>
+
+          <p>
+            Action • Fantasy
+          </p>
         </div>
 
-        <div class="card">
-          <h3>Hidden Truth</h3>
-          <p>Mystery • Drama</p>
+
+        <div
+          class="card"
+          onclick="openMovie('Hidden Truth')"
+        >
+          <h3>
+            Hidden Truth
+          </h3>
+
+          <p>
+            Mystery • Drama
+          </p>
         </div>
+
       </div>
+
     </section>
 
+
+    <!-- SHORT DRAMA -->
     <section>
+
       <div class="section-title">
-        <h2>🎬 Short Drama</h2>
-        <div class="see-all">Lihat semua</div>
+
+        <h2>
+          🎬 Short Drama
+        </h2>
+
+        <div class="see-all">
+          Lihat semua
+        </div>
+
       </div>
+
 
       <div class="cards">
-        <div class="card">
-          <h3>First Meeting</h3>
-          <p>Romance</p>
+
+        <div
+          class="card"
+          onclick="openMovie('First Meeting')"
+        >
+          <h3>
+            First Meeting
+          </h3>
+
+          <p>
+            Romance
+          </p>
         </div>
 
-        <div class="card">
-          <h3>One Last Chance</h3>
-          <p>Drama</p>
+
+        <div
+          class="card"
+          onclick="openMovie('One Last Chance')"
+        >
+          <h3>
+            One Last Chance
+          </h3>
+
+          <p>
+            Drama
+          </p>
         </div>
+
       </div>
+
     </section>
 
+
+    <!-- CREATE PROJECT -->
     <section>
+
       <div class="create-box">
-        <h2>✨ Buat Film Kamu</h2>
+
+        <h2>
+          ✨ Buat Film Kamu
+        </h2>
+
         <p>
           Jadikan ide cerita kamu menjadi sebuah karya film
           dan bagikan kepada dunia.
         </p>
 
-        <button class="primary" onclick="createFilm()">
+        <button
+          class="primary"
+          onclick="createFilm()"
+        >
           + Create Project
         </button>
+
       </div>
+
     </section>
 
   </div>
 
+
+  <!-- BOTTOM NAVIGATION -->
   <nav class="bottom-nav">
 
-    <div class="nav-item active">
-      <span class="nav-icon">🏠</span>
+    <div
+      class="nav-item active"
+      onclick="goHome()"
+    >
+      <span class="nav-icon">
+        🏠
+      </span>
+
       Home
     </div>
 
-    <div class="nav-item">
-      <span class="nav-icon">🎬</span>
+
+    <div
+      class="nav-item"
+      onclick="goWatch()"
+    >
+      <span class="nav-icon">
+        🎬
+      </span>
+
       Watch
     </div>
 
-    <div class="nav-item">
-      <span class="nav-icon">✨</span>
+
+    <div
+      class="nav-item"
+      onclick="createFilm()"
+    >
+      <span class="nav-icon">
+        ✨
+      </span>
+
       Create
     </div>
 
-    <div class="nav-item">
-      <span class="nav-icon">🎞️</span>
+
+    <div
+      class="nav-item"
+      onclick="goStudio()"
+    >
+      <span class="nav-icon">
+        🎞️
+      </span>
+
       Studio
     </div>
 
-    <div class="nav-item">
-      <span class="nav-icon">👤</span>
+
+    <div
+      class="nav-item"
+      onclick="goProfile()"
+    >
+      <span class="nav-icon">
+        👤
+      </span>
+
       Profile
     </div>
 
-  </nav>
-
-  <script>
-    function createFilm() {
-      alert("Creator Studio Reitoon akan segera dibuka!");
-    }
-  </script>
-
-</body>
-</html>
+  </
