@@ -1,226 +1,181 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Watch - Reitoon</title>
+  <title>Reitoon — Watch</title>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<main class="watch-page">
+  <main class="app">
 
     <!-- HEADER -->
-    <header class="watch-header">
+    <header class="top-header">
 
-        <a href="index.html" class="reitoon-logo">
-            <img
-                src="reitoon-logo.png"
-                alt="Reitoon"
-            >
-        </a>
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="Reitoon">
+      </a>
 
-        <button class="notification-btn" type="button">
-            🔔
-        </button>
+      <button class="notification" aria-label="Notifikasi">
+        🔔
+      </button>
 
     </header>
 
 
     <!-- SEARCH -->
-    <div class="watch-search">
+    <div class="search-box">
 
-        <span class="search-icon">🔍</span>
+      <span class="search-icon">🔍</span>
 
-        <input
-            type="search"
-            placeholder="Cari film, drama, atau creator..."
-            aria-label="Cari film, drama, atau creator"
-        >
-
-    </div>
-
-
-    <!-- HERO -->
-    <section class="watch-hero">
-
-        <div class="hero-content">
-
-            <span class="hero-label">
-                🎬 REITOON ORIGINAL
-            </span>
-
-            <h1>
-                I Accidentally Sexted My Enemy
-            </h1>
-
-            <button class="play-btn" type="button">
-                ▶ Play
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- CAROUSEL INDICATOR -->
-    <div class="carousel-dots" aria-label="Hero carousel">
-
-        <span></span>
-        <span></span>
-        <span class="active"></span>
-        <span></span>
-        <span></span>
-        <span></span>
+      <input
+        type="text"
+        placeholder="Cari film, drama, atau creator..."
+        aria-label="Cari"
+      >
 
     </div>
 
 
-    <!-- NEW RELEASE -->
-    <section class="movie-section">
+    <!-- WATCH HEADER -->
+    <section class="content-section watch-section">
 
-        <div class="section-title">
+      <div class="section-heading">
 
-            <h2>New Release</h2>
+        <div>
+          <span class="section-label">
+            REITOON WATCH
+          </span>
 
-            <a href="#">
-                View all ›
-            </a>
+          <h2>
+            🎬 Watch
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- MOVIE CARD -->
+      <article class="watch-card">
+
+        <div class="watch-image">
+
+          <div class="watch-image-content">
+            🎬
+          </div>
+
+          <div class="watch-badge">
+            🎬 REITOON ORIGINAL
+          </div>
 
         </div>
 
 
-        <div class="movie-row">
+        <div class="watch-info">
 
-            <article class="movie-card">
-                <div class="poster poster-one"></div>
-            </article>
+          <h3>
+            Reitoon Original
+          </h3>
 
-            <article class="movie-card">
+          <p>
+            Temukan film, drama, dan cerita terbaru dari creator Reitoon.
+          </p>
 
-                <div class="poster poster-two">
-
-                    <span class="trending">
-                        Trending
-                    </span>
-
-                </div>
-
-            </article>
-
-            <article class="movie-card">
-
-                <div class="poster poster-three">
-
-                    <span class="trending">
-                        Trending
-                    </span>
-
-                </div>
-
-            </article>
+          <button class="watch-button">
+            ▶ Play
+          </button>
 
         </div>
+
+      </article>
+
+
+      <!-- MOVIE CARD -->
+      <article class="watch-card">
+
+        <div class="watch-image second">
+
+          <div class="watch-image-content">
+            🎞️
+          </div>
+
+          <div class="watch-badge">
+            ✨ TRENDING
+          </div>
+
+        </div>
+
+
+        <div class="watch-info">
+
+          <h3>
+            Trending Story
+          </h3>
+
+          <p>
+            Tonton cerita yang sedang populer di Reitoon.
+          </p>
+
+          <button class="watch-button">
+            ▶ Play
+          </button>
+
+        </div>
+
+      </article>
 
     </section>
 
-
-    <!-- TRENDING -->
-    <section class="movie-section">
-
-        <div class="section-title">
-
-            <h2>Trending</h2>
-
-            <a href="#">
-                View all ›
-            </a>
-
-        </div>
+  </main>
 
 
-        <div class="movie-row">
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
 
-            <article class="movie-card">
-                <div class="poster poster-four"></div>
-            </article>
+    <a href="index.html" class="nav-item">
 
-            <article class="movie-card">
-                <div class="poster poster-five"></div>
-            </article>
-
-            <article class="movie-card">
-                <div class="poster poster-six"></div>
-            </article>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<!-- BOTTOM NAVIGATION -->
-<nav class="bottom-nav">
-
-    <a href="index.html">
-
-        <span>⌂</span>
-
-        <small>
-            Home
-        </small>
+      <span class="nav-icon">🏠</span>
+      <span>Home</span>
 
     </a>
 
 
-    <a href="watch.html" class="active">
+    <a href="watch.html" class="nav-item active">
 
-        <span>🎬</span>
-
-        <small>
-            Watch
-        </small>
+      <span class="nav-icon">🎬</span>
+      <span>Watch</span>
 
     </a>
 
 
-    <a href="#">
+    <a href="#" class="nav-create">
 
-        <span>＋</span>
-
-        <small>
-            Create
-        </small>
+      <span class="plus">+</span>
+      <span>Create</span>
 
     </a>
 
 
-    <a href="#">
+    <a href="#" class="nav-item">
 
-        <span>▣</span>
-
-        <small>
-            Studio
-        </small>
+      <span class="nav-icon">🎞️</span>
+      <span>Studio</span>
 
     </a>
 
 
-    <a href="#">
+    <a href="#" class="nav-item">
 
-        <span>♟</span>
-
-        <small>
-            Profile
-        </small>
+      <span class="nav-icon">👤</span>
+      <span>Profile</span>
 
     </a>
 
-</nav>
+  </nav>
 
 
 </body>
