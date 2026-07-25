@@ -1,295 +1,571 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08080d">
 
-<title>Reitoon</title>
+  <title>Reitoon - Create Your Story</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html,body{
-    width:100%;
-    height:100%;
-    background:#000;
-    overflow:hidden;
-    font-family:Arial,Helvetica,sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-/* Container tetap ukuran asli */
-.reels-container{
-    width:100%;
-    max-width:400px;
-    height:100%;
-    max-height:850px;
-    background:#000;
-    position:relative;
-    overflow-y:scroll;
-    scroll-snap-type:y mandatory;
-    scrollbar-width:none;
-}
-
-.reels-container::-webkit-scrollbar{
-    display:none;
-}
-
-/* Header Logo */
-.header{
-    position:fixed;
-    top:15px;
-    left:50%;
-    transform:translateX(-50%);
-    width:100%;
-    max-width:400px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 15px;
-    z-index:999;
-    pointer-events:none;
-}
-
-.logo{
-    width:150px;
-    height:auto;
-}
-
-.notif{
-    width:52px;
-    height:52px;
-    border-radius:50%;
-    background:rgba(20,20,20,.8);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:24px;
-    border:1px solid rgba(255,255,255,.15);
-}
-
-/* Reel */
-
-.reel-card{
-    width:100%;
-    height:100%;
-    scroll-snap-align:start;
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.reel-card video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-/* Overlay */
-
-.overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-    to top,
-    rgba(0,0,0,.75),
-    transparent 40%,
-    rgba(0,0,0,.15));
-}
-
-/* Info */
-
-.reel-info{
-    position:absolute;
-    bottom:25px;
-    left:15px;
-    color:#fff;
-    z-index:5;
-    width:70%;
-}
-
-.reel-info h3{
-    font-size:18px;
-    margin-bottom:6px;
-}
-
-.reel-info p{
-    font-size:14px;
-    color:#ddd;
-}
-
-/* Aksi kanan */
-
-.actions{
-    position:absolute;
-    right:12px;
-    bottom:30px;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    z-index:5;
-}
-
-.action{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    color:#fff;
-    font-size:12px;
-}
-
-.icon{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background:rgba(0,0,0,.35);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:22px;
-    margin-bottom:5px;
-}
-</style>
-
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="header">
+  <!-- APP CONTAINER -->
+  <div class="app-container">
 
-    <img src="logo.png" class="logo" alt="Reitoon">
+    <!-- HEADER -->
+    <header class="top-header">
 
-    <div class="notif">
+      <div class="brand">
+        <div class="brand-name">
+          Rei<span>toon</span>
+        </div>
+
+        <div class="brand-tagline">
+          Create Your Story
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="icon-button" id="searchButton">
+          🔍
+        </button>
+
+        <button class="icon-button" id="notificationButton">
+          🔔
+        </button>
+      </div>
+
+    </header>
+
+
+    <!-- SEARCH BAR -->
+    <div class="search-bar" id="searchBar">
+
+      <span class="search-icon">🔍</span>
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari film, drama, atau creator..."
+      >
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+
+      <!-- HERO SECTION -->
+      <section class="hero-section">
+
+        <div class="hero-content">
+
+          <span class="hero-label">
+            ✨ YOUR STORY STARTS HERE
+          </span>
+
+          <h1>
+            Create<br>
+            <span>Your Story</span>
+          </h1>
+
+          <p>
+            Buat, tonton, dan bagikan film kamu sendiri
+            bersama komunitas Reitoon.
+          </p>
+
+          <button class="primary-button" id="createFilmButton">
+            ✨ Create Film
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- QUICK MENU -->
+      <section class="quick-menu">
+
+        <div class="quick-item" data-page="watch">
+
+          <div class="quick-icon watch-icon">
+            ▶
+          </div>
+
+          <span>
+            Watch
+          </span>
+
+        </div>
+
+
+        <div class="quick-item" data-page="create">
+
+          <div class="quick-icon create-icon">
+            ＋
+          </div>
+
+          <span>
+            Create
+          </span>
+
+        </div>
+
+
+        <div class="quick-item" data-page="earn">
+
+          <div class="quick-icon earn-icon">
+            $
+          </div>
+
+          <span>
+            Earn
+          </span>
+
+        </div>
+
+
+        <div class="quick-item" data-page="trending">
+
+          <div class="quick-icon trending-icon">
+            🔥
+          </div>
+
+          <span>
+            Trending
+          </span>
+
+        </div>
+
+
+        <div class="quick-item" data-page="new-release">
+
+          <div class="quick-icon release-icon">
+            ★
+          </div>
+
+          <span>
+            New Release
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- TRENDING SECTION -->
+      <section class="content-section">
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              POPULAR NOW
+            </span>
+
+            <h2>
+              🔥 Trending
+            </h2>
+
+          </div>
+
+          <button class="see-all-button">
+            See All
+          </button>
+
+        </div>
+
+
+        <div class="movie-grid">
+
+
+          <article class="movie-card">
+
+            <div class="movie-poster poster-one">
+
+              <span class="movie-badge">
+                TRENDING
+              </span>
+
+              <div class="play-button">
+                ▶
+              </div>
+
+            </div>
+
+            <div class="movie-info">
+
+              <h3>
+                Love Beyond Time
+              </h3>
+
+              <p>
+                Romance · Drama
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="movie-card">
+
+            <div class="movie-poster poster-two">
+
+              <span class="movie-badge">
+                #2
+              </span>
+
+              <div class="play-button">
+                ▶
+              </div>
+
+            </div>
+
+            <div class="movie-info">
+
+              <h3>
+                The Last Kingdom
+              </h3>
+
+              <p>
+                Action · Fantasy
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="movie-card">
+
+            <div class="movie-poster poster-three">
+
+              <span class="movie-badge">
+                #3
+              </span>
+
+              <div class="play-button">
+                ▶
+              </div>
+
+            </div>
+
+            <div class="movie-info">
+
+              <h3>
+                Hidden Truth
+              </h3>
+
+              <p>
+                Mystery · Drama
+              </p>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- NEW RELEASE SECTION -->
+      <section class="content-section">
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              JUST RELEASED
+            </span>
+
+            <h2>
+              🆕 New Release
+            </h2>
+
+          </div>
+
+          <button class="see-all-button">
+            See All
+          </button>
+
+        </div>
+
+
+        <div class="movie-grid">
+
+
+          <article class="movie-card">
+
+            <div class="movie-poster poster-four">
+
+              <span class="movie-badge new-badge">
+                NEW
+              </span>
+
+              <div class="play-button">
+                ▶
+              </div>
+
+            </div>
+
+            <div class="movie-info">
+
+              <h3>
+                First Meeting
+              </h3>
+
+              <p>
+                Romance
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="movie-card">
+
+            <div class="movie-poster poster-five">
+
+              <span class="movie-badge new-badge">
+                NEW
+              </span>
+
+              <div class="play-button">
+                ▶
+              </div>
+
+            </div>
+
+            <div class="movie-info">
+
+              <h3>
+                One Last Chance
+              </h3>
+
+              <p>
+                Drama
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="movie-card">
+
+            <div class="movie-poster poster-six">
+
+              <span class="movie-badge new-badge">
+                NEW
+              </span>
+
+              <div class="play-button">
+                ▶
+              </div>
+
+            </div>
+
+            <div class="movie-info">
+
+              <h3>
+                Midnight Story
+              </h3>
+
+              <p>
+                Thriller
+              </p>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- CREATE FILM SECTION -->
+      <section class="create-section">
+
+        <div class="create-content">
+
+          <span class="create-label">
+            🎬 CREATOR STUDIO
+          </span>
+
+          <h2>
+            Your idea.<br>
+            Your story.<br>
+            <span>Your film.</span>
+          </h2>
+
+          <p>
+            Mulai dari sebuah ide sederhana dan
+            ubah menjadi film yang bisa dilihat dunia.
+          </p>
+
+          <button class="primary-button" id="startCreatingButton">
+            + Start Creating
+          </button>
+
+        </div>
+
+        <div class="create-decoration">
+          ✦
+        </div>
+
+      </section>
+
+
+      <!-- EARN SECTION -->
+      <section class="earn-section">
+
+        <div class="earn-icon-large">
+          $
+        </div>
+
+        <div class="earn-content">
+
+          <span class="section-label">
+            CREATOR PROGRAM
+          </span>
+
+          <h2>
+            Create & Earn
+          </h2>
+
+          <p>
+            Kembangkan karya kamu dan dapatkan
+            peluang penghasilan dari karya digitalmu.
+          </p>
+
+        </div>
+
+        <button class="arrow-button" id="earnButton">
+          →
+        </button>
+
+      </section>
+
+
+    </main>
+
+
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-navigation">
+
+
+      <button class="nav-item active" data-page="home">
+
+        <span class="nav-icon">
+          🏠
+        </span>
+
+        <span class="nav-label">
+          Home
+        </span>
+
+      </button>
+
+
+      <button class="nav-item" data-page="watch">
+
+        <span class="nav-icon">
+          ▶️
+        </span>
+
+        <span class="nav-label">
+          Watch
+        </span>
+
+      </button>
+
+
+      <button class="nav-item create-nav-button" data-page="create">
+
+        <span class="create-nav-icon">
+          ＋
+        </span>
+
+        <span class="nav-label">
+          Create
+        </span>
+
+      </button>
+
+
+      <button class="nav-item" data-page="studio">
+
+        <span class="nav-icon">
+          🎞️
+        </span>
+
+        <span class="nav-label">
+          Studio
+        </span>
+
+      </button>
+
+
+      <button class="nav-item" data-page="profile">
+
+        <span class="nav-icon">
+          👤
+        </span>
+
+        <span class="nav-label">
+          Profile
+        </span>
+
+      </button>
+
+
+    </nav>
+
+
+  </div>
+
+
+  <!-- NOTIFICATION -->
+  <div class="notification-popup" id="notificationPopup">
+
+    <div class="popup-content">
+
+      <span class="popup-icon">
         🔔
-    </div>
+      </span>
 
-</div>
+      <div>
 
-<div class="reels-container">
+        <strong>
+          Notifications
+        </strong>
 
-    <!-- Reel 1 -->
+        <p>
+          Belum ada notifikasi baru.
+        </p>
 
-    <div class="reel-card">
-
-        <video
-        src="https://www.w3schools.com/html/mov_bbb.mp4"
-        loop
-        muted
-        playsinline>
-        </video>
-
-        <div class="overlay"></div>
-
-        <div class="reel-info">
-            <h3>@ReitoonOriginal</h3>
-            <p>Episode 1 • Mini Drama Reitoon</p>
-        </div>
-
-        <div class="actions">
-
-            <div class="action">
-                <div class="icon">❤</div>
-                <span>12K</span>
-            </div>
-
-            <div class="action">
-                <div class="icon">💬</div>
-                <span>340</span>
-            </div>
-
-            <div class="action">
-                <div class="icon">↗</div>
-                <span>Bagikan</span>
-            </div>
-
-        </div>
+      </div>
 
     </div>
 
-    <!-- Reel 2 -->
+  </div>
 
-    <div class="reel-card">
 
-        <video
-        src="https://www.w3schools.com/html/mov_bbb.mp4"
-        loop
-        muted
-        playsinline>
-        </video>
-
-        <div class="overlay"></div>
-
-        <div class="reel-info">
-            <h3>@ReitoonStudio</h3>
-            <p>Episode 2 • Trending Drama</p>
-        </div>
-
-        <div class="actions">
-
-            <div class="action">
-                <div class="icon">❤</div>
-                <span>9K</span>
-            </div>
-
-            <div class="action">
-                <div class="icon">💬</div>
-                <span>201</span>
-            </div>
-
-            <div class="action">
-                <div class="icon">↗</div>
-                <span>Bagikan</span>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded",()=>{
-
-const videos=document.querySelectorAll("video");
-
-const observer=new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.play().catch(()=>{});
-
-}else{
-
-entry.target.pause();
-
-}
-
-});
-
-},{threshold:0.6});
-
-videos.forEach(video=>{
-
-observer.observe(video);
-
-video.addEventListener("click",()=>{
-
-video.muted=!video.muted;
-
-});
-
-});
-
-});
-</script>
+  <!-- JAVASCRIPT -->
+  <script src="app.js"></script>
 
 </body>
+
 </html>
