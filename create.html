@@ -1,246 +1,146 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#08070d">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  >
 
-  <title>Reitoon - Create Your Story</title>
+  <meta
+    name="theme-color"
+    content="#08080d"
+  >
+
+  <title>Create - Reitoon</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+
+    .create-page {
+      padding: 22px 16px;
     }
 
-    :root {
-      --bg: #08070d;
-      --surface: #191722;
-      --surface-light: #211f2b;
-
-      --text: #ffffff;
-      --muted: #aaa3b0;
-
-      --pink: #ff2f8d;
-      --pink-light: #ff4ca0;
-      --purple: #762dff;
-
-      --border: rgba(255,255,255,0.10);
+    .create-header {
+      margin-bottom: 20px;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(
-          circle at 100% 0%,
-          rgba(255, 40, 145, 0.14),
-          transparent 35%
-        ),
-        radial-gradient(
-          circle at 0% 30%,
-          rgba(112, 45, 255, 0.10),
-          transparent 30%
-        ),
-        var(--bg);
-
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      overflow-x: hidden;
-      padding-bottom: 100px;
-    }
-
-    /* HEADER */
-
-    .top-header {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(8,7,13,0.92);
-      backdrop-filter: blur(18px);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-name {
+    .create-header h1 {
       font-size: 30px;
-      font-weight: 800;
-      letter-spacing: -1px;
-      background: linear-gradient(
-        135deg,
-        #ffffff,
-        var(--pink),
-        var(--purple)
-      );
-
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .brand-tagline {
-      font-size: 10px;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    .back-button {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    .back-button:hover {
-      background: var(--surface-light);
-    }
-
-    /* MAIN */
-
-    .create-container {
-      width: min(100%, 850px);
-      margin: auto;
-      padding: 28px 20px;
-    }
-
-    .page-title {
-      margin-bottom: 8px;
-    }
-
-    .page-title h1 {
-      font-size: 32px;
       line-height: 1.1;
+      margin-top: 7px;
     }
 
-    .page-title h1 span {
-      background: linear-gradient(
-        135deg,
-        var(--pink),
-        var(--purple)
-      );
-
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .create-header h1 span {
+      color: var(--pink);
     }
 
-    .page-title p {
+    .create-header p {
       color: var(--muted);
-      font-size: 14px;
-      margin-top: 8px;
+      font-size: 12px;
       line-height: 1.5;
+      margin-top: 8px;
     }
-
-    /* CREATE TYPE */
 
     .create-types {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 25px;
+      gap: 10px;
+      margin-bottom: 18px;
     }
 
     .type-card {
-      padding: 20px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
+      padding: 16px 12px;
+      border-radius: 18px;
       background: var(--surface);
+      border: 1px solid var(--border);
       cursor: pointer;
-      transition: 0.25s;
-    }
-
-    .type-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255,47,141,0.5);
     }
 
     .type-card.active {
       border-color: var(--pink);
+
       background:
         linear-gradient(
           135deg,
-          rgba(255,47,141,0.15),
-          rgba(118,45,255,0.12)
+          rgba(255,63,159,.15),
+          rgba(157,78,221,.12)
         ),
         var(--surface);
-      box-shadow: 0 0 25px rgba(255,47,141,0.12);
     }
 
     .type-icon {
-      font-size: 30px;
-      margin-bottom: 12px;
+      font-size: 26px;
+      margin-bottom: 8px;
     }
 
     .type-card h3 {
-      font-size: 16px;
+      font-size: 13px;
       margin-bottom: 5px;
     }
 
     .type-card p {
-      font-size: 12px;
       color: var(--muted);
+      font-size: 10px;
       line-height: 1.4;
     }
 
-    /* FORM CARD */
-
     .form-card {
-      margin-top: 25px;
-      padding: 22px;
+      padding: 18px;
+      border-radius: 20px;
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      background: rgba(25,23,34,0.9);
     }
 
     .form-title {
-      font-size: 19px;
-      margin-bottom: 20px;
+      font-size: 18px;
+      margin-bottom: 18px;
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .form-group label {
       display: block;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: bold;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
 
     .form-group input,
     .form-group textarea,
     .form-group select {
+
       width: 100%;
-      padding: 14px 15px;
-      border-radius: 13px;
+
+      padding: 13px;
+
+      border-radius: 12px;
+
       border: 1px solid var(--border);
+
       outline: none;
+
+      background: #0e0e15;
+
       color: white;
-      background: #100f17;
+
       font-family: inherit;
-      font-size: 14px;
+
+      font-size: 13px;
+
     }
 
     .form-group textarea {
-      min-height: 120px;
+      min-height: 110px;
       resize: vertical;
     }
 
@@ -248,48 +148,50 @@
     .form-group textarea:focus,
     .form-group select:focus {
       border-color: var(--pink);
-      box-shadow: 0 0 0 3px rgba(255,47,141,0.08);
     }
 
     .form-row {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+      gap: 10px;
     }
-
-    /* UPLOAD */
 
     .upload-box {
-      min-height: 170px;
-      border: 1px dashed rgba(255,255,255,0.25);
-      border-radius: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      cursor: pointer;
-      background: rgba(255,255,255,0.02);
-      transition: 0.25s;
-    }
 
-    .upload-box:hover {
-      border-color: var(--pink);
-      background: rgba(255,47,141,0.05);
+      min-height: 130px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      text-align: center;
+
+      border: 1px dashed rgba(255,255,255,.25);
+
+      border-radius: 16px;
+
+      background: rgba(255,255,255,.02);
+
+      cursor: pointer;
+
     }
 
     .upload-icon {
-      font-size: 38px;
-      margin-bottom: 10px;
+      font-size: 32px;
+      margin-bottom: 8px;
     }
 
     .upload-box strong {
-      font-size: 14px;
+      font-size: 12px;
     }
 
     .upload-box p {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 10px;
       margin-top: 5px;
     }
 
@@ -298,524 +200,591 @@
     }
 
     .preview-image {
-      display: none;
-      width: 100%;
-      max-height: 240px;
-      object-fit: cover;
-      border-radius: 14px;
-      margin-top: 12px;
-    }
 
-    /* BUTTON */
+      display: none;
+
+      width: 100%;
+
+      max-height: 220px;
+
+      object-fit: cover;
+
+      border-radius: 14px;
+
+      margin-top: 10px;
+
+    }
 
     .create-button {
+
       width: 100%;
-      margin-top: 8px;
-      padding: 16px;
+
+      padding: 15px;
+
       border: none;
-      border-radius: 15px;
-      color: white;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
 
-      background: linear-gradient(
-        135deg,
-        var(--pink),
-        var(--purple)
-      );
+      border-radius: 13px;
 
-      box-shadow: 0 10px 25px rgba(255,47,141,0.18);
-      transition: 0.25s;
-    }
-
-    .create-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(255,47,141,0.28);
-    }
-
-    /* INFO */
-
-    .earn-info {
-      margin-top: 20px;
-      padding: 16px;
-      border-radius: 16px;
       background:
         linear-gradient(
           135deg,
-          rgba(118,45,255,0.13),
-          rgba(255,47,141,0.10)
+          var(--pink),
+          var(--purple)
+        );
+
+      color: white;
+
+      font-size: 14px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+    }
+
+    .earn-info {
+
+      margin-top: 16px;
+
+      padding: 15px;
+
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(157,78,221,.14),
+          rgba(255,63,159,.10)
         );
 
       border: 1px solid var(--border);
+
     }
 
     .earn-info strong {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 6px;
+      font-size: 13px;
     }
 
     .earn-info p {
+
       color: var(--muted);
-      font-size: 12px;
+
+      font-size: 11px;
+
       line-height: 1.5;
+
+      margin-top: 6px;
+
     }
-
-    /* BOTTOM NAV */
-
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 76px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      background: rgba(14,13,21,0.96);
-      backdrop-filter: blur(18px);
-      border-top: 1px solid var(--border);
-      z-index: 30;
-    }
-
-    .nav-item {
-      text-decoration: none;
-      color: var(--muted);
-      text-align: center;
-      font-size: 10px;
-      min-width: 60px;
-    }
-
-    .nav-icon {
-      display: block;
-      font-size: 21px;
-      margin-bottom: 4px;
-    }
-
-    .nav-item.active {
-      color: var(--pink);
-    }
-
-    /* TOAST */
 
     .toast {
+
       position: fixed;
+
       left: 50%;
+
       bottom: 95px;
-      transform: translateX(-50%) translateY(20px);
+
+      transform:
+        translateX(-50%)
+        translateY(20px);
+
+      padding: 12px 16px;
+
+      border-radius: 12px;
+
       background: var(--surface-light);
+
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px 18px;
-      font-size: 13px;
+
+      font-size: 12px;
+
       opacity: 0;
+
       pointer-events: none;
-      transition: 0.3s;
+
+      transition: .3s;
+
       z-index: 50;
+
       white-space: nowrap;
+
     }
 
     .toast.show {
+
       opacity: 1;
-      transform: translateX(-50%) translateY(0);
+
+      transform:
+        translateX(-50%)
+        translateY(0);
+
     }
 
-    /* MOBILE */
-
-    @media (max-width: 600px) {
-
-      .top-header {
-        padding: 14px 16px;
-      }
-
-      .brand-name {
-        font-size: 27px;
-      }
-
-      .create-container {
-        padding: 24px 16px;
-      }
-
-      .page-title h1 {
-        font-size: 29px;
-      }
-
-      .create-types {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 380px) {
 
       .form-row {
         grid-template-columns: 1fr;
       }
 
-      .form-card {
-        padding: 18px;
-      }
-
-      .bottom-nav {
-        height: 72px;
-      }
     }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- HEADER -->
 
-  <header class="top-header">
+  <div class="app-container">
 
-    <button class="back-button" onclick="goBack()">
-      ←
-    </button>
 
-    <div class="brand">
-      <div>
-        <div class="brand-name">Reitoon</div>
-        <div class="brand-tagline">Create Your Story</div>
-      </div>
-    </div>
+    <!-- HEADER -->
 
-    <div style="width:42px;"></div>
+    <header class="top-header">
 
-  </header>
-
-
-  <!-- MAIN -->
-
-  <main class="create-container">
-
-    <section class="page-title">
-
-      <h1>
-        Create <span>Your Story</span>
-      </h1>
-
-      <p>
-        Ubah ide dan imajinasi kamu menjadi film, drama, dan cerita original di Reitoon.
-      </p>
-
-    </section>
-
-
-    <!-- CREATE TYPE -->
-
-    <section class="create-types">
-
-      <div class="type-card active" onclick="selectType(this, 'Film')">
-
-        <div class="type-icon">
-          🎬
-        </div>
-
-        <h3>
-          Create Film
-        </h3>
-
-        <p>
-          Buat film dan cerita visual kamu sendiri.
-        </p>
-
-      </div>
-
-
-      <div class="type-card" onclick="selectType(this, 'Story')">
-
-        <div class="type-icon">
-          ✍️
-        </div>
-
-        <h3>
-          Create Story
-        </h3>
-
-        <p>
-          Tulis cerita, drama, atau novel original.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- FORM -->
-
-    <section class="form-card">
-
-      <h2 class="form-title">
-        ✨ Informasi Cerita
-      </h2>
-
-
-      <div class="form-group">
-
-        <label>
-          Judul Cerita
-        </label>
-
-        <input
-          type="text"
-          id="storyTitle"
-          placeholder="Contoh: The Last Promise"
-        >
-
-      </div>
-
-
-      <div class="form-row">
-
-        <div class="form-group">
-
-          <label>
-            Genre
-          </label>
-
-          <select id="genre">
-
-            <option value="">
-              Pilih Genre
-            </option>
-
-            <option>
-              Romance
-            </option>
-
-            <option>
-              Action
-            </option>
-
-            <option>
-              Fantasy
-            </option>
-
-            <option>
-              Drama
-            </option>
-
-            <option>
-              Comedy
-            </option>
-
-            <option>
-              Thriller
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>
-            Bahasa
-          </label>
-
-          <select id="language">
-
-            <option>
-              Bahasa Indonesia
-            </option>
-
-            <option>
-              English
-            </option>
-
-            <option>
-              中文 Chinese
-            </option>
-
-            <option>
-              한국어 Korean
-            </option>
-
-          </select>
-
-        </div>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          Deskripsi Cerita
-        </label>
-
-        <textarea
-          id="storyDescription"
-          placeholder="Ceritakan ide utama dari cerita kamu..."
-        ></textarea>
-
-      </div>
-
-
-      <!-- COVER UPLOAD -->
-
-      <div class="form-group">
-
-        <label>
-          Cover Cerita
-        </label>
-
-        <label class="upload-box">
-
-          <div class="upload-icon">
-            🖼️
-          </div>
-
-          <strong>
-            Upload Cover
-          </strong>
-
-          <p>
-            JPG atau PNG • Maksimal 10 MB
-          </p>
-
-          <input
-            type="file"
-            id="coverInput"
-            accept="image/*"
-            onchange="previewCover(event)"
-          >
-
-        </label>
+      <a
+        href="index.html"
+        style="text-decoration:none;"
+      >
 
         <img
-          id="coverPreview"
-          class="preview-image"
-          alt="Preview Cover"
+          src="reitoon-logo.png"
+          alt="Reitoon"
+          class="reitoon-logo"
         >
 
-      </div>
-
-
-      <div class="form-group">
-
-        <label>
-          Status Publikasi
-        </label>
-
-        <select id="status">
-
-          <option value="draft">
-            Simpan sebagai Draft
-          </option>
-
-          <option value="public">
-            Publikasikan ke Reitoon
-          </option>
-
-        </select>
-
-      </div>
+      </a>
 
 
       <button
-        class="create-button"
-        onclick="createStory()"
+        class="icon-button"
+        onclick="goBack()"
       >
 
-        🚀 Create My Story
+        ←
 
       </button>
 
-    </section>
+    </header>
 
 
-    <!-- EARN INFO -->
+    <!-- MAIN -->
 
-    <section class="earn-info">
-
-      <strong>
-        💰 Earn with Your Story
-      </strong>
-
-      <p>
-        Cerita yang menarik dapat berkembang menjadi film dan mendapatkan peluang untuk menghasilkan pendapatan di masa depan.
-      </p>
-
-    </section>
-
-  </main>
+    <main class="create-page">
 
 
-  <!-- BOTTOM NAV -->
+      <section class="create-header">
 
-  <nav class="bottom-nav">
+        <span class="section-label">
 
-    <a
-      class="nav-item"
-      href="index.html"
-    >
+          CREATE STUDIO
 
-      <span class="nav-icon">
-        🏠
-      </span>
-
-      Home
-
-    </a>
+        </span>
 
 
-    <a
-      class="nav-item"
-      href="watch.html"
-    >
+        <h1>
 
-      <span class="nav-icon">
-        ▶️
-      </span>
+          Create
+          <span>Your Story</span>
 
-      Watch
-
-    </a>
+        </h1>
 
 
-    <a
-      class="nav-item active"
-      href="create.html"
-    >
+        <p>
 
-      <span class="nav-icon">
-        ✨
-      </span>
+          Ubah ide dan imajinasi kamu menjadi
+          cerita original di Reitoon.
 
-      Create
+        </p>
 
-    </a>
+      </section>
 
 
-    <a
-      class="nav-item"
-      href="create.html"
-    >
+      <!-- TYPE -->
 
-      <span class="nav-icon">
-        🎥
-      </span>
-
-      Studio
-
-    </a>
+      <section class="create-types">
 
 
-    <a
-      class="nav-item"
-      href="#"
-      onclick="showToast('Profile segera hadir di Reitoon')"
-    >
+        <div
+          class="type-card active"
+          onclick="selectType(this, 'Film')"
+        >
 
-      <span class="nav-icon">
-        👤
-      </span>
+          <div class="type-icon">
+            🎬
+          </div>
 
-      Profile
 
-    </a>
+          <h3>
+            Create Film
+          </h3>
 
-  </nav>
+
+          <p>
+            Buat film dan cerita visual.
+          </p>
+
+        </div>
+
+
+        <div
+          class="type-card"
+          onclick="selectType(this, 'Story')"
+        >
+
+          <div class="type-icon">
+            ✍️
+          </div>
+
+
+          <h3>
+            Create Story
+          </h3>
+
+
+          <p>
+            Tulis drama atau novel original.
+          </p>
+
+        </div>
+
+
+      </section>
+
+
+      <!-- FORM -->
+
+      <section class="form-card">
+
+
+        <h2 class="form-title">
+
+          ✨ Informasi Cerita
+
+        </h2>
+
+
+        <div class="form-group">
+
+          <label>
+
+            Judul Cerita
+
+          </label>
+
+
+          <input
+            type="text"
+            id="storyTitle"
+            placeholder="Contoh: The Last Promise"
+          >
+
+        </div>
+
+
+        <div class="form-row">
+
+
+          <div class="form-group">
+
+            <label>
+
+              Genre
+
+            </label>
+
+
+            <select id="genre">
+
+              <option value="">
+                Pilih Genre
+              </option>
+
+              <option>
+                Romance
+              </option>
+
+              <option>
+                Drama
+              </option>
+
+              <option>
+                Action
+              </option>
+
+              <option>
+                Fantasy
+              </option>
+
+              <option>
+                Comedy
+              </option>
+
+              <option>
+                Thriller
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+
+              Bahasa
+
+            </label>
+
+
+            <select id="language">
+
+              <option>
+                Bahasa Indonesia
+              </option>
+
+              <option>
+                English
+              </option>
+
+              <option>
+                中文 Chinese
+              </option>
+
+            </select>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+
+            Deskripsi Cerita
+
+          </label>
+
+
+          <textarea
+            id="storyDescription"
+            placeholder="Ceritakan ide utama cerita kamu..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+
+            Cover Cerita
+
+          </label>
+
+
+          <label class="upload-box">
+
+            <div class="upload-icon">
+
+              🖼️
+
+            </div>
+
+
+            <strong>
+
+              Upload Cover
+
+            </strong>
+
+
+            <p>
+
+              JPG atau PNG
+
+            </p>
+
+
+            <input
+              type="file"
+              id="coverInput"
+              accept="image/*"
+              onchange="previewCover(event)"
+            >
+
+          </label>
+
+
+          <img
+            id="coverPreview"
+            class="preview-image"
+            alt="Cover Preview"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+
+            Status
+
+          </label>
+
+
+          <select id="status">
+
+            <option value="draft">
+
+              Simpan sebagai Draft
+
+            </option>
+
+
+            <option value="public">
+
+              Publikasikan
+
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <button
+          class="create-button"
+          onclick="createStory()"
+        >
+
+          🚀 Create My Story
+
+        </button>
+
+
+      </section>
+
+
+      <!-- EARN -->
+
+      <section class="earn-info">
+
+        <strong>
+
+          💰 Earn with Your Story
+
+        </strong>
+
+
+        <p>
+
+          Karya yang menarik dapat berkembang
+          menjadi bagian dari ekosistem Reitoon.
+
+        </p>
+
+      </section>
+
+
+    </main>
+
+
+    <!-- BOTTOM NAV -->
+
+    <nav class="bottom-navigation">
+
+
+      <a
+        href="index.html"
+        class="nav-item"
+      >
+
+        <span class="nav-icon">
+          🏠
+        </span>
+
+        <span class="nav-label">
+          Home
+        </span>
+
+      </a>
+
+
+      <a
+        href="watch.html"
+        class="nav-item"
+      >
+
+        <span class="nav-icon">
+          ▶️
+        </span>
+
+        <span class="nav-label">
+          Watch
+        </span>
+
+      </a>
+
+
+      <a
+        href="create.html"
+        class="nav-item active create-nav-button"
+      >
+
+        <span class="create-nav-icon">
+          ＋
+        </span>
+
+        <span class="nav-label">
+          Create
+        </span>
+
+      </a>
+
+
+      <a
+        href="studio.html"
+        class="nav-item"
+      >
+
+        <span class="nav-icon">
+          🎬
+        </span>
+
+        <span class="nav-label">
+          Studio
+        </span>
+
+      </a>
+
+
+      <a
+        href="profile.html"
+        class="nav-item"
+      >
+
+        <span class="nav-icon">
+          👤
+        </span>
+
+        <span class="nav-label">
+          Profile
+        </span>
+
+      </a>
+
+
+    </nav>
+
+
+  </div>
 
 
   <!-- TOAST -->
@@ -826,73 +795,129 @@
   ></div>
 
 
-  <!-- JAVASCRIPT -->
-
   <script>
+
 
     let selectedType = "Film";
 
 
-    function selectType(element, type) {
+    function selectType(
+      element,
+      type
+    ) {
+
 
       document
-        .querySelectorAll(".type-card")
-        .forEach(card => {
+        .querySelectorAll(
+          ".type-card"
+        )
+        .forEach(
 
-          card.classList.remove("active");
+          card =>
+            card.classList.remove(
+              "active"
+            )
 
-        });
+        );
 
 
-      element.classList.add("active");
+      element.classList.add(
+        "active"
+      );
+
 
       selectedType = type;
 
-      showToast("Mode " + type + " dipilih");
+
+      showToast(
+        "Mode " +
+        type +
+        " dipilih"
+      );
 
     }
 
 
-    function previewCover(event) {
+    function previewCover(
+      event
+    ) {
 
-      const file = event.target.files[0];
+
+      const file =
+        event.target.files[0];
+
 
       if (!file) return;
 
+
       const preview =
-        document.getElementById("coverPreview");
+        document.getElementById(
+          "coverPreview"
+        );
+
 
       preview.src =
-        URL.createObjectURL(file);
+        URL.createObjectURL(
+          file
+        );
 
-      preview.style.display = "block";
+
+      preview.style.display =
+        "block";
 
     }
 
 
     function createStory() {
 
+
       const title =
         document
-        .getElementById("storyTitle")
+        .getElementById(
+          "storyTitle"
+        )
         .value
         .trim();
+
 
       const genre =
         document
-        .getElementById("genre")
+        .getElementById(
+          "genre"
+        )
         .value;
+
+
+      const language =
+        document
+        .getElementById(
+          "language"
+        )
+        .value;
+
 
       const description =
         document
-        .getElementById("storyDescription")
+        .getElementById(
+          "storyDescription"
+        )
         .value
         .trim();
+
+
+      const status =
+        document
+        .getElementById(
+          "status"
+        )
+        .value;
 
 
       if (!title) {
 
-        showToast("Masukkan judul cerita terlebih dahulu");
+        showToast(
+          "Masukkan judul cerita"
+        );
 
         return;
 
@@ -901,7 +926,9 @@
 
       if (!genre) {
 
-        showToast("Pilih genre cerita");
+        showToast(
+          "Pilih genre cerita"
+        );
 
         return;
 
@@ -910,7 +937,9 @@
 
       if (!description) {
 
-        showToast("Tulis deskripsi cerita kamu");
+        showToast(
+          "Tulis deskripsi cerita"
+        );
 
         return;
 
@@ -919,15 +948,27 @@
 
       const storyData = {
 
-        type: selectedType,
+        type:
+          selectedType,
 
-        title: title,
+        title:
+          title,
 
-        genre: genre,
+        genre:
+          genre,
 
-        description: description,
+        language:
+          language,
 
-        createdAt: new Date().toISOString()
+        description:
+          description,
+
+        status:
+          status,
+
+        createdAt:
+          new Date()
+          .toISOString()
 
       };
 
@@ -936,61 +977,83 @@
 
         "reitoon_story",
 
-        JSON.stringify(storyData)
+        JSON.stringify(
+          storyData
+        )
 
       );
 
 
       showToast(
+
         "🎉 Cerita berhasil dibuat!"
+
       );
 
 
-      setTimeout(() => {
+      setTimeout(
 
-        window.location.href =
-          "index.html";
+        function () {
 
-      }, 1800);
+          window.location.href =
+            "studio.html";
+
+        },
+
+        1200
+
+      );
 
     }
 
 
-    function showToast(message) {
+    function showToast(
+      message
+    ) {
+
 
       const toast =
-        document.getElementById("toast");
-
-      toast.textContent = message;
-
-      toast.classList.add("show");
+        document.getElementById(
+          "toast"
+        );
 
 
-      setTimeout(() => {
+      toast.textContent =
+        message;
 
-        toast.classList.remove("show");
 
-      }, 2500);
+      toast.classList.add(
+        "show"
+      );
+
+
+      setTimeout(
+
+        function () {
+
+          toast.classList.remove(
+            "show"
+          );
+
+        },
+
+        2500
+
+      );
 
     }
 
 
     function goBack() {
 
-      if (document.referrer) {
-
-        history.back();
-
-      } else {
-
-        window.location.href =
-          "index.html";
-
-      }
+      history.back();
 
     }
 
+
   </script>
 
+
 </body>
+
 </html>
