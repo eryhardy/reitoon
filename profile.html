@@ -1,576 +1,1126 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08070d">
-
-<title>Profile - Reitoon</title>
-
-<style>
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-:root{
-  --bg:#08070d;
-  --card:#15131d;
-  --card2:#1d1a27;
-  --text:#ffffff;
-  --muted:#9893a3;
-  --pink:#ff2f8d;
-  --purple:#762dff;
-  --border:rgba(255,255,255,.08);
-}
-
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
-  min-height:100vh;
-  padding-bottom:90px;
-}
-
-/* HEADER */
-
-.header{
-  height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 16px;
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:rgba(8,7,13,.94);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-}
-
-.back{
-  width:38px;
-  height:38px;
-  border:0;
-  border-radius:12px;
-  background:var(--card2);
-  color:white;
-  font-size:20px;
-}
-
-.logo{
-  font-size:24px;
-  font-weight:800;
-  background:linear-gradient(135deg,#fff,var(--pink),var(--purple));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-/* MAIN */
-
-.container{
-  width:100%;
-  max-width:480px;
-  margin:auto;
-  padding:18px 14px;
-}
-
-/* PROFILE */
-
-.profile-card{
-  text-align:center;
-  padding:24px 16px;
-  border-radius:24px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,47,141,.14),
-      rgba(118,45,255,.12)
-    ),
-    var(--card);
-  border:1px solid var(--border);
-}
-
-.avatar{
-  width:82px;
-  height:82px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  font-size:36px;
-  background:linear-gradient(135deg,var(--pink),var(--purple));
-  box-shadow:0 0 28px rgba(255,47,141,.28);
-}
-
-.profile-card h1{
-  font-size:20px;
-  margin-top:14px;
-}
-
-.username{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:5px;
-}
-
-.bio{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.5;
-  margin:10px auto;
-  max-width:300px;
-}
-
-.edit-button{
-  margin-top:8px;
-  padding:10px 18px;
-  border-radius:12px;
-  background:var(--card2);
-  border:1px solid var(--border);
-  color:white;
-  font-size:12px;
-}
-
-/* STATS */
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px;
-  margin-top:12px;
-}
-
-.stat{
-  padding:13px 4px;
-  text-align:center;
-  border-radius:15px;
-  background:var(--card);
-  border:1px solid var(--border);
-}
-
-.stat strong{
-  display:block;
-  font-size:16px;
-  margin-bottom:4px;
-}
-
-.stat span{
-  color:var(--muted);
-  font-size:9px;
-}
-
-/* SECTION */
-
-.section{
-  margin-top:22px;
-}
-
-.section-title{
-  font-size:17px;
-  margin-bottom:10px;
-}
-
-/* EARNINGS */
-
-.earnings-card{
-  padding:18px;
-  border-radius:20px;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,47,141,.18),
-      rgba(118,45,255,.18)
-    );
-  border:1px solid var(--border);
-}
-
-.earnings-label{
-  color:var(--muted);
-  font-size:11px;
-}
-
-.earnings-value{
-  font-size:28px;
-  font-weight:bold;
-  margin-top:6px;
-}
-
-.earnings-note{
-  color:var(--muted);
-  font-size:10px;
-  line-height:1.5;
-  margin-top:6px;
-}
-
-/* MENU */
-
-.menu{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-
-.menu-item{
-  width:100%;
-  min-height:66px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:12px;
-  border-radius:17px;
-  background:var(--card);
-  border:1px solid var(--border);
-  color:white;
-  text-decoration:none;
-}
-
-.menu-item:active{
-  transform:scale(.98);
-  background:var(--card2);
-}
-
-.menu-icon{
-  width:40px;
-  height:40px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:13px;
-  background:var(--card2);
-  font-size:19px;
-}
-
-.menu-text{
-  flex:1;
-}
-
-.menu-text strong{
-  display:block;
-  font-size:13px;
-  margin-bottom:4px;
-}
-
-.menu-text span{
-  color:var(--muted);
-  font-size:10px;
-}
-
-.arrow{
-  color:var(--muted);
-  font-size:22px;
-}
-
-/* BOTTOM NAV */
-
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:72px;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  background:rgba(14,13,21,.97);
-  backdrop-filter:blur(18px);
-  border-top:1px solid var(--border);
-  z-index:20;
-}
-
-.nav-item{
-  width:20%;
-  text-align:center;
-  text-decoration:none;
-  color:var(--muted);
-  font-size:9px;
-}
-
-.nav-icon{
-  display:block;
-  font-size:20px;
-  margin-bottom:4px;
-}
-
-.nav-item.active{
-  color:var(--pink);
-}
-
-/* TOAST */
-
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:88px;
-  transform:translateX(-50%) translateY(15px);
-  padding:11px 15px;
-  border-radius:12px;
-  background:var(--card2);
-  border:1px solid var(--border);
-  font-size:11px;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
-  z-index:50;
-  white-space:nowrap;
-}
-
-.toast.show{
-  opacity:1;
-  transform:translateX(-50%) translateY(0);
-}
-
-/* SMALL PHONE */
-
-@media(max-width:360px){
-
-  .stats{
-    gap:5px;
-  }
-
-  .stat strong{
-    font-size:14px;
-  }
-
-  .stat span{
-    font-size:8px;
-  }
-
-}
-
-</style>
-</head>
-
-<body>
-
-<header class="header">
-
-  <button class="back" onclick="goBack()">←</button>
-
-  <div class="logo">Reitoon</div>
-
-  <div style="width:38px;"></div>
-
-</header>
-
-<main class="container">
-
-  <section class="profile-card">
-
-    <div class="avatar">👤</div>
-
-    <h1>Reitoon Creator</h1>
-
-    <p class="username">@creator</p>
-
-    <p class="bio">
-      Create your story. Share your imagination.
-      Build your world on Reitoon.
-    </p>
-
-    <button class="edit-button" onclick="editProfile()">
-      ✏️ Edit Profile
-    </button>
-
-  </section>
-
-  <section class="stats">
-
-    <div class="stat">
-      <strong id="storyCount">0</strong>
-      <span>Stories</span>
+<!DOCTYPE html><html lang="id"><head>  <meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+«»
+
+<meta
+name="theme-color"
+content="#08070d"
+
+«»
+
+  <title>Profile - Reitoon</title>  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    :root {
+      --bg: #08070d;
+      --surface: #191722;
+      --surface-light: #211f2b;
+      --text: #ffffff;
+      --muted: #aaa3b0;
+      --pink: #ff2f8d;
+      --purple: #762dff;
+      --border: rgba(255,255,255,0.10);
+    }
+
+
+    body {
+
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 100% 0%,
+          rgba(255,40,145,0.14),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 0% 30%,
+          rgba(112,45,255,0.10),
+          transparent 30%
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      padding-bottom: 100px;
+
+      overflow-x: hidden;
+
+    }
+
+
+    /* HEADER */
+
+    .header {
+
+      height: 76px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 16px 20px;
+
+      background: rgba(8,7,13,0.94);
+
+      border-bottom: 1px solid var(--border);
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 20;
+
+      backdrop-filter: blur(18px);
+
+    }
+
+
+    .back-button {
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 14px;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      color: white;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+    }
+
+
+    .logo {
+
+      font-size: 29px;
+
+      font-weight: 800;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          white,
+          var(--pink),
+          var(--purple)
+        );
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+
+    .header-space {
+
+      width: 42px;
+
+    }
+
+
+    /* MAIN */
+
+    .profile-container {
+
+      width: 100%;
+
+      max-width: 600px;
+
+      margin: auto;
+
+      padding: 25px 16px;
+
+    }
+
+
+    /* PROFILE HERO */
+
+    .profile-card {
+
+      text-align: center;
+
+      padding: 28px 20px;
+
+      border-radius: 24px;
+
+      background:
+
+        linear-gradient(
+          145deg,
+          rgba(255,47,141,0.13),
+          rgba(118,45,255,0.12)
+        );
+
+      border: 1px solid var(--border);
+
+    }
+
+
+    .avatar {
+
+      width: 92px;
+
+      height: 92px;
+
+      margin: auto;
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 42px;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple)
+        );
+
+      box-shadow:
+
+        0 10px 30px
+        rgba(255,47,141,0.30);
+
+    }
+
+
+    .profile-card h1 {
+
+      margin-top: 14px;
+
+      font-size: 24px;
+
+    }
+
+
+    .username {
+
+      color: var(--pink);
+
+      font-size: 13px;
+
+      margin-top: 5px;
+
+    }
+
+
+    .bio {
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
+      margin: 12px auto 18px;
+
+      max-width: 300px;
+
+    }
+
+
+    .edit-button {
+
+      display: inline-block;
+
+      padding: 11px 20px;
+
+      border-radius: 12px;
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      cursor: pointer;
+
+    }
+
+
+    /* STATS */
+
+    .stats {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 10px;
+
+      margin-top: 18px;
+
+    }
+
+
+    .stat {
+
+      padding: 16px 8px;
+
+      text-align: center;
+
+      border-radius: 16px;
+
+      background: var(--surface);
+
+      border: 1px solid var(--border);
+
+    }
+
+
+    .stat strong {
+
+      display: block;
+
+      font-size: 19px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .stat span {
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+    }
+
+
+    /* MENU */
+
+    .section-title {
+
+      margin: 28px 0 12px;
+
+      font-size: 17px;
+
+    }
+
+
+    .menu-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 10px;
+
+    }
+
+
+    .menu-item {
+
+      width: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 13px;
+
+      padding: 16px;
+
+      border-radius: 16px;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      color: white;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+
+    }
+
+
+    .menu-item:hover {
+
+      background: var(--surface-light);
+
+      transform: translateY(-1px);
+
+    }
+
+
+    .menu-icon {
+
+      width: 40px;
+
+      height: 40px;
+
+      border-radius: 12px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background: rgba(255,47,141,0.12);
+
+      font-size: 20px;
+
+    }
+
+
+    .menu-content {
+
+      flex: 1;
+
+    }
+
+
+    .menu-content strong {
+
+      display: block;
+
+      font-size: 13px;
+
+      margin-bottom: 4px;
+
+    }
+
+
+    .menu-content span {
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+    }
+
+
+    .menu-arrow {
+
+      color: var(--muted);
+
+      font-size: 20px;
+
+    }
+
+
+    /* CREATOR CARD */
+
+    .creator-card {
+
+      margin-top: 24px;
+
+      padding: 20px;
+
+      border-radius: 20px;
+
+      border: 1px solid var(--border);
+
+      background:
+
+        linear-gradient(
+          135deg,
+          rgba(118,45,255,0.14),
+          rgba(255,47,141,0.10)
+        );
+
+    }
+
+
+    .creator-card h2 {
+
+      font-size: 17px;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .creator-card p {
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.5;
+
+      margin-bottom: 16px;
+
+    }
+
+
+    .creator-button {
+
+      display: inline-block;
+
+      padding: 12px 17px;
+
+      border-radius: 12px;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple)
+        );
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+    }
+
+
+    /* TOAST */
+
+    .toast {
+
+      position: fixed;
+
+      left: 50%;
+
+      bottom: 95px;
+
+      transform:
+
+        translateX(-50%)
+        translateY(20px);
+
+      background: var(--surface-light);
+
+      border: 1px solid var(--border);
+
+      border-radius: 14px;
+
+      padding: 13px 18px;
+
+      font-size: 12px;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: 0.3s;
+
+      z-index: 50;
+
+      white-space: nowrap;
+
+    }
+
+
+    .toast.show {
+
+      opacity: 1;
+
+      transform:
+
+        translateX(-50%)
+        translateY(0);
+
+    }
+
+
+    /* BOTTOM NAV */
+
+    .bottom-nav {
+
+      position: fixed;
+
+      bottom: 0;
+
+      left: 0;
+
+      right: 0;
+
+      height: 76px;
+
+      display: flex;
+
+      justify-content: space-around;
+
+      align-items: center;
+
+      background: rgba(14,13,21,0.96);
+
+      backdrop-filter: blur(18px);
+
+      border-top: 1px solid var(--border);
+
+      z-index: 30;
+
+    }
+
+
+    .nav-item {
+
+      min-width: 60px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      text-decoration: none;
+
+      font-size: 10px;
+
+    }
+
+
+    .nav-icon {
+
+      display: block;
+
+      font-size: 21px;
+
+      margin-bottom: 4px;
+
+    }
+
+
+    .nav-item.active {
+
+      color: var(--pink);
+
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 420px) {
+
+      .profile-container {
+
+        padding-left: 14px;
+
+        padding-right: 14px;
+
+      }
+
+
+      .profile-card {
+
+        padding: 24px 15px;
+
+      }
+
+
+      .avatar {
+
+        width: 82px;
+
+        height: 82px;
+
+        font-size: 36px;
+
+      }
+
+
+      .profile-card h1 {
+
+        font-size: 22px;
+
+      }
+
+
+      .stat strong {
+
+        font-size: 17px;
+
+      }
+
+    }
+
+  </style></head><body>  <!-- HEADER -->  <header class="header"><button
+  class="back-button"
+  onclick="goBack()"
+>
+
+  ←
+
+</button>
+
+
+<div class="logo">
+
+  Reitoon
+
+</div>
+
+
+<div class="header-space"></div>
+
+  </header>  <!-- MAIN -->  <main class="profile-container"><!-- PROFILE -->
+
+<section class="profile-card">
+
+
+  <div class="avatar">
+
+    👤
+
+  </div>
+
+
+  <h1 id="profileName">
+
+    Reitoon Creator
+
+  </h1>
+
+
+  <div class="username">
+
+    @creator
+
+  </div>
+
+
+  <p class="bio">
+
+    Creator cerita dan dunia imajinasi di Reitoon ✨
+
+  </p>
+
+
+  <button
+    class="edit-button"
+    onclick="editProfile()"
+  >
+
+    ✏️ Edit Profile
+
+  </button>
+
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="stats">
+
+
+  <div class="stat">
+
+    <strong id="storyCount">
+
+      0
+
+    </strong>
+
+
+    <span>
+
+      Stories
+
+    </span>
+
+  </div>
+
+
+  <div class="stat">
+
+    <strong>
+
+      0
+
+    </strong>
+
+
+    <span>
+
+      Followers
+
+    </span>
+
+  </div>
+
+
+  <div class="stat">
+
+    <strong>
+
+      0
+
+    </strong>
+
+
+    <span>
+
+      Following
+
+    </span>
+
+  </div>
+
+
+</section>
+
+
+<!-- MENU -->
+
+<h2 class="section-title">
+
+  Creator Menu
+
+</h2>
+
+
+<section class="menu-list">
+
+
+  <a
+    class="menu-item"
+    href="studio.html"
+  >
+
+    <div class="menu-icon">
+
+      🎬
+
     </div>
 
-    <div class="stat">
-      <strong>0</strong>
-      <span>Followers</span>
-    </div>
 
-    <div class="stat">
-      <strong>0</strong>
-      <span>Following</span>
-    </div>
+    <div class="menu-content">
 
-    <div class="stat">
-      <strong>0</strong>
-      <span>Views</span>
-    </div>
+      <strong>
 
-  </section>
+        My Studio
 
-  <section class="section">
+      </strong>
 
-    <h2 class="section-title">
-      💰 Creator Earnings
-    </h2>
 
-    <div class="earnings-card">
+      <span>
 
-      <div class="earnings-label">
-        Total Estimated Earnings
-      </div>
+        Kelola cerita dan project kamu
 
-      <div class="earnings-value">
-        Rp0
-      </div>
-
-      <div class="earnings-note">
-        Penghasilan akan dihitung berdasarkan sistem monetisasi Reitoon.
-      </div>
+      </span>
 
     </div>
 
-  </section>
 
-  <section class="section">
+    <div class="menu-arrow">
 
-    <h2 class="section-title">
-      ⚙️ Creator Menu
-    </h2>
-
-    <div class="menu">
-
-      <a href="studio.html" class="menu-item">
-
-        <div class="menu-icon">🎬</div>
-
-        <div class="menu-text">
-          <strong>My Studio</strong>
-          <span>Kelola cerita dan project kamu</span>
-        </div>
-
-        <div class="arrow">›</div>
-
-      </a>
-
-      <a href="create.html" class="menu-item">
-
-        <div class="menu-icon">✨</div>
-
-        <div class="menu-text">
-          <strong>Create Story</strong>
-          <span>Buat cerita baru</span>
-        </div>
-
-        <div class="arrow">›</div>
-
-      </a>
-
-      <div class="menu-item" onclick="showToast('⚙️ Settings segera hadir')">
-
-        <div class="menu-icon">⚙️</div>
-
-        <div class="menu-text">
-          <strong>Settings</strong>
-          <span>Pengaturan akun dan aplikasi</span>
-        </div>
-
-        <div class="arrow">›</div>
-
-      </div>
-
-      <div class="menu-item" onclick="showToast('❓ Pusat bantuan segera hadir')">
-
-        <div class="menu-icon">❓</div>
-
-        <div class="menu-text">
-          <strong>Help Center</strong>
-          <span>Bantuan untuk pengguna Reitoon</span>
-        </div>
-
-        <div class="arrow">›</div>
-
-      </div>
+      ›
 
     </div>
 
-  </section>
-
-</main>
-
-<nav class="bottom-nav">
-
-  <a class="nav-item" href="index.html">
-    <span class="nav-icon">🏠</span>
-    Home
   </a>
 
-  <a class="nav-item" href="watch.html">
-    <span class="nav-icon">▶️</span>
-    Watch
+
+  <button
+    class="menu-item"
+    onclick="showToast('Fitur koleksi segera hadir')"
+  >
+
+    <div class="menu-icon">
+
+      📚
+
+    </div>
+
+
+    <div class="menu-content">
+
+      <strong>
+
+        My Collection
+
+      </strong>
+
+
+      <span>
+
+        Cerita dan film yang kamu simpan
+
+      </span>
+
+    </div>
+
+
+    <div class="menu-arrow">
+
+      ›
+
+    </div>
+
+  </button>
+
+
+  <button
+    class="menu-item"
+    onclick="showToast('Pengaturan segera hadir')"
+  >
+
+    <div class="menu-icon">
+
+      ⚙️
+
+    </div>
+
+
+    <div class="menu-content">
+
+      <strong>
+
+        Settings
+
+      </strong>
+
+
+      <span>
+
+        Atur akun dan preferensi kamu
+
+      </span>
+
+    </div>
+
+
+    <div class="menu-arrow">
+
+      ›
+
+    </div>
+
+  </button>
+
+
+</section>
+
+
+<!-- CREATOR CARD -->
+
+<section class="creator-card">
+
+
+  <h2>
+
+    💰 Creator Program
+
+  </h2>
+
+
+  <p>
+
+    Bangun cerita, kumpulkan penonton, dan kembangkan karya kamu bersama Reitoon.
+
+  </p>
+
+
+  <a
+    href="studio.html"
+    class="creator-button"
+  >
+
+    Open Creator Studio
+
   </a>
 
-  <a class="nav-item" href="create.html">
-    <span class="nav-icon">✨</span>
-    Create
-  </a>
 
-  <a class="nav-item" href="studio.html">
-    <span class="nav-icon">🎬</span>
-    Studio
-  </a>
+</section>
 
-  <a class="nav-item active" href="profile.html">
-    <span class="nav-icon">👤</span>
-    Profile
-  </a>
+  </main>  <!-- BOTTOM NAV -->  <nav class="bottom-nav"><a
+  class="nav-item"
+  href="index.html"
+>
 
-</nav>
+  <span class="nav-icon">
 
-<div class="toast" id="toast"></div>
+    🏠
 
-<script>
+  </span>
 
-function loadProfile(){
+  Home
 
-  const savedStory =
-    localStorage.getItem("reitoon_story");
+</a>
 
-  if(savedStory){
 
-    document
-      .getElementById("storyCount")
-      .textContent = "1";
+<a
+  class="nav-item"
+  href="watch.html"
+>
 
-  }
+  <span class="nav-icon">
 
-}
+    ▶️
 
-function editProfile(){
+  </span>
 
-  showToast("✏️ Fitur Edit Profile segera hadir");
+  Watch
 
-}
+</a>
 
-function showToast(message){
 
-  const toast =
-    document.getElementById("toast");
+<a
+  class="nav-item"
+  href="create.html"
+>
 
-  toast.textContent = message;
+  <span class="nav-icon">
 
-  toast.classList.add("show");
+    ✨
 
-  setTimeout(function(){
+  </span>
 
-    toast.classList.remove("show");
+  Create
 
-  },2500);
+</a>
 
-}
 
-function goBack(){
+<a
+  class="nav-item"
+  href="studio.html"
+>
 
-  history.back();
+  <span class="nav-icon">
 
-}
+    🎥
 
-loadProfile();
+  </span>
 
-</script>
+  Studio
 
-</body>
-</html>
+</a>
+
+
+<a
+  class="nav-item active"
+  href="profile.html"
+>
+
+  <span class="nav-icon">
+
+    👤
+
+  </span>
+
+  Profile
+
+</a>
+
+  </nav>  <!-- TOAST -->  <div
+    class="toast"
+    id="toast"
+  ></div>  <!-- JAVASCRIPT -->  <script>
+
+
+    function loadProfileStats() {
+
+
+      const story =
+
+        localStorage.getItem(
+          "reitoon_story"
+        );
+
+
+      if (story) {
+
+        document
+          .getElementById("storyCount")
+          .textContent = "1";
+
+      }
+
+    }
+
+
+    function editProfile() {
+
+
+      showToast(
+
+        "✏️ Fitur Edit Profile segera hadir"
+
+      );
+
+    }
+
+
+    function showToast(message) {
+
+
+      const toast =
+
+        document
+        .getElementById("toast");
+
+
+      toast.textContent = message;
+
+
+      toast.classList.add("show");
+
+
+      setTimeout(() => {
+
+        toast.classList.remove("show");
+
+      }, 2500);
+
+    }
+
+
+    function goBack() {
+
+
+      if (document.referrer) {
+
+        history.back();
+
+      } else {
+
+        window.location.href =
+          "index.html";
+
+      }
+
+    }
+
+
+    loadProfileStats();
+
+  </script></body></html>
