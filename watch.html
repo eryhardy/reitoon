@@ -7,10 +7,10 @@
   <title>Watch • Reitoon</title>
 
   <style>
-    /* =========================================================
-       REITOON WATCH PAGE
+    /* =====================================================
+       REITOON WATCH
        MOBILE FIRST
-       ========================================================= */
+       ===================================================== */
 
     * {
       box-sizing: border-box;
@@ -23,571 +23,70 @@
     }
 
     body {
+      background: #08080d;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
       min-height: 100vh;
-      background:
-        radial-gradient(
-          circle at 50% -10%,
-          rgba(255, 44, 142, 0.10),
-          transparent 38%
-        ),
-        #08080d;
-
-      color: #fff;
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
-
-      -webkit-font-smoothing: antialiased;
-      padding-bottom: 110px;
-    }
-
-    button,
-    input {
-      font: inherit;
+      padding-bottom: 105px;
     }
 
     button {
-      border: 0;
+      font-family: inherit;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* =========================================================
-       APP CONTAINER
-       ========================================================= */
+    /* =====================================================
+       APP
+       ===================================================== */
 
     .app {
       width: 100%;
-      max-width: 720px;
+      max-width: 600px;
       margin: 0 auto;
-      padding: 28px 20px 40px;
+      overflow: hidden;
     }
 
-    /* =========================================================
-       HEADER
-       ========================================================= */
+    /* =====================================================
+       TOP HEADER
+       ===================================================== */
 
     .top-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      margin-bottom: 30px;
-    }
-
-    .logo {
-      font-size: 43px;
-      line-height: 1;
-      font-weight: 800;
-      letter-spacing: -2px;
-    }
-
-    .logo span {
-      color: #ff2f91;
-    }
-
-    .notification {
-      width: 58px;
-      height: 58px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      background: rgba(28, 27, 39, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-
-      box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.25);
-
-      font-size: 28px;
-    }
-
-    /* =========================================================
-       SEARCH
-       ========================================================= */
-
-    .search-box {
-      position: relative;
-      margin-bottom: 34px;
-    }
-
-    .search-icon {
       position: absolute;
-      left: 22px;
-      top: 50%;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
 
-      transform: translateY(-50%);
-
-      font-size: 25px;
-      pointer-events: none;
-    }
-
-    .search-input {
       width: 100%;
-      height: 62px;
+      max-width: 600px;
 
-      padding: 0 20px 0 60px;
+      height: 72px;
 
-      border-radius: 20px;
+      padding: 12px 16px;
 
-      background: #1a1923;
-      border: 1px solid rgba(255, 255, 255, 0.09);
-
-      color: #fff;
-
-      font-size: 17px;
-      outline: none;
-
-      transition: 0.2s ease;
-    }
-
-    .search-input::placeholder {
-      color: #92909d;
-    }
-
-    .search-input:focus {
-      border-color: rgba(255, 47, 145, 0.65);
-
-      box-shadow:
-        0 0 0 4px rgba(255, 47, 145, 0.08);
-    }
-
-    /* =========================================================
-       PAGE TITLE
-       ========================================================= */
-
-    .page-heading {
-      margin-bottom: 22px;
-    }
-
-    .page-heading .eyebrow {
-      margin-bottom: 8px;
-
-      color: #ff4a9d;
-
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .page-heading h1 {
-      font-size: 34px;
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .page-heading p {
-      margin-top: 9px;
-
-      color: #92909d;
-
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    /* =========================================================
-       CATEGORY FILTER
-       ========================================================= */
-
-    .categories {
-      display: flex;
-      gap: 10px;
-
-      overflow-x: auto;
-
-      padding: 2px 0 8px;
-
-      margin-bottom: 34px;
-
-      scrollbar-width: none;
-    }
-
-    .categories::-webkit-scrollbar {
-      display: none;
-    }
-
-    .category {
-      flex: 0 0 auto;
-
-      padding: 10px 17px;
-
-      border-radius: 999px;
-
-      background: #181720;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-
-      color: #aaa8b4;
-
-      font-size: 14px;
-      font-weight: 600;
-
-      cursor: pointer;
-
-      transition: 0.2s ease;
-    }
-
-    .category:hover {
-      color: #fff;
-      border-color: rgba(255, 47, 145, 0.35);
-    }
-
-    .category.active {
-      color: #fff;
-
-      background: #ff2f91;
-      border-color: #ff2f91;
-
-      box-shadow:
-        0 8px 24px rgba(255, 47, 145, 0.20);
-    }
-
-    /* =========================================================
-       FEATURED
-       ========================================================= */
-
-    .featured {
-      position: relative;
-
-      min-height: 285px;
-
-      padding: 28px;
-
-      margin-bottom: 38px;
-
-      overflow: hidden;
-
-      border-radius: 28px;
-
-      background:
-        radial-gradient(
-          circle at 90% 10%,
-          rgba(255, 42, 144, 0.65),
-          transparent 42%
-        ),
-        linear-gradient(
-          135deg,
-          #241542,
-          #35185a 55%,
-          #170e20
-        );
-
-      border: 1px solid rgba(255, 255, 255, 0.10);
-
-      box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.28);
-    }
-
-    .featured::before {
-      content: "";
-
-      position: absolute;
-
-      width: 210px;
-      height: 210px;
-
-      right: -70px;
-      top: -85px;
-
-      border-radius: 50%;
-
-      background: rgba(255, 61, 155, 0.22);
-
-      filter: blur(4px);
-    }
-
-    .featured-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .featured-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-
-      padding: 8px 13px;
-
-      margin-bottom: 18px;
-
-      border-radius: 999px;
-
-      color: #ff72b4;
-
-      background: rgba(255, 47, 145, 0.10);
-      border: 1px solid rgba(255, 47, 145, 0.25);
-
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-    }
-
-    .featured h2 {
-      max-width: 480px;
-
-      font-size: 32px;
-      line-height: 1.08;
-      letter-spacing: -1px;
-    }
-
-    .featured p {
-      max-width: 480px;
-
-      margin-top: 12px;
-
-      color: #d0cbd5;
-
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .featured-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      min-height: 46px;
-
-      padding: 0 22px;
-
-      margin-top: 22px;
-
-      border-radius: 14px;
-
-      background: #ff2f91;
-      color: #fff;
-
-      font-size: 14px;
-      font-weight: 800;
-
-      cursor: pointer;
-
-      box-shadow:
-        0 12px 30px rgba(255, 47, 145, 0.22);
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
-    .featured-button:active {
-      transform: scale(0.97);
-    }
-
-    /* =========================================================
-       SECTION
-       ========================================================= */
-
-    .section {
-      margin-bottom: 38px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      margin-bottom: 18px;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      font-size: 23px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-
-    .section-title .emoji {
-      font-size: 22px;
-    }
-
-    .see-all {
-      color: #ff4199;
-
-      font-size: 13px;
-      font-weight: 700;
-
-      cursor: pointer;
-    }
-
-    /* =========================================================
-       MOVIE GRID
-       ========================================================= */
-
-    .movie-grid {
       display: grid;
-
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-
-      gap: 15px;
-    }
-
-    .movie-card {
-      position: relative;
-
-      min-width: 0;
-
-      overflow: hidden;
-
-      border-radius: 18px;
-
-      background: #15141c;
-
-      border: 1px solid rgba(255, 255, 255, 0.07);
-
-      cursor: pointer;
-
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease;
-    }
-
-    .movie-card:active {
-      transform: scale(0.98);
-    }
-
-    .movie-poster {
-      position: relative;
-
-      width: 100%;
-      aspect-ratio: 0.72;
-
-      display: flex;
-      align-items: flex-end;
-
-      overflow: hidden;
-
-      padding: 13px;
-
-      background:
-        radial-gradient(
-          circle at 75% 20%,
-          rgba(255, 67, 158, 0.85),
-          transparent 34%
-        ),
-        linear-gradient(
-          145deg,
-          #2c1a4b,
-          #161526 70%
-        );
-    }
-
-    .movie-card:nth-child(2) .movie-poster {
-      background:
-        radial-gradient(
-          circle at 70% 25%,
-          rgba(255, 135, 56, 0.72),
-          transparent 34%
-        ),
-        linear-gradient(
-          145deg,
-          #38221c,
-          #18151d 72%
-        );
-    }
-
-    .movie-card:nth-child(3) .movie-poster {
-      background:
-        radial-gradient(
-          circle at 70% 20%,
-          rgba(65, 150, 255, 0.60),
-          transparent 36%
-        ),
-        linear-gradient(
-          145deg,
-          #172d45,
-          #11141d 72%
-        );
-    }
-
-    .movie-card:nth-child(4) .movie-poster {
-      background:
-        radial-gradient(
-          circle at 65% 25%,
-          rgba(126, 72, 255, 0.70),
-          transparent 36%
-        ),
-        linear-gradient(
-          145deg,
-          #251a43,
-          #12121a 72%
-        );
-    }
-
-    .movie-card:nth-child(5) .movie-poster {
-      background:
-        radial-gradient(
-          circle at 75% 20%,
-          rgba(255, 55, 92, 0.70),
-          transparent 35%
-        ),
-        linear-gradient(
-          145deg,
-          #421b2b,
-          #15121b 72%
-        );
-    }
-
-    .movie-card:nth-child(6) .movie-poster {
-      background:
-        radial-gradient(
-          circle at 65% 20%,
-          rgba(49, 201, 180, 0.62),
-          transparent 35%
-        ),
-        linear-gradient(
-          145deg,
-          #143b3a,
-          #11161b 72%
-        );
-    }
-
-    .poster-number {
-      position: absolute;
-
-      top: 12px;
-      left: 12px;
-
-      display: flex;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: center;
 
-      width: 28px;
-      height: 28px;
+      z-index: 20;
 
-      border-radius: 9px;
-
-      background: rgba(0, 0, 0, 0.42);
-
-      color: #fff;
-
-      font-size: 12px;
-      font-weight: 800;
-
-      backdrop-filter: blur(8px);
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0)
+      );
     }
 
-    .poster-play {
-      position: absolute;
+    .header-left {
+      display: flex;
+      justify-content: flex-start;
+    }
 
-      right: 12px;
-      bottom: 12px;
+    .header-right {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
 
+    .header-button {
       width: 38px;
       height: 38px;
 
@@ -595,920 +94,1654 @@
       align-items: center;
       justify-content: center;
 
+      border: none;
       border-radius: 50%;
 
-      background: rgba(255, 47, 145, 0.95);
+      background: rgba(0,0,0,0.35);
 
-      font-size: 15px;
-
-      box-shadow:
-        0 8px 22px rgba(0, 0, 0, 0.28);
-    }
-
-    .movie-info {
-      padding: 14px 13px 15px;
-    }
-
-    .movie-info h3 {
-      overflow: hidden;
-
-      white-space: nowrap;
-      text-overflow: ellipsis;
-
-      font-size: 16px;
-      line-height: 1.25;
-
-      font-weight: 800;
-    }
-
-    .movie-meta {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-
-      margin-top: 6px;
-
-      color: #97949f;
-
-      font-size: 12px;
-      line-height: 1.3;
-    }
-
-    .rating {
-      color: #ffd45a;
-      font-weight: 700;
-    }
-
-    /* =========================================================
-       LIST SECTION
-       ========================================================= */
-
-    .list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .list-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-
-      padding: 12px;
-
-      border-radius: 17px;
-
-      background: #14131b;
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      color: white;
+      font-size: 20px;
 
       cursor: pointer;
-
-      transition: 0.2s ease;
     }
 
-    .list-card:active {
-      transform: scale(0.99);
+    /* =====================================================
+       LOGO
+       ===================================================== */
+
+    .logo {
+      text-align: center;
+
+      font-size: 28px;
+      font-weight: 900;
+
+      letter-spacing: -1.5px;
+
+      text-shadow:
+        0 2px 15px rgba(0,0,0,0.45);
     }
 
-    .list-thumb {
-      flex: 0 0 72px;
+    .logo .rei {
+      color: #ffffff;
+    }
 
-      width: 72px;
-      height: 72px;
+    .logo .toon {
+      background: linear-gradient(
+        135deg,
+        #ff7ab8,
+        #ff2f91,
+        #b94cff
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .play-logo {
+      display: inline-flex;
+
+      width: 20px;
+      height: 20px;
+
+      margin-left: 2px;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: linear-gradient(
+        135deg,
+        #ff4aa0,
+        #a947ff
+      );
+
+      font-size: 9px;
+      color: white;
+
+      vertical-align: 3px;
+
+      box-shadow:
+        0 0 12px rgba(255,47,145,0.35);
+    }
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+      position: relative;
+
+      width: 100%;
+      height: 475px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 70% 20%,
+          rgba(255,67,161,0.42),
+          transparent 28%
+        ),
+        linear-gradient(
+          145deg,
+          #3c1758 0%,
+          #21152e 40%,
+          #09090f 100%
+        );
+    }
+
+    /*
+      Poster placeholder.
+      Nanti bagian ini bisa diganti dengan gambar poster asli.
+    */
+
+    .hero-poster {
+      position: absolute;
+
+      inset: 0;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      border-radius: 13px;
+      font-size: 90px;
+
+      opacity: 0.20;
+
+      background:
+        radial-gradient(
+          circle at 50% 30%,
+          rgba(255,82,170,0.75),
+          transparent 25%
+        ),
+        linear-gradient(
+          135deg,
+          #54236d,
+          #241832 55%,
+          #09090d
+        );
+    }
+
+    .hero-poster::before {
+      content: "";
+
+      position: absolute;
+
+      width: 210px;
+      height: 300px;
+
+      border-radius: 18px;
 
       background:
         linear-gradient(
           145deg,
-          #5b287c,
-          #24182e
+          rgba(255,112,187,0.7),
+          rgba(73,35,105,0.85)
         );
 
-      font-size: 25px;
+      transform: rotate(-7deg);
+
+      box-shadow:
+        0 20px 80px rgba(0,0,0,0.55);
     }
 
-    .list-card:nth-child(2) .list-thumb {
+    .hero-poster::after {
+      content: "♥";
+
+      position: absolute;
+
+      font-size: 95px;
+
+      color: rgba(255,255,255,0.75);
+
+      text-shadow:
+        0 10px 35px rgba(0,0,0,0.4);
+    }
+
+    /* =====================================================
+       HERO GRADIENT
+       ===================================================== */
+
+    .hero-gradient {
+      position: absolute;
+
+      inset: 0;
+
       background:
         linear-gradient(
-          145deg,
-          #7d3b3b,
-          #28151b
+          to bottom,
+          rgba(0,0,0,0.18) 0%,
+          rgba(0,0,0,0.05) 35%,
+          rgba(8,8,13,0.30) 58%,
+          #08080d 100%
         );
     }
 
-    .list-card:nth-child(3) .list-thumb {
-      background:
-        linear-gradient(
-          145deg,
-          #27527b,
-          #151d2c
-        );
+    /* =====================================================
+       HERO CONTENT
+       ===================================================== */
+
+    .hero-content {
+      position: absolute;
+
+      left: 20px;
+      right: 20px;
+      bottom: 30px;
+
+      z-index: 5;
     }
 
-    .list-info {
-      min-width: 0;
-      flex: 1;
-    }
+    .original-badge {
+      display: inline-flex;
 
-    .list-info h3 {
-      overflow: hidden;
+      align-items: center;
 
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      padding: 7px 11px;
 
-      font-size: 16px;
+      margin-bottom: 12px;
+
+      border-radius: 8px;
+
+      background: #ff2f91;
+
+      font-size: 10px;
       font-weight: 800;
+
+      letter-spacing: 0.8px;
     }
 
-    .list-info p {
-      margin-top: 5px;
+    .hero-title {
+      font-size: 35px;
+      line-height: 1.02;
 
-      color: #96939e;
+      font-weight: 900;
+
+      letter-spacing: -1px;
+
+      margin-bottom: 10px;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      color: #d5d2d9;
 
       font-size: 12px;
+
+      margin-bottom: 17px;
     }
 
-    .list-arrow {
-      color: #77737f;
-      font-size: 20px;
+    .hero-rating {
+      color: #ffd45b;
+      font-weight: bold;
     }
 
-    /* =========================================================
-       EMPTY / SEARCH RESULT
-       ========================================================= */
+    .play-button {
+      display: inline-flex;
 
-    .empty {
+      align-items: center;
+      justify-content: center;
+
+      gap: 8px;
+
+      min-width: 125px;
+      height: 46px;
+
+      padding: 0 19px;
+
+      border: none;
+      border-radius: 13px;
+
+      background: #ffffff;
+
+      color: #111111;
+
+      font-size: 14px;
+      font-weight: 800;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .play-button:active {
+      transform: scale(0.97);
+    }
+
+    /* =====================================================
+       SLIDER DOTS
+       ===================================================== */
+
+    .slider-dots {
+      position: absolute;
+
+      bottom: 12px;
+
+      left: 0;
+      right: 0;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      gap: 5px;
+
+      z-index: 10;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.45);
+    }
+
+    .dot.active {
+      width: 19px;
+
+      border-radius: 10px;
+
+      background: #ffffff;
+    }
+
+    /* =====================================================
+       CONTENT
+       ===================================================== */
+
+    .content {
+      padding: 0 16px;
+    }
+
+    /* =====================================================
+       CATEGORY BAR
+       ===================================================== */
+
+    .category-bar {
+      display: flex;
+
+      gap: 20px;
+
+      overflow-x: auto;
+
+      padding: 18px 2px 14px;
+
+      scrollbar-width: none;
+
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .category-bar::-webkit-scrollbar {
       display: none;
-
-      padding: 40px 20px;
-
-      text-align: center;
-
-      border-radius: 20px;
-
-      background: #14131b;
-      border: 1px solid rgba(255, 255, 255, 0.07);
     }
 
-    .empty-icon {
-      font-size: 35px;
-      margin-bottom: 12px;
+    .category {
+      flex: 0 0 auto;
+
+      background: transparent;
+
+      border: none;
+
+      color: #8d8a95;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      padding: 2px 0 7px;
+
+      cursor: pointer;
+
+      position: relative;
     }
 
-    .empty h3 {
+    .category.active {
+      color: #ffffff;
+    }
+
+    .category.active::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+
+      bottom: 0;
+
+      height: 2px;
+
+      border-radius: 4px;
+
+      background: #ff3b96;
+    }
+
+    /* =====================================================
+       SECTION
+       ===================================================== */
+
+    .section {
+      padding-top: 25px;
+    }
+
+    .section-header {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 20px;
+
+      font-weight: 800;
+
+      letter-spacing: -0.3px;
+    }
+
+    .view-all {
+      color: #ff4199;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    /* =====================================================
+       HORIZONTAL MOVIE LIST
+       ===================================================== */
+
+    .movie-row {
+      display: flex;
+
+      gap: 12px;
+
+      overflow-x: auto;
+
+      padding-bottom: 6px;
+
+      scrollbar-width: none;
+    }
+
+    .movie-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .movie-card {
+      flex: 0 0 130px;
+
+      cursor: pointer;
+    }
+
+    /* =====================================================
+       POSTER
+       ===================================================== */
+
+    .poster {
+      position: relative;
+
+      width: 130px;
+      height: 180px;
+
+      overflow: hidden;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #54266c,
+          #18121e
+        );
+
+      box-shadow:
+        0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .poster::before {
+      content: "";
+
+      position: absolute;
+
+      width: 110px;
+      height: 150px;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%) rotate(-5deg);
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,107,181,0.65),
+          rgba(71,34,95,0.9)
+        );
+
+      opacity: 0.7;
+    }
+
+    .movie-card:nth-child(2) .poster {
+      background:
+        linear-gradient(
+          145deg,
+          #583120,
+          #191113
+        );
+    }
+
+    .movie-card:nth-child(2) .poster::before {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,155,72,0.65),
+          rgba(83,42,30,0.85)
+        );
+    }
+
+    .movie-card:nth-child(3) .poster {
+      background:
+        linear-gradient(
+          145deg,
+          #203c58,
+          #11141b
+        );
+    }
+
+    .movie-card:nth-child(3) .poster::before {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(67,155,255,0.62),
+          rgba(24,44,70,0.9)
+        );
+    }
+
+    .movie-card:nth-child(4) .poster {
+      background:
+        linear-gradient(
+          145deg,
+          #472c63,
+          #15121b
+        );
+    }
+
+    .movie-card:nth-child(4) .poster::before {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(166,92,255,0.62),
+          rgba(59,37,79,0.9)
+        );
+    }
+
+    .movie-card:nth-child(5) .poster {
+      background:
+        linear-gradient(
+          145deg,
+          #582936,
+          #171016
+        );
+    }
+
+    .movie-card:nth-child(5) .poster::before {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,74,105,0.62),
+          rgba(77,28,43,0.9)
+        );
+    }
+
+    /* =====================================================
+       POSTER ICON
+       ===================================================== */
+
+    .poster-icon {
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+
+      z-index: 2;
+
+      font-size: 38px;
+
+      opacity: 0.78;
+
+      text-shadow:
+        0 5px 20px rgba(0,0,0,0.45);
+    }
+
+    /* =====================================================
+       BADGE
+       ===================================================== */
+
+    .poster-badge {
+      position: absolute;
+
+      left: 7px;
+      top: 7px;
+
+      z-index: 4;
+
+      padding: 4px 6px;
+
+      border-radius: 5px;
+
+      background: #ff2f91;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+      letter-spacing: 0.5px;
+    }
+
+    /* =====================================================
+       CARD INFO
+       ===================================================== */
+
+    .movie-name {
+      margin-top: 8px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+    }
+
+    .movie-info {
+      margin-top: 4px;
+
+      color: #85828d;
+
+      font-size: 10px;
+    }
+
+    .movie-info .rating {
+      color: #ffd35b;
+    }
+
+    /* =====================================================
+       TRENDING LARGE CARDS
+       ===================================================== */
+
+    .trending-row .movie-card {
+      flex-basis: 145px;
+    }
+
+    .trending-row .poster {
+      width: 145px;
+      height: 200px;
+    }
+
+    /* =====================================================
+       PROMO BAR
+       ===================================================== */
+
+    .promo {
+      position: fixed;
+
+      left: 50%;
+      bottom: 86px;
+
+      transform: translateX(-50%);
+
+      z-index: 30;
+
+      width: calc(100% - 28px);
+      max-width: 560px;
+
+      min-height: 56px;
+
+      padding: 9px 12px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #20142c,
+          #33152c
+        );
+
+      border: 1px solid rgba(255,255,255,0.09);
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,0.45);
+    }
+
+    .promo-icon {
+      width: 36px;
+      height: 36px;
+
+      flex: 0 0 36px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 10px;
+
+      background: #ff2f91;
+
       font-size: 18px;
     }
 
-    .empty p {
-      margin-top: 7px;
+    .promo-text {
+      flex: 1;
 
-      color: #8e8b96;
-
-      font-size: 13px;
+      min-width: 0;
     }
 
-    /* =========================================================
-       BOTTOM NAVIGATION
-       ========================================================= */
+    .promo-text strong {
+      display: block;
+
+      font-size: 11px;
+
+      margin-bottom: 2px;
+    }
+
+    .promo-text span {
+      display: block;
+
+      color: #aaa6b0;
+
+      font-size: 9px;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+    }
+
+    .promo-button {
+      flex: 0 0 auto;
+
+      padding: 8px 11px;
+
+      border: none;
+
+      border-radius: 8px;
+
+      background: #ff2f91;
+
+      color: white;
+
+      font-size: 9px;
+
+      font-weight: 800;
+    }
+
+    .promo-close {
+      width: 25px;
+      height: 25px;
+
+      border: none;
+
+      background: transparent;
+
+      color: #999;
+
+      font-size: 17px;
+    }
+
+    /* =====================================================
+       BOTTOM NAV
+       ===================================================== */
 
     .bottom-nav {
       position: fixed;
 
       left: 50%;
-      bottom: 15px;
+      bottom: 0;
 
       transform: translateX(-50%);
 
-      z-index: 100;
+      z-index: 50;
 
-      width: calc(100% - 28px);
-      max-width: 690px;
+      width: 100%;
+      max-width: 600px;
 
-      height: 76px;
+      height: 70px;
 
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+
+      grid-template-columns:
+        repeat(5, 1fr);
+
       align-items: center;
 
-      padding: 7px;
+      background: rgba(17,16,23,0.97);
 
-      border-radius: 26px;
+      border-top: 1px solid rgba(255,255,255,0.07);
 
-      background: rgba(22, 21, 29, 0.94);
-
-      border: 1px solid rgba(255, 255, 255, 0.10);
-
-      box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.45);
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
     }
 
     .nav-item {
-      height: 62px;
+      height: 70px;
 
       display: flex;
+
       flex-direction: column;
+
       align-items: center;
+
       justify-content: center;
 
       gap: 3px;
 
       color: #77747f;
 
-      font-size: 11px;
+      font-size: 10px;
+
       font-weight: 600;
 
-      border-radius: 20px;
-
       cursor: pointer;
-
-      transition: 0.2s ease;
     }
 
     .nav-icon {
-      font-size: 20px;
+      font-size: 21px;
+
       line-height: 1;
     }
 
     .nav-item.active {
-      color: #ff4199;
-
-      background:
-        rgba(255, 47, 145, 0.10);
+      color: #ff3d98;
     }
 
-    .nav-item.create {
+    .nav-create {
       position: relative;
-
-      color: #fff;
     }
 
-    .nav-item.create .nav-icon {
-      width: 54px;
-      height: 54px;
+    .nav-create .nav-icon {
+      width: 46px;
+      height: 46px;
 
-      margin-top: -24px;
+      margin-top: -20px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
-      border-radius: 18px;
+      border-radius: 15px;
 
-      background: #ff2f91;
+      background:
+        linear-gradient(
+          135deg,
+          #ff4ca0,
+          #c345ff
+        );
+
+      color: white;
+
+      font-size: 27px;
 
       box-shadow:
-        0 12px 28px rgba(255, 47, 145, 0.35);
-
-      font-size: 29px;
+        0 8px 24px rgba(255,47,145,0.3);
     }
 
-    .nav-item.create span:last-child {
-      margin-top: 1px;
-    }
-
-    /* =========================================================
-       TABLET / DESKTOP
-       ========================================================= */
-
-    @media (min-width: 700px) {
-
-      body {
-        padding-bottom: 120px;
-      }
-
-      .app {
-        padding-top: 40px;
-      }
-
-      .top-header {
-        margin-bottom: 34px;
-      }
-
-      .logo {
-        font-size: 48px;
-      }
-
-      .search-input {
-        height: 68px;
-        font-size: 18px;
-      }
-
-      .featured {
-        min-height: 320px;
-        padding: 38px;
-      }
-
-      .featured h2 {
-        font-size: 42px;
-      }
-
-      .movie-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    /* =========================================================
-       VERY SMALL MOBILE
-       ========================================================= */
+    /* =====================================================
+       SMALL PHONES
+       ===================================================== */
 
     @media (max-width: 380px) {
 
-      .app {
-        padding-left: 15px;
-        padding-right: 15px;
+      .hero {
+        height: 440px;
       }
 
-      .logo {
-        font-size: 37px;
+      .hero-title {
+        font-size: 31px;
       }
 
-      .notification {
-        width: 52px;
-        height: 52px;
-        font-size: 25px;
+      .movie-card {
+        flex-basis: 118px;
       }
 
-      .featured {
-        padding: 23px;
-        border-radius: 24px;
+      .poster {
+        width: 118px;
+        height: 165px;
       }
 
-      .featured h2 {
-        font-size: 28px;
+      .trending-row .movie-card {
+        flex-basis: 130px;
       }
 
-      .featured p {
-        font-size: 14px;
+      .trending-row .poster {
+        width: 130px;
+        height: 180px;
       }
 
-      .movie-grid {
-        gap: 10px;
-      }
-
-      .movie-info {
-        padding: 12px 10px;
-      }
-
-      .movie-info h3 {
-        font-size: 14px;
-      }
-
-      .bottom-nav {
-        width: calc(100% - 18px);
-      }
     }
+
+    /* =====================================================
+       LARGER MOBILE / TABLET
+       ===================================================== */
+
+    @media (min-width: 601px) {
+
+      body {
+        background: #050509;
+      }
+
+      .hero {
+        height: 540px;
+      }
+
+      .content {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+    }
+
   </style>
 </head>
 
 <body>
 
-  <!-- =======================================================
+
+  <!-- =====================================================
        APP
-       ======================================================== -->
+       ===================================================== -->
 
   <main class="app">
 
-    <!-- HEADER -->
-    <header class="top-header">
 
-      <div class="logo">
-        Rei<span>toon</span>
-      </div>
+    <!-- ===================================================
+         HERO
+         =================================================== -->
 
-      <button
-        class="notification"
-        type="button"
-        aria-label="Notifikasi"
-        onclick="showNotification()"
-      >
-        🔔
-      </button>
-
-    </header>
+    <section class="hero">
 
 
-    <!-- SEARCH -->
-    <div class="search-box">
+      <!-- Poster placeholder -->
 
-      <span class="search-icon">🔍</span>
-
-      <input
-        id="searchInput"
-        class="search-input"
-        type="search"
-        placeholder="Cari film, drama, atau creator..."
-        autocomplete="off"
-      >
-
-    </div>
+      <div class="hero-poster"></div>
 
 
-    <!-- PAGE TITLE -->
-    <section class="page-heading">
+      <!-- Dark gradient -->
 
-      <div class="eyebrow">
-        REITOON WATCH
-      </div>
-
-      <h1>
-        Mau nonton apa?
-      </h1>
-
-      <p>
-        Temukan film dan drama favorit kamu.
-      </p>
-
-    </section>
+      <div class="hero-gradient"></div>
 
 
-    <!-- CATEGORY -->
-    <div class="categories">
+      <!-- Header -->
 
-      <button
-        class="category active"
-        type="button"
-        data-category="all"
-      >
-        Semua
-      </button>
+      <header class="top-header">
 
-      <button
-        class="category"
-        type="button"
-        data-category="romance"
-      >
-        Romance
-      </button>
+        <div class="header-left">
 
-      <button
-        class="category"
-        type="button"
-        data-category="drama"
-      >
-        Drama
-      </button>
+          <button
+            class="header-button"
+            onclick="openMenu()"
+            aria-label="Menu"
+          >
+            ☰
+          </button>
 
-      <button
-        class="category"
-        type="button"
-        data-category="action"
-      >
-        Action
-      </button>
-
-      <button
-        class="category"
-        type="button"
-        data-category="fantasy"
-      >
-        Fantasy
-      </button>
-
-      <button
-        class="category"
-        type="button"
-        data-category="mystery"
-      >
-        Mystery
-      </button>
-
-    </div>
-
-
-    <!-- FEATURED -->
-    <section class="featured">
-
-      <div class="featured-content">
-
-        <div class="featured-label">
-          🎬 REITOON ORIGINAL
         </div>
 
-        <h2>
-          Love Beyond Time
-        </h2>
 
-        <p>
-          Sebuah kisah cinta yang melampaui waktu,
-          pilihan, dan kesempatan kedua.
-        </p>
+        <!-- REITOON LOGO -->
+
+        <div class="logo">
+
+          <span class="rei">
+            Rei
+          </span>
+
+          <span class="toon">
+            toon
+          </span>
+
+          <span class="play-logo">
+            ▶
+          </span>
+
+        </div>
+
+
+        <div class="header-right">
+
+          <button
+            class="header-button"
+            onclick="openSearch()"
+            aria-label="Search"
+          >
+            🔍
+          </button>
+
+          <button
+            class="header-button"
+            onclick="goProfile()"
+            aria-label="Profile"
+          >
+            👤
+          </button>
+
+        </div>
+
+      </header>
+
+
+      <!-- Hero Content -->
+
+      <div class="hero-content">
+
+        <div class="original-badge">
+          REITOON ORIGINAL
+        </div>
+
+
+        <h1 class="hero-title">
+          Love Beyond Time
+        </h1>
+
+
+        <div class="hero-meta">
+
+          <span class="hero-rating">
+            ★ 9.2
+          </span>
+
+          <span>
+            •
+          </span>
+
+          <span>
+            Romance
+          </span>
+
+          <span>
+            •
+          </span>
+
+          <span>
+            Drama
+          </span>
+
+          <span>
+            •
+          </span>
+
+          <span>
+            2026
+          </span>
+
+        </div>
+
 
         <button
-          class="featured-button"
-          type="button"
-          onclick="openMovie('Love Beyond Time')"
+          class="play-button"
+          onclick="playMovie('Love Beyond Time')"
         >
-          ▶ Mulai Menonton
+
+          <span>
+            ▶
+          </span>
+
+          Play
+
         </button>
 
       </div>
 
-    </section>
 
+      <!-- Slider Dots -->
 
-    <!-- TRENDING -->
-    <section class="section">
+      <div class="slider-dots">
 
-      <div class="section-header">
-
-        <h2 class="section-title">
-          <span class="emoji">🔥</span>
-          Trending
-        </h2>
-
-        <div
-          class="see-all"
-          onclick="showAll('trending')"
-        >
-          Lihat semua
-        </div>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
 
       </div>
 
+    </section>
 
-      <div
-        id="movieGrid"
-        class="movie-grid"
-      >
 
-        <!-- MOVIE 1 -->
-        <article
-          class="movie-card"
-          data-title="Love Beyond Time"
-          data-category="romance drama"
-          onclick="openMovie('Love Beyond Time')"
+    <!-- ===================================================
+         CONTENT
+         =================================================== -->
+
+    <div class="content">
+
+
+      <!-- =================================================
+           CATEGORY
+           ================================================= -->
+
+      <nav class="category-bar">
+
+        <button
+          class="category active"
+          onclick="selectCategory(this)"
         >
+          Home
+        </button>
 
-          <div class="movie-poster">
-
-            <div class="poster-number">
-              01
-            </div>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <div class="movie-info">
-
-            <h3>
-              Love Beyond Time
-            </h3>
-
-            <div class="movie-meta">
-              <span>Romance</span>
-              <span>•</span>
-              <span>Drama</span>
-              <span>•</span>
-              <span class="rating">★ 9.2</span>
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- MOVIE 2 -->
-        <article
-          class="movie-card"
-          data-title="The Last Kingdom"
-          data-category="action fantasy"
-          onclick="openMovie('The Last Kingdom')"
+        <button
+          class="category"
+          onclick="selectCategory(this)"
         >
+          Categories
+        </button>
 
-          <div class="movie-poster">
-
-            <div class="poster-number">
-              02
-            </div>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <div class="movie-info">
-
-            <h3>
-              The Last Kingdom
-            </h3>
-
-            <div class="movie-meta">
-              <span>Action</span>
-              <span>•</span>
-              <span>Fantasy</span>
-              <span>•</span>
-              <span class="rating">★ 9.0</span>
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- MOVIE 3 -->
-        <article
-          class="movie-card"
-          data-title="Hidden Truth"
-          data-category="mystery drama"
-          onclick="openMovie('Hidden Truth')"
+        <button
+          class="category"
+          onclick="selectCategory(this)"
         >
+          Random
+        </button>
 
-          <div class="movie-poster">
-
-            <div class="poster-number">
-              03
-            </div>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <div class="movie-info">
-
-            <h3>
-              Hidden Truth
-            </h3>
-
-            <div class="movie-meta">
-              <span>Mystery</span>
-              <span>•</span>
-              <span>Drama</span>
-              <span>•</span>
-              <span class="rating">★ 8.8</span>
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- MOVIE 4 -->
-        <article
-          class="movie-card"
-          data-title="First Meeting"
-          data-category="romance"
-          onclick="openMovie('First Meeting')"
+        <button
+          class="category"
+          onclick="selectCategory(this)"
         >
+          Romance
+        </button>
 
-          <div class="movie-poster">
+        <button
+          class="category"
+          onclick="selectCategory(this)"
+        >
+          Drama
+        </button>
 
-            <div class="poster-number">
-              04
+        <button
+          class="category"
+          onclick="selectCategory(this)"
+        >
+          Action
+        </button>
+
+      </nav>
+
+
+      <!-- =================================================
+           NEW RELEASE
+           ================================================= -->
+
+      <section class="section">
+
+        <div class="section-header">
+
+          <h2 class="section-title">
+            New Release
+          </h2>
+
+          <span
+            class="view-all"
+            onclick="viewAll('new')"
+          >
+            View all ›
+          </span>
+
+        </div>
+
+
+        <div class="movie-row">
+
+
+          <!-- CARD 1 -->
+
+          <article
+            class="movie-card"
+            onclick="openMovie('First Meeting')"
+          >
+
+            <div class="poster">
+
+              <span class="poster-badge">
+                NEW
+              </span>
+
+              <span class="poster-icon">
+                💕
+              </span>
+
             </div>
 
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <div class="movie-info">
-
-            <h3>
+            <h3 class="movie-name">
               First Meeting
             </h3>
 
-            <div class="movie-meta">
-              <span>Romance</span>
-              <span>•</span>
-              <span class="rating">★ 8.7</span>
+            <p class="movie-info">
+              Romance •
+              <span class="rating">
+                ★ 8.8
+              </span>
+            </p>
+
+          </article>
+
+
+          <!-- CARD 2 -->
+
+          <article
+            class="movie-card"
+            onclick="openMovie('One Last Chance')"
+          >
+
+            <div class="poster">
+
+              <span class="poster-badge">
+                NEW
+              </span>
+
+              <span class="poster-icon">
+                🎭
+              </span>
+
             </div>
 
-          </div>
-
-        </article>
-
-
-        <!-- MOVIE 5 -->
-        <article
-          class="movie-card"
-          data-title="One Last Chance"
-          data-category="drama"
-          onclick="openMovie('One Last Chance')"
-        >
-
-          <div class="movie-poster">
-
-            <div class="poster-number">
-              05
-            </div>
-
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <div class="movie-info">
-
-            <h3>
+            <h3 class="movie-name">
               One Last Chance
             </h3>
 
-            <div class="movie-meta">
-              <span>Drama</span>
-              <span>•</span>
-              <span class="rating">★ 8.6</span>
+            <p class="movie-info">
+              Drama •
+              <span class="rating">
+                ★ 8.6
+              </span>
+            </p>
+
+          </article>
+
+
+          <!-- CARD 3 -->
+
+          <article
+            class="movie-card"
+            onclick="openMovie('Hidden Truth')"
+          >
+
+            <div class="poster">
+
+              <span class="poster-badge">
+                NEW
+              </span>
+
+              <span class="poster-icon">
+                🔎
+              </span>
+
             </div>
 
-          </div>
+            <h3 class="movie-name">
+              Hidden Truth
+            </h3>
 
-        </article>
+            <p class="movie-info">
+              Mystery •
+              <span class="rating">
+                ★ 8.9
+              </span>
+            </p>
+
+          </article>
 
 
-        <!-- MOVIE 6 -->
-        <article
-          class="movie-card"
-          data-title="Beyond The Sea"
-          data-category="fantasy"
-          onclick="openMovie('Beyond The Sea')"
-        >
+          <!-- CARD 4 -->
 
-          <div class="movie-poster">
+          <article
+            class="movie-card"
+            onclick="openMovie('Beyond The Sea')"
+          >
 
-            <div class="poster-number">
-              06
+            <div class="poster">
+
+              <span class="poster-icon">
+                🌊
+              </span>
+
             </div>
 
-            <div class="poster-play">
-              ▶
-            </div>
-
-          </div>
-
-          <div class="movie-info">
-
-            <h3>
+            <h3 class="movie-name">
               Beyond The Sea
             </h3>
 
-            <div class="movie-meta">
-              <span>Fantasy</span>
-              <span>•</span>
-              <span class="rating">★ 8.5</span>
+            <p class="movie-info">
+              Fantasy •
+              <span class="rating">
+                ★ 8.5
+              </span>
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           TRENDING
+           ================================================= -->
+
+      <section class="section">
+
+        <div class="section-header">
+
+          <h2 class="section-title">
+            Trending
+          </h2>
+
+          <span
+            class="view-all"
+            onclick="viewAll('trending')"
+          >
+            View all ›
+          </span>
+
+        </div>
+
+
+        <div class="movie-row trending-row">
+
+
+          <!-- TRENDING 1 -->
+
+          <article
+            class="movie-card"
+            onclick="openMovie('Love Beyond Time')"
+          >
+
+            <div class="poster">
+
+              <span class="poster-badge">
+                #1
+              </span>
+
+              <span class="poster-icon">
+                ❤️
+              </span>
+
             </div>
 
-          </div>
-
-        </article>
-
-      </div>
-
-
-      <!-- EMPTY RESULT -->
-      <div
-        id="emptyResult"
-        class="empty"
-      >
-
-        <div class="empty-icon">
-          🔎
-        </div>
-
-        <h3>
-          Film tidak ditemukan
-        </h3>
-
-        <p>
-          Coba cari judul atau kategori lain.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- SHORT DRAMA -->
-    <section class="section">
-
-      <div class="section-header">
-
-        <h2 class="section-title">
-          <span class="emoji">🎬</span>
-          Short Drama
-        </h2>
-
-        <div
-          class="see-all"
-          onclick="showAll('short')"
-        >
-          Lihat semua
-        </div>
-
-      </div>
-
-
-      <div class="list">
-
-        <article
-          class="list-card"
-          onclick="openMovie('First Meeting')"
-        >
-
-          <div class="list-thumb">
-            💕
-          </div>
-
-          <div class="list-info">
-
-            <h3>
-              First Meeting
+            <h3 class="movie-name">
+              Love Beyond Time
             </h3>
 
-            <p>
-              Romance • 12 min
+            <p class="movie-info">
+              Romance •
+              <span class="rating">
+                ★ 9.2
+              </span>
             </p>
 
-          </div>
-
-          <div class="list-arrow">
-            ›
-          </div>
-
-        </article>
+          </article>
 
 
-        <article
-          class="list-card"
-          onclick="openMovie('One Last Chance')"
-        >
+          <!-- TRENDING 2 -->
 
-          <div class="list-thumb">
-            🎭
-          </div>
+          <article
+            class="movie-card"
+            onclick="openMovie('The Last Kingdom')"
+          >
 
-          <div class="list-info">
+            <div class="poster">
 
-            <h3>
-              One Last Chance
+              <span class="poster-badge">
+                #2
+              </span>
+
+              <span class="poster-icon">
+                ⚔️
+              </span>
+
+            </div>
+
+            <h3 class="movie-name">
+              The Last Kingdom
             </h3>
 
-            <p>
-              Drama • 15 min
+            <p class="movie-info">
+              Fantasy •
+              <span class="rating">
+                ★ 9.0
+              </span>
             </p>
 
-          </div>
-
-          <div class="list-arrow">
-            ›
-          </div>
-
-        </article>
+          </article>
 
 
-        <article
-          class="list-card"
-          onclick="openMovie('Hidden Truth')"
-        >
+          <!-- TRENDING 3 -->
 
-          <div class="list-thumb">
-            🕵️
-          </div>
+          <article
+            class="movie-card"
+            onclick="openMovie('Hidden Truth')"
+          >
 
-          <div class="list-info">
+            <div class="poster">
 
-            <h3>
+              <span class="poster-badge">
+                #3
+              </span>
+
+              <span class="poster-icon">
+                🕵️
+              </span>
+
+            </div>
+
+            <h3 class="movie-name">
               Hidden Truth
             </h3>
 
-            <p>
-              Mystery • 18 min
+            <p class="movie-info">
+              Mystery •
+              <span class="rating">
+                ★ 8.9
+              </span>
             </p>
 
-          </div>
+          </article>
 
-          <div class="list-arrow">
-            ›
-          </div>
 
-        </article>
+          <!-- TRENDING 4 -->
 
-      </div>
+          <article
+            class="movie-card"
+            onclick="openMovie('First Meeting')"
+          >
 
-    </section>
+            <div class="poster">
+
+              <span class="poster-badge">
+                #4
+              </span>
+
+              <span class="poster-icon">
+                💗
+              </span>
+
+            </div>
+
+            <h3 class="movie-name">
+              First Meeting
+            </h3>
+
+            <p class="movie-info">
+              Romance •
+              <span class="rating">
+                ★ 8.8
+              </span>
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           RECOMMENDED
+           ================================================= -->
+
+      <section class="section">
+
+        <div class="section-header">
+
+          <h2 class="section-title">
+            Recommended for You
+          </h2>
+
+          <span
+            class="view-all"
+            onclick="viewAll('recommended')"
+          >
+            View all ›
+          </span>
+
+        </div>
+
+
+        <div class="movie-row">
+
+
+          <article
+            class="movie-card"
+            onclick="openMovie('One Last Chance')"
+          >
+
+            <div class="poster">
+
+              <span class="poster-icon">
+                🌹
+              </span>
+
+            </div>
+
+            <h3 class="movie-name">
+              One Last Chance
+            </h3>
+
+            <p class="movie-info">
+              Drama •
+              <span class="rating">
+                ★ 8.6
+              </span>
+            </p>
+
+          </article>
+
+
+          <article
+            class="movie-card"
+            onclick="openMovie('Beyond The Sea')"
+          >
+
+            <div class="poster">
+
+              <span class="poster-icon">
+                🌊
+              </span>
+
+            </div>
+
+            <h3 class="movie-name">
+              Beyond The Sea
+            </h3>
+
+            <p class="movie-info">
+              Fantasy •
+              <span class="rating">
+                ★ 8.5
+              </span>
+            </p>
+
+          </article>
+
+
+          <article
+            class="movie-card"
+            onclick="openMovie('The Last Kingdom')"
+          >
+
+            <div class="poster">
+
+              <span class="poster-icon">
+                🏰
+              </span>
+
+            </div>
+
+            <h3 class="movie-name">
+              The Last Kingdom
+            </h3>
+
+            <p class="movie-info">
+              Action •
+              <span class="rating">
+                ★ 9.0
+              </span>
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </section>
+
+
+    </div>
 
   </main>
 
 
-  <!-- =======================================================
+  <!-- =====================================================
+       PROMO
+       ===================================================== -->
+
+  <div
+    id="promo"
+    class="promo"
+  >
+
+    <div class="promo-icon">
+      ▶
+    </div>
+
+    <div class="promo-text">
+
+      <strong>
+        Tonton lebih banyak di Reitoon
+      </strong>
+
+      <span>
+        Temukan cerita baru setiap hari
+      </span>
+
+    </div>
+
+    <button
+      class="promo-button"
+      onclick="createFilm()"
+    >
+      CREATE
+    </button>
+
+    <button
+      class="promo-close"
+      onclick="closePromo()"
+      aria-label="Tutup"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <!-- =====================================================
        BOTTOM NAVIGATION
-       ======================================================== -->
+       ===================================================== -->
 
   <nav class="bottom-nav">
+
+
+    <!-- HOME -->
 
     <div
       class="nav-item"
@@ -1526,6 +1759,8 @@
     </div>
 
 
+    <!-- WATCH -->
+
     <div
       class="nav-item active"
       onclick="goWatch()"
@@ -1540,3 +1775,203 @@
       </span>
 
     </div>
+
+
+    <!-- CREATE -->
+
+    <div
+      class="nav-item nav-create"
+      onclick="createFilm()"
+    >
+
+      <span class="nav-icon">
+        +
+      </span>
+
+      <span>
+        Create
+      </span>
+
+    </div>
+
+
+    <!-- STUDIO -->
+
+    <div
+      class="nav-item"
+      onclick="goStudio()"
+    >
+
+      <span class="nav-icon">
+        🎞️
+      </span>
+
+      <span>
+        Studio
+      </span>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <div
+      class="nav-item"
+      onclick="goProfile()"
+    >
+
+      <span class="nav-icon">
+        👤
+      </span>
+
+      <span>
+        Profile
+      </span>
+
+    </div>
+
+
+  </nav>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+    /* =====================================================
+       NAVIGATION
+       ===================================================== */
+
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+
+    function goWatch() {
+      window.location.href = "watch.html";
+    }
+
+
+    function createFilm() {
+      window.location.href = "create.html";
+    }
+
+
+    function goStudio() {
+      window.location.href = "studio.html";
+    }
+
+
+    function goProfile() {
+      window.location.href = "profile.html";
+    }
+
+
+    /* =====================================================
+       MOVIE
+       ===================================================== */
+
+    function openMovie(title) {
+
+      alert(
+        "Membuka film: " + title
+      );
+
+    }
+
+
+    function playMovie(title) {
+
+      alert(
+        "Memulai film: " + title
+      );
+
+    }
+
+
+    /* =====================================================
+       MENU
+       ===================================================== */
+
+    function openMenu() {
+
+      alert(
+        "Menu Reitoon akan segera tersedia."
+      );
+
+    }
+
+
+    /* =====================================================
+       SEARCH
+       ===================================================== */
+
+    function openSearch() {
+
+      alert(
+        "Fitur pencarian Reitoon akan segera tersedia."
+      );
+
+    }
+
+
+    /* =====================================================
+       CATEGORY
+       ===================================================== */
+
+    function selectCategory(button) {
+
+      const categories =
+        document.querySelectorAll(
+          ".category"
+        );
+
+
+      categories.forEach(function(item) {
+
+        item.classList.remove(
+          "active"
+        );
+
+      });
+
+
+      button.classList.add(
+        "active"
+      );
+
+    }
+
+
+    /* =====================================================
+       VIEW ALL
+       ===================================================== */
+
+    function viewAll(type) {
+
+      alert(
+        "Daftar " + type +
+        " Reitoon akan segera tersedia."
+      );
+
+    }
+
+
+    /* =====================================================
+       PROMO
+       ===================================================== */
+
+    function closePromo() {
+
+      document.getElementById(
+        "promo"
+      ).style.display = "none";
+
+    }
+
+  </script>
+
+</body>
+</html>
