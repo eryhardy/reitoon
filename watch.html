@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#08080d"
+  >
+
+  <title>Watch - Reitoon</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <div class="app-container">
+
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+      <a
+        href="index.html"
+        style="text-decoration:none;"
+      >
+
+        <img
+          src="reitoon-logo.png"
+          alt="Reitoon"
+          class="reitoon-logo"
+        >
+
+      </a>
+
+
+      <div class="header-actions">
+
+        <button
+          class="icon-button"
+          onclick="history.back()"
+        >
+          ←
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- WATCH HEADER -->
+
+    <section
+      style="
+      padding: 20px;
+      "
+    >
+
+      <span class="section-label">
+        REITOON LIBRARY
+      </span>
+
+
+      <h1
+        style="
+        font-size: 34px;
+        margin-top: 8px;
+        "
+      >
+
+        Watch
+
+      </h1>
+
+
+      <p
+        style="
+        color: #9999a8;
+        font-size: 14px;
+        margin-top: 8px;
+        "
+      >
+
+        Temukan cerita baru dan tonton film
+        favoritmu di Reitoon.
+
+      </p>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <div
+      class="search-bar"
+      style="
+      margin-top: 0;
+      "
+    >
+
+      <span>
+        🔍
+      </span>
+
+
+      <input
+        type="text"
+        id="watchSearch"
+        placeholder="Cari film atau drama..."
+      >
+
+    </div>
+
+
+    <!-- CATEGORY -->
+
+    <div
+      class="quick-menu"
+      style="
+      padding-top: 10px;
+      "
+    >
+
+      <button
+        class="category-button active-category"
+        onclick="filterMovies('all')"
+      >
+
+        All
+
+      </button>
+
+
+      <button
+        class="category-button"
+        onclick="filterMovies('drama')"
+      >
+
+        Drama
+
+      </button>
+
+
+      <button
+        class="category-button"
+        onclick="filterMovies('romance')"
+      >
+
+        Romance
+
+      </button>
+
+
+      <button
+        class="category-button"
+        onclick="filterMovies('action')"
+      >
+
+        Action
+
+      </button>
+
+
+      <button
+        class="category-button"
+        onclick="filterMovies('comedy')"
+      >
+
+        Comedy
+
+      </button>
+
+    </div>
+
+
+    <!-- TRENDING -->
+
+    <section
+      class="content-section"
+    >
+
+      <div
+        class="section-header"
+      >
+
+        <div>
+
+          <span class="section-label">
+            WATCH NOW
+          </span>
+
+
+          <h2>
+            🔥 Trending
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="movie-grid"
+        id="movieGrid"
+      >
+
+
+        <article
+          class="movie-card"
+          data-category="romance"
+          data-title="Love Beyond Time"
+        >
+
+          <div
+            class="movie-poster poster-one"
+          >
+
+            <span class="movie-badge">
+              TRENDING
+            </span>
+
+
+            <button
+              class="play-button"
+              onclick="openMovie('Love Beyond Time')"
+            >
+
+              ▶
+
+            </button>
+
+          </div>
+
+
+          <div
+            class="movie-info"
+          >
+
+            <h3>
+              Love Beyond Time
+            </h3>
+
+
+            <p>
+              Romance · Drama
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="movie-card"
+          data-category="action"
+          data-title="The Last Kingdom"
+        >
+
+          <div
+            class="movie-poster poster-two"
+          >
+
+            <span class="movie-badge">
+              #2
+            </span>
+
+
+            <button
+              class="play-button"
+              onclick="openMovie('The Last Kingdom')"
+            >
+
+              ▶
+
+            </button>
+
+          </div>
+
+
+          <div
+            class="movie-info"
+          >
+
+            <h3>
+              The Last Kingdom
+            </h3>
+
+
+            <p>
+              Action · Fantasy
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="movie-card"
+          data-category="drama"
+          data-title="Hidden Truth"
+        >
+
+          <div
+            class="movie-poster poster-three"
+          >
+
+            <span class="movie-badge">
+              #3
+            </span>
+
+
+            <button
+              class="play-button"
+              onclick="openMovie('Hidden Truth')"
+            >
+
+              ▶
+
+            </button>
+
+          </div>
+
+
+          <div
+            class="movie-info"
+          >
+
+            <h3>
+              Hidden Truth
+            </h3>
+
+
+            <p>
+              Mystery · Drama
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="movie-card"
+          data-category="romance"
+          data-title="First Meeting"
+        >
+
+          <div
+            class="movie-poster poster-four"
+          >
+
+            <span class="movie-badge new-badge">
+              NEW
+            </span>
+
+
+            <button
+              class="play-button"
+              onclick="openMovie('First Meeting')"
+            >
+
+              ▶
+
+            </button>
+
+          </div>
+
+
+          <div
+          class="movie-info"
+          >
+
+            <h3>
+              First Meeting
+            </h3>
+
+
+            <p>
+              Romance
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="movie-card"
+          data-category="drama"
+          data-title="One Last Chance"
+        >
+
+          <div
+            class="movie-poster poster-five"
+          >
+
+            <span class="movie-badge new-badge">
+              NEW
+            </span>
+
+
+            <button
+              class="play-button"
+              onclick="openMovie('One Last Chance')"
+            >
+
+              ▶
+
+            </button>
+
+          </div>
+
+
+          <div
+            class="movie-info"
+          >
+
+            <h3>
+              One Last Chance
+            </h3>
+
+
+            <p>
+              Drama
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="movie-card"
+          data-category="action"
+          data-title="Midnight Story"
+        >
+
+          <div
+            class="movie-poster poster-six"
+          >
+
+            <span class="movie-badge new-badge">
+              NEW
+            </span>
+
+
+            <button
+              class="play-button"
+              onclick="openMovie('Midnight Story')"
+            >
+
+              ▶
+
+            </button>
+
+          </div>
+
+
+          <div
+            class="movie-info"
+          >
+
+            <h3>
+              Midnight Story
+            </h3>
+
+
+            <p>
+              Thriller · Action
+            </p>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- BOTTOM NAVIGATION -->
+
+    <nav
+      class="bottom-navigation"
+    >
+
+
+      <a
+        href="index.html"
+        class="nav-item"
+        style="text-decoration:none;"
+      >
+
+        <span class="nav-icon">
+          🏠
+        </span>
+
+        <span class="nav-label">
+          Home
+        </span>
+
+      </a>
+
+
+      <a
+        href="watch.html"
+        class="nav-item active"
+        style="text-decoration:none;"
+      >
+
+        <span class="nav-icon">
+          ▶️
+        </span>
+
+        <span class="nav-label">
+          Watch
+        </span>
+
+      </a>
+
+
+      <a
+        href="create.html"
+        class="nav-item create-nav-button"
+        style="text-decoration:none;"
+      >
+
+        <span class="create-nav-icon">
+          ＋
+        </span>
+
+        <span class="nav-label">
+          Create
+        </span>
+
+      </a>
+
+
+      <a
+        href="studio.html"
+        class="nav-item"
+        style="text-decoration:none;"
+      >
+
+        <span class="nav-icon">
+          🎞️
+        </span>
+
+        <span class="nav-label">
+          Studio
+        </span>
+
+      </a>
+
+
+      <a
+        href="profile.html"
+        class="nav-item"
+        style="text-decoration:none;"
+      >
+
+        <span class="nav-icon">
+          👤
+        </span>
+
+        <span class="nav-label">
+          Profile
+        </span>
+
+      </a>
+
+
+    </nav>
+
+
+  </div>
+
+
+  <script>
+
+
+    // SEARCH
+
+    const searchInput =
+      document.getElementById(
+        "watchSearch"
+      );
+
+
+    searchInput.addEventListener(
+      "input",
+      function () {
+
+
+        const keyword =
+          this.value.toLowerCase();
+
+
+        const movies =
+          document.querySelectorAll(
+            ".movie-card"
+          );
+
+
+        movies.forEach(
+          function (movie) {
+
+
+            const title =
+              movie.dataset.title
+              .toLowerCase();
+
+
+            if (
+              title.includes(keyword)
+            ) {
+
+              movie.style.display =
+                "block";
+
+            } else {
+
+              movie.style.display =
+                "none";
+
+            }
+
+
+          }
+        );
+
+
+      }
+    );
+
+
+    // FILTER
+
+    function filterMovies(
+      category
+    ) {
+
+
+      const movies =
+        document.querySelectorAll(
+          ".movie-card"
+        );
+
+
+      movies.forEach(
+        function (movie) {
+
+
+          if (
+            category === "all" ||
+            movie.dataset.category === category
+          ) {
+
+            movie.style.display =
+              "block";
+
+          } else {
+
+            movie.style.display =
+              "none";
+
+          }
+
+
+        }
+      );
+
+
+    }
+
+
+    // OPEN MOVIE
+
+    function openMovie(
+      title
+    ) {
+
+
+      alert(
+        "🎬 " +
+        title +
+        "\n\n" +
+        "Halaman pemutar film akan segera tersedia."
+      );
+
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
