@@ -9,7 +9,7 @@
   <style>
     /* =========================================================
        REITOON WATCH PAGE
-       Mobile-first
+       MOBILE FIRST
        ========================================================= */
 
     * {
@@ -26,23 +26,24 @@
       min-height: 100vh;
       background:
         radial-gradient(
-          circle at 50% 0%,
-          rgba(255, 35, 145, 0.10),
-          transparent 34%
+          circle at 50% -10%,
+          rgba(255, 44, 142, 0.10),
+          transparent 38%
         ),
-        #09080d;
-      color: #ffffff;
+        #08080d;
+
+      color: #fff;
       font-family:
-        Inter,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         Roboto,
+        Helvetica,
         Arial,
         sans-serif;
 
+      -webkit-font-smoothing: antialiased;
       padding-bottom: 110px;
-      overflow-x: hidden;
     }
 
     button,
@@ -52,7 +53,6 @@
 
     button {
       border: 0;
-      cursor: pointer;
     }
 
     a {
@@ -60,36 +60,34 @@
       text-decoration: none;
     }
 
-
     /* =========================================================
-       APP
+       APP CONTAINER
        ========================================================= */
 
     .app {
       width: 100%;
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 34px 22px 40px;
+      padding: 28px 20px 40px;
     }
-
 
     /* =========================================================
        HEADER
        ========================================================= */
 
-    header {
+    .top-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      margin-bottom: 34px;
+      margin-bottom: 30px;
     }
 
     .logo {
-      font-size: 48px;
+      font-size: 43px;
       line-height: 1;
-      font-weight: 850;
-      letter-spacing: -3px;
+      font-weight: 800;
+      letter-spacing: -2px;
     }
 
     .logo span {
@@ -97,8 +95,8 @@
     }
 
     .notification {
-      width: 64px;
-      height: 64px;
+      width: 58px;
+      height: 58px;
 
       display: flex;
       align-items: center;
@@ -106,22 +104,14 @@
 
       border-radius: 50%;
 
-      background:
-        linear-gradient(
-          145deg,
-          #20202b,
-          #15151e
-        );
-
-      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(28, 27, 39, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
 
       box-shadow:
-        0 10px 30px rgba(0,0,0,0.30),
-        inset 0 1px 0 rgba(255,255,255,0.04);
+        0 10px 30px rgba(0, 0, 0, 0.25);
 
-      font-size: 31px;
+      font-size: 28px;
     }
-
 
     /* =========================================================
        SEARCH
@@ -129,98 +119,84 @@
 
     .search-box {
       position: relative;
-      width: 100%;
-      margin-bottom: 38px;
+      margin-bottom: 34px;
     }
 
     .search-icon {
       position: absolute;
       left: 22px;
       top: 50%;
+
       transform: translateY(-50%);
 
-      font-size: 27px;
+      font-size: 25px;
       pointer-events: none;
     }
 
     .search-input {
       width: 100%;
-      height: 78px;
+      height: 62px;
 
-      padding: 0 22px 0 66px;
+      padding: 0 20px 0 60px;
 
-      border-radius: 25px;
+      border-radius: 20px;
 
-      border: 1px solid rgba(255,255,255,0.10);
+      background: #1a1923;
+      border: 1px solid rgba(255, 255, 255, 0.09);
 
+      color: #fff;
+
+      font-size: 17px;
       outline: none;
 
-      background:
-        linear-gradient(
-          145deg,
-          #1c1b25,
-          #181720
-        );
-
-      color: #ffffff;
-
-      font-size: 22px;
-      font-weight: 500;
-
-      box-shadow:
-        0 12px 30px rgba(0,0,0,0.18),
-        inset 0 1px 0 rgba(255,255,255,0.03);
-
-      transition: 0.25s ease;
+      transition: 0.2s ease;
     }
 
     .search-input::placeholder {
-      color: #9997a5;
+      color: #92909d;
     }
 
     .search-input:focus {
-      border-color: rgba(255,47,145,0.55);
+      border-color: rgba(255, 47, 145, 0.65);
 
       box-shadow:
-        0 0 0 4px rgba(255,47,145,0.08),
-        0 15px 35px rgba(0,0,0,0.20);
+        0 0 0 4px rgba(255, 47, 145, 0.08);
     }
-
 
     /* =========================================================
-       PAGE INTRO
+       PAGE TITLE
        ========================================================= */
 
-    .page-intro {
-      margin-bottom: 30px;
+    .page-heading {
+      margin-bottom: 22px;
     }
 
-    .eyebrow {
-      color: #ff4b9d;
+    .page-heading .eyebrow {
+      margin-bottom: 8px;
+
+      color: #ff4a9d;
 
       font-size: 12px;
       font-weight: 800;
-
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-
-      margin-bottom: 8px;
     }
 
-    .page-intro h1 {
+    .page-heading h1 {
       font-size: 34px;
-      line-height: 1.08;
-      letter-spacing: -1.4px;
-      font-weight: 850;
-      margin-bottom: 9px;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
-    .page-intro p {
-      color: #9997a5;
-      font-size: 16px;
+    .page-heading p {
+      margin-top: 9px;
+
+      color: #92909d;
+
+      font-size: 15px;
       line-height: 1.5;
     }
-
 
     /* =========================================================
        CATEGORY FILTER
@@ -232,8 +208,9 @@
 
       overflow-x: auto;
 
-      padding-bottom: 7px;
-      margin-bottom: 38px;
+      padding: 2px 0 8px;
+
+      margin-bottom: 34px;
 
       scrollbar-width: none;
     }
@@ -245,128 +222,90 @@
     .category {
       flex: 0 0 auto;
 
-      padding: 11px 18px;
+      padding: 10px 17px;
 
       border-radius: 999px;
 
-      color: #a6a3b0;
+      background: #181720;
+      border: 1px solid rgba(255, 255, 255, 0.08);
 
-      background: #17161f;
-
-      border: 1px solid rgba(255,255,255,0.08);
+      color: #aaa8b4;
 
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 600;
+
+      cursor: pointer;
 
       transition: 0.2s ease;
     }
 
+    .category:hover {
+      color: #fff;
+      border-color: rgba(255, 47, 145, 0.35);
+    }
+
     .category.active {
-      color: #ffffff;
+      color: #fff;
 
-      background:
-        linear-gradient(
-          135deg,
-          #ff2f91,
-          #ff3c82
-        );
-
-      border-color: transparent;
+      background: #ff2f91;
+      border-color: #ff2f91;
 
       box-shadow:
-        0 8px 22px rgba(255,47,145,0.22);
+        0 8px 24px rgba(255, 47, 145, 0.20);
     }
-
 
     /* =========================================================
-       SECTION
-       ========================================================= */
-
-    section {
-      margin-bottom: 42px;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      margin-bottom: 18px;
-    }
-
-    .section-title h2 {
-      font-size: 25px;
-      line-height: 1.1;
-      font-weight: 850;
-      letter-spacing: -0.7px;
-    }
-
-    .see-all {
-      color: #ff3d94;
-
-      font-size: 14px;
-      font-weight: 750;
-
-      white-space: nowrap;
-    }
-
-
-    /* =========================================================
-       FEATURED MOVIE
+       FEATURED
        ========================================================= */
 
     .featured {
       position: relative;
 
-      min-height: 280px;
+      min-height: 285px;
 
-      padding: 28px 24px;
+      padding: 28px;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-
-      border-radius: 28px;
+      margin-bottom: 38px;
 
       overflow: hidden;
 
-      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 28px;
 
       background:
         radial-gradient(
-          circle at 90% 15%,
-          rgba(255,44,145,0.65),
+          circle at 90% 10%,
+          rgba(255, 42, 144, 0.65),
           transparent 42%
-        ),
-        radial-gradient(
-          circle at 10% 100%,
-          rgba(86,42,170,0.70),
-          transparent 48%
         ),
         linear-gradient(
           135deg,
-          #25163c,
-          #11101a 80%
+          #241542,
+          #35185a 55%,
+          #170e20
         );
 
-      box-shadow:
-        0 20px 50px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255, 255, 255, 0.10);
 
-      cursor: pointer;
+      box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.28);
     }
 
     .featured::before {
       content: "";
 
       position: absolute;
-      inset: 0;
 
-      background:
-        linear-gradient(
-          to top,
-          rgba(5,5,10,0.88),
-          rgba(5,5,10,0.05) 70%
-        );
+      width: 210px;
+      height: 210px;
+
+      right: -70px;
+      top: -85px;
+
+      border-radius: 50%;
+
+      background: rgba(255, 61, 155, 0.22);
+
+      filter: blur(4px);
     }
 
     .featured-content {
@@ -374,67 +313,117 @@
       z-index: 2;
     }
 
-    .featured-badge {
+    .featured-label {
       display: inline-flex;
       align-items: center;
-
-      width: fit-content;
+      gap: 7px;
 
       padding: 8px 13px;
 
-      margin-bottom: 14px;
+      margin-bottom: 18px;
 
       border-radius: 999px;
 
-      background: rgba(255,47,145,0.12);
+      color: #ff72b4;
 
-      border: 1px solid rgba(255,47,145,0.30);
-
-      color: #ff62aa;
+      background: rgba(255, 47, 145, 0.10);
+      border: 1px solid rgba(255, 47, 145, 0.25);
 
       font-size: 11px;
       font-weight: 800;
-
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      letter-spacing: 1.2px;
     }
 
-    .featured h3 {
-      font-size: 30px;
+    .featured h2 {
+      max-width: 480px;
+
+      font-size: 32px;
       line-height: 1.08;
       letter-spacing: -1px;
-
-      margin-bottom: 7px;
     }
 
     .featured p {
-      color: #c3c0ca;
+      max-width: 480px;
+
+      margin-top: 12px;
+
+      color: #d0cbd5;
+
       font-size: 15px;
-      margin-bottom: 18px;
+      line-height: 1.5;
     }
 
-    .watch-button {
+    .featured-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
-      width: fit-content;
+      min-height: 46px;
 
-      padding: 12px 18px;
+      padding: 0 22px;
 
-      border-radius: 13px;
+      margin-top: 22px;
+
+      border-radius: 14px;
 
       background: #ff2f91;
-
-      color: white;
+      color: #fff;
 
       font-size: 14px;
       font-weight: 800;
 
+      cursor: pointer;
+
       box-shadow:
-        0 10px 25px rgba(255,47,145,0.25);
+        0 12px 30px rgba(255, 47, 145, 0.22);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
+    .featured-button:active {
+      transform: scale(0.97);
+    }
+
+    /* =========================================================
+       SECTION
+       ========================================================= */
+
+    .section {
+      margin-bottom: 38px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title .emoji {
+      font-size: 22px;
+    }
+
+    .see-all {
+      color: #ff4199;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
 
     /* =========================================================
        MOVIE GRID
@@ -445,24 +434,34 @@
 
       grid-template-columns: repeat(2, minmax(0, 1fr));
 
-      gap: 14px;
+      gap: 15px;
     }
 
     .movie-card {
+      position: relative;
+
       min-width: 0;
+
+      overflow: hidden;
+
+      border-radius: 18px;
+
+      background: #15141c;
+
+      border: 1px solid rgba(255, 255, 255, 0.07);
 
       cursor: pointer;
 
       transition:
         transform 0.2s ease,
-        opacity 0.2s ease;
+        border-color 0.2s ease;
     }
 
     .movie-card:active {
-      transform: scale(0.97);
+      transform: scale(0.98);
     }
 
-    .poster {
+    .movie-poster {
       position: relative;
 
       width: 100%;
@@ -471,270 +470,307 @@
       display: flex;
       align-items: flex-end;
 
-      padding: 15px;
-
-      border-radius: 19px;
-
       overflow: hidden;
 
-      border: 1px solid rgba(255,255,255,0.08);
+      padding: 13px;
 
       background:
         radial-gradient(
-          circle at 80% 15%,
-          rgba(255,49,146,0.55),
+          circle at 75% 20%,
+          rgba(255, 67, 158, 0.85),
+          transparent 34%
+        ),
+        linear-gradient(
+          145deg,
+          #2c1a4b,
+          #161526 70%
+        );
+    }
+
+    .movie-card:nth-child(2) .movie-poster {
+      background:
+        radial-gradient(
+          circle at 70% 25%,
+          rgba(255, 135, 56, 0.72),
+          transparent 34%
+        ),
+        linear-gradient(
+          145deg,
+          #38221c,
+          #18151d 72%
+        );
+    }
+
+    .movie-card:nth-child(3) .movie-poster {
+      background:
+        radial-gradient(
+          circle at 70% 20%,
+          rgba(65, 150, 255, 0.60),
+          transparent 36%
+        ),
+        linear-gradient(
+          145deg,
+          #172d45,
+          #11141d 72%
+        );
+    }
+
+    .movie-card:nth-child(4) .movie-poster {
+      background:
+        radial-gradient(
+          circle at 65% 25%,
+          rgba(126, 72, 255, 0.70),
+          transparent 36%
+        ),
+        linear-gradient(
+          145deg,
+          #251a43,
+          #12121a 72%
+        );
+    }
+
+    .movie-card:nth-child(5) .movie-poster {
+      background:
+        radial-gradient(
+          circle at 75% 20%,
+          rgba(255, 55, 92, 0.70),
           transparent 35%
         ),
         linear-gradient(
           145deg,
-          #34204c,
-          #171522 70%,
-          #0d0c12
+          #421b2b,
+          #15121b 72%
         );
+    }
+
+    .movie-card:nth-child(6) .movie-poster {
+      background:
+        radial-gradient(
+          circle at 65% 20%,
+          rgba(49, 201, 180, 0.62),
+          transparent 35%
+        ),
+        linear-gradient(
+          145deg,
+          #143b3a,
+          #11161b 72%
+        );
+    }
+
+    .poster-number {
+      position: absolute;
+
+      top: 12px;
+      left: 12px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 28px;
+      height: 28px;
+
+      border-radius: 9px;
+
+      background: rgba(0, 0, 0, 0.42);
+
+      color: #fff;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      backdrop-filter: blur(8px);
+    }
+
+    .poster-play {
+      position: absolute;
+
+      right: 12px;
+      bottom: 12px;
+
+      width: 38px;
+      height: 38px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: rgba(255, 47, 145, 0.95);
+
+      font-size: 15px;
 
       box-shadow:
-        0 12px 28px rgba(0,0,0,0.28);
-    }
-
-    .poster.purple {
-      background:
-        radial-gradient(
-          circle at 75% 20%,
-          rgba(135,70,255,0.65),
-          transparent 40%
-        ),
-        linear-gradient(
-          145deg,
-          #2b1c54,
-          #12101c
-        );
-    }
-
-    .poster.blue {
-      background:
-        radial-gradient(
-          circle at 75% 20%,
-          rgba(54,148,255,0.52),
-          transparent 42%
-        ),
-        linear-gradient(
-          145deg,
-          #172c50,
-          #11121c
-        );
-    }
-
-    .poster.red {
-      background:
-        radial-gradient(
-          circle at 75% 20%,
-          rgba(255,69,88,0.58),
-          transparent 42%
-        ),
-        linear-gradient(
-          145deg,
-          #4a202c,
-          #151019
-        );
-    }
-
-    .poster.green {
-      background:
-        radial-gradient(
-          circle at 75% 20%,
-          rgba(51,214,143,0.46),
-          transparent 42%
-        ),
-        linear-gradient(
-          145deg,
-          #173e3a,
-          #10151a
-        );
-    }
-
-    .poster::after {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          to top,
-          rgba(0,0,0,0.78),
-          transparent 65%
-        );
-    }
-
-    .poster-icon {
-      position: relative;
-      z-index: 2;
-
-      font-size: 37px;
+        0 8px 22px rgba(0, 0, 0, 0.28);
     }
 
     .movie-info {
-      padding: 10px 3px 0;
+      padding: 14px 13px 15px;
     }
 
     .movie-info h3 {
+      overflow: hidden;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
       font-size: 16px;
       line-height: 1.25;
 
       font-weight: 800;
-
-      margin-bottom: 5px;
-
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
-    .movie-info p {
-      color: #92909d;
+    .movie-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
 
-      font-size: 13px;
+      margin-top: 6px;
+
+      color: #97949f;
+
+      font-size: 12px;
       line-height: 1.3;
     }
 
     .rating {
-      color: #ffb83d;
+      color: #ffd45a;
       font-weight: 700;
     }
 
-
     /* =========================================================
-       HORIZONTAL LIST
+       LIST SECTION
        ========================================================= */
 
-    .horizontal-list {
+    .list {
       display: flex;
-      gap: 15px;
-
-      overflow-x: auto;
-
-      padding-bottom: 6px;
-
-      scrollbar-width: none;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .horizontal-list::-webkit-scrollbar {
-      display: none;
-    }
+    .list-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
 
-    .small-card {
-      flex: 0 0 150px;
+      padding: 12px;
+
+      border-radius: 17px;
+
+      background: #14131b;
+      border: 1px solid rgba(255, 255, 255, 0.07);
 
       cursor: pointer;
+
+      transition: 0.2s ease;
     }
 
-    .small-poster {
-      position: relative;
+    .list-card:active {
+      transform: scale(0.99);
+    }
 
-      width: 150px;
-      height: 205px;
+    .list-thumb {
+      flex: 0 0 72px;
+
+      width: 72px;
+      height: 72px;
 
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+      justify-content: center;
 
-      padding: 14px;
-
-      overflow: hidden;
-
-      border-radius: 18px;
-
-      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 13px;
 
       background:
-        radial-gradient(
-          circle at 80% 15%,
-          rgba(255,47,145,0.50),
-          transparent 40%
-        ),
         linear-gradient(
           145deg,
-          #322047,
-          #111019
+          #5b287c,
+          #24182e
         );
+
+      font-size: 25px;
     }
 
-    .small-poster::after {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
+    .list-card:nth-child(2) .list-thumb {
       background:
         linear-gradient(
-          to top,
-          rgba(0,0,0,0.80),
-          transparent 65%
+          145deg,
+          #7d3b3b,
+          #28151b
         );
     }
 
-    .small-poster span {
-      position: relative;
-      z-index: 2;
-
-      font-size: 32px;
+    .list-card:nth-child(3) .list-thumb {
+      background:
+        linear-gradient(
+          145deg,
+          #27527b,
+          #151d2c
+        );
     }
 
-    .small-card h3 {
-      margin-top: 9px;
+    .list-info {
+      min-width: 0;
+      flex: 1;
+    }
 
-      font-size: 15px;
-      line-height: 1.25;
+    .list-info h3 {
+      overflow: hidden;
 
       white-space: nowrap;
-      overflow: hidden;
       text-overflow: ellipsis;
+
+      font-size: 16px;
+      font-weight: 800;
     }
 
-    .small-card p {
-      margin-top: 4px;
+    .list-info p {
+      margin-top: 5px;
 
-      color: #92909d;
+      color: #96939e;
+
       font-size: 12px;
     }
 
+    .list-arrow {
+      color: #77737f;
+      font-size: 20px;
+    }
 
     /* =========================================================
-       EMPTY SEARCH
+       EMPTY / SEARCH RESULT
        ========================================================= */
 
-    .search-empty {
+    .empty {
       display: none;
 
-      padding: 45px 20px;
+      padding: 40px 20px;
 
       text-align: center;
 
-      border-radius: 22px;
+      border-radius: 20px;
 
-      background: #15141c;
-
-      border: 1px solid rgba(255,255,255,0.07);
+      background: #14131b;
+      border: 1px solid rgba(255, 255, 255, 0.07);
     }
 
-    .search-empty.show {
-      display: block;
-    }
-
-    .search-empty .empty-icon {
-      font-size: 42px;
+    .empty-icon {
+      font-size: 35px;
       margin-bottom: 12px;
     }
 
-    .search-empty h3 {
-      font-size: 20px;
-      margin-bottom: 6px;
+    .empty h3 {
+      font-size: 18px;
     }
 
-    .search-empty p {
-      color: #8e8b98;
-      font-size: 14px;
-    }
+    .empty p {
+      margin-top: 7px;
 
+      color: #8e8b96;
+
+      font-size: 13px;
+    }
 
     /* =========================================================
        BOTTOM NAVIGATION
@@ -744,56 +780,52 @@
       position: fixed;
 
       left: 50%;
-      bottom: 18px;
+      bottom: 15px;
 
       transform: translateX(-50%);
 
-      z-index: 1000;
+      z-index: 100;
 
       width: calc(100% - 28px);
       max-width: 690px;
 
-      height: 82px;
+      height: 76px;
 
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       align-items: center;
 
-      padding: 8px 7px;
+      padding: 7px;
 
-      border-radius: 28px;
+      border-radius: 26px;
 
-      background:
-        rgba(23,22,31,0.94);
+      background: rgba(22, 21, 29, 0.94);
 
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid rgba(255, 255, 255, 0.10);
 
       box-shadow:
-        0 18px 45px rgba(0,0,0,0.50),
-        inset 0 1px 0 rgba(255,255,255,0.04);
+        0 18px 45px rgba(0, 0, 0, 0.45);
 
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
     }
 
     .nav-item {
-      position: relative;
-
-      height: 66px;
+      height: 62px;
 
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
 
-      gap: 4px;
+      gap: 3px;
 
-      border-radius: 20px;
-
-      color: #85828f;
+      color: #77747f;
 
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 600;
+
+      border-radius: 20px;
 
       cursor: pointer;
 
@@ -801,52 +833,46 @@
     }
 
     .nav-icon {
-      font-size: 21px;
+      font-size: 20px;
       line-height: 1;
     }
 
     .nav-item.active {
-      color: #ff3d94;
+      color: #ff4199;
 
       background:
-        linear-gradient(
-          145deg,
-          rgba(255,47,145,0.14),
-          rgba(255,47,145,0.04)
-        );
+        rgba(255, 47, 145, 0.10);
     }
 
     .nav-item.create {
-      color: #ffffff;
+      position: relative;
+
+      color: #fff;
     }
 
     .nav-item.create .nav-icon {
-      width: 60px;
-      height: 60px;
+      width: 54px;
+      height: 54px;
 
-      margin-top: -26px;
+      margin-top: -24px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      border-radius: 20px;
+      border-radius: 18px;
 
-      background:
-        linear-gradient(
-          145deg,
-          #ff3d98,
-          #ff2187
-        );
+      background: #ff2f91;
 
       box-shadow:
-        0 12px 28px rgba(255,47,145,0.35);
+        0 12px 28px rgba(255, 47, 145, 0.35);
 
-      font-size: 34px;
-
-      border: 5px solid #09080d;
+      font-size: 29px;
     }
 
+    .nav-item.create span:last-child {
+      margin-top: 1px;
+    }
 
     /* =========================================================
        TABLET / DESKTOP
@@ -854,46 +880,20 @@
 
     @media (min-width: 700px) {
 
-      .app {
-        padding-left: 32px;
-        padding-right: 32px;
+      body {
+        padding-bottom: 120px;
       }
-
-      .movie-grid {
-        grid-template-columns:
-          repeat(3, minmax(0, 1fr));
-      }
-
-      .featured {
-        min-height: 330px;
-        padding: 34px;
-      }
-
-      .featured h3 {
-        font-size: 38px;
-      }
-    }
-
-
-    /* =========================================================
-       SMALL PHONE
-       ========================================================= */
-
-    @media (max-width: 380px) {
 
       .app {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-top: 40px;
+      }
+
+      .top-header {
+        margin-bottom: 34px;
       }
 
       .logo {
-        font-size: 41px;
-      }
-
-      .notification {
-        width: 56px;
-        height: 56px;
-        font-size: 27px;
+        font-size: 48px;
       }
 
       .search-input {
@@ -901,52 +901,93 @@
         font-size: 18px;
       }
 
-      .page-intro h1 {
-        font-size: 29px;
+      .featured {
+        min-height: 320px;
+        padding: 38px;
+      }
+
+      .featured h2 {
+        font-size: 42px;
+      }
+
+      .movie-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    /* =========================================================
+       VERY SMALL MOBILE
+       ========================================================= */
+
+    @media (max-width: 380px) {
+
+      .app {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .logo {
+        font-size: 37px;
+      }
+
+      .notification {
+        width: 52px;
+        height: 52px;
+        font-size: 25px;
       }
 
       .featured {
-        min-height: 260px;
-        padding: 22px;
+        padding: 23px;
+        border-radius: 24px;
       }
 
-      .featured h3 {
-        font-size: 27px;
+      .featured h2 {
+        font-size: 28px;
       }
 
-      .section-title h2 {
-        font-size: 22px;
+      .featured p {
+        font-size: 14px;
+      }
+
+      .movie-grid {
+        gap: 10px;
+      }
+
+      .movie-info {
+        padding: 12px 10px;
+      }
+
+      .movie-info h3 {
+        font-size: 14px;
       }
 
       .bottom-nav {
         width: calc(100% - 18px);
-        bottom: 10px;
       }
     }
   </style>
 </head>
 
-
 <body>
 
   <!-- =======================================================
-       MAIN APP
-       ======================================================= -->
+       APP
+       ======================================================== -->
 
   <main class="app">
 
-
     <!-- HEADER -->
-    <header>
+    <header class="top-header">
 
-      <a href="index.html" class="logo">
+      <div class="logo">
         Rei<span>toon</span>
-      </a>
+      </div>
 
       <button
         class="notification"
-        onclick="showNotification()"
+        type="button"
         aria-label="Notifikasi"
+        onclick="showNotification()"
       >
         🔔
       </button>
@@ -957,9 +998,7 @@
     <!-- SEARCH -->
     <div class="search-box">
 
-      <span class="search-icon">
-        🔍
-      </span>
+      <span class="search-icon">🔍</span>
 
       <input
         id="searchInput"
@@ -972,22 +1011,22 @@
     </div>
 
 
-    <!-- PAGE INTRO -->
-    <div class="page-intro">
+    <!-- PAGE TITLE -->
+    <section class="page-heading">
 
       <div class="eyebrow">
         REITOON WATCH
       </div>
 
       <h1>
-        Mau nonton apa hari ini?
+        Mau nonton apa?
       </h1>
 
       <p>
-        Temukan film, drama, dan cerita favorit kamu.
+        Temukan film dan drama favorit kamu.
       </p>
 
-    </div>
+    </section>
 
 
     <!-- CATEGORY -->
@@ -995,104 +1034,94 @@
 
       <button
         class="category active"
-        onclick="filterCategory('all', this)"
+        type="button"
+        data-category="all"
       >
         Semua
       </button>
 
       <button
         class="category"
-        onclick="filterCategory('romance', this)"
+        type="button"
+        data-category="romance"
       >
-        💗 Romance
+        Romance
       </button>
 
       <button
         class="category"
-        onclick="filterCategory('drama', this)"
+        type="button"
+        data-category="drama"
       >
-        🎭 Drama
+        Drama
       </button>
 
       <button
         class="category"
-        onclick="filterCategory('action', this)"
+        type="button"
+        data-category="action"
       >
-        ⚔️ Action
+        Action
       </button>
 
       <button
         class="category"
-        onclick="filterCategory('mystery', this)"
+        type="button"
+        data-category="fantasy"
       >
-        🔎 Mystery
+        Fantasy
       </button>
 
       <button
         class="category"
-        onclick="filterCategory('fantasy', this)"
+        type="button"
+        data-category="mystery"
       >
-        ✨ Fantasy
+        Mystery
       </button>
 
     </div>
 
 
     <!-- FEATURED -->
-    <section>
+    <section class="featured">
 
-      <div class="section-title">
+      <div class="featured-content">
+
+        <div class="featured-label">
+          🎬 REITOON ORIGINAL
+        </div>
 
         <h2>
-          ⭐ Pilihan Reitoon
+          Love Beyond Time
         </h2>
 
-        <div class="see-all">
-          Featured
-        </div>
+        <p>
+          Sebuah kisah cinta yang melampaui waktu,
+          pilihan, dan kesempatan kedua.
+        </p>
+
+        <button
+          class="featured-button"
+          type="button"
+          onclick="openMovie('Love Beyond Time')"
+        >
+          ▶ Mulai Menonton
+        </button>
 
       </div>
-
-
-      <article
-        class="featured"
-        data-title="Love Beyond Time"
-        data-category="romance drama"
-        onclick="openMovie('Love Beyond Time')"
-      >
-
-        <div class="featured-content">
-
-          <div class="featured-badge">
-            🎬 REITOON ORIGINAL
-          </div>
-
-          <h3>
-            Love Beyond Time
-          </h3>
-
-          <p>
-            Romance • Drama &nbsp; ⭐ 4.9
-          </p>
-
-          <span class="watch-button">
-            ▶ Mulai Menonton
-          </span>
-
-        </div>
-
-      </article>
 
     </section>
 
 
     <!-- TRENDING -->
-    <section>
+    <section class="section">
 
-      <div class="section-title">
+      <div class="section-header">
 
-        <h2>
-          🔥 Trending
+        <h2 class="section-title">
+          <span class="emoji">🔥</span>
+          Trending
         </h2>
 
         <div
@@ -1110,7 +1139,6 @@
         class="movie-grid"
       >
 
-
         <!-- MOVIE 1 -->
         <article
           class="movie-card"
@@ -1119,11 +1147,15 @@
           onclick="openMovie('Love Beyond Time')"
         >
 
-          <div class="poster">
+          <div class="movie-poster">
 
-            <span class="poster-icon">
-              💗
-            </span>
+            <div class="poster-number">
+              01
+            </div>
+
+            <div class="poster-play">
+              ▶
+            </div>
 
           </div>
 
@@ -1133,13 +1165,13 @@
               Love Beyond Time
             </h3>
 
-            <p>
-              Romance • Drama
-            </p>
-
-            <p class="rating">
-              ★ 4.9
-            </p>
+            <div class="movie-meta">
+              <span>Romance</span>
+              <span>•</span>
+              <span>Drama</span>
+              <span>•</span>
+              <span class="rating">★ 9.2</span>
+            </div>
 
           </div>
 
@@ -1154,11 +1186,15 @@
           onclick="openMovie('The Last Kingdom')"
         >
 
-          <div class="poster purple">
+          <div class="movie-poster">
 
-            <span class="poster-icon">
-              ⚔️
-            </span>
+            <div class="poster-number">
+              02
+            </div>
+
+            <div class="poster-play">
+              ▶
+            </div>
 
           </div>
 
@@ -1168,13 +1204,13 @@
               The Last Kingdom
             </h3>
 
-            <p>
-              Action • Fantasy
-            </p>
-
-            <p class="rating">
-              ★ 4.8
-            </p>
+            <div class="movie-meta">
+              <span>Action</span>
+              <span>•</span>
+              <span>Fantasy</span>
+              <span>•</span>
+              <span class="rating">★ 9.0</span>
+            </div>
 
           </div>
 
@@ -1189,11 +1225,15 @@
           onclick="openMovie('Hidden Truth')"
         >
 
-          <div class="poster blue">
+          <div class="movie-poster">
 
-            <span class="poster-icon">
-              🔎
-            </span>
+            <div class="poster-number">
+              03
+            </div>
+
+            <div class="poster-play">
+              ▶
+            </div>
 
           </div>
 
@@ -1203,13 +1243,13 @@
               Hidden Truth
             </h3>
 
-            <p>
-              Mystery • Drama
-            </p>
-
-            <p class="rating">
-              ★ 4.7
-            </p>
+            <div class="movie-meta">
+              <span>Mystery</span>
+              <span>•</span>
+              <span>Drama</span>
+              <span>•</span>
+              <span class="rating">★ 8.8</span>
+            </div>
 
           </div>
 
@@ -1224,11 +1264,15 @@
           onclick="openMovie('First Meeting')"
         >
 
-          <div class="poster red">
+          <div class="movie-poster">
 
-            <span class="poster-icon">
-              🌹
-            </span>
+            <div class="poster-number">
+              04
+            </div>
+
+            <div class="poster-play">
+              ▶
+            </div>
 
           </div>
 
@@ -1238,13 +1282,11 @@
               First Meeting
             </h3>
 
-            <p>
-              Romance
-            </p>
-
-            <p class="rating">
-              ★ 4.6
-            </p>
+            <div class="movie-meta">
+              <span>Romance</span>
+              <span>•</span>
+              <span class="rating">★ 8.7</span>
+            </div>
 
           </div>
 
@@ -1259,11 +1301,15 @@
           onclick="openMovie('One Last Chance')"
         >
 
-          <div class="poster">
+          <div class="movie-poster">
 
-            <span class="poster-icon">
-              🎭
-            </span>
+            <div class="poster-number">
+              05
+            </div>
+
+            <div class="poster-play">
+              ▶
+            </div>
 
           </div>
 
@@ -1273,13 +1319,11 @@
               One Last Chance
             </h3>
 
-            <p>
-              Drama
-            </p>
-
-            <p class="rating">
-              ★ 4.5
-            </p>
+            <div class="movie-meta">
+              <span>Drama</span>
+              <span>•</span>
+              <span class="rating">★ 8.6</span>
+            </div>
 
           </div>
 
@@ -1289,32 +1333,34 @@
         <!-- MOVIE 6 -->
         <article
           class="movie-card"
-          data-title="Moonlight Promise"
-          data-category="romance fantasy"
-          onclick="openMovie('Moonlight Promise')"
+          data-title="Beyond The Sea"
+          data-category="fantasy"
+          onclick="openMovie('Beyond The Sea')"
         >
 
-          <div class="poster green">
+          <div class="movie-poster">
 
-            <span class="poster-icon">
-              🌙
-            </span>
+            <div class="poster-number">
+              06
+            </div>
+
+            <div class="poster-play">
+              ▶
+            </div>
 
           </div>
 
           <div class="movie-info">
 
             <h3>
-              Moonlight Promise
+              Beyond The Sea
             </h3>
 
-            <p>
-              Romance • Fantasy
-            </p>
-
-            <p class="rating">
-              ★ 4.8
-            </p>
+            <div class="movie-meta">
+              <span>Fantasy</span>
+              <span>•</span>
+              <span class="rating">★ 8.5</span>
+            </div>
 
           </div>
 
@@ -1323,10 +1369,10 @@
       </div>
 
 
-      <!-- SEARCH EMPTY -->
+      <!-- EMPTY RESULT -->
       <div
-        id="searchEmpty"
-        class="search-empty"
+        id="emptyResult"
+        class="empty"
       >
 
         <div class="empty-icon">
@@ -1338,7 +1384,7 @@
         </h3>
 
         <p>
-          Coba gunakan kata kunci lain.
+          Coba cari judul atau kategori lain.
         </p>
 
       </div>
@@ -1347,17 +1393,18 @@
 
 
     <!-- SHORT DRAMA -->
-    <section>
+    <section class="section">
 
-      <div class="section-title">
+      <div class="section-header">
 
-        <h2>
-          🎬 Short Drama
+        <h2 class="section-title">
+          <span class="emoji">🎬</span>
+          Short Drama
         </h2>
 
         <div
           class="see-all"
-          onclick="showAll('short-drama')"
+          onclick="showAll('short')"
         >
           Lihat semua
         </div>
@@ -1365,238 +1412,87 @@
       </div>
 
 
-      <div class="horizontal-list">
-
+      <div class="list">
 
         <article
-          class="small-card"
+          class="list-card"
           onclick="openMovie('First Meeting')"
         >
 
-          <div class="small-poster">
+          <div class="list-thumb">
+            💕
+          </div>
 
-            <span>
-              🌹
-            </span>
+          <div class="list-info">
+
+            <h3>
+              First Meeting
+            </h3>
+
+            <p>
+              Romance • 12 min
+            </p>
 
           </div>
 
-          <h3>
-            First Meeting
-          </h3>
-
-          <p>
-            Romance
-          </p>
+          <div class="list-arrow">
+            ›
+          </div>
 
         </article>
 
 
         <article
-          class="small-card"
+          class="list-card"
           onclick="openMovie('One Last Chance')"
         >
 
-          <div class="small-poster">
-
-            <span>
-              💔
-            </span>
-
+          <div class="list-thumb">
+            🎭
           </div>
 
-          <h3>
-            One Last Chance
-          </h3>
-
-          <p>
-            Drama
-          </p>
-
-        </article>
-
-
-        <article
-          class="small-card"
-          onclick="openMovie('The Letter')"
-        >
-
-          <div class="small-poster">
-
-            <span>
-              💌
-            </span>
-
-          </div>
-
-          <h3>
-            The Letter
-          </h3>
-
-          <p>
-            Romance
-          </p>
-
-        </article>
-
-
-        <article
-          class="small-card"
-          onclick="openMovie('After Rain')"
-        >
-
-          <div class="small-poster">
-
-            <span>
-              🌧️
-            </span>
-
-          </div>
-
-          <h3>
-            After Rain
-          </h3>
-
-          <p>
-            Drama
-          </p>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- NEW RELEASE -->
-    <section>
-
-      <div class="section-title">
-
-        <h2>
-          🆕 Baru Ditambahkan
-        </h2>
-
-        <div
-          class="see-all"
-          onclick="showAll('new')"
-        >
-          Lihat semua
-        </div>
-
-      </div>
-
-
-      <div class="movie-grid">
-
-
-        <article
-          class="movie-card"
-          onclick="openMovie('Midnight Story')"
-        >
-
-          <div class="poster purple">
-
-            <span class="poster-icon">
-              🌃
-            </span>
-
-          </div>
-
-          <div class="movie-info">
+          <div class="list-info">
 
             <h3>
-              Midnight Story
+              One Last Chance
             </h3>
 
             <p>
-              Mystery • Drama
+              Drama • 15 min
             </p>
 
           </div>
 
-        </article>
-
-
-        <article
-          class="movie-card"
-          onclick="openMovie('Forever Young')"
-        >
-
-          <div class="poster red">
-
-            <span class="poster-icon">
-              💞
-            </span>
-
-          </div>
-
-          <div class="movie-info">
-
-            <h3>
-              Forever Young
-            </h3>
-
-            <p>
-              Romance • Drama
-            </p>
-
+          <div class="list-arrow">
+            ›
           </div>
 
         </article>
 
 
         <article
-          class="movie-card"
-          onclick="openMovie('Beyond The Sky')"
+          class="list-card"
+          onclick="openMovie('Hidden Truth')"
         >
 
-          <div class="poster blue">
-
-            <span class="poster-icon">
-              🌌
-            </span>
-
+          <div class="list-thumb">
+            🕵️
           </div>
 
-          <div class="movie-info">
+          <div class="list-info">
 
             <h3>
-              Beyond The Sky
+              Hidden Truth
             </h3>
 
             <p>
-              Fantasy
+              Mystery • 18 min
             </p>
 
           </div>
 
-        </article>
-
-
-        <article
-          class="movie-card"
-          onclick="openMovie('Final Mission')"
-        >
-
-          <div class="poster green">
-
-            <span class="poster-icon">
-              ⚡
-            </span>
-
-          </div>
-
-          <div class="movie-info">
-
-            <h3>
-              Final Mission
-            </h3>
-
-            <p>
-              Action
-            </p>
-
+          <div class="list-arrow">
+            ›
           </div>
 
         </article>
@@ -1610,12 +1506,10 @@
 
   <!-- =======================================================
        BOTTOM NAVIGATION
-       ======================================================= -->
+       ======================================================== -->
 
   <nav class="bottom-nav">
 
-
-    <!-- HOME -->
     <div
       class="nav-item"
       onclick="goHome()"
@@ -1632,7 +1526,6 @@
     </div>
 
 
-    <!-- WATCH -->
     <div
       class="nav-item active"
       onclick="goWatch()"
@@ -1647,349 +1540,3 @@
       </span>
 
     </div>
-
-
-    <!-- CREATE -->
-    <div
-      class="nav-item create"
-      onclick="createFilm()"
-    >
-
-      <span class="nav-icon">
-        +
-      </span>
-
-      <span>
-        Create
-      </span>
-
-    </div>
-
-
-    <!-- STUDIO -->
-    <div
-      class="nav-item"
-      onclick="goStudio()"
-    >
-
-      <span class="nav-icon">
-        🎞️
-      </span>
-
-      <span>
-        Studio
-      </span>
-
-    </div>
-
-
-    <!-- PROFILE -->
-    <div
-      class="nav-item"
-      onclick="goProfile()"
-    >
-
-      <span class="nav-icon">
-        👤
-      </span>
-
-      <span>
-        Profile
-      </span>
-
-    </div>
-
-  </nav>
-
-
-  <!-- =======================================================
-       JAVASCRIPT
-       ======================================================= -->
-
-  <script>
-
-    /* =======================================================
-       NAVIGATION
-       ======================================================= */
-
-    function goHome() {
-      window.location.href = "index.html";
-    }
-
-    function goWatch() {
-      window.location.href = "watch.html";
-    }
-
-    function createFilm() {
-      window.location.href = "create.html";
-    }
-
-    function goStudio() {
-      window.location.href = "studio.html";
-    }
-
-    function goProfile() {
-      window.location.href = "profile.html";
-    }
-
-
-    /* =======================================================
-       OPEN MOVIE
-       ======================================================= */
-
-    function openMovie(title) {
-
-      /*
-        Untuk sementara diarahkan ke halaman movie.html
-        dengan nama film di URL.
-
-        Contoh:
-        movie.html?title=Love%20Beyond%20Time
-      */
-
-      window.location.href =
-        "movie.html?title=" +
-        encodeURIComponent(title);
-
-    }
-
-
-    /* =======================================================
-       NOTIFICATION
-       ======================================================= */
-
-    function showNotification() {
-
-      alert(
-        "🔔 Belum ada notifikasi baru."
-      );
-
-    }
-
-
-    /* =======================================================
-       SEARCH
-       ======================================================= */
-
-    const searchInput =
-      document.getElementById("searchInput");
-
-    const movieCards =
-      document.querySelectorAll(".movie-card");
-
-    const searchEmpty =
-      document.getElementById("searchEmpty");
-
-
-    searchInput.addEventListener(
-      "input",
-      function () {
-
-        const keyword =
-          this.value
-            .toLowerCase()
-            .trim();
-
-        let found = false;
-
-
-        movieCards.forEach(
-          function (card) {
-
-            const title =
-              (
-                card.dataset.title ||
-                card.innerText
-              ).toLowerCase();
-
-            const category =
-              (
-                card.dataset.category ||
-                ""
-              ).toLowerCase();
-
-
-            if (
-              title.includes(keyword) ||
-              category.includes(keyword)
-            ) {
-
-              card.style.display = "";
-
-              found = true;
-
-            } else {
-
-              card.style.display = "none";
-
-            }
-
-          }
-        );
-
-
-        if (
-          keyword !== "" &&
-          !found
-        ) {
-
-          searchEmpty.classList.add("show");
-
-        } else {
-
-          searchEmpty.classList.remove("show");
-
-        }
-
-      }
-    );
-
-
-    /* =======================================================
-       CATEGORY FILTER
-       ======================================================= */
-
-    function filterCategory(
-      category,
-      button
-    ) {
-
-      document
-        .querySelectorAll(".category")
-        .forEach(
-          function (item) {
-            item.classList.remove("active");
-          }
-        );
-
-
-      button.classList.add("active");
-
-
-      movieCards.forEach(
-        function (card) {
-
-          if (
-            category === "all"
-          ) {
-
-            card.style.display = "";
-
-            return;
-
-          }
-
-
-          const categories =
-            (
-              card.dataset.category ||
-              ""
-            ).toLowerCase();
-
-
-          if (
-            categories.includes(category)
-          ) {
-
-            card.style.display = "";
-
-          } else {
-
-            card.style.display = "none";
-
-          }
-
-        }
-      );
-
-
-      searchInput.value = "";
-
-      searchEmpty.classList.remove("show");
-
-    }
-
-
-    /* =======================================================
-       SEE ALL
-       ======================================================= */
-
-    function showAll(type) {
-
-      if (type === "trending") {
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-
-        return;
-
-      }
-
-
-      if (type === "short-drama") {
-
-        const section =
-          document.querySelectorAll("section")[2];
-
-        section.scrollIntoView({
-          behavior: "smooth"
-        });
-
-        return;
-
-      }
-
-
-      if (type === "new") {
-
-        const sections =
-          document.querySelectorAll("section");
-
-        sections[
-          sections.length - 1
-        ].scrollIntoView({
-          behavior: "smooth"
-        });
-
-      }
-
-    }
-
-
-    /* =======================================================
-       CLEAR SEARCH WITH ESC
-       ======================================================= */
-
-    searchInput.addEventListener(
-      "keydown",
-      function (event) {
-
-        if (
-          event.key === "Escape"
-        ) {
-
-          searchInput.value = "";
-
-          movieCards.forEach(
-            function (card) {
-              card.style.display = "";
-            }
-          );
-
-          searchEmpty.classList.remove(
-            "show"
-          );
-
-          searchInput.blur();
-
-        }
-
-      }
-    );
-
-  </script>
-
-</body>
-</html>
