@@ -623,3 +623,31 @@ button {
   }
 
 }
+.category-button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  padding: 10px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.active-category {
+  background: linear-gradient(
+    135deg,
+    var(--pink),
+    var(--purple)
+  );
+  color: white;
+  border-color: transparent;
+}
+
+.category-button:hover {
+  color: white;
+}
+
+.movie-poster .play-button {
+  border: none;
+  cursor: pointer;
+}
