@@ -14,102 +14,202 @@
   <div class="app">
 
     <!-- HEADER -->
-    <header>
+    <header class="header">
+
       <div class="logo">
         Rei<span>toon</span>
       </div>
 
-      <div class="notification">
+      <button
+        class="notification"
+        onclick="showNotification()"
+        aria-label="Notifikasi"
+      >
         🔔
-      </div>
+      </button>
+
     </header>
 
 
     <!-- SEARCH -->
-    <div class="search">
-      🔍 Cari film, drama, atau creator...
+    <div class="search-wrapper">
+
+      <div class="search">
+        <span class="search-icon">🔍</span>
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Cari film, drama, atau creator..."
+          autocomplete="off"
+          oninput="searchMovie()"
+        >
+      </div>
+
+      <div
+        class="search-results"
+        id="searchResults"
+      ></div>
+
     </div>
 
 
     <!-- HERO -->
-    <div class="hero">
+    <section class="hero">
 
-      <h1>
-        Create Your Story
-      </h1>
+      <div class="hero-decoration hero-decoration-one"></div>
+      <div class="hero-decoration hero-decoration-two"></div>
 
-      <p>
-        Buat, tonton, dan bagikan film kamu sendiri.
-      </p>
+      <div class="hero-content">
 
-      <button
-        class="primary"
-        onclick="createFilm()"
-      >
-        ✨ Mulai Membuat Film
-      </button>
+        <span class="hero-label">
+          🎬 REITOON ORIGINAL
+        </span>
 
-    </div>
+        <h1>
+          Create Your Story
+        </h1>
+
+        <p>
+          Buat, tonton, dan bagikan film kamu sendiri.
+        </p>
+
+        <button
+          class="primary"
+          onclick="createFilm()"
+        >
+          ✨ Mulai Membuat Film
+        </button>
+
+      </div>
+
+    </section>
 
 
     <!-- TRENDING -->
-    <section>
+    <section class="content-section">
 
       <div class="section-title">
 
-        <h2>
-          🔥 Trending
-        </h2>
+        <div>
+          <span class="section-label">
+            POPULER SEKARANG
+          </span>
 
-        <div class="see-all">
-          Lihat semua
+          <h2>
+            🔥 Trending
+          </h2>
         </div>
+
+        <button
+          class="see-all"
+          onclick="showAll('trending')"
+        >
+          Lihat semua
+        </button>
 
       </div>
 
 
       <div class="cards">
 
-        <div
+        <article
           class="card"
           onclick="openMovie('Love Beyond Time')"
         >
-          <h3>
-            Love Beyond Time
-          </h3>
 
-          <p>
-            Romance • Drama
-          </p>
-        </div>
+          <div class="card-image romance">
+            ❤️
+          </div>
+
+          <div class="card-content">
+
+            <span class="card-number">
+              01
+            </span>
+
+            <h3>
+              Love Beyond Time
+            </h3>
+
+            <p>
+              Romance • Drama
+            </p>
+
+            <div class="card-footer">
+              <span>⭐ 9.2</span>
+              <span>▶ Watch</span>
+            </div>
+
+          </div>
+
+        </article>
 
 
-        <div
+        <article
           class="card"
           onclick="openMovie('The Last Kingdom')"
         >
-          <h3>
-            The Last Kingdom
-          </h3>
 
-          <p>
-            Action • Fantasy
-          </p>
-        </div>
+          <div class="card-image fantasy">
+            ⚔️
+          </div>
+
+          <div class="card-content">
+
+            <span class="card-number">
+              02
+            </span>
+
+            <h3>
+              The Last Kingdom
+            </h3>
+
+            <p>
+              Action • Fantasy
+            </p>
+
+            <div class="card-footer">
+              <span>⭐ 8.9</span>
+              <span>▶ Watch</span>
+            </div>
+
+          </div>
+
+        </article>
 
 
-        <div
+        <article
           class="card"
           onclick="openMovie('Hidden Truth')"
         >
-          <h3>
-            Hidden Truth
-          </h3>
 
-          <p>
-            Mystery • Drama
-          </p>
-        </div>
+          <div class="card-image mystery">
+            🕵️
+          </div>
+
+          <div class="card-content">
+
+            <span class="card-number">
+              03
+            </span>
+
+            <h3>
+              Hidden Truth
+            </h3>
+
+            <p>
+              Mystery • Drama
+            </p>
+
+            <div class="card-footer">
+              <span>⭐ 8.7</span>
+              <span>▶ Watch</span>
+            </div>
+
+          </div>
+
+        </article>
 
       </div>
 
@@ -117,49 +217,96 @@
 
 
     <!-- SHORT DRAMA -->
-    <section>
+    <section class="content-section">
 
       <div class="section-title">
 
-        <h2>
-          🎬 Short Drama
-        </h2>
+        <div>
+          <span class="section-label">
+            CERITA SINGKAT
+          </span>
 
-        <div class="see-all">
-          Lihat semua
+          <h2>
+            🎬 Short Drama
+          </h2>
         </div>
+
+        <button
+          class="see-all"
+          onclick="showAll('short')"
+        >
+          Lihat semua
+        </button>
 
       </div>
 
 
       <div class="cards">
 
-        <div
+        <article
           class="card"
           onclick="openMovie('First Meeting')"
         >
-          <h3>
-            First Meeting
-          </h3>
 
-          <p>
-            Romance
-          </p>
-        </div>
+          <div class="card-image meeting">
+            💕
+          </div>
+
+          <div class="card-content">
+
+            <span class="card-number">
+              01
+            </span>
+
+            <h3>
+              First Meeting
+            </h3>
+
+            <p>
+              Romance
+            </p>
+
+            <div class="card-footer">
+              <span>⭐ 8.8</span>
+              <span>▶ Watch</span>
+            </div>
+
+          </div>
+
+        </article>
 
 
-        <div
+        <article
           class="card"
           onclick="openMovie('One Last Chance')"
         >
-          <h3>
-            One Last Chance
-          </h3>
 
-          <p>
-            Drama
-          </p>
-        </div>
+          <div class="card-image drama">
+            🌧️
+          </div>
+
+          <div class="card-content">
+
+            <span class="card-number">
+              02
+            </span>
+
+            <h3>
+              One Last Chance
+            </h3>
+
+            <p>
+              Drama
+            </p>
+
+            <div class="card-footer">
+              <span>⭐ 8.5</span>
+              <span>▶ Watch</span>
+            </div>
+
+          </div>
+
+        </article>
 
       </div>
 
@@ -167,29 +314,73 @@
 
 
     <!-- CREATE PROJECT -->
-    <section>
+    <section class="content-section">
 
       <div class="create-box">
 
-        <h2>
-          ✨ Buat Film Kamu
-        </h2>
+        <div class="create-icon">
+          ✨
+        </div>
 
-        <p>
-          Jadikan ide cerita kamu menjadi sebuah karya film
-          dan bagikan kepada dunia.
-        </p>
+        <div class="create-content">
 
-        <button
-          class="primary"
-          onclick="createFilm()"
-        >
-          + Create Project
-        </button>
+          <span class="section-label">
+            YOUR NEXT PROJECT
+          </span>
+
+          <h2>
+            Buat Film Kamu
+          </h2>
+
+          <p>
+            Jadikan ide cerita kamu menjadi sebuah karya film
+            dan bagikan kepada dunia.
+          </p>
+
+          <button
+            class="primary"
+            onclick="createFilm()"
+          >
+            + Create Project
+          </button>
+
+        </div>
 
       </div>
 
     </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+      <div class="footer-logo">
+        Rei<span>toon</span>
+      </div>
+
+      <p>
+        Ceritamu. Film kamu. Duniamu.
+      </p>
+
+      <div class="footer-links">
+        <span onclick="showMessage('Tentang Reitoon')">
+          Tentang
+        </span>
+
+        <span onclick="showMessage('Bantuan')">
+          Bantuan
+        </span>
+
+        <span onclick="showMessage('Kebijakan Privasi')">
+          Privasi
+        </span>
+      </div>
+
+      <small>
+        © 2026 Reitoon. All rights reserved.
+      </small>
+
+    </footer>
 
   </div>
 
@@ -197,63 +388,339 @@
   <!-- BOTTOM NAVIGATION -->
   <nav class="bottom-nav">
 
-    <div
+    <button
       class="nav-item active"
-      onclick="goHome()"
+      onclick="goHome(this)"
     >
-      <span class="nav-icon">
-        🏠
-      </span>
-
-      Home
-    </div>
+      <span class="nav-icon">🏠</span>
+      <span>Home</span>
+    </button>
 
 
-    <div
+    <button
       class="nav-item"
-      onclick="goWatch()"
+      onclick="goWatch(this)"
     >
-      <span class="nav-icon">
-        🎬
-      </span>
-
-      Watch
-    </div>
+      <span class="nav-icon">🎬</span>
+      <span>Watch</span>
+    </button>
 
 
-    <div
-      class="nav-item"
+    <button
+      class="nav-item create-nav"
       onclick="createFilm()"
     >
-      <span class="nav-icon">
-        ✨
-      </span>
+      <span class="create-nav-icon">＋</span>
+      <span>Create</span>
+    </button>
 
-      Create
-    </div>
 
+    <button
+      class="nav-item"
+      onclick="goStudio(this)"
+    >
+      <span class="nav-icon">🎞️</span>
+      <span>Studio</span>
+    </button>
+
+
+    <button
+      class="nav-item"
+      onclick="goProfile(this)"
+    >
+      <span class="nav-icon">👤</span>
+      <span>Profile</span>
+    </button>
+
+  </nav>
+
+
+  <!-- TOAST -->
+  <div
+    class="toast"
+    id="toast"
+  >
+    <span id="toastIcon">✨</span>
+    <span id="toastText">Berhasil!</span>
+  </div>
+
+
+  <!-- MODAL -->
+  <div
+    class="modal-overlay"
+    id="modal"
+    onclick="closeModal(event)"
+  >
 
     <div
-      class="nav-item"
-      onclick="goStudio()"
+      class="modal"
+      onclick="event.stopPropagation()"
     >
-      <span class="nav-icon">
-        🎞️
-      </span>
 
-      Studio
+      <button
+        class="modal-close"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
+
+      <div
+        class="modal-icon"
+        id="modalIcon"
+      >
+        🎬
+      </div>
+
+      <h2 id="modalTitle">
+        Reitoon
+      </h2>
+
+      <p id="modalText">
+        Selamat datang di Reitoon.
+      </p>
+
+      <button
+        class="primary modal-button"
+        onclick="closeModal()"
+      >
+        Oke
+      </button>
+
     </div>
 
+  </div>
 
-    <div
-      class="nav-item"
-      onclick="goProfile()"
-    >
-      <span class="nav-icon">
-        👤
-      </span>
 
-      Profile
-    </div>
+  <script>
 
-  </
+    /* =========================
+       DATA FILM
+    ========================= */
+
+    const movies = [
+      {
+        title: "Love Beyond Time",
+        genre: "Romance • Drama"
+      },
+      {
+        title: "The Last Kingdom",
+        genre: "Action • Fantasy"
+      },
+      {
+        title: "Hidden Truth",
+        genre: "Mystery • Drama"
+      },
+      {
+        title: "First Meeting",
+        genre: "Romance"
+      },
+      {
+        title: "One Last Chance",
+        genre: "Drama"
+      }
+    ];
+
+
+    /* =========================
+       TOAST
+    ========================= */
+
+    function showToast(message, icon = "✨") {
+
+      const toast = document.getElementById("toast");
+      const text = document.getElementById("toastText");
+      const toastIcon = document.getElementById("toastIcon");
+
+      text.textContent = message;
+      toastIcon.textContent = icon;
+
+      toast.classList.add("show");
+
+      clearTimeout(window.toastTimer);
+
+      window.toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2500);
+
+    }
+
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    function openModal(title, text, icon = "🎬") {
+
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalText").textContent = text;
+      document.getElementById("modalIcon").textContent = icon;
+
+      document
+        .getElementById("modal")
+        .classList.add("show");
+
+      document.body.classList.add("modal-open");
+
+    }
+
+
+    function closeModal(event) {
+
+      if (
+        event &&
+        event.target !== document.getElementById("modal")
+      ) {
+        return;
+      }
+
+      document
+        .getElementById("modal")
+        .classList.remove("show");
+
+      document.body.classList.remove("modal-open");
+
+    }
+
+
+    /* =========================
+       NOTIFICATION
+    ========================= */
+
+    function showNotification() {
+
+      openModal(
+        "Notifikasi",
+        "Belum ada notifikasi baru. Nanti film terbaru akan muncul di sini.",
+        "🔔"
+      );
+
+    }
+
+
+    /* =========================
+       CREATE FILM
+    ========================= */
+
+    function createFilm() {
+
+      openModal(
+        "Create Your Story",
+        "Fitur pembuatan film siap digunakan. Masukkan ide cerita kamu untuk memulai project baru.",
+        "✨"
+      );
+
+    }
+
+
+    /* =========================
+       OPEN MOVIE
+    ========================= */
+
+    function openMovie(title) {
+
+      const movie = movies.find(
+        item => item.title === title
+      );
+
+      if (!movie) {
+        showToast("Film tidak ditemukan", "⚠️");
+        return;
+      }
+
+      openModal(
+        movie.title,
+        `${movie.genre}. Film ini siap untuk ditonton.`,
+        "🎬"
+      );
+
+    }
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    function searchMovie() {
+
+      const input =
+        document.getElementById("searchInput");
+
+      const results =
+        document.getElementById("searchResults");
+
+      const keyword =
+        input.value.trim().toLowerCase();
+
+      results.innerHTML = "";
+
+      if (!keyword) {
+
+        results.classList.remove("show");
+
+        return;
+      }
+
+
+      const filtered =
+        movies.filter(movie =>
+          movie.title.toLowerCase().includes(keyword) ||
+          movie.genre.toLowerCase().includes(keyword)
+        );
+
+
+      if (filtered.length === 0) {
+
+        results.innerHTML = `
+          <div class="no-result">
+            😔 Film tidak ditemukan
+          </div>
+        `;
+
+      } else {
+
+        filtered.forEach(movie => {
+
+          const item =
+            document.createElement("div");
+
+          item.className = "search-result";
+
+          item.innerHTML = `
+            <div class="result-icon">🎬</div>
+            <div>
+              <strong>${movie.title}</strong>
+              <small>${movie.genre}</small>
+            </div>
+          `;
+
+          item.onclick = () => {
+
+            openMovie(movie.title);
+
+            input.value = "";
+            results.classList.remove("show");
+
+          };
+
+          results.appendChild(item);
+
+        });
+
+      }
+
+      results.classList.add("show");
+
+    }
+
+
+    /* =========================
+       SHOW ALL
+    ========================= */
+
+    function showAll(category) {
+
+      if (category === "trending") {
+
+        openModal(
+          "Trending",
+         
