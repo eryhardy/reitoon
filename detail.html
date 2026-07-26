@@ -1,290 +1,266 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08070d">
+<title>Detail Film - Reitoon</title>
 
-  <meta charset="UTF-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+:root{
+--bg:#08070d;
+--surface:#191722;
+--surface2:#211f2b;
+--text:#fff;
+--muted:#aaa3b0;
+--pink:#ff2f8d;
+--purple:#762dff;
+--border:rgba(255,255,255,.1);
+}
 
-  <meta
-    name="theme-color"
-    content="#08070d"
-  >
+body{
+min-height:100vh;
+background:
+radial-gradient(circle at 100% 0%,rgba(255,40,145,.14),transparent 35%),
+radial-gradient(circle at 0% 30%,rgba(112,45,255,.1),transparent 30%),
+var(--bg);
+color:#fff;
+font-family:Arial,Helvetica,sans-serif;
+padding-bottom:100px;
+}
 
-  <title>Detail Film - Reitoon</title>
+.header{
+height:76px;
+display:flex;
+align-items:center;
+padding:16px 20px;
+background:rgba(8,7,13,.94);
+border-bottom:1px solid var(--border);
+position:sticky;
+top:0;
+z-index:20;
+}
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+.back{
+width:42px;
+height:42px;
+border-radius:14px;
+border:1px solid var(--border);
+background:var(--surface);
+color:#fff;
+font-size:20px;
+}
 
-  <style>
+.container{
+max-width:600px;
+margin:auto;
+padding:20px 16px;
+}
 
-    .detail-container {
-      max-width: 600px;
-      margin: auto;
-      padding: 18px 16px 120px;
-    }
+.video-box{
+width:100%;
+aspect-ratio:16/9;
+border-radius:20px;
+overflow:hidden;
+background:#000;
+border:1px solid var(--border);
+}
 
-    .video-player {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 18px;
-      background: #000;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border);
-    }
+.video-box video{
+width:100%;
+height:100%;
+display:block;
+}
 
-    .video-player video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+.poster{
+height:230px;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#ff2f8d,#762dff);
+margin-bottom:20px;
+}
 
-    .video-placeholder {
-      text-align: center;
-      color: #aaa3b0;
-    }
+.play-big{
+width:65px;
+height:65px;
+border-radius:50%;
+border:none;
+font-size:25px;
+cursor:pointer;
+}
 
-    .video-placeholder div {
-      font-size: 45px;
-      margin-bottom: 10px;
-    }
+.title{
+font-size:28px;
+margin-top:20px;
+}
 
-    .detail-title {
-      font-size: 27px;
-      margin-top: 20px;
-    }
+.genre{
+color:var(--pink);
+font-size:13px;
+margin-top:8px;
+}
 
-    .detail-meta {
-      color: var(--pink);
-      font-size: 13px;
-      margin-top: 7px;
-    }
+.description{
+color:var(--muted);
+font-size:14px;
+line-height:1.6;
+margin-top:15px;
+}
 
-    .detail-description {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-      margin-top: 14px;
-    }
+.action-row{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
 
-    .action-row {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
+.action{
+flex:1;
+padding:14px;
+border-radius:13px;
+border:1px solid var(--border);
+background:var(--surface);
+color:#fff;
+font-weight:bold;
+}
 
-    .action-button {
-      flex: 1;
-      padding: 13px;
-      border-radius: 13px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: white;
-    }
+.action.primary{
+border:none;
+background:linear-gradient(135deg,var(--pink),var(--purple));
+}
 
-    .action-button.primary {
-      border: none;
-      background: linear-gradient(135deg, var(--pink), var(--purple));
-    }
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:76px;
+display:flex;
+justify-content:space-around;
+align-items:center;
+background:rgba(14,13,21,.96);
+border-top:1px solid var(--border);
+}
 
-  </style>
+.nav-item{
+color:var(--muted);
+text-decoration:none;
+text-align:center;
+font-size:10px;
+}
 
+.nav-icon{
+display:block;
+font-size:21px;
+margin-bottom:4px;
+}
+</style>
 </head>
 
 <body>
 
-  <header class="top-header">
+<header class="header">
+<button class="back" onclick="history.back()">←</button>
+</header>
 
-    <button
-      class="back-button"
-      onclick="history.back()"
-    >
-      ←
-    </button>
+<main class="container">
 
-    <div class="brand-name">
-      Reitoon
-    </div>
+<div class="poster" id="poster">
+<button class="play-big" onclick="startVideo()">▶</button>
+</div>
 
-    <div style="width:42px;"></div>
+<div class="video-box" id="videoBox" style="display:none">
 
-  </header>
+<video id="moviePlayer" controls playsinline>
 
+<source src="" type="video/mp4">
 
-  <main class="detail-container">
+Browser kamu tidak mendukung video.
 
-    <div class="video-player">
+</video>
 
-      <div class="video-placeholder">
+</div>
 
-        <div>
-          ▶️
-        </div>
+<h1 class="title" id="movieTitle">Loading...</h1>
 
-        <p>
-          Video player Reitoon
-        </p>
+<p class="genre" id="movieGenre"></p>
 
-        <small>
-          Upload video untuk mulai menonton
-        </small>
+<p class="description" id="movieDescription"></p>
 
-      </div>
+<div class="action-row">
 
-    </div>
+<button class="action primary" onclick="startVideo()">
+▶ Tonton Sekarang
+</button>
 
+<button class="action" onclick="history.back()">
+← Kembali
+</button>
 
-    <h1
-      class="detail-title"
-      id="movieTitle"
-    >
-      Love Beyond Time
-    </h1>
+</div>
 
+</main>
 
-    <div
-      class="detail-meta"
-      id="movieGenre"
-    >
-      Romance · Drama
-    </div>
+<nav class="bottom-nav">
 
+<a class="nav-item" href="index.html">
+<span class="nav-icon">🏠</span>
+Home
+</a>
 
-    <p class="detail-description">
+<a class="nav-item active" href="watch.html">
+<span class="nav-icon">▶️</span>
+Watch
+</a>
 
-      Sebuah cerita tentang cinta, waktu, dan pilihan yang mengubah kehidupan dua orang.
+<a class="nav-item" href="create.html">
+<span class="nav-icon">✨</span>
+Create
+</a>
 
-    </p>
+<a class="nav-item" href="studio.html">
+<span class="nav-icon">🎥</span>
+Studio
+</a>
 
+<a class="nav-item" href="profile.html">
+<span class="nav-icon">👤</span>
+Profile
+</a>
 
-    <div class="action-row">
+</nav>
 
-      <button
-        class="action-button primary"
-        onclick="playMovie()"
-      >
-        ▶️ Play
-      </button>
+<script>
 
-      <button
-        class="action-button"
-        onclick="showMessage()"
-      >
-        ❤️ Like
-      </button>
+const savedMovie=localStorage.getItem("reitoon_selected_movie");
 
-    </div>
+let movie=savedMovie?JSON.parse(savedMovie):{
+title:"Love Beyond Time",
+genre:"Romance · Drama",
+description:"Kisah cinta yang melampaui waktu.",
+poster:"poster1"
+};
 
+document.getElementById("movieTitle").textContent=movie.title;
+document.getElementById("movieGenre").textContent=movie.genre;
+document.getElementById("movieDescription").textContent=movie.description;
 
-    <section class="form-card">
+function startVideo(){
 
-      <h2 style="margin-bottom:12px;">
-        About This Story
-      </h2>
+document.getElementById("poster").style.display="none";
 
-      <p style="color:#aaa3b0;font-size:13px;line-height:1.6;">
+document.getElementById("videoBox").style.display="block";
 
-        Film ini merupakan bagian dari library Reitoon. Nantinya film dapat dibuat menggunakan AI, disimpan di Studio, dan dipublikasikan ke platform Reitoon.
+const player=document.getElementById("moviePlayer");
 
-      </p>
+player.play().catch(()=>{});
 
-    </section>
+}
 
-  </main>
-
-
-  <nav class="bottom-navigation">
-
-    <a class="nav-item" href="index.html">
-      <span class="nav-icon">🏠</span>
-      Home
-    </a>
-
-    <a class="nav-item active" href="watch.html">
-      <span class="nav-icon">▶️</span>
-      Watch
-    </a>
-
-    <a class="nav-item" href="create.html">
-      <span class="nav-icon">✨</span>
-      Create
-    </a>
-
-    <a class="nav-item" href="studio.html">
-      <span class="nav-icon">🎥</span>
-      Studio
-    </a>
-
-    <a class="nav-item" href="profile.html">
-      <span class="nav-icon">👤</span>
-      Profile
-    </a>
-
-  </nav>
-
-
-  <script>
-
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
-
-    const title =
-      params.get("title");
-
-
-    const genre =
-      params.get("genre");
-
-
-    if (title) {
-
-      document
-        .getElementById("movieTitle")
-        .textContent = title;
-
-    }
-
-
-    if (genre) {
-
-      document
-        .getElementById("movieGenre")
-        .textContent =
-          genre.charAt(0).toUpperCase() +
-          genre.slice(1);
-
-    }
-
-
-    function playMovie() {
-
-      alert(
-        "▶️ Pemutar film Reitoon siap digunakan."
-      );
-
-    }
-
-
-    function showMessage() {
-
-      alert(
-        "❤️ Film ditambahkan ke favorit."
-      );
-
-    }
-
-  </script>
+</script>
 
 </body>
 </html>
