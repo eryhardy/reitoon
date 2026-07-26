@@ -1,483 +1,1665 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08070d">
-<title>Watch - Reitoon</title>
+<!DOCTYPE html><html lang="id"><head>  <meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
+«»
 
-:root{
---bg:#08070d;
---surface:#191722;
---surface-light:#211f2b;
---muted:#aaa3b0;
---pink:#ff2f8d;
---purple:#762dff;
---border:rgba(255,255,255,.1)
-}
+<meta
+name="theme-color"
+content="#08070d"
 
-body{
-min-height:100vh;
-background:
-radial-gradient(circle at 100% 0%,rgba(255,40,145,.14),transparent 35%),
-radial-gradient(circle at 0% 30%,rgba(112,45,255,.1),transparent 30%),
-var(--bg);
-color:#fff;
-font-family:Arial,Helvetica,sans-serif;
-padding-bottom:100px
-}
+«»
 
-.header{
-height:76px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:16px 20px;
-background:rgba(8,7,13,.94);
-border-bottom:1px solid var(--border);
-position:sticky;
-top:0;
-z-index:10
-}
+  <title>Watch - Reitoon</title>  <style>
 
-.logo{
-font-size:29px;
-font-weight:800;
-background:linear-gradient(135deg,#fff,var(--pink),var(--purple));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.container{
-max-width:600px;
-margin:auto;
-padding:25px 16px
-}
+    :root {
+      --bg: #08070d;
+      --surface: #191722;
+      --surface-light: #211f2b;
+      --text: #ffffff;
+      --muted: #aaa3b0;
+      --pink: #ff2f8d;
+      --pink-light: #ff4ca0;
+      --purple: #762dff;
+      --border: rgba(255,255,255,0.10);
+    }
 
-.title{font-size:30px}
-.title span{
-background:linear-gradient(135deg,var(--pink),var(--purple));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.subtitle{
-color:var(--muted);
-font-size:13px;
-line-height:1.5;
-margin-top:8px
-}
+    body {
 
-.search{
-width:100%;
-margin-top:20px;
-padding:14px;
-border-radius:13px;
-border:1px solid var(--border);
-background:var(--surface);
-color:#fff;
-outline:none
-}
+      min-height: 100vh;
 
-.categories{
-display:flex;
-gap:8px;
-overflow-x:auto;
-margin-top:15px;
-padding-bottom:3px
-}
+      background:
 
-.category{
-flex:none;
-padding:9px 15px;
-border-radius:20px;
-border:1px solid var(--border);
-background:var(--surface);
-color:#aaa3b0;
-cursor:pointer
-}
+        radial-gradient(
+          circle at 100% 0%,
+          rgba(255,40,145,0.14),
+          transparent 35%
+        ),
 
-.category.active{
-background:linear-gradient(135deg,var(--pink),var(--purple));
-color:#fff;
-border:none
-}
+        radial-gradient(
+          circle at 0% 30%,
+          rgba(112,45,255,0.10),
+          transparent 30%
+        ),
 
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px;
-margin-top:22px
-}
+        var(--bg);
 
-.card{
-overflow:hidden;
-border-radius:18px;
-background:var(--surface);
-border:1px solid var(--border);
-cursor:pointer
-}
+      color: var(--text);
 
-.poster{
-height:220px;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-background:
-linear-gradient(135deg,#29132b,#141327)
-}
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-.poster img{
-width:100%;
-height:100%;
-object-fit:cover
-}
+      overflow-x: hidden;
 
-.poster-placeholder{
-font-size:45px
-}
+      padding-bottom: 100px;
 
-.play{
-position:absolute;
-bottom:12px;
-right:12px;
-width:42px;
-height:42px;
-border:none;
-border-radius:50%;
-background:var(--pink);
-color:#fff;
-font-size:17px
-}
+    }
 
-.card-info{
-padding:12px
-}
+    /* HEADER */
 
-.card-title{
-font-size:14px;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis
-}
+    .top-header {
 
-.card-meta{
-color:var(--muted);
-font-size:11px;
-margin-top:5px
-}
+      height: 76px;
 
-.badge{
-position:absolute;
-top:10px;
-left:10px;
-padding:5px 8px;
-border-radius:8px;
-font-size:9px;
-background:var(--pink);
-color:#fff
-}
+      display: flex;
 
-.empty{
-grid-column:1/-1;
-text-align:center;
-padding:50px 20px;
-color:var(--muted)
-}
+      align-items: center;
 
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:76px;
-display:flex;
-justify-content:space-around;
-align-items:center;
-background:rgba(14,13,21,.96);
-border-top:1px solid var(--border);
-z-index:20
-}
+      justify-content: space-between;
 
-.nav{
-color:var(--muted);
-text-decoration:none;
-text-align:center;
-font-size:10px
-}
+      padding: 16px 20px;
 
-.nav-icon{
-display:block;
-font-size:21px;
-margin-bottom:4px
-}
+      background: rgba(8,7,13,0.94);
 
-.nav.active{color:var(--pink)}
+      border-bottom: 1px solid var(--border);
 
-@media(max-width:380px){
-.grid{grid-template-columns:1fr}
-}
-</style>
-</head>
+      backdrop-filter: blur(18px);
 
-<body>
+      position: sticky;
 
-<header class="header">
+      top: 0;
 
-<div class="logo">Reitoon</div>
+      z-index: 20;
 
-<div style="width:42px"></div>
+    }
 
-</header>
+    .logo {
 
-<main class="container">
+      font-size: 28px;
 
-<h1 class="title">
-Watch <span>Stories</span>
-</h1>
+      font-weight: 800;
 
-<p class="subtitle">
-Temukan cerita dan film menarik dari creator Reitoon.
-</p>
+      background:
 
-<input
-class="search"
-id="search"
-placeholder="🔍 Cari film atau cerita..."
-oninput="renderStories()"
+        linear-gradient(
+          135deg,
+          white,
+          var(--pink),
+          var(--purple)
+        );
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+    .back-button {
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 14px;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      color: white;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+    }
+
+    .header-space {
+
+      width: 42px;
+
+    }
+
+    /* MAIN */
+
+    .container {
+
+      width: 100%;
+
+      max-width: 850px;
+
+      margin: auto;
+
+      padding: 24px 16px 30px;
+
+    }
+
+    .section-label {
+
+      color: var(--pink-light);
+
+      font-size: 10px;
+
+      font-weight: bold;
+
+      letter-spacing: 1.5px;
+
+    }
+
+    .page-title {
+
+      font-size: 32px;
+
+      margin-top: 8px;
+
+    }
+
+    .subtitle {
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+      margin-top: 8px;
+
+    }
+
+    /* SEARCH */
+
+    .search-bar {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-top: 22px;
+
+      padding: 14px 16px;
+
+      border-radius: 15px;
+
+      background: var(--surface);
+
+      border: 1px solid var(--border);
+
+    }
+
+    .search-bar span {
+
+      font-size: 17px;
+
+    }
+
+    .search-bar input {
+
+      width: 100%;
+
+      border: none;
+
+      outline: none;
+
+      background: transparent;
+
+      color: white;
+
+      font-size: 14px;
+
+    }
+
+    .search-bar input::placeholder {
+
+      color: var(--muted);
+
+    }
+
+    /* CATEGORY */
+
+    .category-scroll {
+
+      display: flex;
+
+      gap: 9px;
+
+      overflow-x: auto;
+
+      padding: 18px 0 5px;
+
+      scrollbar-width: none;
+
+    }
+
+    .category-scroll::-webkit-scrollbar {
+
+      display: none;
+
+    }
+
+    .category-button {
+
+      flex-shrink: 0;
+
+      padding: 10px 16px;
+
+      border-radius: 20px;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      cursor: pointer;
+
+    }
+
+    .category-button.active {
+
+      color: white;
+
+      border-color: var(--pink);
+
+      background:
+
+        linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple)
+        );
+
+    }
+
+    /* SECTION */
+
+    .content-section {
+
+      margin-top: 28px;
+
+    }
+
+    .section-header {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-bottom: 15px;
+
+    }
+
+    .section-header h2 {
+
+      font-size: 20px;
+
+      margin-top: 5px;
+
+    }
+
+    /* MOVIE GRID */
+
+    .movie-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 15px;
+
+    }
+
+    .movie-card {
+
+      min-width: 0;
+
+      cursor: pointer;
+
+      transition: 0.25s;
+
+    }
+
+    .movie-card:active {
+
+      transform: scale(0.97);
+
+    }
+
+    .movie-poster {
+
+      position: relative;
+
+      width: 100%;
+
+      aspect-ratio: 2 / 3;
+
+      border-radius: 17px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      box-shadow:
+
+        0 12px 25px rgba(0,0,0,0.25);
+
+    }
+
+    /* POSTER DESIGN */
+
+    .poster-one {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #ff2f8d,
+          #762dff 65%,
+          #100f17
+        );
+
+    }
+
+    .poster-two {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #191722,
+          #762dff,
+          #08070d
+        );
+
+    }
+
+    .poster-three {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #0d2538,
+          #442070,
+          #08070d
+        );
+
+    }
+
+    .poster-four {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #ff4ca0,
+          #ff8a65,
+          #762dff
+        );
+
+    }
+
+    .poster-five {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #291d49,
+          #ff2f8d,
+          #08070d
+        );
+
+    }
+
+    .poster-six {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #111111,
+          #502040,
+          #762dff
+        );
+
+    }
+
+    .poster-content {
+
+      position: absolute;
+
+      inset: 0;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 15px;
+
+      background:
+
+        linear-gradient(
+          to top,
+          rgba(0,0,0,0.65),
+          transparent 60%
+        );
+
+    }
+
+    .poster-icon {
+
+      font-size: 42px;
+
+      margin-bottom: 12px;
+
+      filter:
+
+        drop-shadow(
+          0 5px 10px rgba(0,0,0,0.35)
+        );
+
+    }
+
+    .poster-content strong {
+
+      font-size: 15px;
+
+      text-shadow:
+
+        0 2px 8px rgba(0,0,0,0.5);
+
+    }
+
+    .movie-badge {
+
+      position: absolute;
+
+      top: 10px;
+
+      left: 10px;
+
+      padding: 6px 8px;
+
+      border-radius: 8px;
+
+      background: rgba(0,0,0,0.55);
+
+      backdrop-filter: blur(8px);
+
+      color: white;
+
+      font-size: 9px;
+
+      font-weight: bold;
+
+    }
+
+    .new-badge {
+
+      background:
+
+        linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple)
+        );
+
+    }
+
+    .play-button {
+
+      position: absolute;
+
+      right: 10px;
+
+      bottom: 10px;
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 50%;
+
+      border: none;
+
+      background: white;
+
+      color: var(--pink);
+
+      font-size: 17px;
+
+      cursor: pointer;
+
+      box-shadow:
+
+        0 5px 15px rgba(0,0,0,0.35);
+
+    }
+
+    .movie-info {
+
+      padding: 10px 2px 0;
+
+    }
+
+    .movie-info h3 {
+
+      font-size: 14px;
+
+      line-height: 1.3;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+    }
+
+    .movie-info p {
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      margin-top: 5px;
+
+    }
+
+    /* EMPTY */
+
+    .empty-state {
+
+      display: none;
+
+      text-align: center;
+
+      padding: 50px 20px;
+
+      color: var(--muted);
+
+    }
+
+    .empty-state div {
+
+      font-size: 42px;
+
+      margin-bottom: 12px;
+
+    }
+
+    /* BOTTOM NAV */
+
+    .bottom-nav {
+
+      position: fixed;
+
+      bottom: 0;
+
+      left: 0;
+
+      right: 0;
+
+      height: 76px;
+
+      display: flex;
+
+      justify-content: space-around;
+
+      align-items: center;
+
+      background: rgba(14,13,21,0.96);
+
+      backdrop-filter: blur(18px);
+
+      border-top: 1px solid var(--border);
+
+      z-index: 30;
+
+    }
+
+    .nav-item {
+
+      color: var(--muted);
+
+      text-decoration: none;
+
+      text-align: center;
+
+      font-size: 10px;
+
+      min-width: 60px;
+
+    }
+
+    .nav-icon {
+
+      display: block;
+
+      font-size: 21px;
+
+      margin-bottom: 4px;
+
+    }
+
+    .nav-item.active {
+
+      color: var(--pink);
+
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .container {
+
+        padding: 22px 14px 30px;
+
+      }
+
+      .page-title {
+
+        font-size: 29px;
+
+      }
+
+      .movie-grid {
+
+        gap: 12px;
+
+      }
+
+    }
+
+    /* TABLET / DESKTOP */
+
+    @media (min-width: 700px) {
+
+      .movie-grid {
+
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
+
+      }
+
+    }
+
+  </style></head><body>  <!-- HEADER -->  <header class="top-header"><button
+  class="back-button"
+  onclick="goBack()"
 >
 
-<div class="categories">
+  ←
 
-<button class="category active" onclick="setCategory('all',this)">
-All
 </button>
 
-<button class="category" onclick="setCategory('Romance',this)">
-Romance
-</button>
 
-<button class="category" onclick="setCategory('Drama',this)">
-Drama
-</button>
+<div class="logo">
 
-<button class="category" onclick="setCategory('Action',this)">
-Action
-</button>
-
-<button class="category" onclick="setCategory('Fantasy',this)">
-Fantasy
-</button>
+  Reitoon
 
 </div>
 
-<section class="grid" id="movieGrid"></section>
 
-</main>
+<div class="header-space"></div>
 
-<nav class="bottom-nav">
+  </header>  <!-- MAIN -->  <main class="container"><section>
 
-<a class="nav" href="index.html">
-<span class="nav-icon">🏠</span>
-Home
-</a>
+  <span class="section-label">
 
-<a class="nav active" href="watch.html">
-<span class="nav-icon">▶️</span>
-Watch
-</a>
+    REITOON LIBRARY
 
-<a class="nav" href="create.html">
-<span class="nav-icon">✨</span>
-Create
-</a>
+  </span>
 
-<a class="nav" href="studio.html">
-<span class="nav-icon">🎥</span>
-Studio
-</a>
 
-<a class="nav" href="profile.html">
-<span class="nav-icon">👤</span>
-Profile
-</a>
+  <h1 class="page-title">
 
-</nav>
+    Watch
 
-<script>
+  </h1>
 
-let category="all";
 
-const defaultMovies=[
+  <p class="subtitle">
 
-{
-id:"love-beyond-time",
-title:"Love Beyond Time",
-genre:"Romance",
-description:"Sebuah kisah cinta yang melampaui waktu.",
-cover:"",
-type:"Film",
-status:"public"
-},
+    Temukan cerita baru dan tonton film favoritmu di Reitoon.
 
-{
-id:"last-kingdom",
-title:"The Last Kingdom",
-genre:"Action",
-description:"Pertarungan besar demi masa depan kerajaan.",
-cover:"",
-type:"Film",
-status:"public"
-},
+  </p>
 
-{
-id:"hidden-truth",
-title:"Hidden Truth",
-genre:"Drama",
-description:"Sebuah rahasia besar perlahan terungkap.",
-cover:"",
-type:"Film",
-status:"public"
-}
+</section>
 
-];
 
-function getMovies(){
+<!-- SEARCH -->
 
-let movies=[...defaultMovies];
+<div class="search-bar">
 
-const saved=localStorage.getItem("reitoon_story");
+  <span>
 
-if(saved){
+    🔍
 
-const story=JSON.parse(saved);
+  </span>
 
-if(story.status==="public"){
 
-movies.push(story);
-
-}
-
-}
-
-return movies;
-
-}
-
-function setCategory(value,button){
-
-category=value;
-
-document.querySelectorAll(".category")
-.forEach(x=>x.classList.remove("active"));
-
-button.classList.add("active");
-
-renderStories();
-
-}
-
-function renderStories(){
-
-const grid=document.getElementById("movieGrid");
-
-const keyword=
-document.getElementById("search")
-.value.toLowerCase();
-
-const movies=getMovies().filter(movie=>{
-
-const matchSearch=
-movie.title.toLowerCase().includes(keyword);
-
-const matchCategory=
-category==="all" ||
-movie.genre===category;
-
-return matchSearch && matchCategory;
-
-});
-
-grid.innerHTML="";
-
-if(movies.length===0){
-
-grid.innerHTML=
-`<div class="empty">😔<br><br>Belum ada cerita ditemukan.</div>`;
-
-return;
-
-}
-
-movies.forEach(movie=>{
-
-const card=document.createElement("article");
-
-card.className="card";
-
-card.onclick=()=>{
-
-window.location.href=
-"detail.html?id="+movie.id;
-
-};
-
-const poster=movie.cover
-
-?`<img src="${movie.cover}" alt="${movie.title}">`
-
-:`<div class="poster-placeholder">🎬</div>`;
-
-card.innerHTML=`
-
-<div class="poster">
-
-${poster}
-
-<span class="badge">
-${movie.status==="public"?"PUBLIC":"TRENDING"}
-</span>
-
-<button class="play" onclick="event.stopPropagation(); openMovie('${movie.id}')">
-▶
-</button>
+  <input
+    type="text"
+    id="watchSearch"
+    placeholder="Cari film atau drama..."
+  >
 
 </div>
 
-<div class="card-info">
 
-<h3 class="card-title">
-${movie.title}
-</h3>
+<!-- CATEGORY -->
 
-<p class="card-meta">
-${movie.genre} • ${movie.type}
-</p>
+<div class="category-scroll">
+
+
+  <button
+    class="category-button active"
+    onclick="filterMovies('all', this)"
+  >
+
+    All
+
+  </button>
+
+
+  <button
+    class="category-button"
+    onclick="filterMovies('drama', this)"
+  >
+
+    Drama
+
+  </button>
+
+
+  <button
+    class="category-button"
+    onclick="filterMovies('romance', this)"
+  >
+
+    Romance
+
+  </button>
+
+
+  <button
+    class="category-button"
+    onclick="filterMovies('action', this)"
+  >
+
+    Action
+
+  </button>
+
+
+  <button
+    class="category-button"
+    onclick="filterMovies('comedy', this)"
+  >
+
+    Comedy
+
+  </button>
+
+
+  <button
+    class="category-button"
+    onclick="filterMovies('fantasy', this)"
+  >
+
+    Fantasy
+
+  </button>
+
 
 </div>
 
-`;
 
-grid.appendChild(card);
+<!-- TRENDING -->
 
-});
+<section class="content-section">
 
-}
 
-function openMovie(id){
+  <div class="section-header">
 
-window.location.href=
-"detail.html?id="+id;
 
-}
+    <div>
 
-renderStories();
+      <span class="section-label">
 
-</script>
+        WATCH NOW
 
-</body>
-</html>
+      </span>
+
+
+      <h2>
+
+        🔥 Trending
+
+      </h2>
+
+    </div>
+
+
+  </div>
+
+
+  <div
+    class="movie-grid"
+    id="movieGrid"
+  >
+
+
+    <!-- LOVE BEYOND TIME -->
+
+    <article
+      class="movie-card"
+      data-category="romance drama"
+      data-title="Love Beyond Time"
+      onclick="openMovie('Love Beyond Time')"
+    >
+
+      <div class="movie-poster poster-one">
+
+
+        <span class="movie-badge">
+
+          TRENDING
+
+        </span>
+
+
+        <div class="poster-content">
+
+          <div class="poster-icon">
+
+            💖
+
+          </div>
+
+
+          <strong>
+
+            Love Beyond Time
+
+          </strong>
+
+        </div>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('Love Beyond Time')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          Love Beyond Time
+
+        </h3>
+
+
+        <p>
+
+          Romance · Drama
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- THE LAST KINGDOM -->
+
+    <article
+      class="movie-card"
+      data-category="action fantasy"
+      data-title="The Last Kingdom"
+      onclick="openMovie('The Last Kingdom')"
+    >
+
+      <div class="movie-poster poster-two">
+
+
+        <span class="movie-badge">
+
+          #2
+
+        </span>
+
+
+        <div class="poster-content">
+
+          <div class="poster-icon">
+
+            ⚔️
+
+          </div>
+
+
+          <strong>
+
+            The Last Kingdom
+
+          </strong>
+
+        </div>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('The Last Kingdom')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          The Last Kingdom
+
+        </h3>
+
+
+        <p>
+
+          Action · Fantasy
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- HIDDEN TRUTH -->
+
+    <article
+      class="movie-card"
+      data-category="drama mystery"
+      data-title="Hidden Truth"
+      onclick="openMovie('Hidden Truth')"
+    >
+
+      <div class="movie-poster poster-three">
+
+
+        <span class="movie-badge">
+
+          #3
+
+        </span>
+
+
+        <div class="poster-content">
+
+          <div class="poster-icon">
+
+            🕵️
+
+          </div>
+
+
+          <strong>
+
+            Hidden Truth
+
+          </strong>
+
+        </div>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('Hidden Truth')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          Hidden Truth
+
+        </h3>
+
+
+        <p>
+
+          Mystery · Drama
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- FIRST MEETING -->
+
+    <article
+      class="movie-card"
+      data-category="romance"
+      data-title="First Meeting"
+      onclick="openMovie('First Meeting')"
+    >
+
+      <div class="movie-poster poster-four">
+
+
+        <span class="movie-badge new-badge">
+
+          NEW
+
+        </span>
+
+
+        <div class="poster-content">
+
+          <div class="poster-icon">
+
+            🌸
+
+          </div>
+
+
+          <strong>
+
+            First Meeting
+
+          </strong>
+
+        </div>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('First Meeting')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          First Meeting
+
+        </h3>
+
+
+        <p>
+
+          Romance
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- ONE LAST CHANCE -->
+
+    <article
+      class="movie-card"
+      data-category="drama"
+      data-title="One Last Chance"
+      onclick="openMovie('One Last Chance')"
+    >
+
+      <div class="movie-poster poster-five">
+
+
+        <span class="movie-badge new-badge">
+
+          NEW
+
+        </span>
+
+
+        <div class="poster-content">
+
+          <div class="poster-icon">
+
+            💔
+
+          </div>
+
+
+          <strong>
+
+            One Last Chance
+
+          </strong>
+
+        </div>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('One Last Chance')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          One Last Chance
+
+        </h3>
+
+
+        <p>
+
+          Drama
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- MIDNIGHT STORY -->
+
+    <article
+      class="movie-card"
+      data-category="action thriller"
+      data-title="Midnight Story"
+      onclick="openMovie('Midnight Story')"
+    >
+
+      <div class="movie-poster poster-six">
+
+
+        <span class="movie-badge new-badge">
+
+          NEW
+
+        </span>
+
+
+        <div class="poster-content">
+
+          <div class="poster-icon">
+
+            🌙
+
+          </div>
+
+
+          <strong>
+
+            Midnight Story
+
+          </strong>
+
+        </div>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('Midnight Story')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          Midnight Story
+
+        </h3>
+
+
+        <p>
+
+          Thriller · Action
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+  </div>
+
+
+  <div
+    class="empty-state"
+    id="emptyState"
+  >
+
+    <div>
+
+      🔍
+
+    </div>
+
+
+    <p>
+
+      Film tidak ditemukan.
+
+    </p>
+
+  </div>
+
+
+</section>
+
+  </main>  <!-- BOTTOM NAV -->  <nav class="bottom-nav"><a
+  class="nav-item"
+  href="index.html"
+>
+
+  <span class="nav-icon">
+
+    🏠
+
+  </span>
+
+  Home
+
+</a>
+
+
+<a
+  class="nav-item active"
+  href="watch.html"
+>
+
+  <span class="nav-icon">
+
+    ▶️
+
+  </span>
+
+  Watch
+
+</a>
+
+
+<a
+  class="nav-item"
+  href="create.html"
+>
+
+  <span class="nav-icon">
+
+    ✨
+
+  </span>
+
+  Create
+
+</a>
+
+
+<a
+  class="nav-item"
+  href="studio.html"
+>
+
+  <span class="nav-icon">
+
+    🎥
+
+  </span>
+
+  Studio
+
+</a>
+
+
+<a
+  class="nav-item"
+  href="profile.html"
+>
+
+  <span class="nav-icon">
+
+    👤
+
+  </span>
+
+  Profile
+
+</a>
+
+  </nav>  <!-- JAVASCRIPT -->  <script>
+
+
+    function openMovie(title) {
+
+
+      window.location.href =
+
+        "detail.html?movie=" +
+
+        encodeURIComponent(title);
+
+    }
+
+
+    const searchInput =
+
+      document
+
+      .getElementById(
+        "watchSearch"
+      );
+
+
+    searchInput.addEventListener(
+
+      "input",
+
+      function() {
+
+
+        const keyword =
+
+          this.value
+
+          .toLowerCase()
+
+          .trim();
+
+
+        const movies =
+
+          document
+
+          .querySelectorAll(
+            ".movie-card"
+          );
+
+
+        let visibleCount = 0;
+
+
+        movies.forEach(
+
+          function(movie) {
+
+
+            const title =
+
+              movie
+
+              .dataset
+
+              .title
+
+              .toLowerCase();
+
+
+            if (
+
+              title.includes(keyword)
+
+            ) {
+
+              movie.style.display =
+                "block";
+
+              visibleCount++;
+
+            } else {
+
+              movie.style.display =
+                "none";
+
+            }
+
+          }
+
+        );
+
+
+        document
+
+          .getElementById(
+            "emptyState"
+          )
+
+          .style.display =
+
+          visibleCount === 0
+            ? "block"
+            : "none";
+
+
+      }
+
+    );
+
+
+    function filterMovies(
+
+      category,
+
+      button
+
+    ) {
+
+
+      document
+
+        .querySelectorAll(
+          ".category-button"
+        )
+
+        .forEach(
+
+          function(item) {
+
+            item.classList.remove(
+              "active"
+            );
+
+          }
+
+        );
+
+
+      button.classList.add(
+        "active"
+      );
+
+
+      const movies =
+
+        document
+
+        .querySelectorAll(
+          ".movie-card"
+        );
+
+
+      let visibleCount = 0;
+
+
+      movies.forEach(
+
+        function(movie) {
+
+
+          const movieCategory =
+
+            movie.dataset.category;
+
+
+          if (
+
+            category === "all" ||
+
+            movieCategory
+
+              .split(" ")
+
+              .includes(category)
+
+          ) {
+
+            movie.style.display =
+              "block";
+
+            visibleCount++;
+
+          } else {
+
+            movie.style.display =
+              "none";
+
+          }
+
+        }
+
+      );
+
+
+      document
+
+        .getElementById(
+          "emptyState"
+        )
+
+        .style.display =
+
+        visibleCount === 0
+          ? "block"
+          : "none";
+
+
+    }
+
+
+    function goBack() {
+
+
+      if (document.referrer) {
+
+        history.back();
+
+      } else {
+
+        window.location.href =
+          "index.html";
+
+      }
+
+    }
+
+
+  </script></body></html>
