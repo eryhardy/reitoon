@@ -388,6 +388,24 @@ header {
   justify-content: space-between;
 }
 
+.ad-box {
+  background: linear-gradient(135deg, #172d1e, #213c27);
+  border: 1px solid #3d6544;
+}
+
+.ad-stat {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding: 13px;
+  background: #14271a;
+  border-radius: 12px;
+}
+
+.ad-stat b {
+  color: #d9ff69;
+}
+
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -419,22 +437,6 @@ header {
   margin-bottom: 3px;
 }
 
-.history-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 13px 0;
-  border-bottom: 1px solid #294632;
-  font-size: 13px;
-}
-
-.positive {
-  color: #d9ff69;
-}
-
-.negative {
-  color: #ff8b8b;
-}
-
 @media (min-width: 700px) {
   .container {
     max-width: 700px;
@@ -445,58 +447,104 @@ header {
     <div class="logo">REI<span>TOON</span></div>
     <div class="profile">R</div>
   </div>
-</header><main class="container"><!-- ================= HOME ================= --><section id="homePage" class="page active">  <div class="hero">
-    <h1>Selamat Datang di Reitoon 🎬</h1>
-    <p>
-      Nikmati drama, buat konten AI, bermain game,
-      dan kumpulkan reward dalam satu platform.
-    </p><button class="btn" onclick="showPage('watchPage')">
+</header><main class="container"><!-- ================= HOME ================= --><section id="homePage" class="page active">  <div class="hero"><h1>Selamat Datang di Reitoon 🎬</h1>
+
+<p>
+  Nikmati drama, buat konten AI,
+  bermain game, dan kumpulkan reward
+  dalam satu platform.
+</p>
+
+<button class="btn" onclick="showPage('watchPage')">
   ▶ Mulai Menonton
 </button>
 
-  </div>  <h2 class="section-title">✨ Reitoon Features</h2>  <div class="cards"><div class="card watch-card" onclick="showPage('watchPage')">
+  </div>  <h2 class="section-title">
+    ✨ Reitoon Features
+  </h2>  <div class="cards"><div class="card watch-card"
+     onclick="showPage('watchPage')">
+
   <div class="card-icon">▶️</div>
+
   <h3>Watch</h3>
-  <p>Nikmati berbagai drama dan video.</p>
+
+  <p>
+    Nikmati berbagai drama dan video.
+  </p>
+
 </div>
 
-<div class="card create-card" onclick="showPage('createPage')">
+<div class="card create-card"
+     onclick="showPage('createPage')">
+
   <div class="card-icon">✨</div>
+
   <h3>Create</h3>
-  <p>Buat video AI kamu sendiri.</p>
+
+  <p>
+    Buat video AI kamu sendiri.
+  </p>
+
 </div>
 
-<div class="card game-card" onclick="showPage('gamesPage')">
+<div class="card game-card"
+     onclick="showPage('gamesPage')">
+
   <div class="card-icon">🎮</div>
+
   <h3>Games</h3>
-  <p>Main dan kumpulkan Point.</p>
+
+  <p>
+    Main dan kumpulkan Point.
+  </p>
+
 </div>
 
-<div class="card studio-card" onclick="showPage('studioPage')">
+<div class="card studio-card"
+     onclick="showPage('studioPage')">
+
   <div class="card-icon">🎬</div>
+
   <h3>Studio</h3>
-  <p>Kelola proyek dan karya kamu.</p>
+
+  <p>
+    Kelola proyek dan karya kamu.
+  </p>
+
 </div>
 
-  </div></section><!-- ================= WATCH ================= --><section id="watchPage" class="page">  <h1 class="section-title">▶️ Watch</h1>  <div class="panel">
-    <h2>Drama Reitoon</h2>
-    <p style="color:#aebfaf;margin-top:10px;">
-      Di sini nanti kamu dapat menampilkan drama,
-      video pendek, dan konten creator Reitoon.
-    </p><button class="btn">
+  </div></section><!-- ================= WATCH ================= --><section id="watchPage" class="page">  <h1 class="section-title">
+    ▶️ Watch
+  </h1>  <div class="panel"><h2>Drama Reitoon</h2>
+
+<p style="color:#aebfaf;margin-top:10px;">
+
+  Di sini nanti kamu dapat menampilkan
+  drama, video pendek, dan konten creator Reitoon.
+
+</p>
+
+<button class="btn">
   ▶ Tonton Sekarang
 </button>
 
-  </div></section><!-- ================= CREATE ================= --><section id="createPage" class="page">  <h1 class="section-title">✨ Create</h1>  <div class="panel">
-    <h2>Buat Video AI</h2><p style="color:#aebfaf;margin-top:10px;">
+  </div></section><!-- ================= CREATE ================= --><section id="createPage" class="page">  <h1 class="section-title">
+    ✨ Create
+  </h1>  <div class="panel"><h2>Buat Video AI</h2>
+
+<p style="color:#aebfaf;margin-top:10px;">
+
   Gunakan Credit untuk membuat video AI.
+
 </p>
 
 <button class="btn">
   ✨ Mulai Membuat
 </button>
 
-  </div></section><!-- ================= GAMES ================= --><section id="gamesPage" class="page">  <h1 class="section-title">🎮 Reitoon Games</h1>  <div class="balance-card"><div class="balance-title">
+  </div></section><!-- ================= GAMES ================= --><section id="gamesPage" class="page">  <h1 class="section-title">
+    🎮 Reitoon Games
+  </h1>  <!-- BALANCE -->  <div class="balance-card"><div class="balance-title">
   CREDIT TERSEDIA
 </div>
 
@@ -506,63 +554,194 @@ header {
 </div>
 
 <div class="point-box">
-  <span>🏆 Total Point</span>
-  <span class="point-value" id="points">250</span>
+
+  <span>
+    🏆 Total Point
+  </span>
+
+  <span class="point-value"
+        id="points">
+    250
+  </span>
+
 </div>
 
-  </div>  <div class="game-menu"><button class="spin-btn" onclick="openGame('spinGame')">
-  🎡<br><br>
-  Spin Reward
-</button>
+  </div>  <!-- REWARD ADS -->  <div class="panel ad-box"><h2>
+  📺 Reward Ads
+</h2>
 
-<button class="quiz-btn" onclick="openGame('quizGame')">
-  🧠<br><br>
-  Quiz Challenge
-</button>
+<p style="color:#aebfaf;margin-top:8px;">
 
-<button class="billiard-btn" onclick="openGame('billiardGame')">
-  🎱<br><br>
-  Mini Billiard
-</button>
+  Tonton video iklan untuk mendapatkan
+  1 Credit per video.
 
-<button class="duel-btn" onclick="startDuel()">
-  ⚔️<br><br>
-  Skill Duel
-</button>
-
-  </div>  <div class="notice">
-    💡 Credit dapat digunakan untuk bermain dan dikirim ke pengguna lain.
-    Point adalah reward permainan dan tidak dapat dikirim.
-  </div>  <!-- SPIN -->  <div id="spinGame" class="game-area panel"><h2>🎡 Spin Reward</h2>
-
-<p style="color:#aebfaf;">
-  Biaya bermain: 50 Credit
 </p>
 
-<div class="pointer">▼</div>
+<div class="ad-stat">
 
-<div class="spin-wheel" id="wheel"></div>
+  <span>
+    📺 Iklan Hari Ini
+  </span>
 
-<button class="action-btn" id="spinButton" onclick="spinWheel()">
-  SPIN SEKARANG — 50 CREDIT
-</button>
+  <b>
+    <span id="adsWatched">
+      0
+    </span>
+    / 30
+  </b>
 
-<div id="spinResult" class="result"></div>
-
-  </div>  <!-- QUIZ -->  <div id="quizGame" class="game-area panel"><h2>🧠 Quiz Challenge</h2>
-
-<div class="quiz-question" id="question">
-  Loading...
 </div>
 
-<div id="answers"></div>
+<div class="ad-stat">
 
-<div id="quizResult" class="result"></div>
+  <span>
+    💎 Reward Hari Ini
+  </span>
 
-  </div>  <!-- BILLIARD -->  <div id="billiardGame" class="game-area panel"><h2>🎱 Mini Billiard</h2>
+  <b>
+    <span id="adsReward">
+      0
+    </span>
+    Credit
+  </b>
+
+</div>
+
+<button
+  id="watchAdButton"
+  class="action-btn"
+  onclick="watchRewardAd()">
+
+  📺 TONTON IKLAN +1 CREDIT
+
+</button>
+
+<div
+  id="adResult"
+  class="result">
+
+</div>
+
+  </div>  <!-- GAME MENU -->  <div class="game-menu"><button
+  class="spin-btn"
+  onclick="openGame('spinGame')">
+
+  🎡
+  <br><br>
+  Spin Reward
+
+</button>
+
+<button
+  class="quiz-btn"
+  onclick="openGame('quizGame')">
+
+  🧠
+  <br><br>
+  Quiz Challenge
+
+</button>
+
+<button
+  class="billiard-btn"
+  onclick="openGame('billiardGame')">
+
+  🎱
+  <br><br>
+  Mini Billiard
+
+</button>
+
+<button
+  class="duel-btn"
+  onclick="startDuel()">
+
+  ⚔️
+  <br><br>
+  Skill Duel
+
+</button>
+
+  </div>  <div class="notice">💡 Credit dapat digunakan untuk bermain
+dan dikirim ke pengguna lain.
+Point adalah reward permainan dan
+tidak dapat dikirim.
+
+  </div>  <!-- SPIN GAME -->  <div
+    id="spinGame"
+    class="game-area panel"><h2>
+  🎡 Spin Reward
+</h2>
 
 <p style="color:#aebfaf;">
+
+  Biaya bermain:
+  <b style="color:#e9c85a;">
+    50 Credit
+  </b>
+
+</p>
+
+<div class="pointer">
+  ▼
+</div>
+
+<div
+  class="spin-wheel"
+  id="wheel">
+
+</div>
+
+<button
+  class="action-btn"
+  id="spinButton"
+  onclick="spinWheel()">
+
+  SPIN SEKARANG — 50 CREDIT
+
+</button>
+
+<div
+  id="spinResult"
+  class="result">
+
+</div>
+
+  </div>  <!-- QUIZ GAME -->  <div
+    id="quizGame"
+    class="game-area panel"><h2>
+  🧠 Quiz Challenge
+</h2>
+
+<div
+  class="quiz-question"
+  id="question">
+
+  Loading...
+
+</div>
+
+<div
+  id="answers">
+
+</div>
+
+<div
+  id="quizResult"
+  class="result">
+
+</div>
+
+  </div>  <!-- BILLIARD GAME -->  <div
+    id="billiardGame"
+    class="game-area panel"><h2>
+  🎱 Mini Billiard
+</h2>
+
+<p style="color:#aebfaf;">
+
   Klik bola untuk mendapatkan Point.
+
 </p>
 
 <div class="billiard-table">
@@ -570,76 +749,154 @@ header {
   <div
     class="ball red-ball"
     onclick="hitBall(this, 30)">
+
   </div>
 
   <div
     class="ball yellow-ball"
     onclick="hitBall(this, 50)">
+
   </div>
 
   <div
     class="ball blue-ball"
     onclick="hitBall(this, 20)">
+
   </div>
 
 </div>
 
-<div id="billiardResult" class="result"></div>
+<div
+  id="billiardResult"
+  class="result">
 
-<button class="action-btn" onclick="resetBilliard()">
+</div>
+
+<button
+  class="action-btn"
+  onclick="resetBilliard()">
+
   🔄 Reset
+
 </button>
 
-  </div></section><!-- ================= STUDIO ================= --><section id="studioPage" class="page">  <h1 class="section-title">🎬 Studio</h1>  <div class="panel"><h2>Project Studio</h2>
+  </div></section><!-- ================= STUDIO ================= --><section
+  id="studioPage"
+  class="page">  <h1 class="section-title">
+    🎬 Studio
+  </h1>  <div class="panel"><h2>
+  Project Studio
+</h2>
 
 <p style="color:#aebfaf;margin-top:10px;">
-  Kelola proyek video AI, drama, dan konten kamu di sini.
+
+  Kelola proyek video AI,
+  drama, dan konten kamu di sini.
+
 </p>
 
 <button class="btn">
+
   + Buat Project
+
 </button>
 
-  </div></section><!-- ================= PROFILE ================= --><section id="profilePage" class="page">  <div class="panel profile-box"><div class="big-profile">
+  </div></section><!-- ================= PROFILE ================= --><section
+  id="profilePage"
+  class="page">  <div
+    class="panel profile-box"><div
+  class="big-profile">
+
   R
+
 </div>
 
-<h2>Reitoon User</h2>
+<h2>
+  Reitoon User
+</h2>
 
 <p style="color:#9daf9d;margin-top:8px;">
+
   Creator Reitoon
+
 </p>
 
 <div class="profile-item">
-  <span>💎 Credit</span>
-  <b id="profileCredit">1.000</b>
+
+  <span>
+    💎 Credit
+  </span>
+
+  <b id="profileCredit">
+    1.000
+  </b>
+
 </div>
 
 <div class="profile-item">
-  <span>🏆 Point</span>
-  <b id="profilePoints">250</b>
+
+  <span>
+    🏆 Point
+  </span>
+
+  <b id="profilePoints">
+    250
+  </b>
+
 </div>
 
 <div class="profile-item">
-  <span>🎬 Video</span>
-  <b>0</b>
+
+  <span>
+    🎬 Video
+  </span>
+
+  <b>
+    0
+  </b>
+
 </div>
 
-  </div></section></main><!-- ================= NAVIGATION ================= --><nav class="bottom-nav">  <div class="nav-item active" onclick="showPage('homePage', this)">
-    <span class="nav-icon">🏠</span>
-    Home
-  </div>  <div class="nav-item" onclick="showPage('watchPage', this)">
-    <span class="nav-icon">▶️</span>
-    Watch
-  </div>  <div class="nav-item" onclick="showPage('createPage', this)">
-    <span class="nav-icon">✨</span>
-    Create
-  </div>  <div class="nav-item" onclick="showPage('gamesPage', this)">
-    <span class="nav-icon">🎮</span>
-    Games
-  </div>  <div class="nav-item" onclick="showPage('profilePage', this)">
-    <span class="nav-icon">👤</span>
-    Profile
+  </div></section></main><!-- ================= BOTTOM NAV ================= --><nav class="bottom-nav">  <div
+    class="nav-item active"
+    onclick="showPage('homePage', this)"><span class="nav-icon">
+  🏠
+</span>
+
+Home
+
+  </div>  <div
+    class="nav-item"
+    onclick="showPage('watchPage', this)"><span class="nav-icon">
+  ▶️
+</span>
+
+Watch
+
+  </div>  <div
+    class="nav-item"
+    onclick="showPage('createPage', this)"><span class="nav-icon">
+  ✨
+</span>
+
+Create
+
+  </div>  <div
+    class="nav-item"
+    onclick="showPage('gamesPage', this)"><span class="nav-icon">
+  🎮
+</span>
+
+Games
+
+  </div>  <div
+    class="nav-item"
+    onclick="showPage('profilePage', this)"><span class="nav-icon">
+  👤
+</span>
+
+Profile
+
   </div></nav><script>
 
 let credit =
@@ -648,80 +905,259 @@ let credit =
 let points =
   Number(localStorage.getItem("reitoonPoints")) || 250;
 
-function updateBalance() {
+/* ================= REWARD ADS ================= */
 
-  document.getElementById("credit").innerText =
-    credit.toLocaleString("id-ID");
+let adsWatched =
+  Number(localStorage.getItem("reitoonAdsWatched")) || 0;
 
-  document.getElementById("points").innerText =
-    points.toLocaleString("id-ID");
+let adsReward =
+  Number(localStorage.getItem("reitoonAdsReward")) || 0;
 
-  document.getElementById("profileCredit").innerText =
-    credit.toLocaleString("id-ID");
+let adsDate =
+  localStorage.getItem("reitoonAdsDate");
 
-  document.getElementById("profilePoints").innerText =
-    points.toLocaleString("id-ID");
+let today =
+  new Date().toISOString().split("T")[0];
 
-  localStorage.setItem("reitoonCredit", credit);
+if (adsDate !== today) {
 
-  localStorage.setItem("reitoonPoints", points);
+  adsWatched = 0;
+
+  adsReward = 0;
+
+  localStorage.setItem(
+    "reitoonAdsWatched",
+    adsWatched
+  );
+
+  localStorage.setItem(
+    "reitoonAdsReward",
+    adsReward
+  );
+
+  localStorage.setItem(
+    "reitoonAdsDate",
+    today
+  );
 
 }
 
+/* ================= UPDATE BALANCE ================= */
+
+function updateBalance() {
+
+  document.getElementById("credit")
+    .innerText =
+    credit.toLocaleString("id-ID");
+
+  document.getElementById("points")
+    .innerText =
+    points.toLocaleString("id-ID");
+
+  document.getElementById("profileCredit")
+    .innerText =
+    credit.toLocaleString("id-ID");
+
+  document.getElementById("profilePoints")
+    .innerText =
+    points.toLocaleString("id-ID");
+
+  localStorage.setItem(
+    "reitoonCredit",
+    credit
+  );
+
+  localStorage.setItem(
+    "reitoonPoints",
+    points
+  );
+
+}
+
+/* ================= PAGE NAVIGATION ================= */
+
 function showPage(pageId, element) {
 
-  document.querySelectorAll(".page")
-    .forEach(page => page.classList.remove("active"));
+  document
+    .querySelectorAll(".page")
+    .forEach(page => {
 
-  document.getElementById(pageId)
+      page.classList.remove("active");
+
+    });
+
+  document
+    .getElementById(pageId)
     .classList.add("active");
 
-  document.querySelectorAll(".nav-item")
-    .forEach(item => item.classList.remove("active"));
+  document
+    .querySelectorAll(".nav-item")
+    .forEach(item => {
+
+      item.classList.remove("active");
+
+    });
 
   if (element) {
+
     element.classList.add("active");
+
   }
 
-  if (pageId === "gamesPage") {
-    updateBalance();
-  }
-
-  if (pageId === "profilePage") {
-    updateBalance();
-  }
+  updateBalance();
 
   window.scrollTo({
+
     top: 0,
+
     behavior: "smooth"
+
   });
 
 }
 
+/* ================= OPEN GAME ================= */
+
 function openGame(gameId) {
 
-  document.querySelectorAll(".game-area")
-    .forEach(game => game.classList.remove("active"));
+  document
+    .querySelectorAll(".game-area")
+    .forEach(game => {
 
-  document.getElementById(gameId)
+      game.classList.remove("active");
+
+    });
+
+  document
+    .getElementById(gameId)
     .classList.add("active");
 
   if (gameId === "quizGame") {
+
     loadQuiz();
+
   }
 
-  document.getElementById(gameId)
+  document
+    .getElementById(gameId)
     .scrollIntoView({
+
       behavior: "smooth"
+
     });
 
 }
+
+/* ================= REWARD ADS ================= */
+
+function updateAdsDisplay() {
+
+  document
+    .getElementById("adsWatched")
+    .innerText =
+    adsWatched;
+
+  document
+    .getElementById("adsReward")
+    .innerText =
+    adsReward;
+
+  const button =
+    document
+    .getElementById("watchAdButton");
+
+  if (adsWatched >= 30) {
+
+    button.disabled = true;
+
+    button.innerText =
+      "✅ BATAS HARIAN TERCAPAI";
+
+  }
+
+}
+
+function watchRewardAd() {
+
+  if (adsWatched >= 30) {
+
+    document
+      .getElementById("adResult")
+      .innerText =
+      "❌ Batas 30 video iklan hari ini sudah tercapai.";
+
+    return;
+
+  }
+
+  const button =
+    document
+    .getElementById("watchAdButton");
+
+  button.disabled = true;
+
+  button.innerText =
+    "⏳ MENAYANGKAN IKLAN...";
+
+  document
+    .getElementById("adResult")
+    .innerText =
+    "📺 Video iklan sedang diputar...";
+
+  setTimeout(() => {
+
+    adsWatched++;
+
+    adsReward++;
+
+    credit++;
+
+    localStorage.setItem(
+      "reitoonAdsWatched",
+      adsWatched
+    );
+
+    localStorage.setItem(
+      "reitoonAdsReward",
+      adsReward
+    );
+
+    localStorage.setItem(
+      "reitoonAdsDate",
+      today
+    );
+
+    updateBalance();
+
+    updateAdsDisplay();
+
+    document
+      .getElementById("adResult")
+      .innerText =
+      "🎉 Berhasil! +1 Credit";
+
+    if (adsWatched < 30) {
+
+      button.disabled = false;
+
+      button.innerText =
+        "📺 TONTON IKLAN +1 CREDIT";
+
+    }
+
+  }, 5000);
+
+}
+
+/* ================= SPIN ================= */
 
 function spinWheel() {
 
   if (credit < 50) {
 
-    document.getElementById("spinResult").innerText =
+    document
+      .getElementById("spinResult")
+      .innerText =
       "❌ Credit tidak cukup.";
 
     return;
@@ -733,12 +1169,14 @@ function spinWheel() {
   updateBalance();
 
   const wheel =
-    document.getElementById("wheel");
+    document
+    .getElementById("wheel");
 
   wheel.style.transform =
     `rotate(${1440 + Math.random() * 360}deg)`;
 
-  document.getElementById("spinButton")
+  document
+    .getElementById("spinButton")
     .disabled = true;
 
   setTimeout(() => {
@@ -747,52 +1185,89 @@ function spinWheel() {
       [10, 20, 30, 50, 75, 100];
 
     const reward =
-      rewards[Math.floor(Math.random() * rewards.length)];
+      rewards[
+        Math.floor(
+          Math.random() *
+          rewards.length
+        )
+      ];
 
     points += reward;
 
     updateBalance();
 
-    document.getElementById("spinResult").innerText =
+    document
+      .getElementById("spinResult")
+      .innerText =
       `🎉 Kamu mendapatkan +${reward} Point!`;
 
-    document.getElementById("spinButton")
+    document
+      .getElementById("spinButton")
       .disabled = false;
 
   }, 3000);
 
 }
 
+/* ================= QUIZ ================= */
+
 const quizData = [
 
   {
-    question: "Apa fungsi utama Credit di Reitoon?",
+
+    question:
+      "Apa fungsi utama Credit di Reitoon?",
+
     answers: [
+
       "Digunakan untuk bermain",
+
       "Langsung menjadi uang",
+
       "Tidak memiliki fungsi"
+
     ],
+
     correct: 0
+
   },
 
   {
-    question: "Apa reward yang didapat dari permainan?",
+
+    question:
+      "Apa reward yang didapat dari permainan?",
+
     answers: [
+
       "Point",
+
       "Password",
+
       "Data pribadi"
+
     ],
+
     correct: 0
+
   },
 
   {
-    question: "Game mana yang berbasis skill?",
+
+    question:
+      "Game mana yang berbasis skill?",
+
     answers: [
+
       "Mini Billiard",
+
       "Profile",
+
       "Transfer"
+
     ],
+
     correct: 0
+
   }
 
 ];
@@ -804,29 +1279,37 @@ function loadQuiz() {
   const quiz =
     quizData[currentQuiz];
 
-  document.getElementById("question")
-    .innerText = quiz.question;
+  document
+    .getElementById("question")
+    .innerText =
+    quiz.question;
 
   const answers =
-    document.getElementById("answers");
+    document
+    .getElementById("answers");
 
   answers.innerHTML = "";
 
-  quiz.answers.forEach((answer, index) => {
+  quiz.answers
+    .forEach((answer, index) => {
 
-    const button =
-      document.createElement("button");
+      const button =
+        document
+        .createElement("button");
 
-    button.className = "answer";
+      button.className =
+        "answer";
 
-    button.innerText = answer;
+      button.innerText =
+        answer;
 
-    button.onclick = () =>
-      answerQuiz(index);
+      button.onclick =
+        () =>
+        answerQuiz(index);
 
-    answers.appendChild(button);
+      answers.appendChild(button);
 
-  });
+    });
 
 }
 
@@ -841,13 +1324,17 @@ function answerQuiz(index) {
 
     updateBalance();
 
-    document.getElementById("quizResult")
-      .innerText = "✅ Benar! +25 Point";
+    document
+      .getElementById("quizResult")
+      .innerText =
+      "✅ Benar! +25 Point";
 
   } else {
 
-    document.getElementById("quizResult")
-      .innerText = "❌ Jawaban kurang tepat.";
+    document
+      .getElementById("quizResult")
+      .innerText =
+      "❌ Jawaban kurang tepat.";
 
   }
 
@@ -855,8 +1342,13 @@ function answerQuiz(index) {
 
     currentQuiz++;
 
-    if (currentQuiz >= quizData.length) {
+    if (
+      currentQuiz >=
+      quizData.length
+    ) {
+
       currentQuiz = 0;
+
     }
 
     loadQuiz();
@@ -865,15 +1357,19 @@ function answerQuiz(index) {
 
 }
 
+/* ================= BILLIARD ================= */
+
 function hitBall(ball, reward) {
 
-  ball.style.display = "none";
+  ball.style.display =
+    "none";
 
   points += reward;
 
   updateBalance();
 
-  document.getElementById("billiardResult")
+  document
+    .getElementById("billiardResult")
     .innerText =
     `🎉 Bagus! +${reward} Point`;
 
@@ -881,17 +1377,23 @@ function hitBall(ball, reward) {
 
 function resetBilliard() {
 
-  document.querySelectorAll(".ball")
+  document
+    .querySelectorAll(".ball")
     .forEach(ball => {
 
-      ball.style.display = "block";
+      ball.style.display =
+        "block";
 
     });
 
-  document.getElementById("billiardResult")
-    .innerText = "";
+  document
+    .getElementById("billiardResult")
+    .innerText =
+    "";
 
 }
+
+/* ================= SKILL DUEL ================= */
 
 function startDuel() {
 
@@ -905,7 +1407,11 @@ function startDuel() {
 
 }
 
+/* ================= START ================= */
+
 updateBalance();
+
+updateAdsDisplay();
 
 </script></body>
 </html>
