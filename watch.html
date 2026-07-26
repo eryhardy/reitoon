@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08070d">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+name="theme-color"
+content="#08070d"
+>
 
 <title>Watch - Reitoon</title>
 
@@ -16,14 +26,16 @@ padding:0;
 }
 
 :root{
+
 --bg:#08070d;
 --surface:#191722;
---surface2:#211f2b;
---text:#fff;
+--surface-light:#211f2b;
+--text:#ffffff;
 --muted:#aaa3b0;
 --pink:#ff2f8d;
 --purple:#762dff;
---border:rgba(255,255,255,.1);
+--border:rgba(255,255,255,.10);
+
 }
 
 body{
@@ -40,7 +52,7 @@ transparent 35%
 
 radial-gradient(
 circle at 0% 30%,
-rgba(112,45,255,.1),
+rgba(112,45,255,.10),
 transparent 30%
 ),
 
@@ -56,6 +68,9 @@ sans-serif;
 padding-bottom:100px;
 
 }
+
+
+/* HEADER */
 
 .header{
 
@@ -81,26 +96,6 @@ z-index:20;
 
 }
 
-.back{
-
-width:42px;
-
-height:42px;
-
-border-radius:14px;
-
-border:1px solid var(--border);
-
-background:var(--surface);
-
-color:white;
-
-font-size:20px;
-
-cursor:pointer;
-
-}
-
 .logo{
 
 font-size:29px;
@@ -122,17 +117,40 @@ var(--purple)
 
 }
 
-.header-space{
+.profile-button{
 
 width:42px;
 
+height:42px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:14px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+color:white;
+
+text-decoration:none;
+
+font-size:20px;
+
 }
+
+
+/* MAIN */
 
 .container{
 
 width:100%;
 
-max-width:600px;
+max-width:700px;
 
 margin:auto;
 
@@ -140,15 +158,15 @@ padding:25px 16px;
 
 }
 
-.title{
+.page-title{
 
-font-size:31px;
+font-size:30px;
 
-margin-bottom:8px;
+margin-bottom:7px;
 
 }
 
-.title span{
+.page-title span{
 
 background:
 
@@ -168,51 +186,79 @@ var(--purple)
 
 color:var(--muted);
 
-font-size:14px;
+font-size:13px;
 
 line-height:1.5;
+
+margin-bottom:22px;
+
+}
+
+
+/* SEARCH */
+
+.search-box{
+
+display:flex;
+
+gap:10px;
 
 margin-bottom:20px;
 
 }
 
-.search{
+.search-box input{
 
-display:flex;
+flex:1;
 
-align-items:center;
+padding:14px;
 
-gap:10px;
-
-padding:14px 16px;
-
-border-radius:15px;
-
-background:var(--surface);
+border-radius:13px;
 
 border:1px solid var(--border);
 
-margin-bottom:18px;
-
-}
-
-.search input{
-
-width:100%;
-
-border:none;
-
 outline:none;
 
-background:transparent;
+background:var(--surface);
 
 color:white;
 
-font-size:14px;
+font-size:13px;
 
 }
 
-.categories{
+.search-box input:focus{
+
+border-color:var(--pink);
+
+}
+
+.search-button{
+
+width:48px;
+
+border:none;
+
+border-radius:13px;
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+color:white;
+
+font-size:19px;
+
+}
+
+
+/* FILTER */
+
+.filters{
 
 display:flex;
 
@@ -220,17 +266,23 @@ gap:8px;
 
 overflow-x:auto;
 
-padding-bottom:5px;
+padding-bottom:6px;
 
-margin-bottom:24px;
+margin-bottom:22px;
 
 }
 
-.category{
+.filters::-webkit-scrollbar{
 
-white-space:nowrap;
+display:none;
 
-padding:10px 15px;
+}
+
+.filter{
+
+flex-shrink:0;
+
+padding:9px 14px;
 
 border-radius:20px;
 
@@ -240,37 +292,73 @@ background:var(--surface);
 
 color:var(--muted);
 
+font-size:11px;
+
 cursor:pointer;
 
 }
 
-.category.active{
+.filter.active{
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
 
 color:white;
 
-border-color:var(--pink);
-
-background:rgba(255,47,141,.15);
+border-color:transparent;
 
 }
 
-.section-title{
 
-font-size:19px;
+/* SECTION */
 
-margin-bottom:15px;
+.section-header{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+margin-bottom:14px;
 
 }
+
+.section-header h2{
+
+font-size:18px;
+
+}
+
+.section-header span{
+
+font-size:11px;
+
+color:var(--muted);
+
+}
+
+
+/* MOVIE GRID */
 
 .movie-grid{
 
 display:grid;
 
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:
+repeat(2,1fr);
 
 gap:14px;
 
 }
+
+
+/* MOVIE CARD */
 
 .movie-card{
 
@@ -284,7 +372,7 @@ border:1px solid var(--border);
 
 cursor:pointer;
 
-transition:.25s;
+transition:.2s;
 
 }
 
@@ -292,11 +380,15 @@ transition:.25s;
 
 transform:translateY(-3px);
 
+border-color:var(--pink);
+
 }
 
-.poster{
+.movie-poster{
 
-height:210px;
+position:relative;
+
+height:220px;
 
 display:flex;
 
@@ -304,104 +396,51 @@ align-items:center;
 
 justify-content:center;
 
-position:relative;
-
-background-size:cover;
-
-background-position:center;
-
-}
-
-.poster1{
-
 background:
+
 linear-gradient(
 135deg,
-#ff2f8d,
-#762dff
+var(--pink),
+var(--purple)
 );
+
+font-size:42px;
+
+overflow:hidden;
 
 }
 
-.poster2{
+.movie-poster img{
 
-background:
-linear-gradient(
-135deg,
-#151515,
-#7b1d42
-);
+width:100%;
 
-}
+height:100%;
 
-.poster3{
-
-background:
-linear-gradient(
-135deg,
-#151a3c,
-#43258a
-);
-
-}
-
-.poster4{
-
-background:
-linear-gradient(
-135deg,
-#ff7b54,
-#9d2b66
-);
-
-}
-
-.custom-poster{
-
-background:
-linear-gradient(
-135deg,
-#3b1d5c,
-#ff2f8d
-);
-
-}
-
-.badge{
-
-position:absolute;
-
-top:10px;
-
-left:10px;
-
-padding:6px 8px;
-
-border-radius:8px;
-
-font-size:9px;
-
-font-weight:bold;
-
-background:var(--pink);
+object-fit:cover;
 
 }
 
 .play-button{
 
-width:48px;
+position:absolute;
 
-height:48px;
+right:10px;
+
+bottom:10px;
+
+width:38px;
+
+height:38px;
 
 border-radius:50%;
 
-border:none;
+border:1px solid rgba(255,255,255,.3);
 
-background:rgba(255,255,255,.92);
+background:rgba(0,0,0,.65);
 
-color:#111;
+color:white;
 
-font-size:18px;
+font-size:16px;
 
 cursor:pointer;
 
@@ -409,15 +448,15 @@ cursor:pointer;
 
 .movie-info{
 
-padding:12px;
+padding:13px;
 
 }
 
-.movie-info h3{
+.movie-title{
 
 font-size:14px;
 
-margin-bottom:5px;
+font-weight:bold;
 
 white-space:nowrap;
 
@@ -425,27 +464,69 @@ overflow:hidden;
 
 text-overflow:ellipsis;
 
+margin-bottom:7px;
+
 }
 
-.movie-info p{
+.movie-meta{
+
+display:flex;
+
+gap:6px;
+
+flex-wrap:wrap;
+
+}
+
+.badge{
+
+padding:5px 7px;
+
+border-radius:7px;
+
+background:var(--surface-light);
 
 color:var(--muted);
 
-font-size:11px;
+font-size:9px;
 
 }
+
+
+/* EMPTY */
 
 .empty{
 
-display:none;
+grid-column:1/-1;
+
+padding:42px 20px;
 
 text-align:center;
 
-padding:50px 20px;
+border-radius:20px;
+
+background:rgba(255,255,255,.02);
+
+border:1px dashed rgba(255,255,255,.15);
 
 color:var(--muted);
 
+font-size:13px;
+
+line-height:1.6;
+
 }
+
+.empty-icon{
+
+font-size:45px;
+
+margin-bottom:14px;
+
+}
+
+
+/* BOTTOM NAV */
 
 .bottom-nav{
 
@@ -466,6 +547,8 @@ justify-content:space-around;
 align-items:center;
 
 background:rgba(14,13,21,.96);
+
+backdrop-filter:blur(18px);
 
 border-top:1px solid var(--border);
 
@@ -503,22 +586,29 @@ color:var(--pink);
 
 }
 
+
+/* MOBILE */
+
+@media(max-width:420px){
+
+.movie-poster{
+
+height:190px;
+
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
 
+
+<!-- HEADER -->
+
 <header class="header">
-
-<button
-class="back"
-onclick="history.back()"
->
-
-←
-
-</button>
 
 <div class="logo">
 
@@ -526,41 +616,66 @@ Reitoon
 
 </div>
 
-<div class="header-space"></div>
+<a
+class="profile-button"
+href="profile.html"
+>
+
+👤
+
+</a>
 
 </header>
 
+
+<!-- MAIN -->
+
 <main class="container">
 
-<h1 class="title">
 
-Watch <span>Stories</span>
+<h1 class="page-title">
+
+Watch <span>Reitoon</span>
 
 </h1>
 
 <p class="subtitle">
 
-Temukan film dan cerita menarik dari creator Reitoon.
+Temukan film dan cerita yang dibuat oleh creator Reitoon.
 
 </p>
 
-<div class="search">
 
-<span>🔍</span>
+<!-- SEARCH -->
+
+<div class="search-box">
 
 <input
 type="text"
 id="searchInput"
 placeholder="Cari film atau cerita..."
+oninput="searchMovies()"
 >
+
+<button
+class="search-button"
+onclick="searchMovies()"
+>
+
+🔍
+
+</button>
 
 </div>
 
-<div class="categories">
+
+<!-- FILTER -->
+
+<div class="filters">
 
 <button
-class="category active"
-onclick="filterCategory('all',this)"
+class="filter active"
+onclick="filterGenre('All',this)"
 >
 
 All
@@ -568,8 +683,8 @@ All
 </button>
 
 <button
-class="category"
-onclick="filterCategory('Romance',this)"
+class="filter"
+onclick="filterGenre('Romance',this)"
 >
 
 Romance
@@ -577,8 +692,8 @@ Romance
 </button>
 
 <button
-class="category"
-onclick="filterCategory('Action',this)"
+class="filter"
+onclick="filterGenre('Action',this)"
 >
 
 Action
@@ -586,17 +701,8 @@ Action
 </button>
 
 <button
-class="category"
-onclick="filterCategory('Fantasy',this)"
->
-
-Fantasy
-
-</button>
-
-<button
-class="category"
-onclick="filterCategory('Drama',this)"
+class="filter"
+onclick="filterGenre('Drama',this)"
 >
 
 Drama
@@ -604,43 +710,55 @@ Drama
 </button>
 
 <button
-class="category"
-onclick="filterCategory('Comedy',this)"
+class="filter"
+onclick="filterGenre('Fantasy',this)"
 >
 
-Comedy
+Fantasy
 
 </button>
 
 </div>
 
-<h2 class="section-title">
 
-🔥 All Stories
+<!-- HEADER -->
+
+<div class="section-header">
+
+<h2>
+
+🔥 Popular Stories
 
 </h2>
+
+<span
+id="storyCount"
+>
+
+0 Stories
+
+</span>
+
+</div>
+
+
+<!-- MOVIES -->
 
 <div
 class="movie-grid"
 id="movieGrid"
 >
 
-<!-- CERITA BUATAN USER AKAN MUNCUL DI SINI -->
-
 </div>
 
-<div
-class="empty"
-id="emptyState"
->
-
-Belum ada cerita yang ditemukan.
-
-</div>
 
 </main>
 
+
+<!-- BOTTOM NAV -->
+
 <nav class="bottom-nav">
+
 
 <a
 class="nav-item"
@@ -657,6 +775,7 @@ Home
 
 </a>
 
+
 <a
 class="nav-item active"
 href="watch.html"
@@ -671,6 +790,7 @@ href="watch.html"
 Watch
 
 </a>
+
 
 <a
 class="nav-item"
@@ -687,6 +807,7 @@ Create
 
 </a>
 
+
 <a
 class="nav-item"
 href="studio.html"
@@ -701,6 +822,7 @@ href="studio.html"
 Studio
 
 </a>
+
 
 <a
 class="nav-item"
@@ -717,168 +839,148 @@ Profile
 
 </a>
 
+
 </nav>
+
 
 <script>
 
-const movieGrid=
-document.getElementById("movieGrid");
-
-const emptyState=
-document.getElementById("emptyState");
 
 let allMovies=[];
 
-
-/* FILM DEMO */
-
-const demoMovies=[
-
-{
-
-title:"Love Beyond Time",
-
-genre:"Romance",
-
-description:
-"Kisah cinta yang melampaui waktu.",
-
-poster:"poster1"
-
-},
-
-{
-
-title:"The Last Kingdom",
-
-genre:"Action",
-
-description:
-"Pertarungan terakhir demi menyelamatkan kerajaan.",
-
-poster:"poster2"
-
-},
-
-{
-
-title:"Hidden Truth",
-
-genre:"Drama",
-
-description:
-"Sebuah rahasia besar akhirnya terungkap.",
-
-poster:"poster3"
-
-},
-
-{
-
-title:"First Meeting",
-
-genre:"Romance",
-
-description:
-"Satu pertemuan yang mengubah segalanya.",
-
-poster:"poster4"
-
-}
-
-];
+let activeGenre="All";
 
 
-/* LOAD CERITA USER */
+/* LOAD MOVIES */
 
 function loadMovies(){
 
-allMovies=[...demoMovies];
-
 const savedStory=
-localStorage.getItem("reitoon_story");
+
+localStorage.getItem(
+"reitoon_story"
+);
+
+
+allMovies=[];
+
 
 if(savedStory){
 
 const story=
 JSON.parse(savedStory);
 
+
 if(story.published){
 
-allMovies.unshift({
-
-title:story.title,
-
-genre:story.genre,
-
-description:story.description,
-
-cover:story.cover,
-
-custom:true
-
-});
+allMovies.push(story);
 
 }
 
 }
 
-renderMovies(allMovies);
+
+renderMovies(
+allMovies
+);
 
 }
 
 
-/* RENDER FILM */
+/* RENDER MOVIES */
 
 function renderMovies(movies){
 
-movieGrid.innerHTML="";
+const grid=
 
-if(movies.length===0){
+document
+.getElementById(
+"movieGrid"
+);
 
-emptyState.style.display="block";
+
+document
+.getElementById(
+"storyCount"
+)
+.textContent=
+
+movies.length+
+" Stories";
+
+
+if(!movies.length){
+
+grid.innerHTML=
+
+`
+
+<div class="empty">
+
+<div class="empty-icon">
+
+🎬
+
+</div>
+
+Belum ada film yang dipublish.
+
+<br><br>
+
+Buat cerita di Create lalu publish melalui Studio.
+
+</div>
+
+`;
 
 return;
 
 }
 
-emptyState.style.display="none";
 
-movies.forEach(function(movie){
+grid.innerHTML=
 
-const card=
-document.createElement("article");
+movies
+.map(function(movie,index){
 
-card.className="movie-card";
+const cover=
 
-card.dataset.title=
-movie.title.toLowerCase();
+movie.cover
 
-card.dataset.genre=
-movie.genre;
-
-let posterHTML="";
-
-if(movie.cover){
-
-posterHTML=
+?
 
 `
 
-<div
-class="poster custom-poster"
-style="background-image:url('${movie.cover}')"
+<img
+src="${movie.cover}"
+alt="Cover"
 >
 
-<span class="badge">
+`
 
-ORIGINAL
+:
 
-</span>
+`
+
+🎬
+
+`;
+
+
+return`
+
+<article
+class="movie-card"
+onclick="openMovie(${index})"
+>
+
+<div class="movie-poster">
+
+${cover}
 
 <button
 class="play-button"
-onclick="event.stopPropagation();openMovie('${escapeText(movie.title)}','${escapeText(movie.genre)}','${escapeText(movie.description)}','${movie.cover}')"
+onclick="event.stopPropagation(); openMovie(${index})"
 >
 
 ▶
@@ -886,102 +988,59 @@ onclick="event.stopPropagation();openMovie('${escapeText(movie.title)}','${escap
 </button>
 
 </div>
-
-`;
-
-}else{
-
-posterHTML=
-
-`
-
-<div
-class="poster ${movie.poster}"
->
-
-<button
-class="play-button"
-onclick="event.stopPropagation();openMovie('${escapeText(movie.title)}','${escapeText(movie.genre)}','${escapeText(movie.description)}','${movie.poster}')"
->
-
-▶
-
-</button>
-
-</div>
-
-`;
-
-}
-
-card.innerHTML=
-
-posterHTML+
-
-`
 
 <div class="movie-info">
 
-<h3>
+<div class="movie-title">
 
-${movie.title}
-
-</h3>
-
-<p>
-
-${movie.genre}
-
-</p>
+${escapeHTML(movie.title)}
 
 </div>
 
+<div class="movie-meta">
+
+<span class="badge">
+
+${escapeHTML(movie.genre || "Story")}
+
+</span>
+
+<span class="badge">
+
+${escapeHTML(movie.type || "Film")}
+
+</span>
+
+</div>
+
+</div>
+
+</article>
+
 `;
 
-card.onclick=function(){
-
-openMovie(
-movie.title,
-movie.genre,
-movie.description,
-movie.cover||movie.poster
-);
-
-};
-
-movieGrid.appendChild(card);
-
-});
+})
+.join("");
 
 }
 
 
 /* OPEN DETAIL */
 
-function openMovie(
-title,
-genre,
-description,
-poster
-){
+function openMovie(index){
+
+const movie=
+filteredMovies()[index];
+
 
 localStorage.setItem(
 
 "reitoon_selected_movie",
 
-JSON.stringify({
-
-title:title,
-
-genre:genre,
-
-description:description,
-
-poster:poster
-
-})
+JSON.stringify(movie)
 
 );
+
 
 window.location.href=
 "detail.html";
@@ -991,75 +1050,107 @@ window.location.href=
 
 /* SEARCH */
 
+function searchMovies(){
+
+renderMovies(
+filteredMovies()
+);
+
+}
+
+
+/* FILTER */
+
+function filterGenre(genre,button){
+
+activeGenre=
+genre;
+
+
 document
-.getElementById("searchInput")
-.addEventListener(
-"input",
-function(){
+.querySelectorAll(
+".filter"
+)
+.forEach(function(item){
 
-const keyword=
-this.value.toLowerCase();
-
-const filtered=
-allMovies.filter(function(movie){
-
-return movie.title
-.toLowerCase()
-.includes(keyword);
+item.classList.remove(
+"active"
+);
 
 });
 
-renderMovies(filtered);
+
+button.classList.add(
+"active"
+);
+
+
+renderMovies(
+filteredMovies()
+);
+
+}
+
+
+/* FILTER DATA */
+
+function filteredMovies(){
+
+const search=
+
+document
+.getElementById(
+"searchInput"
+)
+.value
+.toLowerCase()
+.trim();
+
+
+return allMovies.filter(
+function(movie){
+
+const matchesSearch=
+
+movie.title
+.toLowerCase()
+.includes(search);
+
+
+const matchesGenre=
+
+activeGenre==="All"
+
+||
+
+movie.genre===
+activeGenre;
+
+
+return matchesSearch
+&&
+matchesGenre;
 
 }
 
 );
 
-
-/* FILTER */
-
-function filterCategory(
-category,
-button
-){
-
-document
-.querySelectorAll(".category")
-.forEach(function(btn){
-
-btn.classList.remove("active");
-
-});
-
-button.classList.add("active");
-
-if(category==="all"){
-
-renderMovies(allMovies);
-
-return;
-
-}
-
-const filtered=
-allMovies.filter(function(movie){
-
-return movie.genre===category;
-
-});
-
-renderMovies(filtered);
-
 }
 
 
-/* MENCEGAH ERROR APOSTROPHE */
+/* ESCAPE */
 
-function escapeText(text){
+function escapeHTML(text){
 
-return String(text)
-.replace(/'/g,"\\'")
-.replace(/"/g,'\\"');
+const div=
+document.createElement(
+"div"
+);
+
+div.textContent=
+text || "";
+
+return div.innerHTML;
 
 }
 
