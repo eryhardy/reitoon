@@ -1,8 +1,16 @@
-<!DOCTYPE html><html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08070d"><title>Detail Drama - Reitoon</title><style>
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+«»
+
+<meta
+name="theme-color"
+content="#08070d"
+
+«»
+
+<title>Detail Drama - Reitoon</title><style>
 
 *{
 box-sizing:border-box;
@@ -11,22 +19,31 @@ padding:0;
 }
 
 :root{
+
 --bg:#08070d;
 --surface:#191722;
 --surface-light:#211f2b;
+--surface-dark:#100f17;
+
 --text:#ffffff;
 --muted:#aaa3b0;
+
 --pink:#ff2f8d;
 --purple:#762dff;
 --yellow:#ffd35a;
 --green:#25d366;
---border:rgba(255,255,255,.1);
+--red:#ff526d;
+
+--border:rgba(255,255,255,.10);
+
 }
 
 body{
+
 min-height:100vh;
 
 background:
+
 radial-gradient(
 circle at 100% 0%,
 rgba(255,40,145,.14),
@@ -49,9 +66,14 @@ Helvetica,
 sans-serif;
 
 padding-bottom:100px;
+
 }
 
+
+/* HEADER */
+
 .header{
+
 height:76px;
 
 display:flex;
@@ -71,10 +93,13 @@ position:sticky;
 top:0;
 
 z-index:20;
+
 }
 
 .back-button{
+
 width:42px;
+
 height:42px;
 
 border-radius:14px;
@@ -83,22 +108,25 @@ border:1px solid var(--border);
 
 background:var(--surface);
 
-color:#ffffff;
+color:#fff;
 
 font-size:20px;
 
 cursor:pointer;
+
 }
 
 .logo{
+
 font-size:28px;
 
 font-weight:800;
 
 background:
+
 linear-gradient(
 135deg,
-#ffffff,
+#fff,
 var(--pink),
 var(--purple)
 );
@@ -106,51 +134,70 @@ var(--purple)
 -webkit-background-clip:text;
 
 -webkit-text-fill-color:transparent;
+
 }
 
 .header-space{
+
 width:42px;
+
 }
 
+
+/* CONTAINER */
+
 .container{
+
 width:100%;
 
-max-width:900px;
+max-width:800px;
 
 margin:auto;
 
-padding:22px 16px;
+padding:20px 16px;
+
 }
 
-.detail-hero{
-display:grid;
 
-grid-template-columns:180px 1fr;
+/* HERO */
 
-gap:20px;
+.drama-hero{
 
 padding:20px;
 
-border-radius:24px;
+border-radius:22px;
 
 background:
+
 linear-gradient(
 135deg,
-rgba(255,47,141,.16),
-rgba(118,45,255,.16)
+rgba(255,47,141,.14),
+rgba(118,45,255,.14)
 ),
 
 var(--surface);
 
 border:1px solid var(--border);
 
-margin-bottom:20px;
+margin-bottom:18px;
+
 }
 
-.poster{
-min-height:260px;
+.drama-top{
 
-border-radius:18px;
+display:flex;
+
+gap:16px;
+
+}
+
+.drama-poster{
+
+width:120px;
+
+height:170px;
+
+flex-shrink:0;
 
 display:flex;
 
@@ -158,80 +205,129 @@ align-items:center;
 
 justify-content:center;
 
-font-size:70px;
+border-radius:16px;
 
 background:
+
 linear-gradient(
 135deg,
 #351020,
 #5b1b51
 );
+
+font-size:55px;
+
 }
 
-.info{
-display:flex;
+.drama-info{
 
-flex-direction:column;
+flex:1;
 
-justify-content:center;
+min-width:0;
+
 }
 
-.badge{
-display:inline-block;
+.drama-title{
 
-width:max-content;
+font-size:22px;
 
-padding:6px 10px;
+line-height:1.25;
 
-border-radius:8px;
+margin-bottom:8px;
 
-font-size:10px;
-
-font-weight:bold;
-
-margin-bottom:12px;
 }
 
-.badge.free{
-background:
-rgba(37,211,102,.18);
+.drama-meta{
 
-color:#8cffb1;
-}
-
-.badge.licensed{
-background:
-rgba(255,211,90,.18);
-
-color:var(--yellow);
-}
-
-.title{
-font-size:28px;
-
-margin-bottom:10px;
-}
-
-.meta{
-font-size:12px;
-
-color:var(--muted);
-
-line-height:1.8;
-
-margin-bottom:12px;
-}
-
-.description{
-font-size:13px;
+font-size:11px;
 
 color:var(--muted);
 
 line-height:1.7;
+
 }
 
-.section{
-padding:20px;
+.rating{
+
+color:var(--yellow);
+
+}
+
+.description{
+
+margin-top:14px;
+
+font-size:12px;
+
+color:var(--muted);
+
+line-height:1.7;
+
+}
+
+
+/* ACTIONS */
+
+.action-row{
+
+display:flex;
+
+gap:9px;
+
+margin-top:18px;
+
+}
+
+.action-button{
+
+flex:1;
+
+padding:12px 8px;
+
+border-radius:11px;
+
+font-size:11px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+.watch-button{
+
+border:none;
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+color:white;
+
+}
+
+.favorite-button{
+
+border:1px solid var(--border);
+
+background:var(--surface-light);
+
+color:white;
+
+}
+
+
+/* PLAYER */
+
+.player-section{
+
+margin-top:20px;
+
+padding:16px;
 
 border-radius:20px;
 
@@ -239,25 +335,47 @@ background:var(--surface);
 
 border:1px solid var(--border);
 
-margin-bottom:16px;
 }
 
 .section-title{
+
 font-size:18px;
 
-margin-bottom:15px;
+margin-bottom:13px;
+
 }
 
-.player{
+.video-wrapper{
+
 width:100%;
 
 aspect-ratio:16/9;
 
-border-radius:16px;
-
 overflow:hidden;
 
+border-radius:15px;
+
 background:#000;
+
+}
+
+.video-wrapper video{
+
+width:100%;
+
+height:100%;
+
+display:block;
+
+object-fit:contain;
+
+background:#000;
+
+}
+
+.video-placeholder{
+
+height:100%;
 
 display:flex;
 
@@ -265,132 +383,301 @@ align-items:center;
 
 justify-content:center;
 
-position:relative;
-}
+flex-direction:column;
 
-.player video{
-width:100%;
-
-height:100%;
-
-object-fit:contain;
-
-background:#000;
-}
-
-.player-empty{
-text-align:center;
-
-padding:30px;
+gap:10px;
 
 color:var(--muted);
 
 font-size:13px;
 
-line-height:1.7;
+text-align:center;
+
+padding:20px;
+
 }
 
-.player-icon{
-font-size:48px;
+.video-placeholder-icon{
 
-margin-bottom:12px;
+font-size:45px;
+
 }
 
-.action-grid{
-display:grid;
 
-grid-template-columns:
-repeat(2,1fr);
+/* PROGRESS */
 
-gap:10px;
+.progress-box{
 
-margin-top:16px;
+margin-top:14px;
+
 }
 
-.action-button{
-padding:14px;
+.progress-label{
 
-border-radius:12px;
+display:flex;
 
-border:1px solid var(--border);
+justify-content:space-between;
 
-background:var(--surface-light);
+font-size:10px;
 
-color:#ffffff;
+color:var(--muted);
 
-font-weight:bold;
+margin-bottom:7px;
 
-font-size:12px;
-
-cursor:pointer;
 }
 
-.action-button.primary{
-border:none;
+.progress-bar{
+
+width:100%;
+
+height:7px;
+
+border-radius:10px;
+
+background:var(--surface-dark);
+
+overflow:hidden;
+
+}
+
+.progress-fill{
+
+height:100%;
+
+width:0%;
+
+border-radius:10px;
 
 background:
+
 linear-gradient(
-135deg,
+90deg,
 var(--pink),
 var(--purple)
 );
+
 }
 
-.episode-list{
+
+/* EPISODES */
+
+.episode-section{
+
+margin-top:20px;
+
+padding:16px;
+
+border-radius:20px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+}
+
+.episode-grid{
+
 display:grid;
 
 grid-template-columns:
 repeat(4,1fr);
 
 gap:8px;
+
 }
 
 .episode-button{
-padding:12px 5px;
 
-border-radius:10px;
+padding:11px 5px;
+
+border-radius:9px;
 
 border:1px solid var(--border);
 
 background:var(--surface-light);
 
-color:#ffffff;
+color:white;
 
-font-size:11px;
+font-size:10px;
 
 cursor:pointer;
+
 }
 
 .episode-button.active{
-background:
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
 
-border:none;
+border-color:var(--pink);
+
+background:
+
+rgba(255,47,141,.15);
+
+color:#ff8abc;
+
 }
 
-.notice{
-padding:14px;
 
-border-radius:12px;
+/* INFORMATION */
 
-background:
-rgba(255,211,90,.08);
+.info-section{
 
-border:1px solid
-rgba(255,211,90,.2);
+margin-top:20px;
 
-color:#ffe6a0;
+padding:18px;
+
+border-radius:20px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+}
+
+.info-row{
+
+display:flex;
+
+justify-content:space-between;
+
+gap:15px;
+
+padding:12px 0;
+
+border-bottom:1px solid var(--border);
 
 font-size:11px;
 
-line-height:1.6;
 }
 
+.info-row:last-child{
+
+border-bottom:none;
+
+}
+
+.info-row span{
+
+color:var(--muted);
+
+}
+
+
+/* HELP */
+
+.help-card{
+
+margin-top:20px;
+
+padding:18px;
+
+border-radius:18px;
+
+background:
+
+linear-gradient(
+135deg,
+rgba(37,211,102,.10),
+rgba(118,45,255,.10)
+);
+
+border:1px solid var(--border);
+
+}
+
+.help-card h3{
+
+font-size:15px;
+
+margin-bottom:7px;
+
+}
+
+.help-card p{
+
+font-size:11px;
+
+color:var(--muted);
+
+line-height:1.6;
+
+margin-bottom:13px;
+
+}
+
+.help-button{
+
+display:inline-block;
+
+padding:10px 14px;
+
+border-radius:10px;
+
+background:var(--green);
+
+color:#fff;
+
+text-decoration:none;
+
+font-size:11px;
+
+font-weight:bold;
+
+}
+
+
+/* TOAST */
+
+.toast{
+
+position:fixed;
+
+left:50%;
+
+bottom:95px;
+
+transform:
+
+translateX(-50%)
+translateY(20px);
+
+padding:13px 18px;
+
+border-radius:14px;
+
+background:var(--surface-light);
+
+border:1px solid var(--border);
+
+font-size:12px;
+
+opacity:0;
+
+pointer-events:none;
+
+transition:.3s;
+
+z-index:100;
+
+white-space:nowrap;
+
+}
+
+.toast.show{
+
+opacity:1;
+
+transform:
+
+translateX(-50%)
+translateY(0);
+
+}
+
+
+/* NAV */
+
 .bottom-nav{
+
 position:fixed;
 
 bottom:0;
@@ -414,9 +701,11 @@ backdrop-filter:blur(18px);
 border-top:1px solid var(--border);
 
 z-index:30;
+
 }
 
 .nav-item{
+
 color:var(--muted);
 
 text-decoration:none;
@@ -426,37 +715,49 @@ text-align:center;
 font-size:10px;
 
 min-width:60px;
+
 }
 
 .nav-icon{
+
 display:block;
 
 font-size:21px;
 
 margin-bottom:4px;
+
 }
 
 .nav-item.active{
+
 color:var(--pink);
+
 }
 
-@media(max-width:600px){
 
-.detail-hero{
-grid-template-columns:1fr;
+@media(max-width:500px){
+
+.drama-poster{
+
+width:100px;
+
+height:145px;
+
+font-size:42px;
+
 }
 
-.poster{
-min-height:220px;
+.drama-title{
+
+font-size:18px;
+
 }
 
-.title{
-font-size:24px;
-}
+.episode-grid{
 
-.episode-list{
 grid-template-columns:
 repeat(4,1fr);
+
 }
 
 }
@@ -473,56 +774,48 @@ onclick="goBack()"
 <div class="logo">
 Reitoon
 </div><div class="header-space"></div></header><main class="container"><section
-class="detail-hero"
-><div
-class="poster"
-id="poster"
+class="drama-hero"
+><div class="drama-top"><div
+class="drama-poster"
+id="dramaIcon"
 >
 🎬
 </div><div
-class="info"
-><div
-class="badge free"
-id="statusBadge"
->
-🆓 GRATIS
-</div><h1
-class="title"
+class="drama-info"
+><h1
+class="drama-title"
 id="dramaTitle"
 >
-Memuat...
+Drama Reitoon
 </h1><div
-class="meta"
-id="dramaMeta"
+class="drama-meta"
+><div
+id="dramaCategory"
 >
-Memuat informasi drama...
-</div><p
+Drama Asia
+</div><div
+id="dramaYear"
+>
+Tahun -
+</div><div
+id="dramaEpisodes"
+>
+Episode -
+</div><div
+class="rating"
+id="dramaRating"
+>
+⭐ -
+</div></div></div></div><p
 class="description"
 id="dramaDescription"
 >
-Memuat deskripsi...
-</p></div></section><section
-class="section"
-><h2
-class="section-title"
->
-▶️ Watch
-</h2><div
-class="player"
-id="player"
-><div
-class="player-empty"
-><div
-class="player-icon"
->
-🎬
-</div><div>
-Video belum tersedia.
-</div></div></div><div
-class="action-grid"
+Deskripsi drama.
+</p><div
+class="action-row"
 ><button
-class="action-button primary"
-onclick="startWatch()"
+class="action-button watch-button"
+onclick="startWatching()"
 
 «»
 
@@ -530,31 +823,123 @@ onclick="startWatch()"
 </button>
 
 <button
-class="action-button"
-onclick="shareDrama()"
+class="action-button favorite-button"
+onclick="toggleFavorite()"
+id="favoriteButton"
 
 «»
 
-📤 Bagikan
+♡ Favorit
 </button>
 
 </div></section><section
-class="section"
+class="player-section"
+><h2
+class="section-title"
+>
+🎬 Player
+</h2><div
+class="video-wrapper"
+id="videoWrapper"
+><div
+class="video-placeholder"
+><div
+class="video-placeholder-icon"
+>
+▶️
+</div><div>
+Pilih episode untuk mulai menonton.
+</div></div></div><div
+class="progress-box"
+><div
+class="progress-label"
+><span>
+Progress Tontonan
+</span><span
+id="progressText"
+
+«»
+
+0%
+</span>
+
+</div><div
+class="progress-bar"
+><div
+class="progress-fill"
+id="progressFill"
+>
+</div></div></div></section><section
+class="episode-section"
 ><h2
 class="section-title"
 >
 📺 Episode
 </h2><div
-class="episode-list"
-id="episodeList"
+class="episode-grid"
+id="episodeGrid"
 >
 </div></section><section
-class="section"
-><div
-class="notice"
->⚠️ Konten video yang ditayangkan di Reitoon harus memiliki hak penggunaan, lisensi, atau izin redistribusi yang sesuai.
+class="info-section"
+><h2
+class="section-title"
+>
+ℹ️ Informasi Drama
+</h2><div
+class="info-row"
+><span>
+Judul
+</span><strong
+id="infoTitle"
 
-</div></section></main><nav
+«»
+
+- 
+
+</strong></div><div
+class="info-row"
+><span>
+Kategori
+</span><strong
+id="infoCategory"
+
+«»
+
+- 
+
+</strong></div><div
+class="info-row"
+><span>
+Status
+</span><strong
+id="infoStatus"
+
+«»
+
+- 
+
+</strong></div><div
+class="info-row"
+><span>
+Sumber
+</span><strong>
+Reitoon
+</strong></div></section><section
+class="help-card"
+><h3>
+🆘 Butuh Bantuan?
+</h3><p>
+Jika mengalami masalah saat menonton atau menemukan masalah pada konten, hubungi bantuan Reitoon.
+</p><a
+href="help.html"
+class="help-button"
+
+«»
+
+💬 Buka Bantuan / CS
+</a>
+
+</section></main><nav
 class="bottom-nav"
 ><a
 class="nav-item"
@@ -636,431 +1021,411 @@ class="nav-icon"
 
 Profile
 
-</a></nav><script>
-
-/* =====================================
-   DATA DRAMA REITOON
-===================================== */
-
-const TOTAL_VIDEOS = 500;
-
-const categories = [
-
-"romance",
-
-"fantasy",
-
-"wuxia",
-
-"historical",
-
-"modern"
-
-];
-
-const icons = [
-
-"❤️",
-
-"✨",
-
-"⚔️",
-
-"🏯",
-
-"🌸",
-
-"🔥",
-
-"🌙",
-
-"💫",
-
-"🐉",
-
-"👑"
-
-];
+</a></nav><div
+class="toast"
+id="toast"
+>
+</div><script>
 
 
-/* =====================================
-   VIDEO RESMI / LEGAL
-===================================== */
+/* =====================================================
+   DATABASE DRAMA
+===================================================== */
 
-const legalVideos = [
-
-/*
-
-Masukkan video yang memang:
-
-- Milik Reitoon
-- Milik kamu
-- Public Domain
-- CC0
-- Memiliki lisensi
-- Memiliki izin redistribusi
-
-Contoh:
+const dramaDatabase = [
 
 {
-id:"legal-001",
-title:"Judul Drama",
+
+id:"reitoon-001",
+
+title:"Chinese Drama Collection 001",
+
 category:"romance",
-type:"licensed",
+
+type:"free",
+
 year:"2026",
-episodes:"Episode 1",
+
+episodes:1,
+
 rating:"⭐ 8.5",
+
 icon:"❤️",
-description:"Deskripsi drama",
-videoUrl:"URL_VIDEO_RESMI",
-license:"Lisensi resmi"
-}
-
-*/
-
-];
-
-
-/* =====================================
-   KATALOG 500 DRAMA
-===================================== */
-
-const generatedCatalog = [];
-
-for(
-
-let i = 1;
-
-i <= TOTAL_VIDEOS;
-
-i++
-
-){
-
-const category =
-
-categories[
-
-(i - 1)
-
-%
-
-categories.length
-
-];
-
-generatedCatalog.push({
-
-id:
-
-"reitoon-" +
-
-String(i)
-
-.padStart(3,"0"),
-
-title:
-
-"Chinese Drama Collection " +
-
-String(i)
-
-.padStart(3,"0"),
-
-category:
-
-category,
-
-type:
-
-"free",
-
-year:
-
-"Legal Catalog",
-
-episodes:
-
-"Video",
-
-rating:
-
-"⭐ " +
-
-(
-
-8 +
-
-((i % 20) / 10)
-
-)
-
-.toFixed(1),
-
-icon:
-
-icons[
-
-(i - 1)
-
-%
-
-icons.length
-
-],
 
 description:
+"Drama romantis Asia dengan kisah cinta dan perjalanan emosional.",
 
-"Drama Asia dalam katalog Reitoon. Konten hanya dapat ditayangkan apabila memiliki hak penggunaan atau izin redistribusi yang sesuai.",
+videoUrl:""
 
-videoUrl:
+},
 
-"",
+{
 
-license:
+id:"reitoon-002",
 
-"Belum diverifikasi"
+title:"Chinese Drama Collection 002",
 
-});
+category:"fantasy",
+
+type:"free",
+
+year:"2026",
+
+episodes:1,
+
+rating:"⭐ 8.6",
+
+icon:"✨",
+
+description:
+"Petualangan fantasi dengan dunia penuh misteri dan keajaiban.",
+
+videoUrl:""
+
+},
+
+{
+
+id:"reitoon-003",
+
+title:"Chinese Drama Collection 003",
+
+category:"wuxia",
+
+type:"licensed",
+
+year:"2026",
+
+episodes:1,
+
+rating:"⭐ 8.7",
+
+icon:"⚔️",
+
+description:
+"Kisah pendekar dan perjalanan penuh tantangan.",
+
+videoUrl:""
 
 }
-
-const dramas = [
-
-...legalVideos,
-
-...generatedCatalog
 
 ];
 
 
-/* =====================================
-   AMBIL ID DRAMA DARI URL
-===================================== */
+/* =====================================================
+   AMBIL ID DRAMA
+===================================================== */
 
-const params =
-
+const urlParams =
 new URLSearchParams(
-
 window.location.search
-
 );
 
 const dramaId =
+urlParams.get("id");
 
-params.get("id");
 
+/* =====================================================
+   AMBIL DATA DRAMA
+===================================================== */
 
-const drama =
-
-dramas.find(function(item){
+let drama =
+dramaDatabase.find(function(item){
 
 return item.id === dramaId;
 
 });
 
 
-/* =====================================
-   LOAD DETAIL DRAMA
-===================================== */
+if(!drama){
 
-function loadDrama(){
+const savedId =
+localStorage.getItem(
+"reitoon_selected_drama"
+);
+
+drama =
+dramaDatabase.find(function(item){
+
+return item.id === savedId;
+
+});
+
+}
+
 
 if(!drama){
 
-document
-
-.getElementById(
-
-"dramaTitle"
-
-)
-
-.textContent =
-
-"Drama Tidak Ditemukan";
-
-document
-
-.getElementById(
-
-"dramaMeta"
-
-)
-
-.textContent =
-
-"ID drama tidak valid.";
-
-document
-
-.getElementById(
-
-"dramaDescription"
-
-)
-
-.textContent =
-
-"Data drama tidak ditemukan.";
-
-document
-
-.getElementById(
-
-"poster"
-
-)
-
-.textContent =
-
-"😔";
-
-return;
+drama =
+dramaDatabase[0];
 
 }
 
-document
 
-.getElementById(
+/* =====================================================
+   FUNGSI UTAMA RIWAYAT TONTON
+===================================================== */
 
-"dramaTitle"
+function saveWatchHistory(){
 
+let history =
+
+JSON.parse(
+
+localStorage.getItem(
+"reitoon_watch_history"
 )
 
-.textContent =
+) || [];
 
-drama.title;
 
-document
+const newHistory = {
 
-.getElementById(
+id:drama.id,
 
-"dramaMeta"
+title:drama.title,
 
+category:drama.category,
+
+rating:drama.rating,
+
+icon:drama.icon,
+
+watchedAt:
+
+new Date()
+.toLocaleString(
+"id-ID"
 )
 
-.textContent =
+};
 
-drama.year +
 
-" • " +
+history = history.filter(function(item){
 
-drama.category +
+return item.id !== drama.id;
 
-" • " +
+});
 
-drama.episodes +
 
-" • " +
+history.unshift(newHistory);
 
-drama.rating;
+
+history =
+history.slice(0,20);
+
+
+localStorage.setItem(
+
+"reitoon_watch_history",
+
+JSON.stringify(history)
+
+);
+
+
+showToast(
+"🕘 Riwayat tonton tersimpan"
+);
+
+}
+
+
+/* =====================================================
+   TAMPILKAN DATA
+===================================================== */
+
+function renderDrama(){
 
 document
-
 .getElementById(
-
-"dramaDescription"
-
+"dramaIcon"
 )
-
 .textContent =
-
-drama.description;
-
-document
-
-.getElementById(
-
-"poster"
-
-)
-
-.textContent =
-
 drama.icon;
 
-const badge =
 
 document
-
 .getElementById(
+"dramaTitle"
+)
+.textContent =
+drama.title;
 
-"statusBadge"
 
+document
+.getElementById(
+"dramaCategory"
+)
+.textContent =
+"Kategori: " +
+drama.category;
+
+
+document
+.getElementById(
+"dramaYear"
+)
+.textContent =
+"Tahun: " +
+drama.year;
+
+
+document
+.getElementById(
+"dramaEpisodes"
+)
+.textContent =
+"Episode: " +
+drama.episodes;
+
+
+document
+.getElementById(
+"dramaRating"
+)
+.textContent =
+drama.rating;
+
+
+document
+.getElementById(
+"dramaDescription"
+)
+.textContent =
+drama.description;
+
+
+document
+.getElementById(
+"infoTitle"
+)
+.textContent =
+drama.title;
+
+
+document
+.getElementById(
+"infoCategory"
+)
+.textContent =
+drama.category;
+
+
+document
+.getElementById(
+"infoStatus"
+)
+.textContent =
+drama.type === "free"
+?
+"Gratis"
+:
+"Berlisensi";
+
+
+renderEpisodes();
+
+}
+
+
+/* =====================================================
+   EPISODE
+===================================================== */
+
+function renderEpisodes(){
+
+const grid =
+document
+.getElementById(
+"episodeGrid"
 );
 
-if(
 
-drama.type ===
+const total =
+Number(drama.episodes)
+||
+1;
 
-"free"
 
+let html = "";
+
+
+for(
+let i=1;
+i<=total;
+i++
 ){
 
-badge.textContent =
+html += `
 
-"🆓 GRATIS";
+<button
+class="episode-button"
+onclick="selectEpisode(${i})"
+>
+Episode ${i}
+</button>
 
-badge.className =
-
-"badge free";
-
-}
-
-else{
-
-badge.textContent =
-
-"📜 BERLISENSI";
-
-badge.className =
-
-"badge licensed";
-
-}
-
-loadPlayer();
-
-loadEpisodes();
+`;
 
 }
 
 
-/* =====================================
+grid.innerHTML =
+html;
+
+}
+
+
+/* =====================================================
+   MULAI MENONTON
+===================================================== */
+
+function startWatching(){
+
+saveWatchHistory();
+
+selectEpisode(1);
+
+showToast(
+"▶️ Selamat menonton"
+);
+
+}
+
+
+/* =====================================================
    PLAYER
-===================================== */
+===================================================== */
 
-function loadPlayer(){
+function selectEpisode(number){
 
-const player =
+saveWatchHistory();
 
+
+const wrapper =
 document
-
 .getElementById(
-
-"player"
-
+"videoWrapper"
 );
 
+
 if(
-
 drama.videoUrl &&
-
 drama.videoUrl.trim() !== ""
-
 ){
 
-player.innerHTML = `
+wrapper.innerHTML = `
 
 <video
+id="videoPlayer"
 controls
 playsinline
-preload="metadata"
 >
 
 <source
 src="${drama.videoUrl}"
+type="video/mp4"
 >
 
 Browser kamu tidak mendukung video.
@@ -1069,18 +1434,49 @@ Browser kamu tidak mendukung video.
 
 `;
 
+const player =
+document
+.getElementById(
+"videoPlayer"
+);
+
+
+player.addEventListener(
+"timeupdate",
+function(){
+
+if(
+player.duration
+){
+
+const progress =
+(
+player.currentTime /
+player.duration
+) * 100;
+
+
+updateProgress(
+progress
+);
+
+}
+
+});
+
+
 }
 
 else{
 
-player.innerHTML = `
+wrapper.innerHTML = `
 
 <div
-class="player-empty"
+class="video-placeholder"
 >
 
 <div
-class="player-icon"
+class="video-placeholder-icon"
 >
 🔒
 </div>
@@ -1089,10 +1485,8 @@ class="player-icon"
 Video belum tersedia.
 </div>
 
-<br>
-
 <small>
-Sumber video legal belum ditambahkan.
+Tambahkan URL video yang legal dan memiliki izin penggunaan.
 </small>
 
 </div>
@@ -1101,290 +1495,261 @@ Sumber video legal belum ditambahkan.
 
 }
 
-}
-
-
-/* =====================================
-   EPISODE
-===================================== */
-
-function loadEpisodes(){
-
-const list =
 
 document
-
-.getElementById(
-
-"episodeList"
-
-);
-
-if(!drama){
-
-return;
-
-}
-
-let episodeCount = 1;
-
-if(
-
-drama.episodes !==
-
-"Video"
-
-){
-
-const found =
-
-drama.episodes.match(/\d+/);
-
-if(found){
-
-episodeCount =
-
-Number(found[0]);
-
-}
-
-}
-
-let html = "";
-
-for(
-
-let i = 1;
-
-i <= episodeCount;
-
-i++
-
-){
-
-html += `
-
-<button
-class="episode-button ${i === 1 ? "active" : ""}"
-onclick="selectEpisode(this,${i})"
->
-
-Episode ${i}
-
-</button>
-
-`;
-
-}
-
-list.innerHTML = html;
-
-}
-
-
-function selectEpisode(
-
-button,
-
-episode
-
-){
-
-document
-
 .querySelectorAll(
-
 ".episode-button"
-
 )
+.forEach(function(button){
 
-.forEach(function(item){
-
-item.classList.remove(
-
+button.classList.remove(
 "active"
-
 );
 
 });
 
-button.classList.add(
 
+const buttons =
+document
+.querySelectorAll(
+".episode-button"
+);
+
+
+if(buttons[number-1]){
+
+buttons[number-1]
+.classList.add(
 "active"
-
 );
 
 }
 
-
-/* =====================================
-   TONTON SEKARANG
-===================================== */
-
-function startWatch(){
-
-if(!drama){
-
-return;
-
 }
 
-if(
 
-!drama.videoUrl ||
+/* =====================================================
+   PROGRESS
+===================================================== */
 
-drama.videoUrl.trim() === ""
+function updateProgress(value){
 
-){
-
-alert(
-
-"Video ini belum tersedia karena sumber video legal belum ditambahkan."
-
+const safeValue =
+Math.min(
+100,
+Math.max(
+0,
+value
+)
 );
 
-return;
-
-}
-
-const player =
 
 document
-
 .getElementById(
+"progressFill"
+)
+.style
+.width =
+safeValue +
+"%";
 
-"player"
+
+document
+.getElementById(
+"progressText"
+)
+.textContent =
+Math.round(
+safeValue
+) +
+"%";
+
+
+localStorage.setItem(
+
+"reitoon_progress_" +
+drama.id,
+
+safeValue
 
 );
 
-player.scrollIntoView({
-
-behavior:
-
-"smooth"
-
-});
-
-const video =
-
-player.querySelector(
-
-"video"
-
-);
-
-if(video){
-
-video.play()
-
-.catch(function(){});
-
-}
-
 }
 
 
-/* =====================================
-   BAGIKAN
-===================================== */
+/* =====================================================
+   FAVORIT
+===================================================== */
 
-function shareDrama(){
+function toggleFavorite(){
 
-if(!drama){
+let favorites =
 
-return;
+JSON.parse(
 
-}
-
-if(
-
-navigator.share
-
-){
-
-navigator.share({
-
-title:
-
-drama.title,
-
-text:
-
-"Tonton " +
-
-drama.title +
-
-" di Reitoon",
-
-url:
-
-window.location.href
-
-});
-
-}
-
-else if(
-
-navigator.clipboard
-
-){
-
-navigator.clipboard.writeText(
-
-window.location.href
-
+localStorage.getItem(
+"reitoon_favorites"
 )
 
-.then(function(){
+) || [];
 
-alert(
 
-"Link berhasil disalin."
-
+const index =
+favorites.indexOf(
+drama.id
 );
 
-})
 
-.catch(function(){
+if(index === -1){
 
-alert(
-
-"Salin link ini: " +
-
-window.location.href
-
+favorites.push(
+drama.id
 );
 
-});
+document
+.getElementById(
+"favoriteButton"
+)
+.textContent =
+"♥ Favorit";
+
+
+showToast(
+"❤️ Ditambahkan ke favorit"
+);
 
 }
 
 else{
 
-alert(
+favorites.splice(
+index,
+1
+);
 
-"Link drama: " +
+document
+.getElementById(
+"favoriteButton"
+)
+.textContent =
+"♡ Favorit";
 
-window.location.href
+
+showToast(
+"Favorit dihapus"
+);
+
+}
+
+
+localStorage.setItem(
+
+"reitoon_favorites",
+
+JSON.stringify(
+favorites
+)
 
 );
 
 }
 
+
+/* =====================================================
+   LOAD FAVORIT & PROGRESS
+===================================================== */
+
+function loadSavedData(){
+
+const favorites =
+
+JSON.parse(
+
+localStorage.getItem(
+"reitoon_favorites"
+)
+
+) || [];
+
+
+if(
+favorites.includes(
+drama.id
+)
+){
+
+document
+.getElementById(
+"favoriteButton"
+)
+.textContent =
+"♥ Favorit";
+
 }
 
 
-/* =====================================
-   KEMBALI
-===================================== */
+const savedProgress =
+
+Number(
+
+localStorage.getItem(
+
+"reitoon_progress_" +
+drama.id
+
+)
+
+) || 0;
+
+
+updateProgress(
+savedProgress
+);
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message){
+
+const toast =
+document
+.getElementById(
+"toast"
+);
+
+
+toast.textContent =
+message;
+
+
+toast.classList.add(
+"show"
+);
+
+
+setTimeout(function(){
+
+toast.classList.remove(
+"show"
+);
+
+},2500);
+
+}
+
+
+/* =====================================================
+   BACK
+===================================================== */
 
 function goBack(){
 
 if(
-
 document.referrer
-
 ){
 
 history.back();
@@ -1394,7 +1759,6 @@ history.back();
 else{
 
 window.location.href =
-
 "watch.html";
 
 }
@@ -1402,11 +1766,12 @@ window.location.href =
 }
 
 
-/* =====================================
-   JALANKAN
-===================================== */
+/* =====================================================
+   START
+===================================================== */
 
-loadDrama();
+renderDrama();
 
-</script></body>
-</html>
+loadSavedData();
+
+</script></body></html>
