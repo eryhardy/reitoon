@@ -1,948 +1,807 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#08070d">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Reitoon Studio</title>
+<meta name="theme-color" content="#08070d">
 
-  <style>
+<title>Studio - Reitoon</title>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
 
-    :root {
-      --bg: #08070d;
-      --surface: #191722;
-      --surface-light: #211f2b;
-      --text: #ffffff;
-      --muted: #aaa3b0;
-      --pink: #ff2f8d;
-      --purple: #762dff;
-      --border: rgba(255,255,255,0.10);
-    }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
-    body {
+:root{
 
-      min-height: 100vh;
+--bg:#08070d;
+--surface:#191722;
+--surface-light:#211f2b;
+--text:#fff;
+--muted:#aaa3b0;
+--pink:#ff2f8d;
+--purple:#762dff;
+--border:rgba(255,255,255,.1);
 
-      background:
-        radial-gradient(
-          circle at 100% 0%,
-          rgba(255,40,145,0.14),
-          transparent 35%
-        ),
-        radial-gradient(
-          circle at 0% 30%,
-          rgba(112,45,255,0.10),
-          transparent 30%
-        ),
-        var(--bg);
+}
 
-      color: var(--text);
+body{
 
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+min-height:100vh;
 
-      padding-bottom: 100px;
+background:
+radial-gradient(
+circle at 100% 0%,
+rgba(255,40,145,.14),
+transparent 35%
+),
+radial-gradient(
+circle at 0% 30%,
+rgba(112,45,255,.1),
+transparent 30%
+),
+var(--bg);
 
-    }
+color:white;
+font-family:Arial,Helvetica,sans-serif;
 
-    /* HEADER */
+padding-bottom:100px;
 
-    .header {
+}
 
-      height: 76px;
+.header{
 
-      display: flex;
+height:76px;
 
-      align-items: center;
+display:flex;
+align-items:center;
+justify-content:space-between;
 
-      justify-content: space-between;
+padding:16px 20px;
 
-      padding: 16px 20px;
+background:rgba(8,7,13,.94);
+border-bottom:1px solid var(--border);
 
-      background: rgba(8,7,13,0.94);
+position:sticky;
+top:0;
+z-index:10;
 
-      border-bottom: 1px solid var(--border);
+}
 
-      position: sticky;
+.back{
 
-      top: 0;
+width:42px;
+height:42px;
 
-      z-index: 10;
+border-radius:14px;
 
-    }
+border:1px solid var(--border);
 
-    .back {
+background:var(--surface);
+color:white;
 
-      width: 42px;
+font-size:20px;
 
-      height: 42px;
+}
 
-      border-radius: 14px;
+.logo{
 
-      border: 1px solid var(--border);
+font-size:28px;
+font-weight:800;
 
-      background: var(--surface);
+background:
+linear-gradient(
+135deg,
+white,
+var(--pink),
+var(--purple)
+);
 
-      color: white;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 
-      font-size: 20px;
+}
 
-    }
+.container{
 
-    .logo {
+width:100%;
+max-width:600px;
 
-      font-size: 29px;
+margin:auto;
 
-      font-weight: 800;
+padding:26px 16px;
 
-      background:
+}
 
-        linear-gradient(
-          135deg,
-          white,
-          var(--pink),
-          var(--purple)
-        );
+.title{
 
-      -webkit-background-clip: text;
+font-size:30px;
+margin-bottom:8px;
 
-      -webkit-text-fill-color: transparent;
+}
 
-    }
+.title span{
 
-    /* MAIN */
+background:
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
 
-    .container {
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 
-      max-width: 850px;
+}
 
-      margin: auto;
+.subtitle{
 
-      padding: 28px 18px;
+color:var(--muted);
+font-size:14px;
+line-height:1.5;
 
-    }
+margin-bottom:22px;
 
-    .title {
+}
 
-      font-size: 32px;
+.stats{
 
-      margin-bottom: 8px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
 
-    }
+margin-bottom:22px;
 
-    .title span {
+}
 
-      background:
+.stat{
 
-        linear-gradient(
-          135deg,
-          var(--pink),
-          var(--purple)
-        );
+padding:16px 8px;
 
-      -webkit-background-clip: text;
+text-align:center;
 
-      -webkit-text-fill-color: transparent;
+border-radius:16px;
 
-    }
+background:var(--surface);
+border:1px solid var(--border);
 
-    .subtitle {
+}
 
-      color: var(--muted);
+.stat strong{
 
-      font-size: 14px;
+display:block;
+font-size:19px;
+margin-bottom:5px;
 
-      margin-bottom: 25px;
+}
 
-    }
+.stat span{
 
-    /* STATS */
+color:var(--muted);
+font-size:10px;
 
-    .stats {
+}
 
-      display: grid;
+.empty{
 
-      grid-template-columns:
-        repeat(3, 1fr);
+padding:55px 20px;
 
-      gap: 12px;
+text-align:center;
 
-      margin-bottom: 25px;
+border:1px dashed rgba(255,255,255,.2);
+border-radius:22px;
 
-    }
+background:rgba(255,255,255,.02);
 
-    .stat {
+}
 
-      padding: 17px;
+.empty-icon{
 
-      border-radius: 17px;
+font-size:50px;
+margin-bottom:14px;
 
-      background: var(--surface);
+}
 
-      border: 1px solid var(--border);
+.empty h2{
 
-    }
+font-size:20px;
+margin-bottom:8px;
 
-    .stat strong {
+}
 
-      display: block;
+.empty p{
 
-      font-size: 22px;
+color:var(--muted);
+font-size:13px;
+line-height:1.5;
+margin-bottom:20px;
 
-      margin-bottom: 5px;
+}
 
-    }
+.create-button{
 
-    .stat span {
+display:inline-block;
 
-      color: var(--muted);
+padding:14px 20px;
 
-      font-size: 11px;
+border-radius:13px;
 
-    }
+text-decoration:none;
 
-    /* EMPTY */
+color:white;
 
-    .empty {
+font-weight:bold;
+font-size:13px;
 
-      text-align: center;
+background:
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
 
-      padding: 55px 20px;
+}
 
-      border: 1px dashed rgba(255,255,255,0.20);
+.story-list{
 
-      border-radius: 22px;
+display:flex;
+flex-direction:column;
+gap:15px;
 
-      background: rgba(255,255,255,0.02);
+}
 
-    }
+.story-card{
 
-    .empty-icon {
+padding:16px;
 
-      font-size: 50px;
+border-radius:20px;
 
-      margin-bottom: 15px;
+background:var(--surface);
+border:1px solid var(--border);
 
-    }
+}
 
-    .empty h2 {
+.story-top{
 
-      font-size: 20px;
+display:flex;
+gap:14px;
 
-      margin-bottom: 8px;
+}
 
-    }
+.story-cover{
 
-    .empty p {
+width:85px;
+height:115px;
 
-      color: var(--muted);
+border-radius:12px;
 
-      font-size: 13px;
+background:
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
 
-      line-height: 1.5;
+display:flex;
+align-items:center;
+justify-content:center;
 
-      margin-bottom: 20px;
+font-size:28px;
 
-    }
+overflow:hidden;
+flex-shrink:0;
 
-    .create-button {
+}
 
-      display: inline-block;
+.story-cover img{
 
-      padding: 14px 20px;
+width:100%;
+height:100%;
+object-fit:cover;
 
-      border-radius: 13px;
+}
 
-      text-decoration: none;
+.story-info{
 
-      color: white;
+flex:1;
 
-      font-weight: bold;
+}
 
-      font-size: 13px;
+.story-info h2{
 
-      background:
+font-size:17px;
+margin-bottom:6px;
 
-        linear-gradient(
-          135deg,
-          var(--pink),
-          var(--purple)
-        );
+}
 
-    }
+.story-meta{
 
-    /* STORY CARD */
+font-size:11px;
+color:var(--pink);
 
-    .story-card {
+margin-bottom:8px;
 
-      display: none;
+}
 
-      padding: 18px;
+.story-description{
 
-      border-radius: 20px;
+font-size:12px;
+color:var(--muted);
+line-height:1.5;
 
-      background: var(--surface);
+display:-webkit-box;
+-webkit-line-clamp:3;
+-webkit-box-orient:vertical;
+overflow:hidden;
 
-      border: 1px solid var(--border);
+}
 
-    }
+.status{
 
-    .story-header {
+display:inline-block;
 
-      display: flex;
+margin-top:10px;
 
-      justify-content: space-between;
+padding:5px 9px;
 
-      align-items: center;
+border-radius:20px;
 
-      margin-bottom: 15px;
+font-size:10px;
 
-    }
+background:rgba(255,47,141,.15);
+color:#ff7ab3;
 
-    .story-header h2 {
+}
 
-      font-size: 19px;
+.actions{
 
-    }
+display:flex;
+gap:8px;
 
-    .status {
+margin-top:15px;
 
-      font-size: 10px;
+}
 
-      padding: 6px 10px;
+.action{
 
-      border-radius: 20px;
+flex:1;
 
-      color: white;
+padding:11px;
 
-      background: rgba(255,47,141,0.15);
+border-radius:11px;
 
-      border: 1px solid rgba(255,47,141,0.35);
+border:1px solid var(--border);
 
-    }
+background:var(--surface-light);
 
-    .story-info {
+color:white;
 
-      padding: 15px;
+font-size:11px;
+font-weight:bold;
 
-      border-radius: 15px;
+cursor:pointer;
 
-      background: #100f17;
+}
 
-    }
+.action.primary{
 
-    .story-info p {
+border:none;
 
-      color: var(--muted);
+background:
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
 
-      font-size: 13px;
+}
 
-      line-height: 1.6;
+.action.delete{
 
-      margin-bottom: 8px;
+color:#ff6b8a;
 
-    }
+}
 
-    .story-info strong {
+.bottom-nav{
 
-      color: white;
+position:fixed;
+bottom:0;
+left:0;
+right:0;
 
-    }
+height:76px;
 
-    .actions {
+display:flex;
+justify-content:space-around;
+align-items:center;
 
-      display: flex;
+background:rgba(14,13,21,.96);
 
-      gap: 10px;
+border-top:1px solid var(--border);
 
-      margin-top: 15px;
+z-index:20;
 
-    }
+}
 
-    .action-button {
+.nav-item{
 
-      flex: 1;
+color:var(--muted);
+text-decoration:none;
 
-      padding: 12px;
+text-align:center;
+font-size:10px;
 
-      border-radius: 12px;
+min-width:60px;
 
-      border: 1px solid var(--border);
+}
 
-      background: var(--surface-light);
+.nav-icon{
 
-      color: white;
+display:block;
+font-size:21px;
+margin-bottom:4px;
 
-      font-size: 12px;
+}
 
-      cursor: pointer;
+.nav-item.active{
 
-    }
+color:var(--pink);
 
-    .action-button.primary {
+}
 
-      border: none;
-
-      background:
-
-        linear-gradient(
-          135deg,
-          var(--pink),
-          var(--purple)
-        );
-
-    }
-
-    .action-button.delete {
-
-      color: #ff6b8a;
-
-    }
-
-    /* BOTTOM NAV */
-
-    .bottom-nav {
-
-      position: fixed;
-
-      bottom: 0;
-
-      left: 0;
-
-      right: 0;
-
-      height: 76px;
-
-      display: flex;
-
-      justify-content: space-around;
-
-      align-items: center;
-
-      background: rgba(14,13,21,0.96);
-
-      border-top: 1px solid var(--border);
-
-      z-index: 20;
-
-    }
-
-    .nav-item {
-
-      color: var(--muted);
-
-      text-decoration: none;
-
-      text-align: center;
-
-      font-size: 10px;
-
-    }
-
-    .nav-icon {
-
-      display: block;
-
-      font-size: 21px;
-
-      margin-bottom: 4px;
-
-    }
-
-    .nav-item.active {
-
-      color: var(--pink);
-
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 600px) {
-
-      .stats {
-
-        grid-template-columns:
-          repeat(3, 1fr);
-
-      }
-
-      .stat {
-
-        padding: 13px 8px;
-
-        text-align: center;
-
-      }
-
-      .stat strong {
-
-        font-size: 18px;
-
-      }
-
-      .title {
-
-        font-size: 29px;
-
-      }
-
-    }
-
-  </style>
+</style>
 
 </head>
 
 <body>
 
+<header class="header">
 
-  <!-- HEADER -->
+<button
+class="back"
+onclick="history.back()"
+>
 
-  <header class="header">
+←
 
-    <button
-      class="back"
-      onclick="history.back()"
-    >
+</button>
 
-      ←
+<div class="logo">Reitoon</div>
 
-    </button>
+<div style="width:42px;"></div>
 
+</header>
 
-    <div class="logo">
 
-      Reitoon
+<main class="container">
 
-    </div>
+<h1 class="title">
 
+My <span>Studio</span>
 
-    <div style="width:42px;"></div>
+</h1>
 
-  </header>
+<p class="subtitle">
 
+Kelola semua cerita dan project kamu di satu tempat.
 
-  <!-- MAIN -->
+</p>
 
-  <main class="container">
 
+<section class="stats">
 
-    <h1 class="title">
+<div class="stat">
 
-      My <span>Studio</span>
+<strong id="storyCount">0</strong>
 
-    </h1>
+<span>Total Story</span>
 
+</div>
 
-    <p class="subtitle">
+<div class="stat">
 
-      Kelola semua cerita dan project kamu di satu tempat.
+<strong id="viewCount">0</strong>
 
-    </p>
+<span>Views</span>
 
+</div>
 
-    <!-- STATS -->
+<div class="stat">
 
-    <section class="stats">
+<strong>Rp0</strong>
 
-      <div class="stat">
+<span>Earnings</span>
 
-        <strong id="storyCount">
+</div>
 
-          0
+</section>
 
-        </strong>
 
-        <span>
+<section
+class="empty"
+id="emptyState"
+>
 
-          Total Story
+<div class="empty-icon">✨</div>
 
-        </span>
+<h2>Belum ada cerita</h2>
 
-      </div>
+<p>
 
+Mulai buat cerita pertama kamu dan bangun dunia kreatifmu bersama Reitoon.
 
-      <div class="stat">
+</p>
 
-        <strong>
+<a
+href="create.html"
+class="create-button"
+>
 
-          0
+🚀 Create Your Story
 
-        </strong>
+</a>
 
-        <span>
+</section>
 
-          Views
 
-        </span>
+<section
+class="story-list"
+id="storyList"
+>
 
-      </div>
+</section>
 
+</main>
 
-      <div class="stat">
 
-        <strong>
+<nav class="bottom-nav">
 
-          Rp0
+<a class="nav-item" href="index.html">
 
-        </strong>
+<span class="nav-icon">🏠</span>
+Home
 
-        <span>
+</a>
 
-          Earnings
+<a class="nav-item" href="watch.html">
 
-        </span>
+<span class="nav-icon">▶️</span>
+Watch
 
-      </div>
+</a>
 
-    </section>
+<a class="nav-item" href="create.html">
 
+<span class="nav-icon">✨</span>
+Create
 
-    <!-- EMPTY STATE -->
+</a>
 
-    <section
-      class="empty"
-      id="emptyState"
-    >
+<a class="nav-item active" href="studio.html">
 
-      <div class="empty-icon">
+<span class="nav-icon">🎥</span>
+Studio
 
-        ✨
+</a>
 
-      </div>
+<a class="nav-item" href="profile.html">
 
+<span class="nav-icon">👤</span>
+Profile
 
-      <h2>
+</a>
 
-        Belum ada cerita
+</nav>
 
-      </h2>
 
+<script>
 
-      <p>
+function loadStories(){
 
-        Mulai buat cerita pertama kamu dan bangun dunia kreatifmu bersama Reitoon.
+const stories=JSON.parse(
 
-      </p>
+localStorage.getItem("reitoon_stories")
 
+)||[];
 
-      <a
-        class="create-button"
-        href="create.html"
-      >
+const list=document.getElementById("storyList");
 
-        🚀 Create Your Story
+const empty=document.getElementById("emptyState");
 
-      </a>
+document.getElementById("storyCount")
+.textContent=stories.length;
 
-    </section>
 
+if(stories.length===0){
 
-    <!-- STORY -->
+empty.style.display="block";
 
-    <section
-      class="story-card"
-      id="storyCard"
-    >
+list.innerHTML="";
 
-      <div class="story-header">
+return;
 
-        <h2 id="storyTitle">
+}
 
-          My Story
 
-        </h2>
+empty.style.display="none";
 
+let totalViews=0;
 
-        <span class="status">
+stories.forEach(story=>{
 
-          DRAFT
+totalViews+=story.views||0;
 
-        </span>
+});
 
-      </div>
 
+document.getElementById("viewCount")
+.textContent=totalViews;
 
-      <div class="story-info">
 
-        <p>
+list.innerHTML="";
 
-          <strong>Type:</strong>
 
-          <span id="storyType"></span>
+stories.slice().reverse().forEach(story=>{
 
-        </p>
+const card=document.createElement("article");
 
+card.className="story-card";
 
-        <p>
 
-          <strong>Genre:</strong>
+const cover=story.cover
 
-          <span id="storyGenre"></span>
+?`<img src="${story.cover}">`
 
-        </p>
+:"🎬";
 
 
-        <p>
+card.innerHTML=`
 
-          <strong>Description:</strong>
+<div class="story-top">
 
-          <span id="storyDescription"></span>
+<div class="story-cover">
 
-        </p>
+${cover}
 
-      </div>
+</div>
 
+<div class="story-info">
 
-      <div class="actions">
+<h2>${story.title}</h2>
 
-        <button
-          class="action-button primary"
-          onclick="publishStory()"
-        >
+<div class="story-meta">
 
-          🚀 Publish
+${story.type} • ${story.genre}
 
-        </button>
+</div>
 
+<div class="story-description">
 
-        <button
-          class="action-button"
-          onclick="editStory()"
-        >
+${story.description}
 
-          ✏️ Edit
+</div>
 
-        </button>
+<span class="status">
 
+${story.status==="public"?"PUBLIC":"DRAFT"}
 
-        <button
-          class="action-button delete"
-          onclick="deleteStory()"
-        >
+</span>
 
-          🗑️
+</div>
 
-        </button>
+</div>
 
-      </div>
 
-    </section>
+<div class="actions">
 
-  </main>
+<button
+class="action primary"
+onclick="openDetail(${story.id})"
+>
 
+▶️ View
 
-  <!-- BOTTOM NAV -->
+</button>
 
-  <nav class="bottom-nav">
+<button
+class="action"
+onclick="editStory(${story.id})"
+>
 
+✏️ Edit
 
-    <a
-      class="nav-item"
-      href="index.html"
-    >
+</button>
 
-      <span class="nav-icon">
+<button
+class="action delete"
+onclick="deleteStory(${story.id})"
+>
 
-        🏠
+🗑️ Delete
 
-      </span>
+</button>
 
-      Home
+</div>
 
-    </a>
+`;
 
+list.appendChild(card);
 
-    <a
-      class="nav-item"
-      href="watch.html"
-    >
+});
 
-      <span class="nav-icon">
+}
 
-        ▶️
 
-      </span>
+function openDetail(id){
 
-      Watch
+window.location.href="detail.html?id="+id;
 
-    </a>
+}
 
 
-    <a
-      class="nav-item"
-      href="create.html"
-    >
+function editStory(id){
 
-      <span class="nav-icon">
+const stories=JSON.parse(
 
-        ✨
+localStorage.getItem("reitoon_stories")
 
-      </span>
+)||[];
 
-      Create
+const story=stories.find(item=>item.id===id);
 
-    </a>
+if(!story)return;
 
+localStorage.setItem(
 
-    <a
-      class="nav-item active"
-      href="studio.html"
-    >
+"reitoon_story_edit",
 
-      <span class="nav-icon">
+JSON.stringify(story)
 
-        🎥
+);
 
-      </span>
+window.location.href="create.html";
 
-      Studio
+}
 
-    </a>
 
+function deleteStory(id){
 
-    <a
-      class="nav-item"
-      href="#"
-    >
+if(!confirm("Hapus cerita ini?"))return;
 
-      <span class="nav-icon">
+let stories=JSON.parse(
 
-        👤
+localStorage.getItem("reitoon_stories")
 
-      </span>
+)||[];
 
-      Profile
+stories=stories.filter(
 
-    </a>
+story=>story.id!==id
 
-  </nav>
+);
 
+localStorage.setItem(
 
-  <script>
+"reitoon_stories",
 
+JSON.stringify(stories)
 
-    function loadStory() {
+);
 
+loadStories();
 
-      const savedStory =
+}
 
-        localStorage.getItem(
-          "reitoon_story"
-        );
 
+loadStories();
 
-      if (!savedStory) {
-
-        return;
-
-      }
-
-
-      const story =
-
-        JSON.parse(savedStory);
-
-
-      document
-        .getElementById("emptyState")
-        .style.display = "none";
-
-
-      document
-        .getElementById("storyCard")
-        .style.display = "block";
-
-
-      document
-        .getElementById("storyCount")
-        .textContent = "1";
-
-
-      document
-        .getElementById("storyTitle")
-        .textContent = story.title;
-
-
-      document
-        .getElementById("storyType")
-        .textContent = story.type;
-
-
-      document
-        .getElementById("storyGenre")
-        .textContent = story.genre;
-
-
-      document
-        .getElementById("storyDescription")
-        .textContent = story.description;
-
-    }
-
-
-    function deleteStory() {
-
-
-      const confirmDelete =
-
-        confirm(
-          "Hapus cerita ini?"
-        );
-
-
-      if (!confirmDelete) {
-
-        return;
-
-      }
-
-
-      localStorage.removeItem(
-        "reitoon_story"
-      );
-
-
-      location.reload();
-
-    }
-
-
-    function editStory() {
-
-
-      window.location.href =
-        "create.html";
-
-    }
-
-
-    function publishStory() {
-
-
-      alert(
-
-        "🎉 Cerita kamu berhasil dipublikasikan ke Reitoon!"
-
-      );
-
-    }
-
-
-    loadStory();
-
-
-  </script>
-
+</script>
 
 </body>
 
