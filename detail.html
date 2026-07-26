@@ -1,506 +1,268 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="theme-color" content="#08070d">
-
 <title>Detail - Reitoon</title>
 
 <style>
-
-*{
-
-box-sizing:border-box;
-margin:0;
-padding:0;
-
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-
 --bg:#08070d;
 --surface:#191722;
 --surface-light:#211f2b;
---text:#fff;
 --muted:#aaa3b0;
 --pink:#ff2f8d;
 --purple:#762dff;
---border:rgba(255,255,255,.1);
-
+--border:rgba(255,255,255,.1)
 }
 
 body{
-
 min-height:100vh;
-
 background:
-radial-gradient(
-circle at 100% 0%,
-rgba(255,40,145,.14),
-transparent 35%
-),
-radial-gradient(
-circle at 0% 30%,
-rgba(112,45,255,.1),
-transparent 30%
-),
+radial-gradient(circle at 100% 0%,rgba(255,40,145,.14),transparent 35%),
+radial-gradient(circle at 0% 30%,rgba(112,45,255,.1),transparent 30%),
 var(--bg);
-
-color:white;
-
+color:#fff;
 font-family:Arial,Helvetica,sans-serif;
-
-padding-bottom:40px;
-
+padding-bottom:40px
 }
 
 .header{
-
 height:76px;
-
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 padding:16px 20px;
-
 background:rgba(8,7,13,.94);
-
 border-bottom:1px solid var(--border);
-
 position:sticky;
 top:0;
-z-index:20;
-
+z-index:10
 }
 
 .back{
-
 width:42px;
 height:42px;
-
 border-radius:14px;
-
 border:1px solid var(--border);
-
 background:var(--surface);
-
-color:white;
-
-font-size:20px;
-
+color:#fff;
+font-size:20px
 }
 
 .logo{
-
-font-size:28px;
+font-size:29px;
 font-weight:800;
-
-background:
-linear-gradient(
-135deg,
-white,
-var(--pink),
-var(--purple)
-);
-
+background:linear-gradient(135deg,#fff,var(--pink),var(--purple));
 -webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
+-webkit-text-fill-color:transparent
 }
 
 .container{
-
-width:100%;
-max-width:650px;
-
+max-width:600px;
 margin:auto;
-
-padding:20px 16px;
-
+padding:20px 16px
 }
 
-.hero{
-
-height:350px;
-
-border-radius:22px;
-
+.video{
+width:100%;
+aspect-ratio:16/9;
+border-radius:18px;
 overflow:hidden;
-
-position:relative;
-
-display:flex;
-align-items:flex-end;
-
-background:
-linear-gradient(
-180deg,
-transparent,
-rgba(0,0,0,.9)
-),
-linear-gradient(
-135deg,
-#3a153d,
-#251566
-);
-
+background:#000;
+border:1px solid var(--border)
 }
 
-.hero img{
-
-position:absolute;
-inset:0;
-
+.video video{
 width:100%;
 height:100%;
-
-object-fit:cover;
-
-z-index:0;
-
-}
-
-.hero-content{
-
-position:relative;
-z-index:1;
-
-padding:22px;
-
-width:100%;
-
-}
-
-.badge{
-
-display:inline-block;
-
-padding:6px 10px;
-
-border-radius:20px;
-
-background:var(--pink);
-
-font-size:10px;
-font-weight:bold;
-
-margin-bottom:10px;
-
-}
-
-.hero h1{
-
-font-size:29px;
-line-height:1.1;
-
-margin-bottom:8px;
-
-}
-
-.hero p{
-
-font-size:12px;
-color:#ddd;
-
-}
-
-.info{
-
-margin-top:20px;
-
-}
-
-.info h2{
-
-font-size:20px;
-margin-bottom:10px;
-
-}
-
-.info p{
-
-font-size:14px;
-color:var(--muted);
-line-height:1.7;
-
-}
-
-.watch-button{
-
-width:100%;
-
-margin-top:22px;
-
-padding:16px;
-
-border:none;
-border-radius:15px;
-
-background:
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
-color:white;
-
-font-size:15px;
-font-weight:bold;
-
-cursor:pointer;
-
-}
-
-.video-player{
-
-display:none;
-
-margin-top:20px;
-
-border-radius:18px;
-
-overflow:hidden;
-
-background:#000;
-
-}
-
-.video-player.show{
-
-display:block;
-
-}
-
-.video-player video{
-
-width:100%;
-display:block;
-
+display:block
 }
 
 .video-placeholder{
-
-aspect-ratio:16/9;
-
+height:100%;
 display:flex;
 align-items:center;
 justify-content:center;
-
-text-align:center;
-
-padding:20px;
-
+font-size:55px;
 background:
-linear-gradient(
-135deg,
-#16121f,
-#28134a
-);
-
+linear-gradient(135deg,#241329,#121124)
 }
 
-.video-placeholder p{
+.cover{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:18px;
+margin-top:18px
+}
 
-color:var(--muted);
-font-size:13px;
-line-height:1.5;
-
+.title{
+font-size:26px;
+margin-top:18px
 }
 
 .meta{
-
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-
-margin-top:14px;
-
+color:var(--pink);
+font-size:13px;
+margin-top:8px
 }
 
-.meta span{
-
-padding:7px 10px;
-
-border-radius:20px;
-
-background:var(--surface);
-
-border:1px solid var(--border);
-
+.description{
 color:var(--muted);
+font-size:14px;
+line-height:1.6;
+margin-top:15px
+}
 
-font-size:11px;
+.actions{
+display:flex;
+gap:10px;
+margin-top:20px
+}
 
+.action{
+flex:1;
+padding:13px;
+border-radius:12px;
+border:1px solid var(--border);
+background:var(--surface);
+color:#fff;
+font-weight:bold
+}
+
+.action.active{
+background:linear-gradient(135deg,var(--pink),var(--purple));
+border:none
 }
 
 .back-watch{
-
 display:block;
-
-margin-top:18px;
-
+margin-top:20px;
+padding:14px;
+border-radius:13px;
+background:var(--surface);
+border:1px solid var(--border);
+color:#fff;
 text-align:center;
-
-color:var(--pink);
-
 text-decoration:none;
-
-font-size:13px;
-
+font-weight:bold
 }
-
 </style>
-
 </head>
 
 <body>
 
 <header class="header">
 
-<button
-class="back"
-onclick="history.back()"
->
-
+<button class="back" onclick="history.back()">
 ←
-
 </button>
 
 <div class="logo">Reitoon</div>
 
-<div style="width:42px;"></div>
+<div style="width:42px"></div>
 
 </header>
 
-
 <main class="container">
 
+<section class="video">
 
-<section class="hero" id="hero">
+<video
+id="videoPlayer"
+controls
+poster=""
+>
+<source src="" type="video/mp4">
+Browser kamu tidak mendukung video.
+</video>
 
-<div id="heroImage"></div>
+<div id="videoPlaceholder" class="video-placeholder">
+🎬
+</div>
 
-<div class="hero-content">
+</section>
 
-<span class="badge">REITOON ORIGINAL</span>
+<img id="cover" class="cover">
 
-<h1 id="movieTitle">
-
+<h1 id="title" class="title">
 Loading...
-
 </h1>
 
-<p id="movieGenre">
+<p id="meta" class="meta"></p>
 
-</p>
+<p id="description" class="description"></p>
 
-</div>
+<div class="actions">
 
-</section>
-
-
-<div class="meta">
-
-<span id="metaType">Film</span>
-
-<span id="metaGenre">Drama</span>
-
-<span>HD</span>
-
-</div>
-
-
-<section class="info">
-
-<h2>About This Story</h2>
-
-<p id="movieDescription">
-
-Loading description...
-
-</p>
-
-</section>
-
-
-<button
-class="watch-button"
-onclick="startWatching()"
->
-
-▶️ Watch Now
-
+<button class="action" onclick="likeStory()">
+❤️ Like
 </button>
 
-
-<section
-class="video-player"
-id="videoPlayer"
->
-
-<div class="video-placeholder">
-
-<p>
-
-🎬 Video Player Reitoon<br><br>
-
-Video asli dapat ditambahkan melalui URL video atau sistem upload video pada tahap berikutnya.
-
-</p>
+<button class="action" onclick="bookmarkStory()">
+🔖 Save
+</button>
 
 </div>
 
-</section>
-
-
-<a
-href="watch.html"
-class="back-watch"
->
-
+<a class="back-watch" href="watch.html">
 ← Kembali ke Watch
-
 </a>
-
 
 </main>
 
-
 <script>
 
-
-function getMovie(){
-
-const params=new URLSearchParams(
-
-window.location.search
-
-);
+const params=
+new URLSearchParams(window.location.search);
 
 const id=params.get("id");
 
+const defaultMovies=[
 
-if(id){
+{
+id:"love-beyond-time",
+title:"Love Beyond Time",
+genre:"Romance",
+description:"Sebuah kisah cinta yang melampaui waktu.",
+cover:"",
+type:"Film"
+},
 
-const stories=JSON.parse(
+{
+id:"last-kingdom",
+title:"The Last Kingdom",
+genre:"Action",
+description:"Pertarungan besar demi masa depan kerajaan.",
+cover:"",
+type:"Film"
+},
 
-localStorage.getItem("reitoon_stories")
+{
+id:"hidden-truth",
+title:"Hidden Truth",
+genre:"Drama",
+description:"Sebuah rahasia besar perlahan terungkap.",
+cover:"",
+type:"Film"
+}
 
-)||[];
+];
 
-const story=stories.find(
+function findMovie(){
 
-item=>String(item.id)===String(id)
+const saved=
+localStorage.getItem("reitoon_story");
 
-);
+if(saved){
 
-if(story){
+const story=JSON.parse(saved);
+
+if(String(story.id)===String(id)){
 
 return story;
 
@@ -508,113 +270,65 @@ return story;
 
 }
 
-
-const saved=localStorage.getItem(
-
-"reitoon_selected_movie"
-
+return defaultMovies.find(
+movie=>movie.id===id
 );
 
-
-if(saved){
-
-return JSON.parse(saved);
-
 }
 
+const movie=findMovie();
 
-return{
+if(movie){
 
-title:"Love Beyond Time",
-
-genre:"Romance • Drama",
-
-description:"Kisah cinta yang melampaui waktu dan takdir.",
-
-type:"Film",
-
-cover:""
-
-};
-
-}
-
-
-function loadMovie(){
-
-const movie=getMovie();
-
-
-document
-.getElementById("movieTitle")
+document.getElementById("title")
 .textContent=movie.title;
 
+document.getElementById("meta")
+.textContent=
+movie.genre+" • "+movie.type;
 
-document
-.getElementById("movieGenre")
-.textContent=movie.genre;
-
-
-document
-.getElementById("metaType")
-.textContent=movie.type||"Film";
-
-
-document
-.getElementById("metaGenre")
-.textContent=movie.genre;
-
-
-document
-.getElementById("movieDescription")
-.textContent=movie.description;
-
+document.getElementById("description")
+.textContent=
+movie.description;
 
 if(movie.cover){
 
-const hero=document.getElementById("hero");
+const cover=
+document.getElementById("cover");
 
-hero.style.backgroundImage=
+cover.src=movie.cover;
 
-`linear-gradient(
-180deg,
-transparent,
-rgba(0,0,0,.9)
-),url("${movie.cover}")`;
+}else{
 
-hero.style.backgroundSize="cover";
-
-hero.style.backgroundPosition="center";
+document.getElementById("cover")
+.style.display="none";
 
 }
 
-}
+}else{
 
+document.getElementById("title")
+.textContent="Film tidak ditemukan";
 
-function startWatching(){
-
-const player=document
-
-.getElementById("videoPlayer");
-
-
-player.classList.add("show");
-
-
-player.scrollIntoView({
-
-behavior:"smooth"
-
-});
-
+document.getElementById("description")
+.textContent=
+"Film atau cerita ini tidak tersedia.";
 
 }
 
+function likeStory(){
 
-loadMovie();
+alert("❤️ Kamu menyukai cerita ini!");
+
+}
+
+function bookmarkStory(){
+
+alert("🔖 Cerita disimpan ke koleksi kamu!");
+
+}
 
 </script>
 
 </body>
-
 </html>
