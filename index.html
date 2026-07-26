@@ -1,155 +1,957 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08070d">
-  <title>Reitoon Home</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<!DOCTYPE html><html lang="id">
+<head><meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
-<body>
+«»
 
-  <div class="app-container">
+<meta
+name="theme-color"
+content="#08070d"
 
-    <header class="top-header">
+«»
 
-      <div class="brand-name">
-        Reitoon
-      </div>
+<title>Reitoon - Home</title><style>
 
-      <button
-        class="icon-button"
-        onclick="openProfile()"
-      >
-        👤
-      </button>
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
-    </header>
+:root{
+
+--bg:#08070d;
+
+--surface:#191722;
+
+--surface-light:#211f2b;
+
+--text:#ffffff;
+
+--muted:#aaa3b0;
+
+--pink:#ff2f8d;
+
+--purple:#762dff;
+
+--border:rgba(255,255,255,0.10);
+
+}
+
+body{
+
+min-height:100vh;
+
+background:
+
+radial-gradient(
+circle at 100% 0%,
+rgba(255,40,145,0.14),
+transparent 35%
+),
+
+radial-gradient(
+circle at 0% 30%,
+rgba(112,45,255,0.10),
+transparent 30%
+),
+
+var(--bg);
+
+color:var(--text);
+
+font-family:
+
+Arial,
+Helvetica,
+sans-serif;
+
+padding-bottom:100px;
+
+}
+
+/* HEADER */
+
+.header{
+
+height:76px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:16px 20px;
+
+background:rgba(8,7,13,0.94);
+
+border-bottom:1px solid var(--border);
+
+position:sticky;
+
+top:0;
+
+z-index:20;
+
+}
+
+.logo{
+
+font-size:30px;
+
+font-weight:800;
+
+background:
+
+linear-gradient(
+135deg,
+white,
+var(--pink),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.header-action{
+
+width:42px;
+
+height:42px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:14px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+color:white;
+
+text-decoration:none;
+
+font-size:20px;
+
+}
+
+/* MAIN */
+
+.container{
+
+width:100%;
+
+max-width:650px;
+
+margin:auto;
+
+padding:25px 16px;
+
+}
+
+/* WELCOME */
+
+.welcome{
+
+margin-bottom:25px;
+
+}
+
+.welcome h1{
+
+font-size:30px;
+
+line-height:1.2;
+
+margin-bottom:8px;
+
+}
+
+.welcome h1 span{
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.welcome p{
+
+color:var(--muted);
+
+font-size:14px;
+
+line-height:1.5;
+
+}
+
+/* HERO */
+
+.hero{
+
+position:relative;
+
+overflow:hidden;
+
+padding:24px;
+
+min-height:210px;
+
+border-radius:24px;
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,47,141,.20),
+rgba(118,45,255,.22)
+),
+
+var(--surface);
+
+border:1px solid var(--border);
+
+margin-bottom:24px;
+
+}
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+width:220px;
+
+height:220px;
+
+right:-80px;
+
+top:-80px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+circle,
+rgba(255,47,141,.35),
+transparent 65%
+);
+
+}
+
+.hero-content{
+
+position:relative;
+
+z-index:2;
+
+max-width:330px;
+
+}
+
+.hero h2{
+
+font-size:24px;
+
+line-height:1.25;
+
+margin-bottom:10px;
+
+}
+
+.hero p{
+
+color:#d0cbd5;
+
+font-size:13px;
+
+line-height:1.5;
+
+margin-bottom:18px;
+
+}
+
+.hero-button{
+
+display:inline-block;
+
+padding:13px 18px;
+
+border-radius:13px;
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+color:white;
+
+text-decoration:none;
+
+font-size:13px;
+
+font-weight:bold;
+
+}
+
+/* QUICK ACTIONS */
+
+.section-title{
+
+font-size:19px;
+
+margin-bottom:14px;
+
+}
+
+.quick-actions{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+gap:12px;
+
+margin-bottom:26px;
+
+}
+
+.quick-action{
+
+display:block;
+
+padding:17px 14px;
+
+min-height:130px;
+
+border-radius:19px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+color:white;
+
+text-decoration:none;
+
+transition:.2s;
+
+}
+
+.quick-action:hover{
+
+transform:translateY(-3px);
+
+border-color:var(--pink);
+
+}
+
+.quick-icon{
+
+font-size:29px;
+
+margin-bottom:12px;
+
+}
+
+.quick-action strong{
+
+display:block;
+
+font-size:14px;
+
+}
+
+.quick-action span{
+
+display:block;
+
+margin-top:6px;
+
+color:var(--muted);
+
+font-size:11px;
+
+line-height:1.4;
+
+}
+
+/* AI CARD */
+
+.ai-card{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+padding:17px;
+
+border-radius:19px;
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,47,141,.12),
+rgba(118,45,255,.12)
+),
+
+var(--surface);
+
+border:1px solid var(--border);
+
+text-decoration:none;
+
+color:white;
+
+margin-bottom:25px;
+
+}
+
+.ai-card-icon{
+
+width:52px;
+
+height:52px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:16px;
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+font-size:26px;
+
+}
+
+.ai-card-content{
+
+flex:1;
+
+}
+
+.ai-card-content strong{
+
+display:block;
+
+font-size:15px;
+
+margin-bottom:5px;
+
+}
+
+.ai-card-content span{
+
+display:block;
+
+color:var(--muted);
+
+font-size:11px;
+
+line-height:1.4;
+
+}
+
+.ai-arrow{
+
+font-size:22px;
+
+color:var(--muted);
+
+}
+
+/* RECENT STORY */
+
+.story-card{
+
+display:flex;
+
+align-items:center;
+
+gap:13px;
+
+padding:14px;
+
+border-radius:17px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+margin-bottom:12px;
+
+}
+
+.story-poster{
+
+width:68px;
+
+height:82px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:12px;
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+font-size:25px;
+
+}
+
+.story-info{
+
+flex:1;
+
+min-width:0;
+
+}
+
+.story-info h3{
+
+font-size:14px;
+
+margin-bottom:6px;
+
+white-space:nowrap;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
+}
+
+.story-info p{
+
+color:var(--muted);
+
+font-size:11px;
+
+line-height:1.4;
+
+}
+
+.story-button{
+
+padding:9px 12px;
+
+border-radius:10px;
+
+background:var(--surface-light);
+
+border:1px solid var(--border);
+
+color:white;
+
+font-size:11px;
+
+text-decoration:none;
+
+}
+
+/* EMPTY */
+
+.empty{
+
+padding:28px 18px;
+
+text-align:center;
+
+border-radius:18px;
+
+background:rgba(255,255,255,.02);
+
+border:1px dashed rgba(255,255,255,.15);
+
+color:var(--muted);
+
+font-size:12px;
+
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+right:0;
+
+height:76px;
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:center;
+
+background:rgba(14,13,21,.96);
+
+backdrop-filter:blur(18px);
+
+border-top:1px solid var(--border);
+
+z-index:30;
+
+}
+
+.nav-item{
+
+color:var(--muted);
+
+text-decoration:none;
+
+text-align:center;
+
+font-size:10px;
+
+min-width:60px;
+
+}
+
+.nav-icon{
+
+display:block;
+
+font-size:21px;
+
+margin-bottom:4px;
+
+}
+
+.nav-item.active{
+
+color:var(--pink);
+
+}
+
+/* MOBILE */
+
+@media(max-width:420px){
+
+.welcome h1{
+
+font-size:27px;
+
+}
+
+.hero h2{
+
+font-size:21px;
+
+}
+
+.quick-action{
+
+min-height:120px;
+
+}
+
+}
+
+</style></head><body><!-- HEADER --><header class="header"><div class="logo">Reitoon
+
+</div><a
+class="header-action"
+href="profile.html"
+
+«»
+
+👤
+
+</a></header><!-- MAIN --><main class="container"><!-- WELCOME --><section class="welcome"><h1>Selamat datang di
+
+<span>Reitoon</span>
+
+</h1><p>Buat, tonton, dan ciptakan dunia cerita kamu sendiri.
+
+</p></section><!-- HERO --><section class="hero"><div class="hero-content"><h2>✨ Wujudkan Cerita Menjadi Film
+
+</h2><p>Gunakan AI Studio untuk membuat karakter, gambar, video, suara, dan dunia film kamu.
+
+</p><a
+class="hero-button"
+href="ai-studio.html"
+
+«»
+
+🚀 Mulai Membuat Film
+
+</a></div></section><!-- QUICK MENU --><h2 class="section-title">Explore Reitoon
+
+</h2><div class="quick-actions"><a
+class="quick-action"
+href="watch.html"
+
+«»
+
+<div class="quick-icon">▶️
+
+</div><strong>Watch
+
+</strong><span>Tonton film dan cerita menarik.
+
+</span></a><a
+class="quick-action"
+href="create.html"
+
+«»
+
+<div class="quick-icon">✨
+
+</div><strong>Create
+
+</strong><span>Buat cerita baru kamu.
+
+</span></a><a
+class="quick-action"
+href="studio.html"
+
+«»
+
+<div class="quick-icon">🎥
+
+</div><strong>My Studio
+
+</strong><span>Kelola semua project dan cerita.
+
+</span></a><a
+class="quick-action"
+href="profile.html"
+
+«»
+
+<div class="quick-icon">👤
+
+</div><strong>Profile
+
+</strong><span>Kelola akun dan creator profile.
+
+</span></a></div><!-- AI STUDIO --><h2 class="section-title">Create With AI
+
+</h2><a
+class="ai-card"
+href="ai-studio.html"
+
+«»
+
+<div class="ai-card-icon">🤖
+
+</div><div class="ai-card-content"><strong>AI Studio
+
+</strong><span>Buat film dengan AI menggunakan sistem Credit Reitoon.
+
+</span></div><div class="ai-arrow">›
+
+</div></a><!-- RECENT STORY --><h2 class="section-title">📚 Cerita Terbaru Kamu
+
+</h2><div
+id="recentStory"
+></div></main><!-- BOTTOM NAV --><nav class="bottom-nav"><a
+class="nav-item active"
+href="index.html"
+
+«»
+
+<span class="nav-icon">🏠
+
+</span>Home
+
+</a><a
+class="nav-item"
+href="watch.html"
+
+«»
+
+<span class="nav-icon">▶️
+
+</span>Watch
+
+</a><a
+class="nav-item"
+href="create.html"
+
+«»
+
+<span class="nav-icon">✨
+
+</span>Create
+
+</a><a
+class="nav-item"
+href="studio.html"
+
+«»
+
+<span class="nav-icon">🎥
+
+</span>Studio
+
+</a><a
+class="nav-item"
+href="profile.html"
+
+«»
+
+<span class="nav-icon">👤
+
+</span>Profile
+
+</a></nav><script>
+
+/* LOAD CERITA TERBARU */
+
+function loadRecentStory(){
+
+const container=
+document.getElementById(
+"recentStory"
+);
+
+const savedStory=
+localStorage.getItem(
+"reitoon_story"
+);
+
+if(!savedStory){
+
+container.innerHTML=
+
+`
+
+<div class="empty">
+
+✨ Belum ada cerita.
+
+<br><br>
+
+Mulai buat cerita pertamamu di Reitoon.
+
+</div>
+
+`;
+
+return;
+
+}
+
+const story=
+JSON.parse(savedStory);
+
+container.innerHTML=
+
+`
+
+<div class="story-card">
+
+<div class="story-poster">
+
+🎬
+
+</div>
+
+<div class="story-info">
+
+<h3>
+
+${escapeHTML(story.title)}
+
+</h3>
+
+<p>
+
+${escapeHTML(story.genre || "Story")}
+
+<br>
+
+${escapeHTML(story.description || "Cerita Reitoon")}
+
+</p>
+
+</div>
+
+<a
+class="story-button"
+href="studio.html"
+>
+
+Buka
+
+</a>
+
+</div>
+
+`;
+
+}
 
 
-    <main class="container">
+/* AMANKAN TEKS */
 
-      <section>
+function escapeHTML(text){
 
-        <span class="section-label">
-          WELCOME TO REITOON
-        </span>
+const div=
+document.createElement("div");
 
-        <h1 style="font-size:32px;margin-top:8px;">
-          Create. Watch. <span style="color:#ff2f8d;">Imagine.</span>
-        </h1>
+div.textContent=
+text || "";
 
-        <p style="color:#aaa3b0;margin-top:10px;font-size:14px;">
-          Platform kreatif untuk membuat dan menikmati cerita original.
-        </p>
+return div.innerHTML;
 
-      </section>
+}
 
 
-      <section class="form-card">
+/* LOAD */
 
-        <h2 style="margin-bottom:10px;">
-          🎬 Create Your Story
-        </h2>
+loadRecentStory();
 
-        <p style="color:#aaa3b0;font-size:13px;margin-bottom:18px;">
-          Gunakan imajinasi kamu untuk membuat film dan cerita baru.
-        </p>
-
-        <a
-          href="create.html"
-          class="create-button"
-          style="display:block;text-align:center;text-decoration:none;"
-        >
-          ✨ Mulai Membuat Cerita
-        </a>
-
-      </section>
-
-
-      <section class="form-card">
-
-        <h2 style="margin-bottom:14px;">
-          🔥 Explore Reitoon
-        </h2>
-
-        <a
-          href="watch.html"
-          class="create-button"
-          style="display:block;text-align:center;text-decoration:none;"
-        >
-          ▶️ Watch Movies
-        </a>
-
-      </section>
-
-
-      <section class="form-card">
-
-        <h2 style="margin-bottom:14px;">
-          💰 Reitoon Wallet
-        </h2>
-
-        <p style="color:#aaa3b0;font-size:13px;margin-bottom:15px;">
-          Kelola saldo, AI Credit, top up, dan penghasilan kamu.
-        </p>
-
-        <a
-          href="wallet.html"
-          class="create-button"
-          style="display:block;text-align:center;text-decoration:none;"
-        >
-          💳 Buka Wallet
-        </a>
-
-      </section>
-
-    </main>
-
-
-    <nav class="bottom-navigation">
-
-      <a class="nav-item active" href="index.html">
-        <span class="nav-icon">🏠</span>
-        Home
-      </a>
-
-      <a class="nav-item" href="watch.html">
-        <span class="nav-icon">▶️</span>
-        Watch
-      </a>
-
-      <a class="nav-item" href="create.html">
-        <span class="nav-icon">✨</span>
-        Create
-      </a>
-
-      <a class="nav-item" href="studio.html">
-        <span class="nav-icon">🎥</span>
-        Studio
-      </a>
-
-      <a class="nav-item" href="profile.html">
-        <span class="nav-icon">👤</span>
-        Profile
-      </a>
-
-    </nav>
-
-  </div>
-
-
-  <script>
-
-    function openProfile() {
-
-      window.location.href =
-        "profile.html";
-
-    }
-
-  </script>
-
-</body>
-</html>
+</script></body></html>
