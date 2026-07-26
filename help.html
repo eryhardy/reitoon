@@ -1,0 +1,989 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08070d"><title>Bantuan & CS - Reitoon</title><style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+:root{
+--bg:#08070d;
+--surface:#191722;
+--surface-light:#211f2b;
+--text:#ffffff;
+--muted:#aaa3b0;
+--pink:#ff2f8d;
+--purple:#762dff;
+--green:#25d366;
+--yellow:#ffd35a;
+--red:#ff526d;
+--border:rgba(255,255,255,.10);
+}
+
+body{
+min-height:100vh;
+
+background:
+radial-gradient(
+circle at 100% 0%,
+rgba(255,40,145,.14),
+transparent 35%
+),
+
+radial-gradient(
+circle at 0% 30%,
+rgba(112,45,255,.10),
+transparent 30%
+),
+
+var(--bg);
+
+color:var(--text);
+
+font-family:
+Arial,
+Helvetica,
+sans-serif;
+
+padding-bottom:40px;
+}
+
+.header{
+height:76px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:16px 20px;
+
+background:rgba(8,7,13,.94);
+
+border-bottom:1px solid var(--border);
+
+position:sticky;
+
+top:0;
+
+z-index:20;
+}
+
+.back-button{
+width:42px;
+height:42px;
+
+border-radius:14px;
+
+border:1px solid var(--border);
+
+background:var(--surface);
+
+color:#fff;
+
+font-size:20px;
+
+cursor:pointer;
+}
+
+.logo{
+font-size:28px;
+
+font-weight:800;
+
+background:
+linear-gradient(
+135deg,
+#fff,
+var(--pink),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+}
+
+.header-space{
+width:42px;
+}
+
+.container{
+width:100%;
+
+max-width:700px;
+
+margin:auto;
+
+padding:24px 16px;
+}
+
+.hero{
+padding:24px;
+
+border-radius:22px;
+
+background:
+linear-gradient(
+135deg,
+rgba(255,47,141,.15),
+rgba(118,45,255,.15)
+),
+
+var(--surface);
+
+border:1px solid var(--border);
+
+margin-bottom:20px;
+}
+
+.hero-icon{
+font-size:42px;
+
+margin-bottom:12px;
+}
+
+.hero h1{
+font-size:24px;
+
+margin-bottom:8px;
+}
+
+.hero p{
+font-size:12px;
+
+color:var(--muted);
+
+line-height:1.6;
+}
+
+.section-title{
+font-size:18px;
+
+margin:24px 0 12px;
+}
+
+.help-grid{
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:10px;
+}
+
+.help-card{
+padding:17px 14px;
+
+border-radius:17px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+cursor:pointer;
+
+transition:.2s;
+}
+
+.help-card:hover{
+transform:translateY(-3px);
+
+border-color:var(--pink);
+}
+
+.help-icon{
+font-size:28px;
+
+margin-bottom:10px;
+}
+
+.help-card h3{
+font-size:13px;
+
+margin-bottom:5px;
+}
+
+.help-card p{
+font-size:10px;
+
+color:var(--muted);
+
+line-height:1.5;
+}
+
+.faq-card{
+padding:16px;
+
+border-radius:16px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+margin-bottom:9px;
+
+cursor:pointer;
+}
+
+.faq-question{
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+font-size:12px;
+
+font-weight:bold;
+}
+
+.faq-answer{
+display:none;
+
+padding-top:12px;
+
+font-size:11px;
+
+line-height:1.6;
+
+color:var(--muted);
+}
+
+.faq-card.open .faq-answer{
+display:block;
+}
+
+.faq-arrow{
+font-size:16px;
+
+color:var(--pink);
+}
+
+.contact-card{
+padding:20px;
+
+border-radius:20px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+}
+
+.contact-button{
+width:100%;
+
+padding:14px;
+
+margin-bottom:10px;
+
+border-radius:12px;
+
+border:1px solid var(--border);
+
+background:var(--surface-light);
+
+color:#fff;
+
+font-size:12px;
+
+font-weight:bold;
+
+cursor:pointer;
+}
+
+.contact-button:last-child{
+margin-bottom:0;
+}
+
+.contact-button.whatsapp{
+background:
+linear-gradient(
+135deg,
+#25d366,
+#128c7e
+);
+
+border:none;
+}
+
+.contact-button.email{
+background:
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+border:none;
+}
+
+.report-form{
+padding:20px;
+
+border-radius:20px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+}
+
+.form-group{
+margin-bottom:14px;
+}
+
+.form-group label{
+display:block;
+
+font-size:11px;
+
+font-weight:bold;
+
+margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+width:100%;
+
+padding:13px;
+
+border-radius:12px;
+
+border:1px solid var(--border);
+
+outline:none;
+
+background:#100f17;
+
+color:#fff;
+
+font-family:inherit;
+
+font-size:12px;
+}
+
+.form-group textarea{
+height:110px;
+
+resize:none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+border-color:var(--pink);
+}
+
+.submit-button{
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:12px;
+
+background:
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+color:#fff;
+
+font-size:12px;
+
+font-weight:bold;
+
+cursor:pointer;
+}
+
+.about{
+text-align:center;
+
+padding:24px 15px;
+
+color:var(--muted);
+
+font-size:11px;
+
+line-height:1.8;
+}
+
+.about strong{
+color:#fff;
+}
+
+.toast{
+position:fixed;
+
+left:50%;
+
+bottom:25px;
+
+transform:
+translateX(-50%)
+translateY(20px);
+
+padding:13px 18px;
+
+border-radius:14px;
+
+background:var(--surface-light);
+
+border:1px solid var(--border);
+
+font-size:12px;
+
+opacity:0;
+
+pointer-events:none;
+
+transition:.3s;
+
+z-index:100;
+
+white-space:nowrap;
+}
+
+.toast.show{
+opacity:1;
+
+transform:
+translateX(-50%)
+translateY(0);
+}
+
+@media(max-width:420px){
+
+.help-grid{
+grid-template-columns:
+repeat(2,1fr);
+}
+
+}
+
+</style></head><body><header class="header"><button
+class="back-button"
+onclick="goBack()"
+
+«»
+
+←
+</button>
+
+<div class="logo">
+Reitoon
+</div><div class="header-space"></div></header><main class="container"><section class="hero"><div class="hero-icon">
+🆘
+</div><h1>
+Bantuan & Customer Service
+</h1><p>
+Kami siap membantu kamu menyelesaikan masalah seputar akun, pembayaran, saldo, video, dan AI Studio Reitoon.
+</p></section><h2 class="section-title">
+📚 Pilih Topik Bantuan
+</h2><section class="help-grid"><div
+class="help-card"
+onclick="scrollToSection('faq')"
+><div class="help-icon">
+🔐
+</div><h3>
+Masalah Login
+</h3><p>
+Bantuan akun dan proses masuk.
+</p></div><div
+class="help-card"
+onclick="scrollToSection('faq')"
+><div class="help-icon">
+💳
+</div><h3>
+Top Up
+</h3><p>
+Masalah pembayaran dan credit.
+</p></div><div
+class="help-card"
+onclick="scrollToSection('faq')"
+><div class="help-icon">
+💸
+</div><h3>
+Penarikan Saldo
+</h3><p>
+Bantuan penarikan minimum Rp100.000.
+</p></div><div
+class="help-card"
+onclick="scrollToSection('faq')"
+><div class="help-icon">
+🎬
+</div><h3>
+Video & Drama
+</h3><p>
+Masalah menonton dan video.
+</p></div><div
+class="help-card"
+onclick="scrollToSection('faq')"
+><div class="help-icon">
+✨
+</div><h3>
+AI Studio
+</h3><p>
+Bantuan AI Character, Image, Video, Voice.
+</p></div><div
+class="help-card"
+onclick="scrollToSection('report')"
+><div class="help-icon">
+🐞
+</div><h3>
+Laporkan Masalah
+</h3><p>
+Kirim laporan kepada tim Reitoon.
+</p></div></section><h2
+class="section-title"
+id="faq"
+>
+❓ Pertanyaan Umum
+</h2><section><div
+class="faq-card"
+onclick="toggleFaq(this)"
+><div class="faq-question"><span>
+Bagaimana cara membuat akun Reitoon?
+</span><span class="faq-arrow">
+＋
+</span></div><div class="faq-answer">Kamu dapat mendaftar menggunakan email, nomor telepon, atau metode login sosial yang tersedia di aplikasi.
+
+</div></div><div
+class="faq-card"
+onclick="toggleFaq(this)"
+><div class="faq-question"><span>
+Bagaimana cara melakukan Top Up Credit?
+</span><span class="faq-arrow">
+＋
+</span></div><div class="faq-answer">Buka menu AI Studio, pilih Top Up Credit, pilih jumlah credit, lalu pilih metode pembayaran yang tersedia.
+
+</div></div><div
+class="faq-card"
+onclick="toggleFaq(this)"
+><div class="faq-question"><span>
+Berapa minimum penarikan saldo?
+</span><span class="faq-arrow">
+＋
+</span></div><div class="faq-answer">Minimum penarikan saldo Reitoon adalah Rp100.000. Pastikan data rekening atau e-wallet yang digunakan sudah benar.
+
+</div></div><div
+class="faq-card"
+onclick="toggleFaq(this)"
+><div class="faq-question"><span>
+Kenapa penarikan saya belum masuk?
+</span><span class="faq-arrow">
+＋
+</span></div><div class="faq-answer">Permintaan penarikan dapat membutuhkan waktu pemrosesan. Jika mengalami masalah, silakan kirim laporan dengan mencantumkan detail transaksi.
+
+</div></div><div
+class="faq-card"
+onclick="toggleFaq(this)"
+><div class="faq-question"><span>
+Kenapa video tidak dapat diputar?
+</span><span class="faq-arrow">
+＋
+</span></div><div class="faq-answer">Periksa koneksi internet dan coba kembali. Jika masalah tetap terjadi, laporkan judul video dan perangkat yang kamu gunakan kepada CS.
+
+</div></div><div
+class="faq-card"
+onclick="toggleFaq(this)"
+><div class="faq-question"><span>
+Bagaimana cara menggunakan AI Studio?
+</span><span class="faq-arrow">
+＋
+</span></div><div class="faq-answer">Pilih jenis AI yang ingin digunakan, masukkan prompt, pilih style dan rasio, lalu tekan Generate AI.
+
+</div></div></section><h2 class="section-title">
+💬 Hubungi Customer Service
+</h2><section class="contact-card"><button
+class="contact-button whatsapp"
+onclick="contactWhatsApp()"
+
+«»
+
+💬 Chat CS via WhatsApp
+</button>
+
+<button
+class="contact-button email"
+onclick="contactEmail()"
+
+«»
+
+📧 Hubungi CS via Email
+</button>
+
+<button
+class="contact-button"
+onclick="scrollToSection('report')"
+
+«»
+
+🐞 Kirim Laporan Masalah
+</button>
+
+</section><h2
+class="section-title"
+id="report"
+>
+🐞 Laporkan Masalah
+</h2><section class="report-form"><div class="form-group"><label>
+Kategori Masalah
+</label><select id="reportCategory"><option>
+Masalah Login
+</option><option>
+Masalah Top Up
+</option><option>
+Masalah Penarikan Saldo
+</option><option>
+Masalah Video
+</option><option>
+Masalah AI Studio
+</option><option>
+Masalah Lainnya
+</option></select></div><div class="form-group"><label>
+Judul Masalah
+</label><input
+type="text"
+id="reportTitle"
+placeholder="Contoh: Saldo belum masuk"
+
+«»
+
+</div><div class="form-group"><label>
+Jelaskan Masalah
+</label><textarea
+id="reportMessage"
+placeholder="Jelaskan masalah yang kamu alami..."
+></textarea></div><button
+class="submit-button"
+onclick="submitReport()"
+
+«»
+
+📩 Kirim Laporan
+</button>
+
+</section><section class="about"><strong>
+Reitoon
+</strong><br>Platform hiburan dan kreativitas berbasis AI.
+
+<br><br>
+
+Developed by <strong>Rei</strong>
+
+<br>© 2026 Rei
+
+</section></main><div
+class="toast"
+id="toast"
+></div><script>
+
+/* ================================
+   KONTAK CS
+================================ */
+
+/*
+   Kontak resmi dapat diisi nanti.
+   Untuk keamanan, jangan gunakan
+   nomor atau email palsu.
+*/
+
+const CS_WHATSAPP = "";
+
+const CS_EMAIL = "";
+
+
+/* ================================
+   FAQ
+================================ */
+
+function toggleFaq(card){
+
+card.classList.toggle("open");
+
+const arrow =
+card.querySelector(".faq-arrow");
+
+if(
+card.classList.contains("open")
+){
+
+arrow.textContent = "−";
+
+}
+
+else{
+
+arrow.textContent = "＋";
+
+}
+
+}
+
+
+/* ================================
+   SCROLL
+================================ */
+
+function scrollToSection(id){
+
+const section =
+document.getElementById(id);
+
+if(section){
+
+section.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+}
+
+
+/* ================================
+   WHATSAPP
+================================ */
+
+function contactWhatsApp(){
+
+if(!CS_WHATSAPP){
+
+showToast(
+"ℹ️ Kontak WhatsApp CS belum diatur"
+);
+
+return;
+
+}
+
+window.open(
+
+"https://wa.me/" +
+
+CS_WHATSAPP,
+
+"_blank"
+
+);
+
+}
+
+
+/* ================================
+   EMAIL
+================================ */
+
+function contactEmail(){
+
+if(!CS_EMAIL){
+
+showToast(
+"ℹ️ Email CS belum diatur"
+);
+
+return;
+
+}
+
+window.location.href =
+
+"mailto:" +
+
+CS_EMAIL;
+
+}
+
+
+/* ================================
+   LAPORAN
+================================ */
+
+function submitReport(){
+
+const category =
+
+document
+.getElementById(
+"reportCategory"
+)
+.value;
+
+const title =
+
+document
+.getElementById(
+"reportTitle"
+)
+.value
+.trim();
+
+const message =
+
+document
+.getElementById(
+"reportMessage"
+)
+.value
+.trim();
+
+if(!title){
+
+showToast(
+"⚠️ Masukkan judul masalah"
+);
+
+return;
+
+}
+
+if(!message){
+
+showToast(
+"⚠️ Jelaskan masalah kamu"
+);
+
+return;
+
+}
+
+const report = {
+
+id:
+
+"REPORT-" +
+
+Date.now(),
+
+category:
+
+category,
+
+title:
+
+title,
+
+message:
+
+message,
+
+date:
+
+new Date()
+.toLocaleString(
+"id-ID"
+),
+
+status:
+
+"Menunggu"
+
+};
+
+let reports =
+
+JSON.parse(
+
+localStorage.getItem(
+"reitoon_reports"
+)
+
+) || [];
+
+reports.unshift(report);
+
+localStorage.setItem(
+
+"reitoon_reports",
+
+JSON.stringify(reports)
+
+);
+
+document
+.getElementById(
+"reportTitle"
+)
+.value = "";
+
+document
+.getElementById(
+"reportMessage"
+)
+.value = "";
+
+showToast(
+"✅ Laporan berhasil dikirim"
+);
+
+}
+
+
+/* ================================
+   TOAST
+================================ */
+
+function showToast(message){
+
+const toast =
+
+document
+.getElementById(
+"toast"
+);
+
+toast.textContent =
+
+message;
+
+toast.classList.add(
+"show"
+);
+
+setTimeout(function(){
+
+toast.classList.remove(
+"show"
+);
+
+},2500);
+
+}
+
+
+/* ================================
+   BACK
+================================ */
+
+function goBack(){
+
+if(document.referrer){
+
+history.back();
+
+}
+
+else{
+
+window.location.href =
+"profile.html";
+
+}
+
+}
+
+</script></body>
+</html>
