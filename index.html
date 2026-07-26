@@ -1,1503 +1,930 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REITOON</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REITOON — Premium Entertainment</title>
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:#07110d;color:#fff;padding-bottom:80px}
-header{position:sticky;top:0;z-index:20;background:#0b1b11;border-bottom:1px solid #294b32;padding:15px}
-.header{max-width:700px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:26px;font-weight:bold;color:#d9ff69}
-.logo span{color:#e9c85a}
-.avatar{background:linear-gradient(135deg,#d9ff69,#e9c85a);color:#152318;font-weight:bold;border-radius:50%;display:flex;align-items:center;justify-content:center;width:38px;height:38px}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-.container{max-width:700px;margin:auto;padding:16px}
-.page{display:none}.page.active{display:block}
+    body {
+      background: #080808;
+      color: #ffffff;
+      min-height: 100vh;
+      padding-bottom: 90px;
+    }
 
-.hero{min-height:230px;border-radius:22px;padding:24px;display:flex;flex-direction:column;justify-content:end;background:linear-gradient(#183d29aa,#102218ee),url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80") center/cover}
-.hero h1{font-size:28px;margin-bottom:10px}
-.hero p{color:#c2d0c3;line-height:1.5}
+    /* =========================
+       TOP HEADER
+    ========================== */
 
-.btn,.action-btn{border:0;border-radius:12px;padding:13px 17px;background:linear-gradient(135deg,#d9ff69,#e9c85a);color:#152318;font-weight:bold;cursor:pointer;margin-top:15px}
+    .top-header {
+      height: 70px;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(
+        to bottom,
+        rgba(8,8,8,0.98),
+        rgba(8,8,8,0.75),
+        transparent
+      );
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
 
-.section-title{margin:22px 0 12px;font-size:21px}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
 
-.search-box{display:flex;gap:8px;margin-bottom:15px}
-.search-box input,.input{width:100%;background:#102218;border:1px solid #3b6042;border-radius:12px;padding:13px;color:#fff;outline:none}
-.search-box button{width:50px;border:0;border-radius:12px;background:#d9ff69;cursor:pointer}
+    .logo-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 11px;
+      background: linear-gradient(
+        135deg,
+        #ff2d8d,
+        #9b35ff
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 21px;
+      box-shadow:
+        0 0 15px rgba(255,45,141,0.45),
+        0 0 25px rgba(155,53,255,0.25);
+    }
 
-.categories{display:flex;gap:8px;overflow-x:auto;margin-bottom:15px}
-.category{white-space:nowrap;border:1px solid #3d6544;background:#122419;color:#b7c8b7;border-radius:20px;padding:9px 14px;cursor:pointer}
-.category.active{background:#d9ff69;color:#122217;font-weight:bold}
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
 
-.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.video-card{background:#102218;border:1px solid #294a32;border-radius:16px;overflow:hidden;cursor:pointer}
-.video-card img{width:100%;height:130px;object-fit:cover}
-.video-info{padding:11px}
-.video-info h3{font-size:14px}
-.video-info p{font-size:11px;color:#91a491;margin-top:6px}
+    .header-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+    }
 
-.panel{background:#0d1d14;border:1px solid #2c5137;border-radius:20px;padding:18px;margin-top:16px}
+    .profile-mini {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#ff2d8d,#7d2cff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
 
-.video-player{background:#000;border-radius:16px;overflow:hidden;margin-top:15px}
-.video-player video{width:100%;display:block;max-height:400px}
-.player-title{font-size:21px;margin-top:16px}
-.player-meta{color:#9caf9c;font-size:13px;margin-top:7px}
-.player-actions{display:flex;gap:10px;margin-top:15px}
-.player-actions button{flex:1;padding:12px;border-radius:12px;border:1px solid #426448;background:#14271a;color:#fff;cursor:pointer}
-.liked{background:#d9ff69!important;color:#122217!important}
+    /* =========================
+       HERO SECTION
+    ========================== */
 
-.description{background:#102218;border:1px solid #294a32;border-radius:15px;padding:15px;margin-top:15px;color:#b8c9b8;font-size:13px;line-height:1.6}
+    .hero {
+      height: 580px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,0.1) 20%,
+          rgba(8,8,8,0.2) 45%,
+          #080808 100%
+        ),
+        radial-gradient(
+          circle at 70% 35%,
+          rgba(155,53,255,0.35),
+          transparent 45%
+        ),
+        radial-gradient(
+          circle at 30% 35%,
+          rgba(255,45,141,0.2),
+          transparent 40%
+        );
+    }
 
-.balance-card{background:linear-gradient(135deg,#132e20,#1d3d29);border:1px solid #426d45;border-radius:20px;padding:18px}
-.balance-title{color:#a7bda8;font-size:13px}
-.balance{font-size:30px;font-weight:bold;color:#e9c85a;margin-top:5px}
-.point-box{margin-top:14px;padding-top:14px;border-top:1px solid #385b40;display:flex;justify-content:space-between}
-.point-value{color:#d9ff69;font-weight:bold}
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,0.95) 0%,
+          rgba(0,0,0,0.45) 50%,
+          rgba(0,0,0,0.1) 100%
+        ),
+        linear-gradient(
+          to top,
+          #080808 0%,
+          transparent 50%
+        );
+    }
 
-.ad-stat,.profile-item{display:flex;justify-content:space-between;background:#14271a;border-radius:12px;padding:13px;margin-top:10px}
-.ad-stat b{color:#d9ff69}
+    .hero-visual {
+      position: absolute;
+      right: -70px;
+      top: 100px;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,0.15),
+          rgba(155,53,255,0.25) 30%,
+          rgba(255,45,141,0.1) 50%,
+          transparent 70%
+        );
+      filter: blur(2px);
+    }
 
-.action-btn{width:100%;margin-top:12px}
-.action-btn:disabled{opacity:.5}
-.result{text-align:center;margin-top:14px;font-weight:bold}
+    .hero-content {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 70px;
+      z-index: 2;
+    }
 
-.game-menu{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
-.game-menu button{min-height:125px;border:1px solid #365b3e;border-radius:18px;color:#fff;cursor:pointer;font-weight:bold}
-.spin-btn{background:linear-gradient(135deg,#173c28,#6c5422)}
-.quiz-btn{background:linear-gradient(135deg,#192c4c,#253d65)}
-.billiard-btn{background:linear-gradient(135deg,#103c35,#154e43)}
-.duel-btn{background:linear-gradient(135deg,#3c1e35,#64294a)}
+    .hero-tag {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: 20px;
+      background: rgba(255,45,141,0.15);
+      border: 1px solid rgba(255,45,141,0.35);
+      color: #ff5ca8;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
 
-.game-area{display:none}
-.game-area.active{display:block}
+    .hero-title {
+      font-size: 42px;
+      line-height: 0.95;
+      font-weight: 900;
+      max-width: 300px;
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+    }
 
-.spin-wheel{width:220px;height:220px;margin:20px auto;border-radius:50%;border:10px solid #e9c85a;background:conic-gradient(#d9ff69 0 45deg,#1e5135 45deg 90deg,#e9c85a 90deg 135deg,#24643e 135deg 180deg,#d9ff69 180deg 225deg,#1e5135 225deg 270deg,#e9c85a 270deg 315deg,#24643e 315deg);transition:transform 3s cubic-bezier(.17,.67,.15,1)}
-.pointer{text-align:center;color:#e9c85a;font-size:30px}
+    .hero-description {
+      color: #bdbdbd;
+      font-size: 13px;
+      line-height: 1.5;
+      max-width: 290px;
+      margin-bottom: 22px;
+    }
 
-.answer{width:100%;background:#172b1d;border:1px solid #3c6545;color:#fff;padding:13px;border-radius:12px;margin-top:9px;text-align:left;cursor:pointer}
+    .hero-buttons {
+      display: flex;
+      gap: 10px;
+    }
 
-.billiard-table{height:250px;background:#145342;border:15px solid #704c2a;border-radius:20px;position:relative;overflow:hidden;margin:15px 0}
-.ball{position:absolute;width:28px;height:28px;border-radius:50%;cursor:pointer}
-.red-ball{background:#d94e4e;top:65px;right:70px}
-.yellow-ball{background:#e7c94b;top:100px;right:110px}
-.blue-ball{background:#4d7ed9;top:135px;right:80px}
+    .btn-primary {
+      padding: 13px 20px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(
+        135deg,
+        #ff2d8d,
+        #9b35ff
+      );
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 8px 25px rgba(255,45,141,0.25);
+    }
 
-.upload-preview{width:100%;max-height:220px;object-fit:cover;border-radius:12px;margin-top:10px;display:none}
+    .btn-secondary {
+      padding: 13px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.07);
+      color: white;
+      font-weight: bold;
+    }
 
-.creator-video{background:#14271a;border:1px solid #315438;border-radius:14px;padding:12px;margin-top:10px;display:flex;justify-content:space-between;align-items:center}
-.delete-btn{background:#a33b3b;color:#fff;border:0;border-radius:8px;padding:8px;cursor:pointer}
+    /* =========================
+       SECTION
+    ========================== */
 
-/* PROFILE V3 */
+    .section {
+      padding: 0 18px;
+      margin-top: 25px;
+    }
 
-.profile-header{
-background:linear-gradient(135deg,#102b1a,#1c4328);
-border:1px solid #426d45;
-border-radius:24px;
-padding:25px 20px;
-text-align:center;
-position:relative;
-overflow:hidden;
-}
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
 
-.profile-header:before{
-content:"";
-position:absolute;
-width:180px;
-height:180px;
-border-radius:50%;
-background:#d9ff6920;
-top:-80px;
-right:-50px;
-}
+    .section-title {
+      font-size: 19px;
+      font-weight: 800;
+    }
 
-.settings-btn{
-position:absolute;
-right:15px;
-top:15px;
-width:40px;
-height:40px;
-border:1px solid #47694b;
-border-radius:50%;
-background:#13291a;
-color:#fff;
-font-size:18px;
-cursor:pointer;
-}
+    .see-all {
+      color: #ff4b9d;
+      font-size: 12px;
+      font-weight: bold;
+    }
 
-.profile-avatar{
-width:92px;
-height:92px;
-border-radius:50%;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:38px;
-font-weight:bold;
-color:#172619;
-background:linear-gradient(135deg,#d9ff69,#e9c85a);
-border:5px solid #294d32;
-box-shadow:0 0 0 5px #d9ff6920;
-}
+    /* =========================
+       CONTENT CARDS
+    ========================== */
 
-.profile-header h2{
-margin-top:15px;
-font-size:23px;
-}
+    .content-row {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
 
-.profile-header p{
-color:#9eb49f;
-margin-top:6px;
-}
+    .content-row::-webkit-scrollbar {
+      display: none;
+    }
 
-.level-badge{
-display:inline-block;
-margin-top:13px;
-padding:7px 12px;
-border-radius:20px;
-background:#d9ff6918;
-border:1px solid #708b48;
-color:#d9ff69;
-font-size:11px;
-font-weight:bold;
-}
+    .content-card {
+      min-width: 145px;
+      max-width: 145px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #151515;
+      border: 1px solid rgba(255,255,255,0.07);
+      position: relative;
+    }
 
-.profile-balance{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-top:15px;
-}
+    .content-image {
+      height: 190px;
+      background:
+        linear-gradient(
+          145deg,
+          #29113b,
+          #8d1f69,
+          #160d2d
+        );
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-.balance-item{
-background:#102218;
-border:1px solid #2f5337;
-border-radius:18px;
-padding:17px;
-text-align:center;
-}
+    .content-image::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      filter: blur(20px);
+    }
 
-.balance-item span{
-display:block;
-font-size:24px;
-margin-bottom:7px;
-}
+    .content-image span {
+      position: relative;
+      z-index: 2;
+      font-size: 32px;
+      font-weight: 900;
+      opacity: 0.85;
+    }
 
-.balance-item strong{
-display:block;
-font-size:23px;
-color:#e9c85a;
-}
+    .content-info {
+      padding: 10px;
+    }
 
-.balance-item small{
-display:block;
-margin-top:4px;
-color:#91a591;
-}
+    .content-name {
+      font-size: 13px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-.profile-stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:8px;
-margin-top:15px;
-}
+    .content-meta {
+      margin-top: 5px;
+      color: #888;
+      font-size: 10px;
+    }
 
-.profile-stats div{
-background:#0f2016;
-border:1px solid #294a32;
-border-radius:14px;
-padding:13px 5px;
-text-align:center;
-}
+    .premium-label {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      padding: 4px 7px;
+      border-radius: 5px;
+      background: linear-gradient(
+        135deg,
+        #ff2d8d,
+        #9b35ff
+      );
+      font-size: 8px;
+      font-weight: bold;
+      z-index: 5;
+    }
 
-.profile-stats strong{
-display:block;
-font-size:18px;
-color:#d9ff69;
-}
+    /* =========================
+       TRENDING
+    ========================== */
 
-.profile-stats small{
-display:block;
-font-size:10px;
-color:#8ea18f;
-margin-top:5px;
-}
+    .trending-card {
+      min-width: 220px;
+      height: 125px;
+      border-radius: 15px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          135deg,
+          #39114e,
+          #c12879,
+          #23104a
+        );
+      border: 1px solid rgba(255,255,255,0.08);
+    }
 
-.profile-menu{
-margin-top:16px;
-background:#0d1d14;
-border:1px solid #2c5137;
-border-radius:20px;
-overflow:hidden;
-}
+    .trending-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,0.85),
+          transparent
+        );
+    }
 
-.profile-menu button{
-width:100%;
-display:flex;
-align-items:center;
-gap:13px;
-padding:16px;
-background:transparent;
-border:0;
-border-bottom:1px solid #223c29;
-color:#fff;
-text-align:left;
-cursor:pointer;
-}
+    .trending-content {
+      position: absolute;
+      left: 13px;
+      bottom: 12px;
+      z-index: 2;
+    }
 
-.profile-menu button:last-child{
-border-bottom:0;
-}
+    .trending-number {
+      font-size: 28px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.35);
+    }
 
-.profile-menu button>span{
-width:35px;
-height:35px;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#193321;
-font-size:18px;
-}
+    .trending-name {
+      font-size: 13px;
+      font-weight: bold;
+    }
 
-.profile-menu button div{
-flex:1;
-}
+    /* =========================
+       BOTTOM NAVIGATION
+    ========================== */
 
-.profile-menu b{
-display:block;
-font-size:14px;
-}
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 76px;
+      background: rgba(12,12,12,0.96);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 200;
+    }
 
-.profile-menu small{
-display:block;
-color:#829583;
-font-size:11px;
-margin-top:4px;
-}
+    .nav-item {
+      width: 20%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      color: #777;
+      font-size: 10px;
+      font-weight: bold;
+    }
 
-.profile-menu button>strong{
-font-size:25px;
-color:#718674;
-}
+    .nav-icon {
+      font-size: 21px;
+    }
 
-.logout-btn{
-width:100%;
-margin-top:15px;
-padding:15px;
-border-radius:14px;
-border:1px solid #713c3c;
-background:#35191b;
-color:#e99b9b;
-font-weight:bold;
-cursor:pointer;
-}
+    .nav-item.active {
+      color: #ff4b9d;
+    }
 
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:68px;
-background:#0b1910;
-border-top:1px solid #2b4c32;
-display:flex;
-justify-content:space-around;
-align-items:center;
-z-index:30;
-}
+    .create-button {
+      width: 54px;
+      height: 54px;
+      margin-top: -28px;
+      border-radius: 18px;
+      background: linear-gradient(
+        135deg,
+        #ff2d8d,
+        #9b35ff
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 30px;
+      box-shadow:
+        0 8px 25px rgba(255,45,141,0.35),
+        0 0 20px rgba(155,53,255,0.25);
+      border: 4px solid #080808;
+    }
 
-.nav-item{
-color:#809782;
-font-size:10px;
-text-align:center;
-cursor:pointer;
-}
+    /* =========================
+       RESPONSIVE
+    ========================== */
 
-.nav-item.active{color:#d9ff69}
+    @media (min-width: 768px) {
 
-.nav-icon{
-display:block;
-font-size:21px;
-margin-bottom:3px;
-}
+      .hero {
+        height: 650px;
+      }
 
-@media(min-width:700px){
-.video-grid{grid-template-columns:repeat(3,1fr)}
-}
-</style>
+      .hero-content {
+        left: 60px;
+        bottom: 100px;
+      }
+
+      .hero-title {
+        font-size: 62px;
+        max-width: 500px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+        max-width: 450px;
+      }
+
+      .section {
+        padding: 0 50px;
+      }
+
+      .content-card {
+        min-width: 180px;
+        max-width: 180px;
+      }
+
+      .content-image {
+        height: 240px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-<div class="header">
-<div class="logo">REI<span>TOON</span></div>
-<div class="avatar">R</div>
-</div>
-</header>
+  <!-- =========================
+       TOP HEADER
+  ========================== -->
 
-<main class="container">
+  <header class="top-header">
 
-<!-- HOME -->
-<section id="homePage" class="page active">
+    <div class="logo">
+      <div class="logo-icon">R</div>
+      <span>REITOON</span>
+    </div>
 
-<div class="hero">
-<h1>Selamat Datang di Reitoon 🎬</h1>
-<p>Nikmati drama, video pendek, dan konten creator Reitoon.</p>
-<button class="btn" onclick="showPage('watchPage')">▶ Mulai Menonton</button>
-</div>
+    <div class="header-actions">
+      <div class="header-btn">⌕</div>
+      <div class="header-btn">♧</div>
+      <div class="profile-mini">R</div>
+    </div>
 
-<h2 class="section-title">🔥 Trending Reitoon</h2>
-<div id="homeVideos" class="video-grid"></div>
+  </header>
 
-</section>
 
-<!-- WATCH -->
-<section id="watchPage" class="page">
+  <!-- =========================
+       HERO
+  ========================== -->
 
-<h1 class="section-title">▶️ Watch</h1>
+  <section class="hero">
 
-<div class="search-box">
-<input id="searchInput" placeholder="Cari drama atau video..." oninput="renderVideos()">
-<button onclick="renderVideos()">🔍</button>
-</div>
+    <div class="hero-bg"></div>
 
-<div class="categories">
-<button class="category active" onclick="filterCategory('Semua',this)">Semua</button>
-<button class="category" onclick="filterCategory('Drama',this)">Drama</button>
-<button class="category" onclick="filterCategory('Action',this)">Action</button>
-<button class="category" onclick="filterCategory('Romance',this)">Romance</button>
-<button class="category" onclick="filterCategory('Comedy',this)">Comedy</button>
-</div>
+    <div class="hero-visual"></div>
 
-<div id="continueSection" style="display:none">
-<h2 class="section-title">▶ Lanjutkan Menonton</h2>
-<div id="continueList" class="video-grid"></div>
-</div>
+    <div class="hero-content">
 
-<h2 class="section-title">🎬 Semua Video</h2>
-<div id="videoGrid" class="video-grid"></div>
+      <div class="hero-tag">
+        ✦ REITOON ORIGINAL
+      </div>
 
-</section>
+      <h1 class="hero-title">
+        CREATE.<br>
+        WATCH.<br>
+        PLAY.
+      </h1>
 
-<!-- PLAYER -->
-<section id="playerPage" class="page">
+      <p class="hero-description">
+        Nikmati hiburan tanpa batas, buat video AI,
+        bermain game, dan terhubung dengan komunitas
+        kreator di REITOON.
+      </p>
 
-<button class="btn" onclick="backToWatch()">← Kembali</button>
+      <div class="hero-buttons">
 
-<div class="video-player">
-<video id="mainVideo" controls playsinline></video>
-</div>
+        <button class="btn-primary"
+          onclick="openWatch()">
+          ▶ Mulai Menonton
+        </button>
 
-<h1 id="playerTitle" class="player-title"></h1>
-<p id="playerMeta" class="player-meta"></p>
+        <button class="btn-secondary"
+          onclick="openCreate()">
+          ＋ Buat
+        </button>
 
-<div class="player-actions">
-<button id="likeButton" onclick="toggleLike()">🤍 Like</button>
-<button onclick="shareVideo()">🔗 Bagikan</button>
-</div>
+      </div>
 
-<div id="playerDescription" class="description"></div>
+    </div>
 
-<h2 class="section-title">🎬 Video Lainnya</h2>
-<div id="recommendedVideos" class="video-grid"></div>
+  </section>
 
-</section>
 
-<!-- STUDIO -->
-<section id="studioPage" class="page">
+  <!-- =========================
+       CONTINUE WATCHING
+  ========================== -->
 
-<h1 class="section-title">🎥 Studio Creator</h1>
+  <section class="section">
 
-<div class="panel">
+    <div class="section-header">
 
-<h2>⬆️ Upload Video</h2>
+      <h2 class="section-title">
+        Lanjutkan Menonton
+      </h2>
 
-<input class="input" id="videoTitle" placeholder="Judul video" style="margin-top:12px">
+      <span class="see-all">
+        Lihat Semua
+      </span>
 
-<select class="input" id="videoCategory" style="margin-top:10px">
-<option>Drama</option>
-<option>Action</option>
-<option>Romance</option>
-<option>Comedy</option>
-</select>
+    </div>
 
-<textarea class="input" id="videoDescription" placeholder="Deskripsi video" rows="4" style="margin-top:10px"></textarea>
+    <div class="content-row">
 
-<label class="btn" style="display:block;text-align:center">
-🖼️ Pilih Thumbnail
-<input type="file" id="thumbnailInput" accept="image/*" hidden>
-</label>
+      <div class="content-card">
 
-<img id="thumbnailPreview" class="upload-preview">
+        <div class="content-image">
+          <span>AI</span>
+        </div>
 
-<label class="btn" style="display:block;text-align:center">
-🎬 Pilih Video
-<input type="file" id="videoInput" accept="video/*" hidden>
-</label>
+        <div class="content-info">
+          <div class="content-name">
+            AI Cinematic Story
+          </div>
 
-<p id="selectedVideo" style="color:#9caf9c;margin-top:10px"></p>
+          <div class="content-meta">
+            72% ditonton
+          </div>
+        </div>
 
-<button class="action-btn" onclick="uploadVideo()">⬆️ TERBITKAN VIDEO</button>
+      </div>
 
-<div id="uploadResult" class="result"></div>
 
-</div>
+      <div class="content-card">
 
-<h2 class="section-title">📚 Video Saya</h2>
-<div id="creatorVideos"></div>
+        <div class="content-image">
+          <span>R</span>
+        </div>
 
-</section>
+        <div class="content-info">
+          <div class="content-name">
+            Reitoon Original
+          </div>
 
-<!-- GAMES -->
-<section id="gamesPage" class="page">
+          <div class="content-meta">
+            48% ditonton
+          </div>
+        </div>
 
-<h1 class="section-title">🎮 Reitoon Games</h1>
+      </div>
 
-<div class="balance-card">
 
-<div class="balance-title">CREDIT TERSEDIA</div>
+      <div class="content-card">
 
-<div class="balance">
-<span id="credit">0</span>
-<small>Credit</small>
-</div>
+        <div class="content-image">
+          <span>V</span>
+        </div>
 
-<div class="point-box">
-<span>🏆 Total Point</span>
-<span class="point-value" id="points">0</span>
-</div>
+        <div class="content-info">
+          <div class="content-name">
+            Viral Collection
+          </div>
 
-</div>
+          <div class="content-meta">
+            31% ditonton
+          </div>
+        </div>
 
-<div class="panel">
+      </div>
 
-<h2>📺 Reward Ads</h2>
+    </div>
 
-<p style="color:#aebfaf;margin-top:8px">
-Maksimal 30 video iklan per hari.
-</p>
+  </section>
 
-<div class="ad-stat">
-<span>📺 Iklan Hari Ini</span>
-<b><span id="adsWatched">0</span> / 30</b>
-</div>
 
-<div class="ad-stat">
-<span>💎 Reward Hari Ini</span>
-<b><span id="adsReward">0</span> Credit</b>
-</div>
+  <!-- =========================
+       TRENDING
+  ========================== -->
 
-<button id="watchAdButton" class="action-btn" onclick="watchRewardAd()">
-📺 TONTON IKLAN +1 CREDIT
-</button>
+  <section class="section">
 
-<div id="adResult" class="result"></div>
+    <div class="section-header">
 
-</div>
+      <h2 class="section-title">
+        Trending Sekarang
+      </h2>
 
-<div class="game-menu">
+      <span class="see-all">
+        Semua
+      </span>
 
-<button class="spin-btn" onclick="openGame('spinGame')">
-🎡<br><br>Spin Reward
-</button>
+    </div>
 
-<button class="quiz-btn" onclick="openGame('quizGame')">
-🧠<br><br>Quiz Challenge
-</button>
+    <div class="content-row">
 
-<button class="billiard-btn" onclick="openGame('billiardGame')">
-🎱<br><br>Mini Billiard
-</button>
+      <div class="trending-card">
 
-<button class="duel-btn" onclick="startDuel()">
-⚔️<br><br>Skill Duel
-</button>
+        <div class="trending-overlay"></div>
 
-</div>
+        <div class="trending-content">
 
-<div id="spinGame" class="game-area panel">
+          <div class="trending-number">
+            #01
+          </div>
 
-<h2>🎡 Spin Reward</h2>
+          <div class="trending-name">
+            AI Music Video
+          </div>
 
-<p style="color:#aebfaf">
-Biaya bermain: <b style="color:#e9c85a">50 Credit</b>
-</p>
+        </div>
 
-<div class="pointer">▼</div>
+      </div>
 
-<div class="spin-wheel" id="wheel"></div>
 
-<button class="action-btn" onclick="spinWheel()">
-SPIN SEKARANG — 50 CREDIT
-</button>
+      <div class="trending-card">
 
-<div id="spinResult" class="result"></div>
+        <div class="trending-overlay"></div>
 
-</div>
+        <div class="trending-content">
 
-<div id="quizGame" class="game-area panel">
+          <div class="trending-number">
+            #02
+          </div>
 
-<h2>🧠 Quiz Challenge</h2>
+          <div class="trending-name">
+            Short Drama
+          </div>
 
-<div id="question" style="font-size:18px;line-height:1.5;margin:18px 0"></div>
+        </div>
 
-<div id="answers"></div>
+      </div>
 
-<div id="quizResult" class="result"></div>
 
-</div>
+      <div class="trending-card">
 
-<div id="billiardGame" class="game-area panel">
+        <div class="trending-overlay"></div>
 
-<h2>🎱 Mini Billiard</h2>
+        <div class="trending-content">
 
-<p style="color:#aebfaf">
-Klik bola untuk mendapatkan Point.
-</p>
+          <div class="trending-number">
+            #03
+          </div>
 
-<div class="billiard-table">
+          <div class="trending-name">
+            Creator Video
+          </div>
 
-<div class="ball red-ball" onclick="hitBall(this,30)"></div>
-<div class="ball yellow-ball" onclick="hitBall(this,50)"></div>
-<div class="ball blue-ball" onclick="hitBall(this,20)"></div>
+        </div>
 
-</div>
+      </div>
 
-<div id="billiardResult" class="result"></div>
+    </div>
 
-<button class="action-btn" onclick="resetBilliard()">
-🔄 Reset
-</button>
+  </section>
 
-</div>
 
-</section>
+  <!-- =========================
+       RECOMMENDED
+  ========================== -->
 
-<!-- PROFILE V3 -->
-<section id="profilePage" class="page">
+  <section class="section">
 
-<div class="profile-header">
+    <div class="section-header">
 
-<button class="settings-btn" onclick="alert('Pengaturan akan segera tersedia')">
-⚙️
-</button>
+      <h2 class="section-title">
+        Untuk Kamu
+      </h2>
 
-<div class="profile-avatar">R</div>
+      <span class="see-all">
+        Lihat Semua
+      </span>
 
-<h2>Reitoon User</h2>
+    </div>
 
-<p>@reitoon_user</p>
+    <div class="content-row">
 
-<div class="level-badge">
-⭐ LEVEL 1 • MEMBER
-</div>
+      <div class="content-card">
 
-</div>
+        <div class="premium-label">
+          PREMIUM
+        </div>
 
-<div class="profile-balance">
+        <div class="content-image">
+          <span>✦</span>
+        </div>
 
-<div class="balance-item">
-<span>💎</span>
-<strong id="profileCredit">0</strong>
-<small>Credit</small>
-</div>
+        <div class="content-info">
 
-<div class="balance-item">
-<span>🏆</span>
-<strong id="profilePoints">0</strong>
-<small>Point</small>
-</div>
+          <div class="content-name">
+            Premium Stories
+          </div>
 
-</div>
+          <div class="content-meta">
+            Drama • 4K
+          </div>
 
-<div class="profile-stats">
+        </div>
 
-<div>
-<strong id="profileVideos">0</strong>
-<small>Video Ditonton</small>
-</div>
+      </div>
 
-<div>
-<strong id="profileLikes">0</strong>
-<small>Video Disukai</small>
-</div>
 
-<div>
-<strong id="profileAds">0</strong>
-<small>Iklan Ditonton</small>
-</div>
+      <div class="content-card">
 
-</div>
+        <div class="content-image">
+          <span>🎵</span>
+        </div>
 
-<div class="profile-menu">
+        <div class="content-info">
 
-<button onclick="alert('Fitur Edit Profile akan segera tersedia')">
-<span>✏️</span>
-<div>
-<b>Edit Profile</b>
-<small>Ubah nama dan foto profil</small>
-</div>
-<strong>›</strong>
-</button>
+          <div class="content-name">
+            Music Universe
+          </div>
 
-<button onclick="showPage('watchPage')">
-<span>📺</span>
-<div>
-<b>Riwayat Menonton</b>
-<small>Lihat video yang pernah ditonton</small>
-</div>
-<strong>›</strong>
-</button>
+          <div class="content-meta">
+            Music • Trending
+          </div>
 
-<button onclick="showPage('gamesPage')">
-<span>💎</span>
-<div>
-<b>Credit & Reward</b>
-<small>Lihat Credit dan Point kamu</small>
-</div>
-<strong>›</strong>
-</button>
+        </div>
 
-<button onclick="alert('Pengaturan akun akan segera tersedia')">
-<span>⚙️</span>
-<div>
-<b>Pengaturan</b>
-<small>Atur pengalaman Reitoon</small>
-</div>
-<strong>›</strong>
-</button>
+      </div>
 
-<button onclick="alert('Keamanan akun akan segera tersedia')">
-<span>🔒</span>
-<div>
-<b>Keamanan Akun</b>
-<small>Password dan keamanan</small>
-</div>
-<strong>›</strong>
-</button>
 
-</div>
+      <div class="content-card">
 
-<button class="logout-btn" onclick="alert('Sistem login akan ditambahkan pada tahap berikutnya')">
-🚪 Keluar dari Akun
-</button>
+        <div class="content-image">
+          <span>🎮</span>
+        </div>
 
-</section>
+        <div class="content-info">
 
-</main>
+          <div class="content-name">
+            Reitoon Games
+          </div>
 
-<nav class="bottom-nav">
+          <div class="content-meta">
+            Games • Play
+          </div>
 
-<div class="nav-item active" onclick="showPage('homePage',this)">
-<span class="nav-icon">🏠</span>
-Home
-</div>
+        </div>
 
-<div class="nav-item" onclick="showPage('watchPage',this)">
-<span class="nav-icon">▶️</span>
-Watch
-</div>
+      </div>
 
-<div class="nav-item" onclick="showPage('studioPage',this)">
-<span class="nav-icon">🎥</span>
-Studio
-</div>
+    </div>
 
-<div class="nav-item" onclick="showPage('gamesPage',this)">
-<span class="nav-icon">🎮</span>
-Games
-</div>
+  </section>
 
-<div class="nav-item" onclick="showPage('profilePage',this)">
-<span class="nav-icon">👤</span>
-Profile
-</div>
 
-</nav>
+  <!-- =========================
+       BOTTOM NAVIGATION
+  ========================== -->
 
-<script>
+  <nav class="bottom-nav">
 
-/* VIDEO */
+    <div class="nav-item active"
+      onclick="goHome()">
 
-const defaultVideos=[
+      <div class="nav-icon">
+        ⌂
+      </div>
 
-{
-id:1,
-title:"The Last Moon",
-category:"Drama",
-duration:"24 menit",
-description:"Sebuah kisah tentang perjalanan, rahasia, dan pilihan sulit.",
-thumbnail:"https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=900&q=80",
-video:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-},
+      <span>
+        Home
+      </span>
 
-{
-id:2,
-title:"City of Dreams",
-category:"Romance",
-duration:"18 menit",
-description:"Dua orang bertemu di kota besar dan menemukan arti mimpi.",
-thumbnail:"https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=80",
-video:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
-},
+    </div>
 
-{
-id:3,
-title:"Shadow Warrior",
-category:"Action",
-duration:"21 menit",
-description:"Seorang pejuang menghadapi musuh misterius dari masa lalu.",
-thumbnail:"https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=900&q=80",
-video:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
-},
 
-{
-id:4,
-title:"Funny Life",
-category:"Comedy",
-duration:"15 menit",
-description:"Cerita ringan dan lucu tentang kehidupan sehari-hari.",
-thumbnail:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80",
-video:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
-}
+    <div class="nav-item"
+      onclick="openWatch()">
 
-];
+      <div class="nav-icon">
+        ▷
+      </div>
 
-let uploadedVideos=JSON.parse(localStorage.getItem("reitoonUploadedVideos"))||[];
+      <span>
+        Watch
+      </span>
 
-let videos=[...defaultVideos,...uploadedVideos];
+    </div>
 
-let currentCategory="Semua";
-let currentVideo=null;
 
-let likedVideos=JSON.parse(localStorage.getItem("reitoonLikedVideos"))||[];
+    <div class="nav-item">
 
-let watchProgress=JSON.parse(localStorage.getItem("reitoonWatchProgress"))||{};
+      <div class="create-button"
+        onclick="openCreate()">
 
-/* NAVIGATION */
+        ＋
 
-function showPage(id,element){
+      </div>
 
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    </div>
 
-document.getElementById(id).classList.add("active");
 
-document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));
+    <div class="nav-item"
+      onclick="openStudio()">
 
-if(element)element.classList.add("active");
+      <div class="nav-icon">
+        ◈
+      </div>
 
-if(id==="watchPage")renderVideos();
+      <span>
+        Studio
+      </span>
 
-if(id==="studioPage")renderCreatorVideos();
+    </div>
 
-if(id==="homePage")renderHome();
 
-window.scrollTo(0,0);
+    <div class="nav-item"
+      onclick="openProfile()">
 
-}
+      <div class="nav-icon">
+        ◉
+      </div>
 
-/* VIDEO CARD */
+      <span>
+        Profile
+      </span>
 
-function createVideoCard(video){
+    </div>
 
-return`
+  </nav>
 
-<div class="video-card" onclick="openVideo(${video.id})">
 
-<img src="${video.thumbnail}">
+  <!-- =========================
+       JAVASCRIPT NAVIGATION
+  ========================== -->
 
-<div class="video-info">
+  <script>
 
-<h3>${video.title}</h3>
+    function goHome() {
+      window.location.href = "index.html";
+    }
 
-<p>${video.category} • ${video.duration||"Video"}</p>
+    function openWatch() {
+      window.location.href = "watch.html";
+    }
 
-</div>
+    function openCreate() {
+      window.location.href = "create.html";
+    }
 
-</div>
+    function openStudio() {
+      window.location.href = "studio.html";
+    }
 
-`;
+    function openProfile() {
+      window.location.href = "profile.html";
+    }
 
-}
-
-function renderHome(){
-
-let home=document.getElementById("homeVideos");
-
-home.innerHTML="";
-
-videos.slice(0,4).forEach(v=>home.innerHTML+=createVideoCard(v));
-
-}
-
-function renderVideos(){
-
-let input=document.getElementById("searchInput");
-
-let search=input?input.value.toLowerCase():"";
-
-let filtered=videos.filter(v=>
-(currentCategory==="Semua"||v.category===currentCategory)&&
-v.title.toLowerCase().includes(search)
-);
-
-document.getElementById("videoGrid").innerHTML=
-filtered.map(createVideoCard).join("");
-
-renderContinue();
-
-}
-
-function filterCategory(category,element){
-
-currentCategory=category;
-
-document.querySelectorAll(".category").forEach(c=>c.classList.remove("active"));
-
-element.classList.add("active");
-
-renderVideos();
-
-}
-
-/* PLAYER */
-
-function openVideo(id){
-
-currentVideo=videos.find(v=>v.id===id);
-
-if(!currentVideo)return;
-
-showPage("playerPage");
-
-let player=document.getElementById("mainVideo");
-
-player.src=currentVideo.video;
-
-document.getElementById("playerTitle").innerText=currentVideo.title;
-
-document.getElementById("playerMeta").innerText=
-currentVideo.category+" • "+(currentVideo.duration||"Video");
-
-document.getElementById("playerDescription").innerText=
-currentVideo.description;
-
-updateLikeButton();
-
-renderRecommendations();
-
-player.currentTime=watchProgress[id]||0;
-
-player.ontimeupdate=()=>{
-
-watchProgress[id]=player.currentTime;
-
-localStorage.setItem(
-"reitoonWatchProgress",
-JSON.stringify(watchProgress)
-);
-
-updateBalance();
-
-};
-
-}
-
-function backToWatch(){
-
-showPage("watchPage");
-
-renderVideos();
-
-}
-
-function toggleLike(){
-
-let index=likedVideos.indexOf(currentVideo.id);
-
-if(index===-1)likedVideos.push(currentVideo.id);
-
-else likedVideos.splice(index,1);
-
-localStorage.setItem(
-"reitoonLikedVideos",
-JSON.stringify(likedVideos)
-);
-
-updateLikeButton();
-
-updateBalance();
-
-}
-
-function updateLikeButton(){
-
-let b=document.getElementById("likeButton");
-
-if(likedVideos.includes(currentVideo.id)){
-
-b.innerText="❤️ Disukai";
-
-b.classList.add("liked");
-
-}else{
-
-b.innerText="🤍 Like";
-
-b.classList.remove("liked");
-
-}
-
-}
-
-function shareVideo(){
-
-if(navigator.share){
-
-navigator.share({
-title:currentVideo.title,
-text:"Tonton di Reitoon!"
-});
-
-}else{
-
-alert("Video siap dibagikan.");
-
-}
-
-}
-
-function renderRecommendations(){
-
-document.getElementById("recommendedVideos").innerHTML=
-
-videos
-.filter(v=>v.id!==currentVideo.id)
-.slice(0,4)
-.map(createVideoCard)
-.join("");
-
-}
-
-function renderContinue(){
-
-let watched=videos.filter(v=>watchProgress[v.id]>5);
-
-let section=document.getElementById("continueSection");
-
-if(!watched.length){
-
-section.style.display="none";
-
-return;
-
-}
-
-section.style.display="block";
-
-document.getElementById("continueList").innerHTML=
-watched.map(createVideoCard).join("");
-
-}
-
-/* STUDIO */
-
-let selectedVideoFile=null;
-
-let selectedThumbnailFile=null;
-
-document.getElementById("thumbnailInput").addEventListener("change",function(){
-
-selectedThumbnailFile=this.files[0];
-
-if(selectedThumbnailFile){
-
-let reader=new FileReader();
-
-reader.onload=e=>{
-
-let img=document.getElementById("thumbnailPreview");
-
-img.src=e.target.result;
-
-img.style.display="block";
-
-};
-
-reader.readAsDataURL(selectedThumbnailFile);
-
-}
-
-});
-
-document.getElementById("videoInput").addEventListener("change",function(){
-
-selectedVideoFile=this.files[0];
-
-if(selectedVideoFile){
-
-document.getElementById("selectedVideo").innerText=
-"🎬 "+selectedVideoFile.name;
-
-}
-
-});
-
-function uploadVideo(){
-
-let title=document.getElementById("videoTitle").value.trim();
-
-let category=document.getElementById("videoCategory").value;
-
-let description=document.getElementById("videoDescription").value.trim();
-
-if(!title||!selectedVideoFile){
-
-document.getElementById("uploadResult").innerText=
-"❌ Isi judul dan pilih video terlebih dahulu.";
-
-return;
-
-}
-
-let videoURL=URL.createObjectURL(selectedVideoFile);
-
-let thumbnailURL=selectedThumbnailFile?
-URL.createObjectURL(selectedThumbnailFile):
-"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80";
-
-let newVideo={
-
-id:Date.now(),
-
-title:title,
-
-category:category,
-
-description:description||"Video creator Reitoon.",
-
-duration:"Video Creator",
-
-thumbnail:thumbnailURL,
-
-video:videoURL,
-
-creator:true
-
-};
-
-uploadedVideos.push(newVideo);
-
-localStorage.setItem(
-"reitoonUploadedVideos",
-JSON.stringify(uploadedVideos)
-);
-
-videos=[...defaultVideos,...uploadedVideos];
-
-document.getElementById("uploadResult").innerText=
-"✅ Video berhasil diterbitkan di Reitoon.";
-
-document.getElementById("videoTitle").value="";
-
-document.getElementById("videoDescription").value="";
-
-document.getElementById("selectedVideo").innerText="";
-
-document.getElementById("thumbnailPreview").style.display="none";
-
-selectedVideoFile=null;
-
-selectedThumbnailFile=null;
-
-renderCreatorVideos();
-
-renderHome();
-
-}
-
-function renderCreatorVideos(){
-
-let box=document.getElementById("creatorVideos");
-
-if(!uploadedVideos.length){
-
-box.innerHTML=
-"<p style='color:#9daf9d'>Belum ada video yang kamu upload.</p>";
-
-document.getElementById("profileVideos").innerText=
-Object.keys(watchProgress).length;
-
-return;
-
-}
-
-box.innerHTML="";
-
-uploadedVideos.forEach(video=>{
-
-box.innerHTML+=`
-
-<div class="creator-video">
-
-<div>
-
-<b>${video.title}</b>
-
-<br>
-
-<small style="color:#9daf9d">
-${video.category}
-</small>
-
-</div>
-
-<button class="delete-btn" onclick="deleteVideo(${video.id})">
-Hapus
-</button>
-
-</div>
-
-`;
-
-});
-
-}
-
-function deleteVideo(id){
-
-uploadedVideos=uploadedVideos.filter(v=>v.id!==id);
-
-localStorage.setItem(
-"reitoonUploadedVideos",
-JSON.stringify(uploadedVideos)
-);
-
-videos=[...defaultVideos,...uploadedVideos];
-
-renderCreatorVideos();
-
-renderHome();
-
-renderVideos();
-
-}
-
-/* CREDIT */
-
-let credit=Number(localStorage.getItem("reitoonCredit"))||0;
-
-let points=Number(localStorage.getItem("reitoonPoints"))||0;
-
-function updateBalance(){
-
-document.getElementById("credit").innerText=
-credit.toLocaleString("id-ID");
-
-document.getElementById("points").innerText=
-points.toLocaleString("id-ID");
-
-document.getElementById("profileCredit").innerText=
-credit.toLocaleString("id-ID");
-
-document.getElementById("profilePoints").innerText=
-points.toLocaleString("id-ID");
-
-document.getElementById("profileVideos").innerText=
-Object.keys(watchProgress).length;
-
-document.getElementById("profileLikes").innerText=
-likedVideos.length;
-
-document.getElementById("profileAds").innerText=
-adsWatched;
-
-localStorage.setItem("reitoonCredit",credit);
-
-localStorage.setItem("reitoonPoints",points);
-
-}
-
-/* REWARD ADS */
-
-let adsWatched=
-Number(localStorage.getItem("reitoonAdsWatched"))||0;
-
-let adsReward=
-Number(localStorage.getItem("reitoonAdsReward"))||0;
-
-let adsDate=
-localStorage.getItem("reitoonAdsDate");
-
-let today=
-new Date().toISOString().split("T")[0];
-
-if(adsDate!==today){
-
-adsWatched=0;
-
-adsReward=0;
-
-localStorage.setItem("reitoonAdsWatched",0);
-
-localStorage.setItem("reitoonAdsReward",0);
-
-localStorage.setItem("reitoonAdsDate",today);
-
-}
-
-function updateAdsDisplay(){
-
-document.getElementById("adsWatched").innerText=
-adsWatched;
-
-document.getElementById("adsReward").innerText=
-adsReward;
-
-let b=document.getElementById("watchAdButton");
-
-if(adsWatched>=30){
-
-b.disabled=true;
-
-b.innerText="✅ BATAS HARIAN TERCAPAI";
-
-}
-
-}
-
-function watchRewardAd(){
-
-if(adsWatched>=30){
-
-document.getElementById("adResult").innerText=
-"❌ Batas 30 iklan hari ini tercapai.";
-
-return;
-
-}
-
-let b=document.getElementById("watchAdButton");
-
-b.disabled=true;
-
-b.innerText="⏳ MENAYANGKAN IKLAN...";
-
-setTimeout(()=>{
-
-adsWatched++;
-
-adsReward++;
-
-credit++;
-
-localStorage.setItem("reitoonAdsWatched",adsWatched);
-
-localStorage.setItem("reitoonAdsReward",adsReward);
-
-updateBalance();
-
-updateAdsDisplay();
-
-document.getElementById("adResult").innerText=
-"🎉 +1 Credit";
-
-if(adsWatched<30){
-
-b.disabled=false;
-
-b.innerText="📺 TONTON IKLAN +1 CREDIT";
-
-}
-
-},3000);
-
-}
-
-/* GAMES */
-
-function openGame(id){
-
-document.querySelectorAll(".game-area")
-.forEach(g=>g.classList.remove("active"));
-
-document.getElementById(id).classList.add("active");
-
-if(id==="quizGame")loadQuiz();
-
-}
-
-function spinWheel(){
-
-if(credit<50){
-
-document.getElementById("spinResult").innerText=
-"❌ Credit tidak cukup.";
-
-return;
-
-}
-
-credit-=50;
-
-updateBalance();
-
-document.getElementById("wheel").style.transform=
-`rotate(${1440+Math.random()*360}deg)`;
-
-setTimeout(()=>{
-
-let rewards=[10,20,30,50,75,100];
-
-let reward=
-rewards[Math.floor(Math.random()*rewards.length)];
-
-points+=reward;
-
-updateBalance();
-
-document.getElementById("spinResult").innerText=
-`🎉 +${reward} Point`;
-
-},3000);
-
-}
-
-/* QUIZ */
-
-const quizData=[
-
-{
-question:"Apa fungsi Credit di Reitoon?",
-answers:["Digunakan untuk bermain","Password","Tidak ada"],
-correct:0
-},
-
-{
-question:"Apa reward dari permainan?",
-answers:["Point","Data pribadi","Password"],
-correct:0
-}
-
-];
-
-let currentQuiz=0;
-
-function loadQuiz(){
-
-let q=quizData[currentQuiz];
-
-document.getElementById("question").innerText=
-q.question;
-
-let box=document.getElementById("answers");
-
-box.innerHTML="";
-
-q.answers.forEach((answer,index)=>{
-
-let b=document.createElement("button");
-
-b.className="answer";
-
-b.innerText=answer;
-
-b.onclick=()=>answerQuiz(index);
-
-box.appendChild(b);
-
-});
-
-}
-
-function answerQuiz(index){
-
-let q=quizData[currentQuiz];
-
-if(index===q.correct){
-
-points+=25;
-
-updateBalance();
-
-document.getElementById("quizResult").innerText=
-"✅ Benar! +25 Point";
-
-}else{
-
-document.getElementById("quizResult").innerText=
-"❌ Salah.";
-
-}
-
-setTimeout(()=>{
-
-currentQuiz++;
-
-if(currentQuiz>=quizData.length)
-currentQuiz=0;
-
-loadQuiz();
-
-},1200);
-
-}
-
-/* BILLIARD */
-
-function hitBall(ball,reward){
-
-ball.style.display="none";
-
-points+=reward;
-
-updateBalance();
-
-document.getElementById("billiardResult").innerText=
-`🎉 +${reward} Point`;
-
-}
-
-function resetBilliard(){
-
-document.querySelectorAll(".ball")
-.forEach(b=>b.style.display="block");
-
-document.getElementById("billiardResult").innerText="";
-
-}
-
-/* DUEL */
-
-function startDuel(){
-
-points+=25;
-
-updateBalance();
-
-alert("🏆 Skill Duel demo selesai! +25 Point");
-
-}
-
-/* START */
-
-updateBalance();
-
-updateAdsDisplay();
-
-renderHome();
-
-renderVideos();
-
-renderCreatorVideos();
-
-</script>
+  </script>
 
 </body>
 </html>
