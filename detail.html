@@ -3,8 +3,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#08070d">
-<title>Watch - Reitoon</title><style>
-*{box-sizing:border-box;margin:0;padding:0}
+<title>Detail Drama - Reitoon</title><style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
 
 :root{
 --bg:#08070d;
@@ -62,135 +67,54 @@ background:linear-gradient(135deg,#fff,var(--pink),var(--purple));
 -webkit-text-fill-color:transparent
 }
 
-.header-space{width:42px}
+.header-space{
+width:42px
+}
 
 .container{
 width:100%;
-max-width:1000px;
+max-width:900px;
 margin:auto;
 padding:22px 16px
 }
 
-.hero{
-padding:24px;
+.detail-hero{
+display:grid;
+grid-template-columns:180px 1fr;
+gap:20px;
+padding:20px;
 border-radius:24px;
-margin-bottom:20px;
 background:
 linear-gradient(135deg,rgba(255,47,141,.16),rgba(118,45,255,.16)),
 var(--surface);
-border:1px solid var(--border)
-}
-
-.hero h1{font-size:26px;margin-bottom:8px}
-.hero p{font-size:13px;color:var(--muted);line-height:1.6}
-
-.search-box{
-display:flex;
-gap:10px;
-margin-bottom:16px
-}
-
-.search-box input{
-flex:1;
-padding:14px;
-border-radius:13px;
 border:1px solid var(--border);
-outline:none;
-background:var(--surface);
-color:#fff;
-font-size:13px
-}
-
-.search-box input:focus{border-color:var(--pink)}
-
-.search-button{
-width:52px;
-border:none;
-border-radius:13px;
-background:linear-gradient(135deg,var(--pink),var(--purple));
-color:#fff;
-font-size:18px;
-cursor:pointer
-}
-
-.category-scroll{
-display:flex;
-gap:9px;
-overflow-x:auto;
-padding-bottom:6px;
 margin-bottom:20px
 }
 
-.category-scroll::-webkit-scrollbar{display:none}
-
-.category-button{
-white-space:nowrap;
-padding:10px 15px;
-border-radius:20px;
-border:1px solid var(--border);
-background:var(--surface);
-color:var(--muted);
-font-size:11px;
-cursor:pointer
-}
-
-.category-button.active{
-background:linear-gradient(135deg,var(--pink),var(--purple));
-border:none;
-color:#fff
-}
-
-.section-header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin:20px 0 12px
-}
-
-.section-title{font-size:18px}
-.section-count{font-size:11px;color:var(--muted)}
-
-.drama-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px
-}
-
-.drama-card{
-overflow:hidden;
-border-radius:18px;
-background:var(--surface);
-border:1px solid var(--border);
-transition:.2s
-}
-
-.drama-card:hover{
-transform:translateY(-3px);
-border-color:var(--pink)
-}
-
 .poster{
-height:210px;
+min-height:260px;
+border-radius:18px;
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
-font-size:48px;
+font-size:70px;
 background:linear-gradient(135deg,#351020,#5b1b51)
 }
 
-.poster:nth-child(2n){background:linear-gradient(135deg,#101f3e,#44206d)}
-.poster:nth-child(3n){background:linear-gradient(135deg,#291c0d,#6d3518)}
-.poster:nth-child(4n){background:linear-gradient(135deg,#111c28,#263f5c)}
+.info{
+display:flex;
+flex-direction:column;
+justify-content:center
+}
 
 .badge{
-position:absolute;
-top:10px;
-left:10px;
-padding:5px 8px;
-border-radius:7px;
-font-size:9px;
-font-weight:bold
+display:inline-block;
+width:max-content;
+padding:6px 10px;
+border-radius:8px;
+font-size:10px;
+font-weight:bold;
+margin-bottom:12px
 }
 
 .badge.free{
@@ -203,69 +127,121 @@ background:rgba(255,211,90,.18);
 color:var(--yellow)
 }
 
-.drama-info{padding:13px}
-
-.drama-title{
-font-size:14px;
-font-weight:bold;
-margin-bottom:6px;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis
+.title{
+font-size:28px;
+margin-bottom:10px
 }
 
-.drama-meta{
-font-size:10px;
+.meta{
+font-size:12px;
 color:var(--muted);
-margin-bottom:8px
-}
-
-.drama-description{
-font-size:10px;
-color:var(--muted);
-line-height:1.5;
-height:31px;
-overflow:hidden;
+line-height:1.8;
 margin-bottom:12px
 }
 
-.drama-actions{
-display:flex;
-gap:7px
+.description{
+font-size:13px;
+color:var(--muted);
+line-height:1.7
 }
 
-.watch-button,
-.detail-button{
-flex:1;
-padding:9px 5px;
-border-radius:9px;
-font-size:10px;
-font-weight:bold;
-cursor:pointer;
-text-align:center;
-text-decoration:none
-}
-
-.watch-button{
-border:none;
-background:linear-gradient(135deg,var(--pink),var(--purple));
-color:#fff
-}
-
-.detail-button{
+.section{
+padding:20px;
+border-radius:20px;
+background:var(--surface);
 border:1px solid var(--border);
-background:var(--surface-light);
-color:#fff
+margin-bottom:16px
 }
 
-.empty{
-padding:40px 15px;
+.section-title{
+font-size:18px;
+margin-bottom:15px
+}
+
+.player{
+width:100%;
+aspect-ratio:16/9;
+border-radius:16px;
+overflow:hidden;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative
+}
+
+.player video{
+width:100%;
+height:100%;
+object-fit:contain;
+background:#000
+}
+
+.player-empty{
 text-align:center;
+padding:30px;
 color:var(--muted);
 font-size:13px;
-border:1px dashed rgba(255,255,255,.15);
-border-radius:18px;
-display:none
+line-height:1.7
+}
+
+.player-icon{
+font-size:48px;
+margin-bottom:12px
+}
+
+.action-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:16px
+}
+
+.action-button{
+padding:14px;
+border-radius:12px;
+border:1px solid var(--border);
+background:var(--surface-light);
+color:#fff;
+font-weight:bold;
+font-size:12px;
+cursor:pointer
+}
+
+.action-button.primary{
+border:none;
+background:linear-gradient(135deg,var(--pink),var(--purple))
+}
+
+.episode-list{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px
+}
+
+.episode-button{
+padding:12px 5px;
+border-radius:10px;
+border:1px solid var(--border);
+background:var(--surface-light);
+color:#fff;
+font-size:11px;
+cursor:pointer
+}
+
+.episode-button.active{
+background:linear-gradient(135deg,var(--pink),var(--purple));
+border:none
+}
+
+.notice{
+padding:14px;
+border-radius:12px;
+background:rgba(255,211,90,.08);
+border:1px solid rgba(255,211,90,.2);
+color:#ffe6a0;
+font-size:11px;
+line-height:1.6
 }
 
 .bottom-nav{
@@ -297,122 +273,184 @@ font-size:21px;
 margin-bottom:4px
 }
 
-.nav-item.active{color:var(--pink)}
-
-@media(min-width:700px){
-.drama-grid{grid-template-columns:repeat(4,1fr)}
-.poster{height:250px}
+.nav-item.active{
+color:var(--pink)
 }
-</style></head><body><header class="header">
-<button class="back-button" onclick="goBack()">←</button>
-<div class="logo">Reitoon</div>
-<div class="header-space"></div>
-</header><main class="container"><section class="hero">
-<h1>🎬 Watch Chinese Drama</h1>
-<p>
-Temukan hingga 500 katalog drama dan film Asia legal di Reitoon.
-Gunakan hanya video yang memiliki izin redistribusi atau hosting ulang.
-</p>
-</section><div class="search-box">
-<input
-type="text"
-id="searchInput"
-placeholder="Cari judul drama..."
-oninput="applyFilters()"
+
+@media(max-width:600px){
+
+.detail-hero{
+grid-template-columns:1fr
+}
+
+.poster{
+min-height:220px
+}
+
+.title{
+font-size:24px
+}
+
+.episode-list{
+grid-template-columns:repeat(4,1fr)
+}
+
+}
+
+</style></head><body><header class="header"><button
+class="back-button"
+onclick="goBack()"
+
+«»
+
+←
+</button>
+
+<div class="logo">
+Reitoon
+</div><div class="header-space"></div></header><main class="container"><section
+class="detail-hero"
+id="detailHero"
+><div
+class="poster"
+id="poster"
 >
-<button class="search-button" onclick="applyFilters()">🔍</button>
-</div><div class="category-scroll"><button class="category-button active"
-onclick="filterCategory('all',this)">
-🔥 Semua
+🎬
+</div><div class="info"><div
+class="badge free"
+id="statusBadge"
+>
+🆓 GRATIS
+</div><h1
+class="title"
+id="dramaTitle"
+>
+Memuat...
+</h1><div
+class="meta"
+id="dramaMeta"
+>
+Memuat informasi drama...
+</div><p
+class="description"
+id="dramaDescription"
+>
+Memuat deskripsi...
+</p></div></section><section class="section"><h2 class="section-title">
+▶️ Watch
+</h2><div
+class="player"
+id="player"
+><div class="player-empty"><div class="player-icon">
+🎬
+</div><div>
+Video belum tersedia.
+</div></div></div><div
+class="action-grid"
+><button
+class="action-button primary"
+onclick="startWatch()"
+
+«»
+
+▶️ Tonton Sekarang
 </button>
 
-<button class="category-button"
-onclick="filterCategory('romance',this)">
-❤️ Romance
+<button
+class="action-button"
+onclick="shareDrama()"
+
+«»
+
+📤 Bagikan
 </button>
 
-<button class="category-button"
-onclick="filterCategory('fantasy',this)">
-✨ Fantasy
-</button>
+</div></section><section
+class="section"
+><h2
+class="section-title"
+>
+📺 Episode
+</h2><div
+class="episode-list"
+id="episodeList"
+>
+</div></section><section
+class="section"
+><div
+class="notice"
+>⚠️ Konten video yang ditayangkan di Reitoon harus memiliki hak penggunaan, lisensi, atau izin redistribusi yang sesuai.
 
-<button class="category-button"
-onclick="filterCategory('wuxia',this)">
-⚔️ Wuxia
-</button>
+</div></section></main><nav class="bottom-nav"><a
+class="nav-item"
+href="index.html"
 
-<button class="category-button"
-onclick="filterCategory('historical',this)">
-🏯 Historical
-</button>
+«»
 
-<button class="category-button"
-onclick="filterCategory('modern',this)">
-🏙️ Modern
-</button>
+<span class="nav-icon">
+🏠
+</span>Home
 
-<button class="category-button"
-onclick="filterCategory('free',this)">
-🆓 Gratis
-</button>
+</a><a
+class="nav-item active"
+href="watch.html"
 
-</div><div class="section-header">
-<h2 class="section-title">🔥 Semua Drama</h2>
-<span class="section-count" id="resultCount">0 Video</span>
-</div><section class="drama-grid" id="dramaGrid"></section><div class="empty" id="emptyState">
-😔<br><br>
-Video tidak ditemukan.
-</div></main><nav class="bottom-nav"><a class="nav-item" href="index.html">
-<span class="nav-icon">🏠</span>
-Home
-</a><a class="nav-item active" href="watch.html">
-<span class="nav-icon">▶️</span>
-Watch
-</a><a class="nav-item" href="create.html">
-<span class="nav-icon">✨</span>
-Create
-</a><a class="nav-item" href="studio.html">
-<span class="nav-icon">🎥</span>
-Studio
-</a><a class="nav-item" href="profile.html">
-<span class="nav-icon">👤</span>
-Profile
+«»
+
+<span class="nav-icon">
+▶️
+</span>Watch
+
+</a><a
+class="nav-item"
+href="create.html"
+
+«»
+
+<span class="nav-icon">
+✨
+</span>Create
+
+</a><a
+class="nav-item"
+href="studio.html"
+
+«»
+
+<span class="nav-icon">
+🎥
+</span>Studio
+
+</a><a
+class="nav-item"
+href="profile.html"
+
+«»
+
+<span class="nav-icon">
+👤
+</span>Profile
+
 </a></nav><script>
 
-/* =========================
-   KONFIGURASI
-========================= */
+/* =====================================
+   DATABASE YANG SAMA DENGAN WATCH.HTML
+===================================== */
 
 const TOTAL_VIDEOS = 500;
 
-let currentCategory = "all";
-
-/*
-  PENTING:
-  URL di bawah sengaja dikosongkan.
-  Isi hanya dengan video yang benar-benar:
-  - milik Reitoon
-  - public domain
-  - CC0
-  - atau memiliki izin redistribusi/hosting ulang
-*/
-
-const legalVideos = [];
-
-
-/* =========================
-   KATALOG 500 VIDEO
-========================= */
-
 const categories = [
+
 "romance",
 "fantasy",
 "wuxia",
 "historical",
 "modern"
+
 ];
 
 const icons = [
+
 "❤️",
 "✨",
 "⚔️",
@@ -423,55 +461,156 @@ const icons = [
 "💫",
 "🐉",
 "👑"
+
 ];
+
+
+/* =====================================
+   VIDEO LEGAL
+===================================== */
+
+const legalVideos = [
+
+/*
+
+Format:
+
+{
+
+id:"legal-001",
+
+title:"Judul Drama",
+
+category:"romance",
+
+type:"licensed",
+
+year:"2026",
+
+episodes:"Episode 1",
+
+rating:"⭐ 8.5",
+
+icon:"❤️",
+
+description:"Deskripsi drama",
+
+videoUrl:"URL_VIDEO_LEGAL",
+
+license:"Lisensi resmi"
+
+}
+
+*/
+
+];
+
+
+/* =====================================
+   GENERATE KATALOG
+===================================== */
 
 const generatedCatalog = [];
 
-for(let i = 1; i <= TOTAL_VIDEOS; i++){
+for(
+
+let i = 1;
+
+i <= TOTAL_VIDEOS;
+
+i++
+
+){
 
 const category =
-categories[(i - 1) % categories.length];
+
+categories[
+
+(i - 1)
+
+%
+
+categories.length
+
+];
+
 
 generatedCatalog.push({
 
-id: "reitoon-" + String(i).padStart(3,"0"),
+id:
+
+"reitoon-" +
+
+String(i)
+
+.padStart(3,"0"),
 
 title:
+
 "Chinese Drama Collection " +
-String(i).padStart(3,"0"),
 
-category: category,
+String(i)
 
-type: i % 3 === 0 ? "licensed" : "free",
+.padStart(3,"0"),
 
-year: "Legal Catalog",
+category:
 
-episodes: "Video",
+category,
 
-rating: "⭐ " + (8 + ((i % 20) / 10)).toFixed(1),
+type:
 
-icon: icons[(i - 1) % icons.length],
+"free",
+
+year:
+
+"Legal Catalog",
+
+episodes:
+
+"Video",
+
+rating:
+
+"⭐ " +
+
+(
+
+8 +
+
+((i % 20) / 10)
+
+)
+
+.toFixed(1),
+
+icon:
+
+icons[
+
+(i - 1)
+
+%
+
+icons.length
+
+],
 
 description:
-"Video drama Asia yang hanya boleh ditayangkan kembali apabila memiliki izin penggunaan yang sah.",
+
+"Drama Asia dalam katalog Reitoon. Konten hanya dapat ditayangkan apabila memiliki hak penggunaan atau izin redistribusi yang sesuai.",
 
 videoUrl:
-"",
 
-sourceUrl:
 "",
 
 license:
-"Belum diisi - verifikasi lisensi terlebih dahulu"
+
+"Belum diverifikasi"
 
 });
 
 }
 
-
-/* =========================
-   GABUNGKAN VIDEO LEGAL
-========================= */
 
 const dramas = [
 
@@ -482,248 +621,521 @@ const dramas = [
 ];
 
 
-/* =========================
-   RENDER
-========================= */
+/* =====================================
+   AMBIL ID DARI URL
+===================================== */
 
-function renderDramas(list){
+const params =
 
-const grid =
-document.getElementById("dramaGrid");
+new URLSearchParams(
 
-const empty =
-document.getElementById("emptyState");
+window.location.search
 
-const count =
-document.getElementById("resultCount");
+);
 
-count.textContent =
-list.length + " Video";
+const dramaId =
 
-if(!list.length){
+params.get("id");
 
-grid.innerHTML = "";
 
-empty.style.display = "block";
+const drama =
+
+dramas.find(function(item){
+
+return item.id === dramaId;
+
+});
+
+
+/* =====================================
+   TAMPILKAN DETAIL
+===================================== */
+
+function loadDrama(){
+
+if(!drama){
+
+document
+
+.getElementById(
+
+"dramaTitle"
+
+)
+
+.textContent =
+
+"Drama Tidak Ditemukan";
+
+
+document
+
+.getElementById(
+
+"dramaDescription"
+
+)
+
+.textContent =
+
+"Data drama tidak ditemukan.";
 
 return;
 
 }
 
-empty.style.display = "none";
 
-grid.innerHTML = list.map(function(drama){
+document
 
-const canWatch =
-drama.videoUrl &&
-drama.videoUrl.trim() !== "";
+.getElementById(
 
-return `
+"dramaTitle"
 
-<article class="drama-card">
+)
 
-<div class="poster">
+.textContent =
 
-<span>${drama.icon}</span>
+drama.title;
 
-<div class="badge ${drama.type}">
 
-${drama.type === "free"
-? "🆓 GRATIS"
-: "📜 BERLISENSI"}
+document
 
-</div>
+.getElementById(
 
-</div>
+"dramaMeta"
 
-<div class="drama-info">
+)
 
-<h3 class="drama-title">
-${drama.title}
-</h3>
+.textContent =
 
-<div class="drama-meta">
-${drama.year} • ${drama.episodes} • ${drama.rating}
-</div>
+drama.year +
 
-<p class="drama-description">
-${drama.description}
-</p>
+" • " +
 
-<div class="drama-actions">
+drama.category +
 
-${
-canWatch
+" • " +
 
-?
+drama.episodes +
 
-`
+" • " +
 
-<a
-class="watch-button"
-href="${drama.videoUrl}"
-target="_blank"
-rel="noopener noreferrer"
->
-▶️ Tonton
-</a>
+drama.rating;
 
-`
 
-:
+document
 
-`
+.getElementById(
 
-<button
-class="watch-button"
-onclick="showLicenseWarning()"
->
-🔒 Belum Tersedia
-</button>
+"dramaDescription"
 
-`
+)
+
+.textContent =
+
+drama.description;
+
+
+document
+
+.getElementById(
+
+"poster"
+
+)
+
+textContent =
+
+drama.icon;
+
+
+const badge =
+
+document
+
+.getElementById(
+
+"statusBadge"
+
+);
+
+
+if(
+
+drama.type ===
+
+"free"
+
+){
+
+badge.textContent =
+
+"🆓 GRATIS";
+
+badge.className =
+
+"badge free";
 
 }
 
-<button
-class="detail-button"
-onclick="openDetail('${drama.id}')"
+else{
+
+badge.textContent =
+
+"📜 BERLISENSI";
+
+badge.className =
+
+"badge licensed";
+
+}
+
+
+loadPlayer();
+
+loadEpisodes();
+
+}
+
+
+/* =====================================
+   PLAYER
+===================================== */
+
+function loadPlayer(){
+
+const player =
+
+document
+
+.getElementById(
+
+"player"
+
+);
+
+
+if(
+
+drama.videoUrl &&
+
+drama.videoUrl.trim() !== ""
+
+){
+
+player.innerHTML = `
+
+<video
+controls
+playsinline
+preload="metadata"
 >
-Detail
-</button>
 
-</div>
+<source
+src="${drama.videoUrl}"
+>
 
-</div>
+Browser kamu tidak mendukung video.
 
-</article>
+</video>
 
 `;
 
-}).join("");
+}
+
+else{
+
+player.innerHTML = `
+
+<div
+class="player-empty"
+>
+
+<div
+class="player-icon"
+>
+🔒
+</div>
+
+<div>
+Video belum tersedia.
+</div>
+
+<br>
+
+<small>
+Sumber video legal belum ditambahkan.
+</small>
+
+</div>
+
+`;
+
+}
 
 }
 
 
-/* =========================
-   FILTER
-========================= */
+/* =====================================
+   EPISODE
+===================================== */
 
-function filterCategory(category, button){
+function loadEpisodes(){
 
-currentCategory = category;
+const list =
 
 document
-.querySelectorAll(".category-button")
+
+.getElementById(
+
+"episodeList"
+
+);
+
+
+const episodeCount =
+
+drama.episodes ===
+
+"Video"
+
+?
+
+1
+
+:
+
+10;
+
+
+let html = "";
+
+
+for(
+
+let i = 1;
+
+i <= episodeCount;
+
+i++
+
+){
+
+html += `
+
+<button
+class="episode-button ${i === 1 ? "active" : ""}"
+onclick="selectEpisode(this,${i})"
+>
+
+Episode ${i}
+
+</button>
+
+`;
+
+}
+
+
+list.innerHTML =
+
+html;
+
+}
+
+
+function selectEpisode(button,episode){
+
+document
+
+.querySelectorAll(
+
+".episode-button"
+
+)
+
 .forEach(function(item){
 
-item.classList.remove("active");
+item.classList.remove(
 
-});
+"active"
 
-button.classList.add("active");
-
-applyFilters();
-
-}
-
-
-function applyFilters(){
-
-const search =
-document
-.getElementById("searchInput")
-.value
-.toLowerCase()
-.trim();
-
-let result = dramas.filter(function(drama){
-
-const matchSearch =
-drama.title
-.toLowerCase()
-.includes(search);
-
-let matchCategory = true;
-
-if(currentCategory === "free"){
-
-matchCategory =
-drama.type === "free";
-
-}
-else if(currentCategory !== "all"){
-
-matchCategory =
-drama.category === currentCategory;
-
-}
-
-return matchSearch && matchCategory;
-
-});
-
-renderDramas(result);
-
-}
-
-
-/* =========================
-   DETAIL
-========================= */
-
-function openDetail(id){
-
-localStorage.setItem(
-"reitoon_selected_drama",
-id
 );
 
-window.location.href =
-"detail.html?id=" +
-encodeURIComponent(id);
+});
+
+
+button.classList.add(
+
+"active"
+
+);
 
 }
 
 
-/* =========================
-   WARNING
-========================= */
+/* =====================================
+   TONTON
+===================================== */
 
-function showLicenseWarning(){
+function startWatch(){
+
+if(
+
+!drama
+
+){
+
+return;
+
+}
+
+
+if(
+
+!drama.videoUrl ||
+
+drama.videoUrl.trim() === ""
+
+){
 
 alert(
-"Video ini belum memiliki URL legal yang terverifikasi. Tambahkan hanya video yang kamu miliki atau yang memiliki izin redistribusi/hosting ulang."
+
+"Video ini belum tersedia karena sumber video legal belum ditambahkan."
+
 );
+
+return;
 
 }
 
 
-/* =========================
+const player =
+
+document
+
+.getElementById(
+
+"player"
+
+);
+
+
+player.scrollIntoView({
+
+behavior:
+
+"smooth"
+
+});
+
+
+const video =
+
+player.querySelector(
+
+"video"
+
+);
+
+
+if(video){
+
+video.play()
+
+.catch(function(){});
+
+}
+
+}
+
+
+/* =====================================
+   SHARE
+===================================== */
+
+function shareDrama(){
+
+if(
+
+navigator.share
+
+){
+
+navigator.share({
+
+title:
+
+drama.title,
+
+text:
+
+"Tonton " +
+
+drama.title +
+
+" di Reitoon",
+
+url:
+
+window.location.href
+
+});
+
+}
+
+else{
+
+navigator.clipboard.writeText(
+
+window.location.href
+
+);
+
+
+alert(
+
+"Link berhasil disalin."
+
+);
+
+}
+
+}
+
+
+/* =====================================
    BACK
-========================= */
+===================================== */
 
 function goBack(){
 
-if(document.referrer){
+if(
+
+document.referrer
+
+){
 
 history.back();
 
-}else{
+}
+
+else{
 
 window.location.href =
-"index.html";
+
+"watch.html";
 
 }
 
 }
 
 
-/* =========================
+/* =====================================
    INIT
-========================= */
+===================================== */
 
-renderDramas(dramas);
+loadDrama();
 
 </script></body>
 </html>
