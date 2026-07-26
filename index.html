@@ -3,6 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>REITOON</title><style>
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,7 +20,7 @@ body {
 
 header {
   background: linear-gradient(135deg, #0c2118, #102e20);
-  padding: 16px;
+  padding: 15px;
   position: sticky;
   top: 0;
   z-index: 20;
@@ -71,11 +72,22 @@ header {
 }
 
 .hero {
-  background: linear-gradient(135deg, #183d28, #315d36);
+  background:
+  linear-gradient(
+    rgba(18,55,35,.65),
+    rgba(18,55,35,.9)
+  ),
+  url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80");
+
+  background-size: cover;
+  background-position: center;
+
   border-radius: 22px;
-  padding: 24px;
-  margin-bottom: 20px;
-  min-height: 180px;
+  padding: 25px;
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
 .hero h1 {
@@ -84,7 +96,7 @@ header {
 }
 
 .hero p {
-  color: #c5d4c4;
+  color: #d2dfd1;
   line-height: 1.5;
 }
 
@@ -101,58 +113,195 @@ header {
 }
 
 .section-title {
-  font-size: 20px;
+  font-size: 21px;
   margin: 22px 0 12px;
 }
 
-.cards {
+.home-video {
+  background: #102218;
+  border: 1px solid #294a32;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.home-video img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.home-video-info {
+  padding: 14px;
+}
+
+.home-video-info h3 {
+  font-size: 16px;
+}
+
+.home-video-info p {
+  color: #9db19d;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.search-box {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.search-box input {
+  flex: 1;
+  background: #102218;
+  border: 1px solid #3b6042;
+  border-radius: 12px;
+  padding: 13px;
+  color: white;
+  outline: none;
+}
+
+.search-box button {
+  width: 48px;
+  border: none;
+  border-radius: 12px;
+  background: #d9ff69;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.categories {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.category {
+  flex-shrink: 0;
+  border: 1px solid #3d6544;
+  background: #122419;
+  color: #b7c8b7;
+  border-radius: 20px;
+  padding: 9px 14px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.category.active {
+  background: #d9ff69;
+  color: #122217;
+  font-weight: bold;
+}
+
+.video-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
-.card {
-  min-height: 145px;
-  border-radius: 18px;
-  padding: 16px;
-  border: 1px solid #365b3e;
+.video-card {
+  background: #102218;
+  border: 1px solid #294a32;
+  border-radius: 16px;
+  overflow: hidden;
   cursor: pointer;
   transition: .2s;
 }
 
-.card:active {
+.video-card:active {
   transform: scale(.97);
 }
 
-.card h3 {
-  margin-top: 12px;
-  font-size: 16px;
+.video-card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
 }
 
-.card p {
-  font-size: 12px;
-  color: #b9c8b8;
+.video-info {
+  padding: 11px;
+}
+
+.video-info h3 {
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.video-info p {
+  font-size: 11px;
+  color: #91a491;
+  margin-top: 6px;
+}
+
+.player-page {
+  display: none;
+}
+
+.player-page.active {
+  display: block;
+}
+
+.video-player {
+  width: 100%;
+  background: black;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.video-player video {
+  width: 100%;
+  display: block;
+  max-height: 400px;
+}
+
+.player-title {
+  font-size: 21px;
+  margin-top: 16px;
+}
+
+.player-meta {
+  color: #9caf9c;
+  font-size: 13px;
   margin-top: 7px;
 }
 
-.card-icon {
-  font-size: 34px;
+.player-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }
 
-.watch-card {
-  background: linear-gradient(135deg, #192c4c, #253d65);
+.player-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #426448;
+  background: #14271a;
+  color: white;
+  cursor: pointer;
 }
 
-.create-card {
-  background: linear-gradient(135deg, #432b1b, #704b25);
+.player-actions button.liked {
+  background: #d9ff69;
+  color: #122217;
 }
 
-.game-card {
-  background: linear-gradient(135deg, #173c28, #6c5422);
+.description {
+  background: #102218;
+  border: 1px solid #294a32;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 15px;
+  color: #b8c9b8;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
-.studio-card {
-  background: linear-gradient(135deg, #3c1e35, #64294a);
+.recommendation {
+  margin-top: 22px;
 }
 
 .balance-card {
@@ -200,15 +349,39 @@ header {
   margin-bottom: 12px;
 }
 
-.notice {
-  background: #182c1d;
-  border-left: 3px solid #d9ff69;
-  padding: 12px;
-  border-radius: 10px;
-  color: #b8c9b8;
-  font-size: 12px;
-  line-height: 1.5;
+.ad-stat {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding: 13px;
+  background: #14271a;
+  border-radius: 12px;
+}
+
+.ad-stat b {
+  color: #d9ff69;
+}
+
+.action-btn {
+  width: 100%;
+  border: none;
+  padding: 14px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #d9ff69, #e9c85a);
+  color: #142417;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.action-btn:disabled {
+  opacity: .5;
+}
+
+.result {
+  text-align: center;
   margin-top: 15px;
+  font-weight: bold;
 }
 
 .game-menu {
@@ -277,28 +450,6 @@ header {
   color: #e9c85a;
   font-size: 30px;
   margin-bottom: -10px;
-}
-
-.action-btn {
-  width: 100%;
-  border: none;
-  padding: 14px;
-  border-radius: 13px;
-  background: linear-gradient(135deg, #d9ff69, #e9c85a);
-  color: #142417;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 12px;
-}
-
-.action-btn:disabled {
-  opacity: .5;
-}
-
-.result {
-  text-align: center;
-  margin-top: 15px;
-  font-weight: bold;
 }
 
 .quiz-question {
@@ -388,24 +539,6 @@ header {
   justify-content: space-between;
 }
 
-.ad-box {
-  background: linear-gradient(135deg, #172d1e, #213c27);
-  border: 1px solid #3d6544;
-}
-
-.ad-stat {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 12px;
-  padding: 13px;
-  background: #14271a;
-  border-radius: 12px;
-}
-
-.ad-stat b {
-  color: #d9ff69;
-}
-
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -438,119 +571,219 @@ header {
 }
 
 @media (min-width: 700px) {
+
   .container {
     max-width: 700px;
   }
+
+  .video-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
 }
-</style></head><body><header>
-  <div class="header">
-    <div class="logo">REI<span>TOON</span></div>
-    <div class="profile">R</div>
-  </div>
-</header><main class="container"><!-- ================= HOME ================= --><section id="homePage" class="page active">  <div class="hero"><h1>Selamat Datang di Reitoon 🎬</h1>
+
+</style></head><body><header>  <div class="header"><div class="logo">
+  REI<span>TOON</span>
+</div>
+
+<div class="profile">
+  R
+</div>
+
+  </div></header><main class="container"><!-- ================= HOME ================= --><section
+  id="homePage"
+  class="page active">  <div class="hero"><h1>
+  Selamat Datang di Reitoon 🎬
+</h1>
 
 <p>
-  Nikmati drama, buat konten AI,
-  bermain game, dan kumpulkan reward
-  dalam satu platform.
+  Nikmati drama, video pendek,
+  dan konten creator Reitoon.
 </p>
 
-<button class="btn" onclick="showPage('watchPage')">
+<button
+  class="btn"
+  onclick="showPage('watchPage')">
+
   ▶ Mulai Menonton
+
 </button>
 
   </div>  <h2 class="section-title">
-    ✨ Reitoon Features
-  </h2>  <div class="cards"><div class="card watch-card"
-     onclick="showPage('watchPage')">
+    🔥 Trending Reitoon
+  </h2>  <div
+    class="home-video"
+    onclick="openVideo(1)"><img
+  src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=900&q=80">
 
-  <div class="card-icon">▶️</div>
+<div class="home-video-info">
 
-  <h3>Watch</h3>
+  <h3>
+    The Last Moon
+  </h3>
 
   <p>
-    Nikmati berbagai drama dan video.
+    Drama • Episode 1 • 24 menit
   </p>
 
 </div>
 
-<div class="card create-card"
-     onclick="showPage('createPage')">
+  </div>  <div
+    class="home-video"
+    onclick="openVideo(2)"><img
+  src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=80">
 
-  <div class="card-icon">✨</div>
+<div class="home-video-info">
 
-  <h3>Create</h3>
+  <h3>
+    City of Dreams
+  </h3>
 
   <p>
-    Buat video AI kamu sendiri.
+    Drama • Episode 1 • 18 menit
   </p>
 
 </div>
 
-<div class="card game-card"
-     onclick="showPage('gamesPage')">
-
-  <div class="card-icon">🎮</div>
-
-  <h3>Games</h3>
-
-  <p>
-    Main dan kumpulkan Point.
-  </p>
-
-</div>
-
-<div class="card studio-card"
-     onclick="showPage('studioPage')">
-
-  <div class="card-icon">🎬</div>
-
-  <h3>Studio</h3>
-
-  <p>
-    Kelola proyek dan karya kamu.
-  </p>
-
-</div>
-
-  </div></section><!-- ================= WATCH ================= --><section id="watchPage" class="page">  <h1 class="section-title">
+  </div></section><!-- ================= WATCH ================= --><section
+  id="watchPage"
+  class="page">  <h1 class="section-title">
     ▶️ Watch
-  </h1>  <div class="panel"><h2>Drama Reitoon</h2>
+  </h1>  <div class="search-box"><input
+  type="text"
+  id="searchInput"
+  placeholder="Cari drama atau video..."
+  oninput="searchVideos()">
 
-<p style="color:#aebfaf;margin-top:10px;">
+<button
+  onclick="searchVideos()">
 
-  Di sini nanti kamu dapat menampilkan
-  drama, video pendek, dan konten creator Reitoon.
+  🔍
 
-</p>
-
-<button class="btn">
-  ▶ Tonton Sekarang
 </button>
 
-  </div></section><!-- ================= CREATE ================= --><section id="createPage" class="page">  <h1 class="section-title">
-    ✨ Create
-  </h1>  <div class="panel"><h2>Buat Video AI</h2>
+  </div>  <div class="categories"><button
+  class="category active"
+  onclick="filterCategory('Semua', this)">
 
-<p style="color:#aebfaf;margin-top:10px;">
+  Semua
 
-  Gunakan Credit untuk membuat video AI.
-
-</p>
-
-<button class="btn">
-  ✨ Mulai Membuat
 </button>
 
-  </div></section><!-- ================= GAMES ================= --><section id="gamesPage" class="page">  <h1 class="section-title">
+<button
+  class="category"
+  onclick="filterCategory('Drama', this)">
+
+  Drama
+
+</button>
+
+<button
+  class="category"
+  onclick="filterCategory('Action', this)">
+
+  Action
+
+</button>
+
+<button
+  class="category"
+  onclick="filterCategory('Romance', this)">
+
+  Romance
+
+</button>
+
+<button
+  class="category"
+  onclick="filterCategory('Comedy', this)">
+
+  Comedy
+
+</button>
+
+  </div>  <div
+    id="continueSection"
+    style="display:none;"><h2 class="section-title">
+  ▶ Lanjutkan Menonton
+</h2>
+
+<div
+  id="continueList"
+  class="video-grid">
+
+</div>
+
+  </div>  <h2 class="section-title">
+    🎬 Semua Video
+  </h2>  <div
+    id="videoGrid"
+    class="video-grid">  </div></section><!-- ================= VIDEO PLAYER ================= --><section
+  id="playerPage"
+  class="player-page"><button
+class="btn"
+onclick="backToWatch()">
+
+← Kembali
+
+  </button>  <div
+    class="video-player"
+    style="margin-top:15px;"><video
+  id="mainVideo"
+  controls
+  playsinline>
+
+</video>
+
+  </div>  <h1
+    id="playerTitle"
+    class="player-title">  </h1>  <p
+    id="playerMeta"
+    class="player-meta">  </p>  <div class="player-actions"><button
+  id="likeButton"
+  onclick="toggleLike()">
+
+  ❤️ Like
+
+</button>
+
+<button
+  onclick="shareVideo()">
+
+  🔗 Bagikan
+
+</button>
+
+  </div>  <div
+    id="playerDescription"
+    class="description">  </div>  <div class="recommendation"><h2 class="section-title">
+  🎬 Video Lainnya
+</h2>
+
+<div
+  id="recommendedVideos"
+  class="video-grid">
+
+</div>
+
+  </div></section><!-- ================= GAMES ================= --><section
+  id="gamesPage"
+  class="page">  <h1 class="section-title">
     🎮 Reitoon Games
-  </h1>  <!-- BALANCE -->  <div class="balance-card"><div class="balance-title">
+  </h1>  <div class="balance-card"><div class="balance-title">
   CREDIT TERSEDIA
 </div>
 
 <div class="balance">
-  <span id="credit">1.000</span>
-  <small> Credit</small>
+
+  <span id="credit">
+    1.000
+  </span>
+
+  <small>
+    Credit
+  </small>
+
 </div>
 
 <div class="point-box">
@@ -559,18 +792,22 @@ header {
     🏆 Total Point
   </span>
 
-  <span class="point-value"
-        id="points">
+  <span
+    class="point-value"
+    id="points">
+
     250
+
   </span>
 
 </div>
 
-  </div>  <!-- REWARD ADS -->  <div class="panel ad-box"><h2>
+  </div>  <div class="panel"><h2>
   📺 Reward Ads
 </h2>
 
-<p style="color:#aebfaf;margin-top:8px;">
+<p
+  style="color:#aebfaf;margin-top:8px;">
 
   Tonton video iklan untuk mendapatkan
   1 Credit per video.
@@ -584,10 +821,13 @@ header {
   </span>
 
   <b>
+
     <span id="adsWatched">
       0
     </span>
+
     / 30
+
   </b>
 
 </div>
@@ -599,10 +839,13 @@ header {
   </span>
 
   <b>
+
     <span id="adsReward">
       0
     </span>
+
     Credit
+
   </b>
 
 </div>
@@ -622,7 +865,7 @@ header {
 
 </div>
 
-  </div>  <!-- GAME MENU -->  <div class="game-menu"><button
+  </div>  <div class="game-menu"><button
   class="spin-btn"
   onclick="openGame('spinGame')">
 
@@ -662,22 +905,21 @@ header {
 
 </button>
 
-  </div>  <div class="notice">💡 Credit dapat digunakan untuk bermain
-dan dikirim ke pengguna lain.
-Point adalah reward permainan dan
-tidak dapat dikirim.
-
-  </div>  <!-- SPIN GAME -->  <div
+  </div>  <div
     id="spinGame"
     class="game-area panel"><h2>
   🎡 Spin Reward
 </h2>
 
-<p style="color:#aebfaf;">
+<p
+  style="color:#aebfaf;">
 
   Biaya bermain:
-  <b style="color:#e9c85a;">
+  <b
+    style="color:#e9c85a;">
+
     50 Credit
+
   </b>
 
 </p>
@@ -707,7 +949,7 @@ tidak dapat dikirim.
 
 </div>
 
-  </div>  <!-- QUIZ GAME -->  <div
+  </div>  <div
     id="quizGame"
     class="game-area panel"><h2>
   🧠 Quiz Challenge
@@ -732,13 +974,14 @@ tidak dapat dikirim.
 
 </div>
 
-  </div>  <!-- BILLIARD GAME -->  <div
+  </div>  <div
     id="billiardGame"
     class="game-area panel"><h2>
   🎱 Mini Billiard
 </h2>
 
-<p style="color:#aebfaf;">
+<p
+  style="color:#aebfaf;">
 
   Klik bola untuk mendapatkan Point.
 
@@ -780,27 +1023,6 @@ tidak dapat dikirim.
 
 </button>
 
-  </div></section><!-- ================= STUDIO ================= --><section
-  id="studioPage"
-  class="page">  <h1 class="section-title">
-    🎬 Studio
-  </h1>  <div class="panel"><h2>
-  Project Studio
-</h2>
-
-<p style="color:#aebfaf;margin-top:10px;">
-
-  Kelola proyek video AI,
-  drama, dan konten kamu di sini.
-
-</p>
-
-<button class="btn">
-
-  + Buat Project
-
-</button>
-
   </div></section><!-- ================= PROFILE ================= --><section
   id="profilePage"
   class="page">  <div
@@ -815,7 +1037,8 @@ tidak dapat dikirim.
   Reitoon User
 </h2>
 
-<p style="color:#9daf9d;margin-top:8px;">
+<p
+  style="color:#9daf9d;margin-top:8px;">
 
   Creator Reitoon
 
@@ -827,8 +1050,11 @@ tidak dapat dikirim.
     💎 Credit
   </span>
 
-  <b id="profileCredit">
+  <b
+    id="profileCredit">
+
     1.000
+
   </b>
 
 </div>
@@ -839,8 +1065,11 @@ tidak dapat dikirim.
     🏆 Point
   </span>
 
-  <b id="profilePoints">
+  <b
+    id="profilePoints">
+
     250
+
   </b>
 
 </div>
@@ -857,7 +1086,7 @@ tidak dapat dikirim.
 
 </div>
 
-  </div></section></main><!-- ================= BOTTOM NAV ================= --><nav class="bottom-nav">  <div
+  </div></section></main><nav class="bottom-nav">  <div
     class="nav-item active"
     onclick="showPage('homePage', this)"><span class="nav-icon">
   🏠
@@ -872,14 +1101,6 @@ Home
 </span>
 
 Watch
-
-  </div>  <div
-    class="nav-item"
-    onclick="showPage('createPage', this)"><span class="nav-icon">
-  ✨
-</span>
-
-Create
 
   </div>  <div
     class="nav-item"
@@ -899,87 +1120,122 @@ Profile
 
   </div></nav><script>
 
-let credit =
-  Number(localStorage.getItem("reitoonCredit")) || 1000;
+/* ================= DATA VIDEO ================= */
 
-let points =
-  Number(localStorage.getItem("reitoonPoints")) || 250;
+const videos = [
 
-/* ================= REWARD ADS ================= */
+  {
 
-let adsWatched =
-  Number(localStorage.getItem("reitoonAdsWatched")) || 0;
+    id: 1,
 
-let adsReward =
-  Number(localStorage.getItem("reitoonAdsReward")) || 0;
+    title: "The Last Moon",
 
-let adsDate =
-  localStorage.getItem("reitoonAdsDate");
+    category: "Drama",
 
-let today =
-  new Date().toISOString().split("T")[0];
+    duration: "24 menit",
 
-if (adsDate !== today) {
+    description:
+      "Sebuah kisah tentang perjalanan,
+      rahasia, dan pilihan sulit
+      yang mengubah kehidupan.",
 
-  adsWatched = 0;
+    thumbnail:
+      "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=900&q=80",
 
-  adsReward = 0;
+    video:
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
 
-  localStorage.setItem(
-    "reitoonAdsWatched",
-    adsWatched
-  );
+  },
 
-  localStorage.setItem(
-    "reitoonAdsReward",
-    adsReward
-  );
+  {
 
-  localStorage.setItem(
-    "reitoonAdsDate",
-    today
-  );
+    id: 2,
 
-}
+    title: "City of Dreams",
 
-/* ================= UPDATE BALANCE ================= */
+    category: "Romance",
 
-function updateBalance() {
+    duration: "18 menit",
 
-  document.getElementById("credit")
-    .innerText =
-    credit.toLocaleString("id-ID");
+    description:
+      "Dua orang bertemu di kota besar
+      dan menemukan arti mimpi
+      serta cinta.",
 
-  document.getElementById("points")
-    .innerText =
-    points.toLocaleString("id-ID");
+    thumbnail:
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=80",
 
-  document.getElementById("profileCredit")
-    .innerText =
-    credit.toLocaleString("id-ID");
+    video:
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
 
-  document.getElementById("profilePoints")
-    .innerText =
-    points.toLocaleString("id-ID");
+  },
 
-  localStorage.setItem(
-    "reitoonCredit",
-    credit
-  );
+  {
 
-  localStorage.setItem(
-    "reitoonPoints",
-    points
-  );
+    id: 3,
 
-}
+    title: "Shadow Warrior",
 
-/* ================= PAGE NAVIGATION ================= */
+    category: "Action",
+
+    duration: "21 menit",
+
+    description:
+      "Seorang pejuang menghadapi
+      musuh misterius dari masa lalu.",
+
+    thumbnail:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=900&q=80",
+
+    video:
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+
+  },
+
+  {
+
+    id: 4,
+
+    title: "Funny Life",
+
+    category: "Comedy",
+
+    duration: "15 menit",
+
+    description:
+      "Cerita ringan dan lucu
+      tentang kehidupan sehari-hari.",
+
+    thumbnail:
+      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80",
+
+    video:
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+
+  }
+
+];
+
+let currentCategory = "Semua";
+
+let currentVideo = null;
+
+let likedVideos =
+  JSON.parse(
+    localStorage.getItem("reitoonLikedVideos")
+  ) || [];
+
+let watchProgress =
+  JSON.parse(
+    localStorage.getItem("reitoonWatchProgress")
+  ) || {};
+
+/* ================= PAGE ================= */
 
 function showPage(pageId, element) {
 
   document
-    .querySelectorAll(".page")
+    .querySelectorAll(".page, .player-page")
     .forEach(page => {
 
       page.classList.remove("active");
@@ -1004,7 +1260,11 @@ function showPage(pageId, element) {
 
   }
 
-  updateBalance();
+  if (pageId === "watchPage") {
+
+    renderVideos();
+
+  }
 
   window.scrollTo({
 
@@ -1016,59 +1276,483 @@ function showPage(pageId, element) {
 
 }
 
-/* ================= OPEN GAME ================= */
+/* ================= VIDEO LIST ================= */
 
-function openGame(gameId) {
+function renderVideos() {
+
+  const search =
+    document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+  const grid =
+    document
+    .getElementById("videoGrid");
+
+  grid.innerHTML = "";
+
+  const filtered =
+    videos.filter(video => {
+
+      const categoryMatch =
+        currentCategory === "Semua" ||
+        video.category === currentCategory;
+
+      const searchMatch =
+        video.title
+        .toLowerCase()
+        .includes(search);
+
+      return categoryMatch && searchMatch;
+
+    });
+
+  filtered.forEach(video => {
+
+    grid.innerHTML += createVideoCard(video);
+
+  });
+
+  renderContinueWatching();
+
+}
+
+function createVideoCard(video) {
+
+  return `
+
+    <div
+      class="video-card"
+      onclick="openVideo(${video.id})">
+
+      <img
+        src="${video.thumbnail}">
+
+      <div
+        class="video-info">
+
+        <h3>
+          ${video.title}
+        </h3>
+
+        <p>
+          ${video.category}
+          •
+          ${video.duration}
+        </p>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+function filterCategory(category, element) {
+
+  currentCategory = category;
 
   document
-    .querySelectorAll(".game-area")
-    .forEach(game => {
+    .querySelectorAll(".category")
+    .forEach(button => {
 
-      game.classList.remove("active");
+      button.classList.remove("active");
+
+    });
+
+  element.classList.add("active");
+
+  renderVideos();
+
+}
+
+function searchVideos() {
+
+  renderVideos();
+
+}
+
+/* ================= PLAYER ================= */
+
+function openVideo(id) {
+
+  const video =
+    videos.find(item => item.id === id);
+
+  if (!video) return;
+
+  currentVideo = video;
+
+  document
+    .querySelectorAll(".page, .player-page")
+    .forEach(page => {
+
+      page.classList.remove("active");
 
     });
 
   document
-    .getElementById(gameId)
+    .getElementById("playerPage")
     .classList.add("active");
 
-  if (gameId === "quizGame") {
+  const player =
+    document
+    .getElementById("mainVideo");
 
-    loadQuiz();
+  player.src =
+    video.video;
+
+  document
+    .getElementById("playerTitle")
+    .innerText =
+    video.title;
+
+  document
+    .getElementById("playerMeta")
+    .innerText =
+    `${video.category} • ${video.duration}`;
+
+  document
+    .getElementById("playerDescription")
+    .innerText =
+    video.description;
+
+  updateLikeButton();
+
+  renderRecommendations();
+
+  player.currentTime =
+    watchProgress[id] || 0;
+
+  player.ontimeupdate =
+    function() {
+
+      watchProgress[id] =
+        player.currentTime;
+
+      localStorage.setItem(
+        "reitoonWatchProgress",
+        JSON.stringify(watchProgress)
+      );
+
+    };
+
+  window.scrollTo({
+
+    top: 0,
+
+    behavior: "smooth"
+
+  });
+
+}
+
+function backToWatch() {
+
+  document
+    .getElementById("playerPage")
+    .classList.remove("active");
+
+  document
+    .getElementById("watchPage")
+    .classList.add("active");
+
+  renderVideos();
+
+}
+
+function toggleLike() {
+
+  if (!currentVideo) return;
+
+  const index =
+    likedVideos.indexOf(currentVideo.id);
+
+  if (index === -1) {
+
+    likedVideos.push(currentVideo.id);
+
+  } else {
+
+    likedVideos.splice(index, 1);
 
   }
 
-  document
-    .getElementById(gameId)
-    .scrollIntoView({
+  localStorage.setItem(
+    "reitoonLikedVideos",
+    JSON.stringify(likedVideos)
+  );
 
-      behavior: "smooth"
+  updateLikeButton();
+
+}
+
+function updateLikeButton() {
+
+  const button =
+    document
+    .getElementById("likeButton");
+
+  if (
+    likedVideos.includes(
+      currentVideo.id
+    )
+  ) {
+
+    button.innerText =
+      "❤️ Disukai";
+
+    button.classList.add("liked");
+
+  } else {
+
+    button.innerText =
+      "🤍 Like";
+
+    button.classList.remove("liked");
+
+  }
+
+}
+
+function shareVideo() {
+
+  if (
+    navigator.share &&
+    currentVideo
+  ) {
+
+    navigator.share({
+
+      title:
+        currentVideo.title,
+
+      text:
+        "Tonton video ini di Reitoon!"
+
+    });
+
+  } else {
+
+    alert(
+      "Link video siap dibagikan."
+    );
+
+  }
+
+}
+
+function renderRecommendations() {
+
+  const container =
+    document
+    .getElementById("recommendedVideos");
+
+  container.innerHTML = "";
+
+  videos
+    .filter(video =>
+      video.id !== currentVideo.id
+    )
+    .forEach(video => {
+
+      container.innerHTML +=
+        createVideoCard(video);
 
     });
 
 }
 
-/* ================= REWARD ADS ================= */
+function renderContinueWatching() {
+
+  const container =
+    document
+    .getElementById("continueList");
+
+  const section =
+    document
+    .getElementById("continueSection");
+
+  const watched =
+    videos.filter(video =>
+      watchProgress[video.id] &&
+      watchProgress[video.id] > 5
+    );
+
+  if (watched.length === 0) {
+
+    section.style.display =
+      "none";
+
+    return;
+
+  }
+
+  section.style.display =
+    "block";
+
+  container.innerHTML = "";
+
+  watched.forEach(video => {
+
+    container.innerHTML +=
+      createVideoCard(video);
+
+  });
+
+}
+
+/* ================= CREDIT ================= */
+
+let credit =
+  Number(
+    localStorage.getItem(
+      "reitoonCredit"
+    )
+  ) || 1000;
+
+let points =
+  Number(
+    localStorage.getItem(
+      "reitoonPoints"
+    )
+  ) || 250;
+
+function updateBalance() {
+
+  const creditElement =
+    document
+    .getElementById("credit");
+
+  const pointsElement =
+    document
+    .getElementById("points");
+
+  const profileCredit =
+    document
+    .getElementById("profileCredit");
+
+  const profilePoints =
+    document
+    .getElementById("profilePoints");
+
+  if (creditElement) {
+
+    creditElement.innerText =
+      credit.toLocaleString("id-ID");
+
+  }
+
+  if (pointsElement) {
+
+    pointsElement.innerText =
+      points.toLocaleString("id-ID");
+
+  }
+
+  if (profileCredit) {
+
+    profileCredit.innerText =
+      credit.toLocaleString("id-ID");
+
+  }
+
+  if (profilePoints) {
+
+    profilePoints.innerText =
+      points.toLocaleString("id-ID");
+
+  }
+
+  localStorage.setItem(
+    "reitoonCredit",
+    credit
+  );
+
+  localStorage.setItem(
+    "reitoonPoints",
+    points
+  );
+
+}
+
+/* ================= ADS ================= */
+
+let adsWatched =
+  Number(
+    localStorage.getItem(
+      "reitoonAdsWatched"
+    )
+  ) || 0;
+
+let adsReward =
+  Number(
+    localStorage.getItem(
+      "reitoonAdsReward"
+    )
+  ) || 0;
+
+let adsDate =
+  localStorage.getItem(
+    "reitoonAdsDate"
+  );
+
+let today =
+  new Date()
+  .toISOString()
+  .split("T")[0];
+
+if (adsDate !== today) {
+
+  adsWatched = 0;
+
+  adsReward = 0;
+
+  localStorage.setItem(
+    "reitoonAdsWatched",
+    adsWatched
+  );
+
+  localStorage.setItem(
+    "reitoonAdsReward",
+    adsReward
+  );
+
+  localStorage.setItem(
+    "reitoonAdsDate",
+    today
+  );
+
+}
 
 function updateAdsDisplay() {
 
-  document
-    .getElementById("adsWatched")
-    .innerText =
-    adsWatched;
+  const watched =
+    document
+    .getElementById("adsWatched");
 
-  document
-    .getElementById("adsReward")
-    .innerText =
-    adsReward;
+  const reward =
+    document
+    .getElementById("adsReward");
 
   const button =
     document
     .getElementById("watchAdButton");
 
+  if (!watched) return;
+
+  watched.innerText =
+    adsWatched;
+
+  reward.innerText =
+    adsReward;
+
   if (adsWatched >= 30) {
 
-    button.disabled = true;
+    button.disabled =
+      true;
 
     button.innerText =
       "✅ BATAS HARIAN TERCAPAI";
@@ -1084,7 +1768,7 @@ function watchRewardAd() {
     document
       .getElementById("adResult")
       .innerText =
-      "❌ Batas 30 video iklan hari ini sudah tercapai.";
+      "❌ Batas 30 iklan hari ini tercapai.";
 
     return;
 
@@ -1094,15 +1778,11 @@ function watchRewardAd() {
     document
     .getElementById("watchAdButton");
 
-  button.disabled = true;
+  button.disabled =
+    true;
 
   button.innerText =
     "⏳ MENAYANGKAN IKLAN...";
-
-  document
-    .getElementById("adResult")
-    .innerText =
-    "📺 Video iklan sedang diputar...";
 
   setTimeout(() => {
 
@@ -1122,11 +1802,6 @@ function watchRewardAd() {
       adsReward
     );
 
-    localStorage.setItem(
-      "reitoonAdsDate",
-      today
-    );
-
     updateBalance();
 
     updateAdsDisplay();
@@ -1138,7 +1813,8 @@ function watchRewardAd() {
 
     if (adsWatched < 30) {
 
-      button.disabled = false;
+      button.disabled =
+        false;
 
       button.innerText =
         "📺 TONTON IKLAN +1 CREDIT";
@@ -1177,7 +1853,8 @@ function spinWheel() {
 
   document
     .getElementById("spinButton")
-    .disabled = true;
+    .disabled =
+    true;
 
   setTimeout(() => {
 
@@ -1203,7 +1880,8 @@ function spinWheel() {
 
     document
       .getElementById("spinButton")
-      .disabled = false;
+      .disabled =
+      false;
 
   }, 3000);
 
@@ -1249,30 +1927,12 @@ const quizData = [
 
     correct: 0
 
-  },
-
-  {
-
-    question:
-      "Game mana yang berbasis skill?",
-
-    answers: [
-
-      "Mini Billiard",
-
-      "Profile",
-
-      "Transfer"
-
-    ],
-
-    correct: 0
-
   }
 
 ];
 
-let currentQuiz = 0;
+let currentQuiz =
+  0;
 
 function loadQuiz() {
 
@@ -1288,28 +1948,35 @@ function loadQuiz() {
     document
     .getElementById("answers");
 
-  answers.innerHTML = "";
+  answers.innerHTML =
+    "";
 
   quiz.answers
-    .forEach((answer, index) => {
+    .forEach(
+      (answer, index) => {
 
-      const button =
-        document
-        .createElement("button");
+        const button =
+          document
+          .createElement(
+            "button"
+          );
 
-      button.className =
-        "answer";
+        button.className =
+          "answer";
 
-      button.innerText =
-        answer;
+        button.innerText =
+          answer;
 
-      button.onclick =
-        () =>
-        answerQuiz(index);
+        button.onclick =
+          () =>
+          answerQuiz(index);
 
-      answers.appendChild(button);
+        answers.appendChild(
+          button
+        );
 
-    });
+      }
+    );
 
 }
 
@@ -1318,21 +1985,28 @@ function answerQuiz(index) {
   const quiz =
     quizData[currentQuiz];
 
-  if (index === quiz.correct) {
+  if (
+    index ===
+    quiz.correct
+  ) {
 
     points += 25;
 
     updateBalance();
 
     document
-      .getElementById("quizResult")
+      .getElementById(
+        "quizResult"
+      )
       .innerText =
       "✅ Benar! +25 Point";
 
   } else {
 
     document
-      .getElementById("quizResult")
+      .getElementById(
+        "quizResult"
+      )
       .innerText =
       "❌ Jawaban kurang tepat.";
 
@@ -1347,7 +2021,8 @@ function answerQuiz(index) {
       quizData.length
     ) {
 
-      currentQuiz = 0;
+      currentQuiz =
+        0;
 
     }
 
@@ -1359,7 +2034,10 @@ function answerQuiz(index) {
 
 /* ================= BILLIARD ================= */
 
-function hitBall(ball, reward) {
+function hitBall(
+  ball,
+  reward
+) {
 
   ball.style.display =
     "none";
@@ -1369,7 +2047,9 @@ function hitBall(ball, reward) {
   updateBalance();
 
   document
-    .getElementById("billiardResult")
+    .getElementById(
+      "billiardResult"
+    )
     .innerText =
     `🎉 Bagus! +${reward} Point`;
 
@@ -1378,22 +2058,28 @@ function hitBall(ball, reward) {
 function resetBilliard() {
 
   document
-    .querySelectorAll(".ball")
-    .forEach(ball => {
+    .querySelectorAll(
+      ".ball"
+    )
+    .forEach(
+      ball => {
 
-      ball.style.display =
-        "block";
+        ball.style.display =
+          "block";
 
-    });
+      }
+    );
 
   document
-    .getElementById("billiardResult")
+    .getElementById(
+      "billiardResult"
+    )
     .innerText =
     "";
 
 }
 
-/* ================= SKILL DUEL ================= */
+/* ================= DUEL ================= */
 
 function startDuel() {
 
@@ -1402,7 +2088,7 @@ function startDuel() {
   updateBalance();
 
   alert(
-    "🏆 Demo Skill Duel selesai! Kamu mendapatkan +25 Point."
+    "🏆 Demo Skill Duel selesai! +25 Point"
   );
 
 }
@@ -1412,6 +2098,8 @@ function startDuel() {
 updateBalance();
 
 updateAdsDisplay();
+
+renderVideos();
 
 </script></body>
 </html>
