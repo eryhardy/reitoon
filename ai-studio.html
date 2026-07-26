@@ -1,0 +1,1000 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08070d"><title>AI Studio - Reitoon</title><style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+:root{
+--bg:#08070d;
+--surface:#191722;
+--surface2:#211f2b;
+--text:#fff;
+--muted:#aaa3b0;
+--pink:#ff2f8d;
+--purple:#762dff;
+--border:rgba(255,255,255,.10);
+}
+
+body{
+
+min-height:100vh;
+
+background:
+radial-gradient(
+circle at 100% 0%,
+rgba(255,40,145,.15),
+transparent 35%
+),
+radial-gradient(
+circle at 0% 30%,
+rgba(112,45,255,.12),
+transparent 30%
+),
+var(--bg);
+
+color:var(--text);
+
+font-family:Arial,Helvetica,sans-serif;
+
+padding-bottom:100px;
+
+}
+
+.header{
+
+height:76px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:16px 20px;
+
+background:rgba(8,7,13,.94);
+
+border-bottom:1px solid var(--border);
+
+position:sticky;
+
+top:0;
+
+z-index:20;
+
+}
+
+.back{
+
+width:42px;
+
+height:42px;
+
+border-radius:14px;
+
+border:1px solid var(--border);
+
+background:var(--surface);
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+}
+
+.logo{
+
+font-size:29px;
+
+font-weight:800;
+
+background:
+linear-gradient(
+135deg,
+white,
+var(--pink),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.header-space{
+
+width:42px;
+
+}
+
+.container{
+
+max-width:600px;
+
+margin:auto;
+
+padding:25px 16px;
+
+}
+
+.title{
+
+font-size:30px;
+
+margin-bottom:8px;
+
+}
+
+.title span{
+
+background:
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.subtitle{
+
+color:var(--muted);
+
+font-size:13px;
+
+line-height:1.5;
+
+margin-bottom:20px;
+
+}
+
+.credit-card{
+
+padding:18px;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+135deg,
+rgba(255,47,141,.18),
+rgba(118,45,255,.18)
+);
+
+border:1px solid var(--border);
+
+margin-bottom:22px;
+
+}
+
+.credit-top{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+.credit-label{
+
+color:var(--muted);
+
+font-size:12px;
+
+}
+
+.credit-value{
+
+font-size:27px;
+
+font-weight:bold;
+
+margin-top:5px;
+
+}
+
+.topup-button{
+
+padding:11px 15px;
+
+border:none;
+
+border-radius:12px;
+
+background:linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+color:white;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+.section-title{
+
+font-size:18px;
+
+margin-bottom:12px;
+
+}
+
+.ai-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:12px;
+
+margin-bottom:24px;
+
+}
+
+.ai-card{
+
+padding:16px;
+
+border-radius:17px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.ai-card:hover{
+
+transform:translateY(-2px);
+
+}
+
+.ai-card.active{
+
+border-color:var(--pink);
+
+background:rgba(255,47,141,.12);
+
+}
+
+.ai-icon{
+
+font-size:28px;
+
+margin-bottom:10px;
+
+}
+
+.ai-card h3{
+
+font-size:14px;
+
+margin-bottom:5px;
+
+}
+
+.ai-card p{
+
+color:var(--muted);
+
+font-size:11px;
+
+line-height:1.4;
+
+}
+
+.cost{
+
+display:inline-block;
+
+margin-top:9px;
+
+padding:5px 8px;
+
+border-radius:8px;
+
+background:rgba(255,255,255,.08);
+
+color:#ffd2e6;
+
+font-size:10px;
+
+}
+
+.form-card{
+
+padding:18px;
+
+border-radius:20px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+}
+
+.form-group{
+
+margin-bottom:16px;
+
+}
+
+.form-group label{
+
+display:block;
+
+font-size:12px;
+
+font-weight:bold;
+
+margin-bottom:7px;
+
+}
+
+input,
+
+textarea,
+
+select{
+
+width:100%;
+
+padding:13px;
+
+border-radius:12px;
+
+border:1px solid var(--border);
+
+outline:none;
+
+background:#100f17;
+
+color:white;
+
+font-family:inherit;
+
+font-size:13px;
+
+}
+
+textarea{
+
+height:120px;
+
+resize:none;
+
+line-height:1.5;
+
+}
+
+input:focus,
+
+textarea:focus,
+
+select:focus{
+
+border-color:var(--pink);
+
+}
+
+.generate-button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:14px;
+
+background:
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+color:white;
+
+font-size:14px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+.generate-button:disabled{
+
+opacity:.5;
+
+cursor:not-allowed;
+
+}
+
+.result{
+
+display:none;
+
+margin-top:20px;
+
+padding:18px;
+
+border-radius:18px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+}
+
+.result.show{
+
+display:block;
+
+}
+
+.result-title{
+
+font-size:16px;
+
+margin-bottom:8px;
+
+}
+
+.progress{
+
+height:8px;
+
+border-radius:10px;
+
+overflow:hidden;
+
+background:#100f17;
+
+margin:15px 0;
+
+}
+
+.progress-bar{
+
+width:0%;
+
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+var(--pink),
+var(--purple)
+);
+
+transition:width .3s;
+
+}
+
+.result-text{
+
+color:var(--muted);
+
+font-size:12px;
+
+line-height:1.5;
+
+}
+
+.bottom-nav{
+
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+right:0;
+
+height:76px;
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:center;
+
+background:rgba(14,13,21,.96);
+
+border-top:1px solid var(--border);
+
+z-index:30;
+
+}
+
+.nav-item{
+
+color:var(--muted);
+
+text-decoration:none;
+
+text-align:center;
+
+font-size:10px;
+
+min-width:60px;
+
+}
+
+.nav-icon{
+
+display:block;
+
+font-size:21px;
+
+margin-bottom:4px;
+
+}
+
+.nav-item.active{
+
+color:var(--pink);
+
+}
+
+.toast{
+
+position:fixed;
+
+left:50%;
+
+bottom:95px;
+
+transform:translateX(-50%) translateY(20px);
+
+background:var(--surface2);
+
+border:1px solid var(--border);
+
+border-radius:13px;
+
+padding:13px 18px;
+
+font-size:12px;
+
+opacity:0;
+
+pointer-events:none;
+
+transition:.3s;
+
+z-index:100;
+
+white-space:nowrap;
+
+}
+
+.toast.show{
+
+opacity:1;
+
+transform:translateX(-50%) translateY(0);
+
+}
+
+</style></head><body><header class="header"><button
+class="back"
+onclick="history.back()"
+
+«»
+
+←
+
+</button><div class="logo">Reitoon
+
+</div><div class="header-space"></div></header><main class="container"><h1 class="title">AI <span>Studio</span>
+
+</h1><p class="subtitle">Buat gambar, video, karakter, suara, dan dunia film menggunakan teknologi AI.
+
+</p><section class="credit-card"><div class="credit-top"><div><div class="credit-label">Saldo Credit
+
+</div><div
+class="credit-value"
+id="creditBalance"
+>1.000
+
+</div></div><button
+class="topup-button"
+onclick="topUp()"
+
+«»
+
+＋ Top Up
+
+</button></div></section><h2 class="section-title">Pilih AI Tool
+
+</h2><div class="ai-grid"><div
+class="ai-card active"
+data-type="video"
+data-cost="200"
+onclick="selectAI(this)"
+><div class="ai-icon">🎬
+
+</div><h3>AI Video
+
+</h3><p>Buat video dari prompt atau gambar.
+
+</p><span class="cost">200 Credit
+
+</span></div><div
+class="ai-card"
+data-type="image"
+data-cost="50"
+onclick="selectAI(this)"
+><div class="ai-icon">🖼️
+
+</div><h3>AI Image
+
+</h3><p>Buat poster dan gambar karakter.
+
+</p><span class="cost">50 Credit
+
+</span></div><div
+class="ai-card"
+data-type="voice"
+data-cost="50"
+onclick="selectAI(this)"
+><div class="ai-icon">🎙️
+
+</div><h3>AI Voice
+
+</h3><p>Buat suara karakter dan narasi.
+
+</p><span class="cost">50 Credit
+
+</span></div><div
+class="ai-card"
+data-type="music"
+data-cost="50"
+onclick="selectAI(this)"
+><div class="ai-icon">🎵
+
+</div><h3>AI Music
+
+</h3><p>Buat musik original untuk film.
+
+</p><span class="cost">50 Credit
+
+</span></div></div><section class="form-card"><div class="form-group"><label>Judul Project
+
+</label><input
+type="text"
+id="projectTitle"
+placeholder="Contoh: Love Beyond Time"
+
+«»
+
+</div><div class="form-group"><label>Genre
+
+</label><select id="projectGenre"><option>Romance</option><option>Action</option><option>Drama</option><option>Fantasy</option><option>Comedy</option><option>Horror</option></select></div><div class="form-group"><label>Prompt AI
+
+</label><textarea
+id="prompt"
+placeholder="Deskripsikan film atau scene yang ingin kamu buat..."
+></textarea></div><button
+class="generate-button"
+id="generateButton"
+onclick="generateAI()"
+
+«»
+
+✨ Generate dengan 200 Credit
+
+</button></section><section
+class="result"
+id="result"
+><h2 class="result-title">🎬 AI sedang bekerja
+
+</h2><div class="progress"><div
+class="progress-bar"
+id="progressBar"
+></div></div><p
+class="result-text"
+id="resultText"
+>Mempersiapkan project...
+
+</p></section></main><nav class="bottom-nav"><a
+class="nav-item"
+href="index.html"
+
+«»
+
+<span class="nav-icon">🏠
+
+</span>Home
+
+</a><a
+class="nav-item"
+href="watch.html"
+
+«»
+
+<span class="nav-icon">▶️
+
+</span>Watch
+
+</a><a
+class="nav-item active"
+href="ai-studio.html"
+
+«»
+
+<span class="nav-icon">🤖
+
+</span>AI Studio
+
+</a><a
+class="nav-item"
+href="studio.html"
+
+«»
+
+<span class="nav-icon">🎥
+
+</span>Studio
+
+</a><a
+class="nav-item"
+href="profile.html"
+
+«»
+
+<span class="nav-icon">👤
+
+</span>Profile
+
+</a></nav><div
+class="toast"
+id="toast"
+></div><script>
+
+let selectedType="video";
+
+let selectedCost=200;
+
+let credit=
+parseInt(
+localStorage.getItem("reitoon_credit")
+) || 1000;
+
+document
+.getElementById("creditBalance")
+.textContent=
+credit.toLocaleString("id-ID");
+
+
+function selectAI(card){
+
+document
+.querySelectorAll(".ai-card")
+.forEach(function(item){
+
+item.classList.remove("active");
+
+});
+
+card.classList.add("active");
+
+selectedType=
+card.dataset.type;
+
+selectedCost=
+parseInt(card.dataset.cost);
+
+document
+.getElementById("generateButton")
+.textContent=
+"✨ Generate dengan "+
+selectedCost+
+" Credit";
+
+}
+
+
+function generateAI(){
+
+const title=
+document
+.getElementById("projectTitle")
+.value
+.trim();
+
+const genre=
+document
+.getElementById("projectGenre")
+.value;
+
+const prompt=
+document
+.getElementById("prompt")
+.value
+.trim();
+
+if(!title){
+
+showToast("Masukkan judul project");
+
+return;
+
+}
+
+if(!prompt){
+
+showToast("Masukkan prompt AI");
+
+return;
+
+}
+
+if(credit<selectedCost){
+
+showToast("Credit tidak cukup");
+
+return;
+
+}
+
+credit-=selectedCost;
+
+localStorage.setItem(
+"reitoon_credit",
+credit
+);
+
+document
+.getElementById("creditBalance")
+.textContent=
+credit.toLocaleString("id-ID");
+
+const result=
+document
+.getElementById("result");
+
+const progressBar=
+document
+.getElementById("progressBar");
+
+const resultText=
+document
+.getElementById("resultText");
+
+const button=
+document
+.getElementById("generateButton");
+
+result.classList.add("show");
+
+button.disabled=true;
+
+let progress=0;
+
+const interval=
+setInterval(function(){
+
+progress+=10;
+
+progressBar.style.width=
+progress+"%";
+
+if(progress<40){
+
+resultText.textContent=
+"AI sedang menganalisis prompt...";
+
+}
+
+else if(progress<70){
+
+resultText.textContent=
+"AI sedang membuat project...";
+
+}
+
+else if(progress<100){
+
+resultText.textContent=
+"Finishing hasil AI...";
+
+}
+
+else{
+
+clearInterval(interval);
+
+resultText.textContent=
+"✅ Project berhasil dibuat!";
+
+button.disabled=false;
+
+const project={
+
+title:title,
+
+genre:genre,
+
+prompt:prompt,
+
+type:selectedType,
+
+createdAt:new Date().toISOString()
+
+};
+
+localStorage.setItem(
+
+"reitoon_ai_project",
+
+JSON.stringify(project)
+
+);
+
+showToast(
+"✅ Project berhasil dibuat"
+);
+
+}
+
+},400);
+
+}
+
+
+function topUp(){
+
+showToast(
+"💳 Sistem Top Up segera terhubung"
+);
+
+}
+
+
+function showToast(message){
+
+const toast=
+document
+.getElementById("toast");
+
+toast.textContent=message;
+
+toast.classList.add("show");
+
+setTimeout(function(){
+
+toast.classList.remove("show");
+
+},2500);
+
+}
+
+</script></body>
+</html>
