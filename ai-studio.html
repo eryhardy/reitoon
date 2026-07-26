@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta
 name="viewport"
 content="width=device-width, initial-scale=1.0"
->
+
+«»
 
 <meta
 name="theme-color"
 content="#08070d"
->
 
-<title>AI Studio - Reitoon</title>
+«»
 
-<style>
+<title>AI Studio - Reitoon</title><style>
 
 *{
 box-sizing:border-box;
@@ -30,11 +23,14 @@ padding:0;
 --bg:#08070d;
 --surface:#191722;
 --surface-light:#211f2b;
+--surface-dark:#100f17;
 --text:#ffffff;
 --muted:#aaa3b0;
 --pink:#ff2f8d;
 --purple:#762dff;
 --green:#25d366;
+--yellow:#ffd35a;
+--red:#ff526d;
 --border:rgba(255,255,255,.10);
 
 }
@@ -69,6 +65,9 @@ sans-serif;
 padding-bottom:100px;
 
 }
+
+
+/* HEADER */
 
 .header{
 
@@ -151,9 +150,12 @@ font-size:11px;
 
 .credit-box strong{
 
-color:#ffd35a;
+color:var(--yellow);
 
 }
+
+
+/* MAIN */
 
 .container{
 
@@ -166,6 +168,9 @@ margin:auto;
 padding:24px 16px;
 
 }
+
+
+/* PROJECT */
 
 .project-header{
 
@@ -221,6 +226,117 @@ line-height:1.6;
 
 }
 
+
+/* BALANCE */
+
+.balance-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:10px;
+
+margin-bottom:20px;
+
+}
+
+.balance-card{
+
+padding:17px;
+
+border-radius:17px;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+}
+
+.balance-card span{
+
+display:block;
+
+font-size:10px;
+
+color:var(--muted);
+
+margin-bottom:8px;
+
+}
+
+.balance-card strong{
+
+font-size:20px;
+
+}
+
+.balance-card.credit strong{
+
+color:var(--yellow);
+
+}
+
+.balance-card.money strong{
+
+color:#8cffb1;
+
+}
+
+
+/* BUTTONS */
+
+.main-buttons{
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:10px;
+
+margin-bottom:20px;
+
+}
+
+.main-button{
+
+padding:14px 8px;
+
+border-radius:13px;
+
+border:1px solid var(--border);
+
+background:var(--surface);
+
+color:white;
+
+font-size:11px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+.main-button.primary{
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+border:none;
+
+}
+
+
+/* SECTION */
+
 .section-title{
 
 font-size:18px;
@@ -228,6 +344,9 @@ font-size:18px;
 margin:22px 0 12px;
 
 }
+
+
+/* AI GRID */
 
 .ai-grid{
 
@@ -261,6 +380,20 @@ transition:.2s;
 transform:translateY(-3px);
 
 border-color:var(--pink);
+
+}
+
+.ai-card.selected{
+
+border-color:var(--pink);
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,47,141,.12),
+rgba(118,45,255,.12)
+);
 
 }
 
@@ -302,11 +435,14 @@ border-radius:7px;
 
 background:rgba(255,211,90,.10);
 
-color:#ffd35a;
+color:var(--yellow);
 
 font-size:10px;
 
 }
+
+
+/* FORM */
 
 .form-card{
 
@@ -356,7 +492,7 @@ border:1px solid var(--border);
 
 outline:none;
 
-background:#100f17;
+background:var(--surface-dark);
 
 color:white;
 
@@ -420,6 +556,9 @@ cursor:not-allowed;
 
 }
 
+
+/* RESULT */
+
 .result-card{
 
 display:none;
@@ -482,9 +621,12 @@ font-size:12px;
 
 color:var(--muted);
 
-line-height:1.5;
+line-height:1.6;
 
 }
+
+
+/* HISTORY */
 
 .history-card{
 
@@ -572,6 +714,253 @@ border-radius:16px;
 
 }
 
+
+/* MODAL */
+
+.modal{
+
+display:none;
+
+position:fixed;
+
+inset:0;
+
+z-index:100;
+
+background:rgba(0,0,0,.75);
+
+align-items:flex-end;
+
+}
+
+.modal.show{
+
+display:flex;
+
+}
+
+.modal-content{
+
+width:100%;
+
+max-width:700px;
+
+margin:auto;
+
+max-height:90vh;
+
+overflow-y:auto;
+
+padding:22px 18px 30px;
+
+border-radius:24px 24px 0 0;
+
+background:var(--surface);
+
+border:1px solid var(--border);
+
+}
+
+.modal-title{
+
+font-size:20px;
+
+margin-bottom:20px;
+
+}
+
+.close-button{
+
+float:right;
+
+width:34px;
+
+height:34px;
+
+border-radius:10px;
+
+border:1px solid var(--border);
+
+background:var(--surface-light);
+
+color:white;
+
+cursor:pointer;
+
+}
+
+.payment-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:9px;
+
+margin-bottom:18px;
+
+}
+
+.payment-option{
+
+padding:14px 8px;
+
+border-radius:12px;
+
+border:1px solid var(--border);
+
+background:var(--surface-light);
+
+color:white;
+
+font-size:11px;
+
+cursor:pointer;
+
+text-align:center;
+
+}
+
+.payment-option.selected{
+
+border-color:var(--pink);
+
+background:
+
+rgba(255,47,141,.12);
+
+}
+
+.amount-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:8px;
+
+margin-bottom:15px;
+
+}
+
+.amount-button{
+
+padding:12px 5px;
+
+border-radius:10px;
+
+border:1px solid var(--border);
+
+background:var(--surface-light);
+
+color:white;
+
+font-size:11px;
+
+cursor:pointer;
+
+}
+
+.amount-button.selected{
+
+border-color:var(--pink);
+
+color:#ff8abc;
+
+}
+
+.modal-button{
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:12px;
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+color:white;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+.withdraw-info{
+
+padding:13px;
+
+border-radius:12px;
+
+background:rgba(255,211,90,.08);
+
+border:1px solid rgba(255,211,90,.2);
+
+color:#ffe6a0;
+
+font-size:11px;
+
+line-height:1.5;
+
+margin-bottom:16px;
+
+}
+
+
+/* TRANSACTIONS */
+
+.transaction{
+
+padding:14px 0;
+
+border-bottom:1px solid var(--border);
+
+display:flex;
+
+justify-content:space-between;
+
+font-size:11px;
+
+}
+
+.transaction:last-child{
+
+border-bottom:none;
+
+}
+
+.transaction span{
+
+color:var(--muted);
+
+}
+
+.transaction strong.plus{
+
+color:#8cffb1;
+
+}
+
+.transaction strong.minus{
+
+color:#ff8b9b;
+
+}
+
+
+/* NAV */
+
 .bottom-nav{
 
 position:fixed;
@@ -630,6 +1019,9 @@ color:var(--pink);
 
 }
 
+
+/* TOAST */
+
 .toast{
 
 position:fixed;
@@ -656,7 +1048,7 @@ pointer-events:none;
 
 transition:.3s;
 
-z-index:100;
+z-index:200;
 
 white-space:nowrap;
 
@@ -681,523 +1073,457 @@ repeat(2,1fr);
 
 }
 
-</style>
-
-</head>
-
-<body>
-
-
-<header class="header">
-
-<button
+</style></head><body><header class="header"><button
 class="back-button"
 onclick="goBack()"
->
+
+«»
 
 ←
 
-</button>
+</button><div class="logo">Reitoon
 
-<div class="logo">
+</div><div class="credit-box">💎 <strong id="creditBalance">0</strong>
 
-Reitoon
-
-</div>
-
-<div class="credit-box">
-
-💎 <strong id="creditBalance">100</strong>
-
-</div>
-
-</header>
-
-
-<main class="container">
-
-
-<section
+</div></header><main class="container"><section
 class="project-header"
-id="projectHeader"
->
+><div class="project-label">AI PROJECT
 
-<div class="project-label">
-
-AI PROJECT
-
-</div>
-
-<h1
+</div><h1
 class="project-title"
 id="projectTitle"
->
+>AI Studio
 
-AI Studio
-
-</h1>
-
-<p
+</h1><p
 class="project-description"
 id="projectDescription"
->
+>Buat film AI kamu di Reitoon.
 
-Buat film AI kamu di Reitoon.
+</p></section><section class="balance-grid"><div class="balance-card credit"><span>💎 Credit AI
 
-</p>
+</span><strong
+id="creditBalanceMain"
 
-</section>
+«»
 
+0
 
-<h2 class="section-title">
+</strong></div><div class="balance-card money"><span>💰 Saldo Pengguna
 
-✨ AI Tools
+</span><strong
+id="moneyBalance"
 
-</h2>
+«»
 
+Rp0
 
-<section class="ai-grid">
+</strong></div></section><div class="main-buttons"><button
+class="main-button primary"
+onclick="openTopup()"
 
+«»
 
-<div
+💳 Top Up Credit
+
+</button><button
+class="main-button"
+onclick="openWithdraw()"
+
+«»
+
+💸 Tarik Saldo
+
+</button></div><h2 class="section-title">✨ AI Tools
+
+</h2><section class="ai-grid"><div
 class="ai-card"
+data-tool="character"
 onclick="selectTool('character')"
->
+><div class="ai-icon">👤
 
-<div class="ai-icon">
+</div><h3>AI Character
 
-👤
+</h3><p>Buat karakter konsisten untuk film kamu.
 
-</div>
+</p><span class="ai-cost">💎 10 Credit
 
-<h3>
-
-AI Character
-
-</h3>
-
-<p>
-
-Buat karakter konsisten untuk film kamu.
-
-</p>
-
-<span class="ai-cost">
-
-💎 10 Credit
-
-</span>
-
-</div>
-
-
-<div
-class="ai-card"
+</span></div><div
+class="ai-card selected"
+data-tool="image"
 onclick="selectTool('image')"
->
+><div class="ai-icon">🖼️
 
-<div class="ai-icon">
+</div><h3>AI Image
 
-🖼️
+</h3><p>Buat gambar scene dan adegan film.
 
-</div>
+</p><span class="ai-cost">💎 15 Credit
 
-<h3>
-
-AI Image
-
-</h3>
-
-<p>
-
-Buat gambar scene dan adegan film.
-
-</p>
-
-<span class="ai-cost">
-
-💎 15 Credit
-
-</span>
-
-</div>
-
-
-<div
+</span></div><div
 class="ai-card"
+data-tool="video"
 onclick="selectTool('video')"
->
+><div class="ai-icon">🎬
 
-<div class="ai-icon">
+</div><h3>AI Video
 
-🎬
+</h3><p>Buat video dari prompt cerita.
 
-</div>
+</p><span class="ai-cost">💎 50 Credit
 
-<h3>
-
-AI Video
-
-</h3>
-
-<p>
-
-Buat video dari prompt cerita.
-
-</p>
-
-<span class="ai-cost">
-
-💎 50 Credit
-
-</span>
-
-</div>
-
-
-<div
+</span></div><div
 class="ai-card"
+data-tool="voice"
 onclick="selectTool('voice')"
->
+><div class="ai-icon">🎙️
 
-<div class="ai-icon">
+</div><h3>AI Voice
 
-🎙️
+</h3><p>Buat suara dan dialog karakter.
 
-</div>
+</p><span class="ai-cost">💎 10 Credit
 
-<h3>
+</span></div></section><section class="form-card"><div class="form-group"><label>Prompt AI
 
-AI Voice
-
-</h3>
-
-<p>
-
-Buat suara dan dialog karakter.
-
-</p>
-
-<span class="ai-cost">
-
-💎 10 Credit
-
-</span>
-
-</div>
-
-
-</section>
-
-
-<section
-class="form-card"
-id="formCard"
->
-
-
-<div class="form-group">
-
-<label>
-
-Prompt AI
-
-</label>
-
-<textarea
+</label><textarea
 id="promptInput"
 placeholder="Contoh: Seorang pria muda berdiri di tengah kota futuristik saat hujan..."
-></textarea>
+></textarea></div><div class="form-group"><label>Style
 
-</div>
-
-
-<div class="form-group">
-
-<label>
-
-Style
-
-</label>
-
-<select
+</label><select
 id="styleInput"
->
 
-<option>
+«»
 
-Cinematic
+<option>Cinematic
 
-</option>
+</option><option>Realistic
 
-<option>
+</option><option>Anime
 
-Realistic
+</option><option>Chinese Drama
 
-</option>
+</option><option>Fantasy
 
-<option>
+</option></select></div><div class="form-group"><label>Aspect Ratio
 
-Anime
-
-</option>
-
-<option>
-
-Chinese Drama
-
-</option>
-
-<option>
-
-Fantasy
-
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-
-Aspect Ratio
-
-</label>
-
-<select
+</label><select
 id="ratioInput"
->
 
-<option>
+«»
 
-16:9
+<option>16:9
 
-</option>
+</option><option>9:16
 
-<option>
+</option><option>1:1
 
-9:16
+</option><option>21:9
 
-</option>
-
-<option>
-
-1:1
-
-</option>
-
-<option>
-
-21:9
-
-</option>
-
-</select>
-
-</div>
-
-
-<button
+</option></select></div><button
 class="generate-button"
 id="generateButton"
 onclick="generateAI()"
->
 
-✨ Generate AI
+«»
 
-</button>
+✨ Generate AI • 15 Credit
 
-</section>
-
-
-<section
+</button></section><section
 class="result-card"
 id="resultCard"
->
-
-<div
+><div
 class="result-preview"
 id="resultPreview"
->
+>✨
 
-✨
-
-</div>
-
-<h3
+</div><h3
 class="result-title"
 id="resultTitle"
->
+>AI Result
 
-AI Result
-
-</h3>
-
-<p
+</h3><p
 class="result-text"
 id="resultText"
->
+>Hasil AI akan muncul di sini.
 
-Hasil AI akan muncul di sini.
+</p></section><h2 class="section-title">🕘 Riwayat AI
 
-</p>
-
-</section>
-
-
-<h2 class="section-title">
-
-🕘 Riwayat AI
-
-</h2>
-
-
-<section
+</h2><section
 id="historyContainer"
->
+><div class="empty">Belum ada hasil AI.
 
-<div class="empty">
+</div></section><h2 class="section-title">💳 Riwayat Transaksi
 
-Belum ada hasil AI.
+</h2><section
+id="transactionContainer"
+><div class="empty">Belum ada transaksi.
 
-</div>
-
-</section>
-
-
-</main>
-
-
-<nav class="bottom-nav">
-
-
-<a
+</div></section></main><nav class="bottom-nav"><a
 class="nav-item"
 href="index.html"
->
 
-<span class="nav-icon">
+«»
 
-🏠
+<span class="nav-icon">🏠
 
-</span>
+</span>Home
 
-Home
-
-</a>
-
-
-<a
+</a><a
 class="nav-item"
 href="watch.html"
->
 
-<span class="nav-icon">
+«»
 
-▶️
+<span class="nav-icon">▶️
 
-</span>
+</span>Watch
 
-Watch
-
-</a>
-
-
-<a
+</a><a
 class="nav-item"
 href="create.html"
->
 
-<span class="nav-icon">
+«»
 
-✨
+<span class="nav-icon">✨
 
-</span>
+</span>Create
 
-Create
-
-</a>
-
-
-<a
+</a><a
 class="nav-item active"
 href="studio.html"
->
 
-<span class="nav-icon">
+«»
 
-🎥
+<span class="nav-icon">🎥
 
-</span>
+</span>Studio
 
-Studio
-
-</a>
-
-
-<a
+</a><a
 class="nav-item"
 href="profile.html"
->
 
-<span class="nav-icon">
+«»
 
-👤
+<span class="nav-icon">👤
 
-</span>
+</span>Profile
 
-Profile
+</a></nav><!-- TOPUP MODAL --><div
+class="modal"
+id="topupModal"
+><div class="modal-content"><button
+class="close-button"
+onclick="closeModal('topupModal')"
 
-</a>
+«»
 
+×
+</button>
 
-</nav>
+<h2 class="modal-title">💳 Top Up Credit
 
+</h2><div class="form-group"><label>Pilih jumlah Credit
 
-<div
+</label><div class="amount-grid"><button
+class="amount-button"
+onclick="selectCredit(100)"
+
+«»
+
+100 Credit
+
+</button><button
+class="amount-button"
+onclick="selectCredit(500)"
+
+«»
+
+500 Credit
+
+</button><button
+class="amount-button"
+onclick="selectCredit(1000)"
+
+«»
+
+1.000 Credit
+
+</button><button
+class="amount-button"
+onclick="selectCredit(5000)"
+
+«»
+
+5.000 Credit
+
+</button><button
+class="amount-button"
+onclick="selectCredit(10000)"
+
+«»
+
+10.000 Credit
+
+</button><button
+class="amount-button"
+onclick="selectCredit(50000)"
+
+«»
+
+50.000 Credit
+
+</button></div></div><div class="form-group"><label>Metode Pembayaran
+
+</label><div class="payment-grid"><button
+class="payment-option"
+onclick="selectPayment(this,'Bank Indonesia')"
+
+«»
+
+🏦 Bank Indonesia
+
+</button><button
+class="payment-option"
+onclick="selectPayment(this,'DANA')"
+
+«»
+
+💙 DANA
+
+</button><button
+class="payment-option"
+onclick="selectPayment(this,'GoPay')"
+
+«»
+
+💚 GoPay
+
+</button><button
+class="payment-option"
+onclick="selectPayment(this,'OVO')"
+
+«»
+
+💜 OVO
+
+</button><button
+class="payment-option"
+onclick="selectPayment(this,'ShopeePay')"
+
+«»
+
+🟠 ShopeePay
+
+</button><button
+class="payment-option"
+onclick="selectPayment(this,'Indomaret')"
+
+«»
+
+🏪 Indomaret
+
+</button><button
+class="payment-option"
+onclick="selectPayment(this,'Alfamart')"
+
+«»
+
+🏪 Alfamart
+
+</button><button
+class="payment-option"
+onclick="selectPayment(this,'Kartu Kredit')"
+
+«»
+
+💳 Kartu Kredit
+
+</button></div></div><button
+class="modal-button"
+onclick="processTopup()"
+
+«»
+
+Lanjutkan Pembayaran
+
+</button></div></div><!-- WITHDRAW MODAL --><div
+class="modal"
+id="withdrawModal"
+><div class="modal-content"><button
+class="close-button"
+onclick="closeModal('withdrawModal')"
+
+«»
+
+×
+</button>
+
+<h2 class="modal-title">💸 Tarik Saldo
+
+</h2><div class="withdraw-info">Minimum penarikan adalah <strong>Rp100.000</strong>.
+
+Pastikan data rekening atau e-wallet kamu benar.
+
+</div><div class="form-group"><label>Jumlah Penarikan
+
+</label><input
+type="number"
+id="withdrawAmount"
+placeholder="Contoh: 100000"
+
+«»
+
+</div><div class="form-group"><label>Metode Penarikan
+
+</label><select
+id="withdrawMethod"
+
+«»
+
+<option>Bank Indonesia
+
+</option><option>DANA
+
+</option><option>GoPay
+
+</option><option>OVO
+
+</option><option>ShopeePay
+
+</option></select></div><div class="form-group"><label>Nomor Rekening / Nomor E-Wallet
+
+</label><input
+type="text"
+id="withdrawAccount"
+placeholder="Masukkan nomor tujuan"
+
+«»
+
+</div><button
+class="modal-button"
+onclick="processWithdraw()"
+
+«»
+
+Ajukan Penarikan
+
+</button></div></div><div
 class="toast"
 id="toast"
->
-
-</div>
+></div><script>
 
 
-<script>
+/* =========================
+   DATA
+========================= */
 
 
 let selectedTool="image";
 
-let credits=
+let selectedCredit=0;
 
-Number(
-
-localStorage.getItem(
-"reitoon_credits"
-)
-
-);
-
-
-if(
-
-isNaN(credits)
-
-){
-
-credits=100;
-
-localStorage.setItem(
-
-"reitoon_credits",
-
-credits
-
-);
-
-}
+let selectedPayment="";
 
 
 const toolData={
@@ -1245,7 +1571,70 @@ cost:10
 };
 
 
-/* LOAD PROJECT */
+let credits=
+
+Number(
+
+localStorage.getItem(
+"reitoon_credits"
+)
+
+);
+
+
+if(
+
+isNaN(credits)
+
+){
+
+credits=100;
+
+localStorage.setItem(
+
+"reitoon_credits",
+
+credits
+
+);
+
+}
+
+
+let balance=
+
+Number(
+
+localStorage.getItem(
+"reitoon_balance"
+)
+
+);
+
+
+if(
+
+isNaN(balance)
+
+){
+
+balance=0;
+
+localStorage.setItem(
+
+"reitoon_balance",
+
+balance
+
+);
+
+}
+
+
+/* =========================
+   PROJECT
+========================= */
+
 
 function loadProject(){
 
@@ -1291,12 +1680,83 @@ story.description
 }
 
 
-/* SELECT TOOL */
+/* =========================
+   CREDIT
+========================= */
+
+
+function updateCredits(){
+
+document
+.getElementById(
+"creditBalance"
+)
+.textContent=
+credits;
+
+
+document
+.getElementById(
+"creditBalanceMain"
+)
+.textContent=
+credits;
+
+}
+
+
+function updateBalance(){
+
+document
+.getElementById(
+"moneyBalance"
+)
+.textContent=
+
+formatRupiah(balance);
+
+}
+
+
+/* =========================
+   TOOL
+========================= */
+
 
 function selectTool(tool){
 
 selectedTool=
 tool;
+
+
+document
+.querySelectorAll(
+".ai-card"
+)
+.forEach(function(card){
+
+card.classList.remove(
+"selected"
+);
+
+});
+
+
+const selectedCard=
+
+document
+.querySelector(
+'[data-tool="'+tool+'"]'
+);
+
+
+if(selectedCard){
+
+selectedCard.classList.add(
+"selected"
+);
+
+}
 
 
 const data=
@@ -1315,20 +1775,13 @@ data.name+
 data.cost+
 " Credit";
 
-
-showToast(
-
-data.icon+
-" "+
-data.name+
-" dipilih"
-
-);
-
 }
 
 
-/* GENERATE */
+/* =========================
+   GENERATE AI
+========================= */
+
 
 function generateAI(){
 
@@ -1361,7 +1814,7 @@ if(credits < data.cost){
 
 showToast(
 
-"❌ Credit tidak cukup"
+"❌ Credit tidak cukup. Silakan Top Up."
 
 );
 
@@ -1370,8 +1823,7 @@ return;
 }
 
 
-credits-=
-data.cost;
+credits-=data.cost;
 
 
 localStorage.setItem(
@@ -1405,9 +1857,7 @@ button.textContent=
 setTimeout(function(){
 
 
-const result=
-
-{
+const result={
 
 type:selectedTool,
 
@@ -1439,6 +1889,16 @@ date:new Date()
 
 saveHistory(result);
 
+saveTransaction(
+
+"Penggunaan "+
+data.name,
+
+-data.cost,
+
+"Credit"
+
+);
 
 showResult(result);
 
@@ -1468,7 +1928,10 @@ showToast(
 }
 
 
-/* SHOW RESULT */
+/* =========================
+   RESULT
+========================= */
+
 
 function showResult(result){
 
@@ -1517,7 +1980,10 @@ result.ratio;
 }
 
 
-/* SAVE HISTORY */
+/* =========================
+   AI HISTORY
+========================= */
+
 
 function saveHistory(result){
 
@@ -1548,8 +2014,6 @@ loadHistory();
 
 }
 
-
-/* LOAD HISTORY */
 
 function loadHistory(){
 
@@ -1641,21 +2105,460 @@ ${item.date}
 }
 
 
-/* UPDATE CREDIT */
+/* =========================
+   TOPUP
+========================= */
 
-function updateCredits(){
+
+function openTopup(){
 
 document
 .getElementById(
-"creditBalance"
+"topupModal"
 )
-.textContent=
-credits;
+.classList.add(
+"show"
+);
 
 }
 
 
-/* TOAST */
+function selectCredit(amount){
+
+selectedCredit=
+amount;
+
+
+document
+.querySelectorAll(
+".amount-button"
+)
+.forEach(function(button){
+
+button.classList.remove(
+"selected"
+);
+
+});
+
+
+event.target.classList.add(
+"selected"
+);
+
+}
+
+
+function selectPayment(button,payment){
+
+selectedPayment=
+payment;
+
+
+document
+.querySelectorAll(
+".payment-option"
+)
+.forEach(function(option){
+
+option.classList.remove(
+"selected"
+);
+
+});
+
+
+button.classList.add(
+"selected"
+);
+
+}
+
+
+function processTopup(){
+
+if(!selectedCredit){
+
+showToast(
+"⚠️ Pilih jumlah Credit"
+);
+
+return;
+
+}
+
+
+if(!selectedPayment){
+
+showToast(
+"⚠️ Pilih metode pembayaran"
+);
+
+return;
+
+}
+
+
+/*
+
+SIMULASI PEMBAYARAN
+
+*/
+
+credits+=selectedCredit;
+
+
+localStorage.setItem(
+
+"reitoon_credits",
+
+credits
+
+);
+
+
+saveTransaction(
+
+"Top Up "+selectedCredit+" Credit",
+
+selectedCredit,
+
+selectedPayment
+
+);
+
+
+updateCredits();
+
+
+closeModal(
+"topupModal"
+);
+
+
+showToast(
+
+"✅ Top Up berhasil. Credit ditambahkan."
+
+);
+
+
+selectedCredit=0;
+
+selectedPayment="";
+
+}
+
+
+/* =========================
+   WITHDRAW
+========================= */
+
+
+function openWithdraw(){
+
+document
+.getElementById(
+"withdrawModal"
+)
+.classList.add(
+"show"
+);
+
+}
+
+
+function processWithdraw(){
+
+const amount=
+
+Number(
+
+document
+.getElementById(
+"withdrawAmount"
+)
+.value
+
+);
+
+
+const method=
+
+document
+.getElementById(
+"withdrawMethod"
+)
+.value;
+
+
+const account=
+
+document
+.getElementById(
+"withdrawAccount"
+)
+.value
+.trim();
+
+
+if(amount < 100000){
+
+showToast(
+
+"❌ Minimum penarikan adalah Rp100.000"
+
+);
+
+return;
+
+}
+
+
+if(amount > balance){
+
+showToast(
+
+"❌ Saldo tidak mencukupi"
+
+);
+
+return;
+
+}
+
+
+if(!account){
+
+showToast(
+
+"⚠️ Masukkan nomor rekening atau e-wallet"
+
+);
+
+return;
+
+}
+
+
+balance-=amount;
+
+
+localStorage.setItem(
+
+"reitoon_balance",
+
+balance
+
+);
+
+
+saveTransaction(
+
+"Penarikan Saldo",
+
+-amount,
+
+method
+
+);
+
+
+updateBalance();
+
+
+closeModal(
+"withdrawModal"
+);
+
+
+showToast(
+
+"✅ Permintaan penarikan berhasil dibuat"
+
+);
+
+}
+
+
+/* =========================
+   TRANSACTION
+========================= */
+
+
+function saveTransaction(
+title,
+amount,
+method
+){
+
+let transactions=
+
+JSON.parse(
+
+localStorage.getItem(
+"reitoon_transactions"
+)
+
+)||[];
+
+
+transactions.unshift({
+
+title:title,
+
+amount:amount,
+
+method:method,
+
+date:new Date()
+.toLocaleString(
+"id-ID"
+)
+
+});
+
+
+localStorage.setItem(
+
+"reitoon_transactions",
+
+JSON.stringify(transactions)
+
+);
+
+
+loadTransactions();
+
+}
+
+
+function loadTransactions(){
+
+const container=
+
+document
+.getElementById(
+"transactionContainer"
+);
+
+
+const transactions=
+
+JSON.parse(
+
+localStorage.getItem(
+"reitoon_transactions"
+)
+
+)||[];
+
+
+if(!transactions.length){
+
+container.innerHTML=
+
+`
+
+<div class="empty">
+
+Belum ada transaksi.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+container.innerHTML=
+
+transactions
+.slice(0,10)
+.map(function(item){
+
+const positive=
+item.amount>=0;
+
+
+return`
+
+<div class="transaction">
+
+<span>
+
+${item.title}
+
+<br>
+
+${item.method}
+
+</span>
+
+<strong
+class="${positive?'plus':'minus'}"
+>
+
+${positive?'+':''}${item.amount}
+
+</strong>
+
+</div>
+
+`;
+
+})
+.join("");
+
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+
+function closeModal(id){
+
+document
+.getElementById(id)
+.classList.remove(
+"show"
+);
+
+}
+
+
+/* =========================
+   RUPIAH
+========================= */
+
+
+function formatRupiah(number){
+
+return new Intl.NumberFormat(
+"id-ID",
+{
+
+style:"currency",
+
+currency:"IDR",
+
+maximumFractionDigits:0
+
+}
+
+).format(number);
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
 
 function showToast(message){
 
@@ -1687,7 +2590,10 @@ toast.classList.remove(
 }
 
 
-/* BACK */
+/* =========================
+   BACK
+========================= */
+
 
 function goBack(){
 
@@ -1705,16 +2611,18 @@ window.location.href=
 }
 
 
+/* INIT */
+
 loadProject();
 
 updateCredits();
 
+updateBalance();
+
 loadHistory();
+
+loadTransactions();
 
 selectTool("image");
 
-</script>
-
-</body>
-
-</html>
+</script></body></html>
