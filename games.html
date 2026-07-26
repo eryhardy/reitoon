@@ -1,0 +1,977 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reitoon Games</title><style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #07110d;
+  color: white;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+header {
+  background: linear-gradient(135deg, #0c2118, #102e20);
+  padding: 18px 16px;
+  border-bottom: 1px solid #244d36;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+  color: #d9ff69;
+}
+
+.logo span {
+  color: #e9c85a;
+}
+
+.profile-mini {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d9ff69, #e9c85a);
+  color: #0b1b12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 16px;
+}
+
+.balance-card {
+  background: linear-gradient(135deg, #132e20, #1d3d29);
+  border: 1px solid #426d45;
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+}
+
+.balance-title {
+  color: #a7bda8;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.balance {
+  font-size: 30px;
+  font-weight: bold;
+  color: #e9c85a;
+}
+
+.balance small {
+  font-size: 13px;
+  color: #c7d7c5;
+}
+
+.point-box {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #385b40;
+  display: flex;
+  justify-content: space-between;
+}
+
+.point-value {
+  color: #d9ff69;
+  font-weight: bold;
+}
+
+.section-title {
+  font-size: 20px;
+  margin: 24px 0 12px;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.game-card {
+  min-height: 150px;
+  border-radius: 20px;
+  padding: 16px;
+  cursor: pointer;
+  border: 1px solid #365b3e;
+  transition: .2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card:active {
+  transform: scale(.97);
+}
+
+.game-card h3 {
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+.game-card p {
+  color: #b9c8b8;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.game-icon {
+  font-size: 38px;
+}
+
+.spin-card {
+  background: linear-gradient(135deg, #173c28, #6c5422);
+}
+
+.quiz-card {
+  background: linear-gradient(135deg, #192c4c, #253d65);
+}
+
+.billiard-card {
+  background: linear-gradient(135deg, #103c35, #154e43);
+}
+
+.duel-card {
+  background: linear-gradient(135deg, #3c1e35, #64294a);
+}
+
+.panel {
+  display: none;
+  background: #0d1d14;
+  border: 1px solid #2c5137;
+  border-radius: 22px;
+  padding: 18px;
+  margin-top: 18px;
+}
+
+.panel.active {
+  display: block;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.close-btn {
+  border: none;
+  background: #233b2b;
+  color: white;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.spin-wheel {
+  width: 240px;
+  height: 240px;
+  margin: 20px auto;
+  border-radius: 50%;
+  border: 10px solid #e9c85a;
+  background: conic-gradient(
+    #d9ff69 0deg 45deg,
+    #1e5135 45deg 90deg,
+    #e9c85a 90deg 135deg,
+    #24643e 135deg 180deg,
+    #d9ff69 180deg 225deg,
+    #1e5135 225deg 270deg,
+    #e9c85a 270deg 315deg,
+    #24643e 315deg 360deg
+  );
+  position: relative;
+  transition: transform 3s cubic-bezier(.17,.67,.15,1);
+  box-shadow: 0 0 30px rgba(233,200,90,.2);
+}
+
+.spin-wheel::after {
+  content: "REITOON";
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  background: #102519;
+  border: 5px solid #e9c85a;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: bold;
+  color: #d9ff69;
+}
+
+.pointer {
+  text-align: center;
+  font-size: 32px;
+  color: #e9c85a;
+  margin-bottom: -12px;
+  position: relative;
+  z-index: 2;
+}
+
+.action-btn {
+  width: 100%;
+  border: none;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #d9ff69, #e9c85a);
+  color: #142417;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.action-btn:disabled {
+  opacity: .5;
+}
+
+.secondary-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 13px;
+  border: 1px solid #557b59;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.quiz-question {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 18px 0;
+}
+
+.answer {
+  width: 100%;
+  background: #172b1d;
+  border: 1px solid #3c6545;
+  color: white;
+  padding: 13px;
+  border-radius: 12px;
+  margin-top: 9px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.answer:hover {
+  background: #284c32;
+}
+
+.result {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.billiard-table {
+  height: 260px;
+  background: #145342;
+  border: 15px solid #704c2a;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.ball {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.white-ball {
+  background: white;
+  bottom: 35px;
+  left: 45px;
+}
+
+.red-ball {
+  background: #d94e4e;
+  top: 65px;
+  right: 70px;
+}
+
+.yellow-ball {
+  background: #e7c94b;
+  top: 100px;
+  right: 110px;
+}
+
+.blue-ball {
+  background: #4d7ed9;
+  top: 135px;
+  right: 80px;
+}
+
+.pocket {
+  width: 30px;
+  height: 30px;
+  background: #06100a;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.p1 { top: -10px; left: -10px; }
+.p2 { top: -10px; right: -10px; }
+.p3 { bottom: -10px; left: -10px; }
+.p4 { bottom: -10px; right: -10px; }
+
+.transfer-box {
+  background: #14271a;
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 12px;
+}
+
+input, select {
+  width: 100%;
+  padding: 13px;
+  margin-top: 9px;
+  border-radius: 10px;
+  border: 1px solid #426448;
+  background: #0b170f;
+  color: white;
+  outline: none;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid #294632;
+  font-size: 13px;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.positive {
+  color: #d9ff69;
+}
+
+.negative {
+  color: #ff8b8b;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: #0b1910;
+  border-top: 1px solid #2b4c32;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 20;
+}
+
+.nav-item {
+  text-align: center;
+  color: #809782;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.nav-item.active {
+  color: #d9ff69;
+}
+
+.nav-icon {
+  display: block;
+  font-size: 21px;
+  margin-bottom: 3px;
+}
+
+.notice {
+  background: #182c1d;
+  border-left: 3px solid #d9ff69;
+  padding: 12px;
+  border-radius: 10px;
+  color: #b8c9b8;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 15px;
+}
+
+@media (min-width: 700px) {
+  .container {
+    max-width: 700px;
+  }
+}
+</style></head><body><header>
+  <div class="header-top">
+    <div class="logo">REI<span>TOON</span></div>
+    <div class="profile-mini">R</div>
+  </div>
+</header><main class="container">  <section class="balance-card">
+    <div class="balance-title">CREDIT TERSEDIA</div>
+    <div class="balance">
+      <span id="credit">1.000</span>
+      <small> Credit</small>
+    </div><div class="point-box">
+  <span>🏆 Total Point</span>
+  <span class="point-value" id="points">250</span>
+</div>
+
+  </section>  <h2 class="section-title">🎮 Reitoon Games</h2>  <div class="games-grid"><div class="game-card spin-card" onclick="openGame('spinPanel')">
+  <div class="game-icon">🎡</div>
+  <h3>Spin Reward</h3>
+  <p>Gunakan Credit dan dapatkan Point</p>
+</div>
+
+<div class="game-card quiz-card" onclick="openGame('quizPanel')">
+  <div class="game-icon">🧠</div>
+  <h3>Quiz Challenge</h3>
+  <p>Uji pengetahuan dan kumpulkan Point</p>
+</div>
+
+<div class="game-card billiard-card" onclick="openGame('billiardPanel')">
+  <div class="game-icon">🎱</div>
+  <h3>Mini Billiard</h3>
+  <p>Permainan berbasis skill</p>
+</div>
+
+<div class="game-card duel-card" onclick="openGame('duelPanel')">
+  <div class="game-icon">⚔️</div>
+  <h3>Skill Duel</h3>
+  <p>Tantang pemain lain</p>
+</div>
+
+  </div>  <div class="notice">
+    💡 <b>Info:</b> Credit digunakan untuk mengakses permainan dan dapat dikirim ke pengguna lain. Point merupakan reward permainan dan tidak dapat dikirim ke pengguna lain.
+  </div>  <!-- SPIN PANEL -->  <section id="spinPanel" class="panel"><div class="panel-header">
+  <h2>🎡 Spin Reward</h2>
+  <button class="close-btn" onclick="closeGames()">×</button>
+</div>
+
+<p style="color:#aebfaf;font-size:13px;">
+  Biaya bermain: <b style="color:#e9c85a;">50 Credit</b>
+</p>
+
+<div class="pointer">▼</div>
+<div class="spin-wheel" id="wheel"></div>
+
+<button class="action-btn" id="spinButton" onclick="spinWheel()">
+  SPIN SEKARANG — 50 CREDIT
+</button>
+
+<div id="spinResult" class="result"></div>
+
+  </section>  <!-- QUIZ PANEL -->  <section id="quizPanel" class="panel"><div class="panel-header">
+  <h2>🧠 Quiz Challenge</h2>
+  <button class="close-btn" onclick="closeGames()">×</button>
+</div>
+
+<p style="color:#aebfaf;font-size:13px;">
+  Jawab pertanyaan dengan benar untuk mendapatkan Point.
+</p>
+
+<div class="quiz-question" id="question">
+  Loading...
+</div>
+
+<div id="answers"></div>
+
+<div id="quizResult" class="result"></div>
+
+  </section>  <!-- BILLIARD PANEL -->  <section id="billiardPanel" class="panel"><div class="panel-header">
+  <h2>🎱 Mini Billiard</h2>
+  <button class="close-btn" onclick="closeGames()">×</button>
+</div>
+
+<p style="color:#aebfaf;font-size:13px;">
+  Klik bola target untuk mendapatkan Point.
+</p>
+
+<div class="billiard-table">
+
+  <div class="pocket p1"></div>
+  <div class="pocket p2"></div>
+  <div class="pocket p3"></div>
+  <div class="pocket p4"></div>
+
+  <div class="ball white-ball"></div>
+
+  <div class="ball red-ball" onclick="hitBall(this, 30)"></div>
+  <div class="ball yellow-ball" onclick="hitBall(this, 50)"></div>
+  <div class="ball blue-ball" onclick="hitBall(this, 20)"></div>
+
+</div>
+
+<div id="billiardResult" class="result"></div>
+
+<button class="secondary-btn" onclick="resetBilliard()">
+  🔄 Reset Permainan
+</button>
+
+  </section>  <!-- DUEL PANEL -->  <section id="duelPanel" class="panel"><div class="panel-header">
+  <h2>⚔️ Skill Duel</h2>
+  <button class="close-btn" onclick="closeGames()">×</button>
+</div>
+
+<p style="color:#aebfaf;font-size:13px;line-height:1.5;">
+  Tantang pemain lain dalam kompetisi berbasis skill. Pemenang mendapatkan Point berdasarkan hasil permainan.
+</p>
+
+<div class="transfer-box">
+
+  <label>Pilih pemain</label>
+
+  <select id="opponent">
+    <option>Andi</option>
+    <option>Budi</option>
+    <option>Sinta</option>
+    <option>Dimas</option>
+  </select>
+
+  <button class="action-btn" onclick="startDuel()">
+    ⚔️ MULAI DUEL
+  </button>
+
+</div>
+
+<div id="duelResult" class="result"></div>
+
+  </section>  <!-- TRANSFER CREDIT -->  <section class="panel" id="transferPanel"><div class="panel-header">
+  <h2>🔁 Kirim Credit</h2>
+  <button class="close-btn" onclick="closeGames()">×</button>
+</div>
+
+<div class="transfer-box">
+
+  <label>Pilih penerima</label>
+
+  <select id="receiver">
+    <option>Andi</option>
+    <option>Budi</option>
+    <option>Sinta</option>
+    <option>Dimas</option>
+  </select>
+
+  <label style="display:block;margin-top:15px;">
+    Jumlah Credit
+  </label>
+
+  <input type="number" id="transferAmount" placeholder="Contoh: 100">
+
+  <button class="action-btn" onclick="transferCredit()">
+    KIRIM CREDIT
+  </button>
+
+</div>
+
+<div id="transferResult" class="result"></div>
+
+  </section>  <!-- HISTORY -->  <section class="panel" id="historyPanel"><div class="panel-header">
+  <h2>📜 Riwayat</h2>
+  <button class="close-btn" onclick="closeGames()">×</button>
+</div>
+
+<div id="historyList"></div>
+
+  </section></main><nav class="bottom-nav">  <div class="nav-item" onclick="goHome()">
+    <span class="nav-icon">🏠</span>
+    Home
+  </div>  <div class="nav-item active" onclick="goHome()">
+    <span class="nav-icon">🎮</span>
+    Games
+  </div>  <div class="nav-item" onclick="openGame('transferPanel')">
+    <span class="nav-icon">🔁</span>
+    Transfer
+  </div>  <div class="nav-item" onclick="openGame('historyPanel')">
+    <span class="nav-icon">📜</span>
+    Riwayat
+  </div></nav><script>
+
+let credit = Number(localStorage.getItem("reitoonCredit")) || 1000;
+let points = Number(localStorage.getItem("reitoonPoints")) || 250;
+let history = JSON.parse(localStorage.getItem("reitoonHistory")) || [];
+
+function updateBalance() {
+  document.getElementById("credit").innerText = credit.toLocaleString("id-ID");
+  document.getElementById("points").innerText = points.toLocaleString("id-ID");
+
+  localStorage.setItem("reitoonCredit", credit);
+  localStorage.setItem("reitoonPoints", points);
+}
+
+function openGame(id) {
+
+  closeGames();
+
+  document.getElementById(id).classList.add("active");
+
+  if (id === "quizPanel") {
+    loadQuiz();
+  }
+
+  if (id === "historyPanel") {
+    loadHistory();
+  }
+
+  window.scrollTo({
+    top: document.getElementById(id).offsetTop - 80,
+    behavior: "smooth"
+  });
+}
+
+function closeGames() {
+
+  document.querySelectorAll(".panel").forEach(panel => {
+    panel.classList.remove("active");
+  });
+
+}
+
+function goHome() {
+
+  closeGames();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+function addHistory(text, amount, type = "point") {
+
+  history.unshift({
+    text: text,
+    amount: amount,
+    type: type,
+    date: new Date().toLocaleString("id-ID")
+  });
+
+  if (history.length > 20) {
+    history.pop();
+  }
+
+  localStorage.setItem("reitoonHistory", JSON.stringify(history));
+
+}
+
+function spinWheel() {
+
+  if (credit < 50) {
+
+    document.getElementById("spinResult").innerText =
+      "❌ Credit tidak cukup.";
+
+    return;
+
+  }
+
+  credit -= 50;
+
+  updateBalance();
+
+  const wheel = document.getElementById("wheel");
+
+  const randomRotation = 1440 + Math.floor(Math.random() * 360);
+
+  wheel.style.transform =
+    `rotate(${randomRotation}deg)`;
+
+  document.getElementById("spinButton").disabled = true;
+
+  setTimeout(() => {
+
+    const rewards = [10, 20, 30, 50, 75, 100];
+
+    const reward =
+      rewards[Math.floor(Math.random() * rewards.length)];
+
+    points += reward;
+
+    updateBalance();
+
+    addHistory(`Spin Reward +${reward} Point`, reward);
+
+    document.getElementById("spinResult").innerHTML =
+      `🎉 Kamu mendapatkan <b>+${reward} Point</b>!`;
+
+    document.getElementById("spinButton").disabled = false;
+
+  }, 3000);
+
+}
+
+const quizData = [
+
+  {
+    question: "Apa fungsi utama Credit di Reitoon?",
+    answers: [
+      "Dapat dikirim dan digunakan untuk bermain",
+      "Dapat langsung ditukar uang",
+      "Tidak memiliki fungsi"
+    ],
+    correct: 0
+  },
+
+  {
+    question: "Apa yang bisa diperoleh dari permainan?",
+    answers: [
+      "Point Reward",
+      "Uang tunai otomatis",
+      "Data pribadi"
+    ],
+    correct: 0
+  },
+
+  {
+    question: "Game mana yang berbasis skill?",
+    answers: [
+      "Mini Billiard",
+      "Transfer Credit",
+      "Profile"
+    ],
+    correct: 0
+  }
+
+];
+
+let currentQuiz = 0;
+
+function loadQuiz() {
+
+  const quiz = quizData[currentQuiz];
+
+  document.getElementById("question").innerText =
+    quiz.question;
+
+  const answersBox =
+    document.getElementById("answers");
+
+  answersBox.innerHTML = "";
+
+  quiz.answers.forEach((answer, index) => {
+
+    const button =
+      document.createElement("button");
+
+    button.className = "answer";
+
+    button.innerText = answer;
+
+    button.onclick = () =>
+      answerQuiz(index);
+
+    answersBox.appendChild(button);
+
+  });
+
+  document.getElementById("quizResult").innerText = "";
+
+}
+
+function answerQuiz(index) {
+
+  const quiz = quizData[currentQuiz];
+
+  if (index === quiz.correct) {
+
+    points += 25;
+
+    updateBalance();
+
+    addHistory("Quiz Challenge +25 Point", 25);
+
+    document.getElementById("quizResult").innerText =
+      "✅ Benar! +25 Point";
+
+  } else {
+
+    document.getElementById("quizResult").innerText =
+      "❌ Jawaban kurang tepat.";
+
+  }
+
+  setTimeout(() => {
+
+    currentQuiz++;
+
+    if (currentQuiz >= quizData.length) {
+      currentQuiz = 0;
+    }
+
+    loadQuiz();
+
+  }, 1200);
+
+}
+
+function hitBall(ball, reward) {
+
+  ball.style.display = "none";
+
+  points += reward;
+
+  updateBalance();
+
+  addHistory(`Mini Billiard +${reward} Point`, reward);
+
+  document.getElementById("billiardResult").innerText =
+    `🎉 Bagus! +${reward} Point`;
+
+}
+
+function resetBilliard() {
+
+  document.querySelectorAll(".ball").forEach(ball => {
+
+    ball.style.display = "block";
+
+  });
+
+  document.getElementById("billiardResult").innerText =
+    "";
+
+}
+
+function startDuel() {
+
+  const opponent =
+    document.getElementById("opponent").value;
+
+  const reward =
+    Math.floor(Math.random() * 51) + 25;
+
+  points += reward;
+
+  updateBalance();
+
+  addHistory(`Menang Skill Duel melawan ${opponent}`, reward);
+
+  document.getElementById("duelResult").innerText =
+    `🏆 Kamu menang melawan ${opponent}! +${reward} Point`;
+
+}
+
+function transferCredit() {
+
+  const receiver =
+    document.getElementById("receiver").value;
+
+  const amount =
+    Number(document.getElementById("transferAmount").value);
+
+  if (!amount || amount <= 0) {
+
+    document.getElementById("transferResult").innerText =
+      "❌ Masukkan jumlah Credit yang valid.";
+
+    return;
+
+  }
+
+  if (amount > credit) {
+
+    document.getElementById("transferResult").innerText =
+      "❌ Credit tidak cukup.";
+
+    return;
+
+  }
+
+  credit -= amount;
+
+  updateBalance();
+
+  addHistory(`Kirim ${amount} Credit ke ${receiver}`, amount, "credit");
+
+  document.getElementById("transferResult").innerText =
+    `✅ Berhasil mengirim ${amount} Credit kepada ${receiver}.`;
+
+  document.getElementById("transferAmount").value = "";
+
+}
+
+function loadHistory() {
+
+  const list =
+    document.getElementById("historyList");
+
+  list.innerHTML = "";
+
+  if (history.length === 0) {
+
+    list.innerHTML =
+      "<p style='color:#9daf9d;'>Belum ada riwayat permainan.</p>";
+
+    return;
+
+  }
+
+  history.forEach(item => {
+
+    const div =
+      document.createElement("div");
+
+    div.className = "history-item";
+
+    const color =
+      item.type === "credit"
+        ? "negative"
+        : "positive";
+
+    div.innerHTML = `
+
+      <div>
+        <b>${item.text}</b>
+        <br>
+        <small style="color:#7f927f;">
+          ${item.date}
+        </small>
+      </div>
+
+      <div class="${color}">
+        ${item.type === "credit" ? "-" : "+"}${item.amount}
+      </div>
+
+    `;
+
+    list.appendChild(div);
+
+  });
+
+}
+
+updateBalance();
+
+</script></body>
+</html>
