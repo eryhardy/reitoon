@@ -1,1188 +1,911 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
-
-<meta
-name="theme-color"
-content="#08070d"
->
-
-<title>Create - Reitoon</title>
-
-<style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
-
-:root{
-
---bg:#08070d;
---surface:#191722;
---surface-light:#211f2b;
---text:#ffffff;
---muted:#aaa3b0;
---pink:#ff2f8d;
---purple:#762dff;
---border:rgba(255,255,255,.10);
-
-}
-
-body{
-
-min-height:100vh;
-
-background:
-
-radial-gradient(
-circle at 100% 0%,
-rgba(255,40,145,.14),
-transparent 35%
-),
-
-radial-gradient(
-circle at 0% 30%,
-rgba(112,45,255,.10),
-transparent 30%
-),
-
-var(--bg);
-
-color:var(--text);
-
-font-family:
-Arial,
-Helvetica,
-sans-serif;
-
-padding-bottom:100px;
-
-}
-
-.header{
-
-height:76px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-padding:16px 20px;
-
-background:rgba(8,7,13,.94);
-
-border-bottom:1px solid var(--border);
-
-position:sticky;
-
-top:0;
-
-z-index:20;
-
-}
-
-.back{
-
-width:42px;
-
-height:42px;
-
-border-radius:14px;
-
-border:1px solid var(--border);
-
-background:var(--surface);
-
-color:white;
-
-font-size:20px;
-
-cursor:pointer;
-
-}
-
-.logo{
-
-font-size:29px;
-
-font-weight:800;
-
-background:
-
-linear-gradient(
-135deg,
-white,
-var(--pink),
-var(--purple)
-);
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
-}
-
-.header-space{
-
-width:42px;
-
-}
-
-.container{
-
-width:100%;
-
-max-width:600px;
-
-margin:auto;
-
-padding:25px 16px;
-
-}
-
-.title{
-
-font-size:30px;
-
-margin-bottom:8px;
-
-}
-
-.title span{
-
-background:
-
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
-
-}
-
-.subtitle{
-
-color:var(--muted);
-
-font-size:13px;
-
-line-height:1.5;
-
-margin-bottom:20px;
-
-}
-
-.ai-project{
-
-display:none;
-
-padding:17px;
-
-border-radius:19px;
-
-background:
-
-linear-gradient(
-135deg,
-rgba(255,47,141,.15),
-rgba(118,45,255,.15)
-);
-
-border:1px solid rgba(255,47,141,.35);
-
-margin-bottom:20px;
-
-}
-
-.ai-project.show{
-
-display:block;
-
-}
-
-.ai-project-title{
-
-font-size:15px;
-
-font-weight:bold;
-
-margin-bottom:7px;
-
-}
-
-.ai-project-info{
-
-color:var(--muted);
-
-font-size:11px;
-
-line-height:1.5;
-
-margin-bottom:13px;
-
-}
-
-.use-ai-button{
-
-width:100%;
-
-padding:12px;
-
-border:none;
-
-border-radius:12px;
-
-background:
-
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
-color:white;
-
-font-weight:bold;
-
-cursor:pointer;
-
-}
-
-.form-card{
-
-padding:20px;
-
-border-radius:21px;
-
-background:var(--surface);
-
-border:1px solid var(--border);
-
-}
-
-.form-group{
-
-margin-bottom:17px;
-
-}
-
-label{
-
-display:block;
-
-font-size:12px;
-
-font-weight:bold;
-
-margin-bottom:7px;
-
-}
-
-input,
-
-textarea,
-
-select{
-
-width:100%;
-
-padding:14px;
-
-border-radius:12px;
-
-border:1px solid var(--border);
-
-outline:none;
-
-background:#100f17;
-
-color:white;
-
-font-family:inherit;
-
-font-size:13px;
-
-}
-
-textarea{
-
-height:130px;
-
-resize:none;
-
-line-height:1.5;
-
-}
-
-input:focus,
-
-textarea:focus,
-
-select:focus{
-
-border-color:var(--pink);
-
-}
-
-.cover-box{
-
-padding:18px;
-
-border-radius:16px;
-
-border:1px dashed rgba(255,255,255,.20);
-
-background:rgba(255,255,255,.02);
-
-text-align:center;
-
-}
-
-.cover-preview{
-
-display:none;
-
-width:100%;
-
-height:190px;
-
-object-fit:cover;
-
-border-radius:14px;
-
-margin-bottom:12px;
-
-}
-
-.cover-preview.show{
-
-display:block;
-
-}
-
-.cover-button{
-
-display:inline-block;
-
-padding:12px 16px;
-
-border-radius:12px;
-
-background:var(--surface-light);
-
-border:1px solid var(--border);
-
-font-size:12px;
-
-cursor:pointer;
-
-}
-
-input[type="file"]{
-
-display:none;
-
-}
-
-.save-button{
-
-width:100%;
-
-padding:15px;
-
-border:none;
-
-border-radius:14px;
-
-background:
-
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
-color:white;
-
-font-size:14px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-margin-top:5px;
-
-}
-
-.reset-button{
-
-width:100%;
-
-padding:13px;
-
-border-radius:14px;
-
-border:1px solid var(--border);
-
-background:var(--surface-light);
-
-color:white;
-
-font-size:13px;
-
-cursor:pointer;
-
-margin-top:10px;
-
-}
-
-.bottom-nav{
-
-position:fixed;
-
-bottom:0;
-
-left:0;
-
-right:0;
-
-height:76px;
-
-display:flex;
-
-justify-content:space-around;
-
-align-items:center;
-
-background:rgba(14,13,21,.96);
-
-backdrop-filter:blur(18px);
-
-border-top:1px solid var(--border);
-
-z-index:30;
-
-}
-
-.nav-item{
-
-color:var(--muted);
-
-text-decoration:none;
-
-text-align:center;
-
-font-size:10px;
-
-min-width:60px;
-
-}
-
-.nav-icon{
-
-display:block;
-
-font-size:21px;
-
-margin-bottom:4px;
-
-}
-
-.nav-item.active{
-
-color:var(--pink);
-
-}
-
-.toast{
-
-position:fixed;
-
-left:50%;
-
-bottom:95px;
-
-transform:translateX(-50%) translateY(20px);
-
-background:var(--surface-light);
-
-border:1px solid var(--border);
-
-border-radius:14px;
-
-padding:13px 18px;
-
-font-size:12px;
-
-opacity:0;
-
-pointer-events:none;
-
-transition:.3s;
-
-z-index:100;
-
-white-space:nowrap;
-
-}
-
-.toast.show{
-
-opacity:1;
-
-transform:translateX(-50%) translateY(0);
-
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create — REITOON</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #080808;
+      color: #fff;
+      padding-bottom: 100px;
+    }
+
+    /* HEADER */
+
+    .header {
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      background: rgba(8,8,8,.96);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .logo-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 11px;
+      background: linear-gradient(135deg,#ff2d8d,#9b35ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .credit-box {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: linear-gradient(
+        135deg,
+        rgba(255,45,141,.16),
+        rgba(155,53,255,.16)
+      );
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .credit-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#ff2d8d,#9b35ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .credit-value {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* INTRO */
+
+    .intro {
+      padding: 25px 18px 10px;
+    }
+
+    .intro h1 {
+      font-size: 29px;
+      margin-bottom: 8px;
+      font-weight: 900;
+    }
+
+    .intro p {
+      color: #999;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* CREATE OPTIONS */
+
+    .create-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 13px;
+      padding: 18px;
+    }
+
+    .create-card {
+      min-height: 155px;
+      padding: 17px;
+      border-radius: 18px;
+      background: #151515;
+      border: 1px solid rgba(255,255,255,.07);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .create-card:active {
+      transform: scale(.97);
+    }
+
+    .create-card::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      right: -45px;
+      top: -45px;
+      background: rgba(255,45,141,.15);
+      filter: blur(20px);
+    }
+
+    .create-card:nth-child(2)::after {
+      background: rgba(155,53,255,.18);
+    }
+
+    .create-card:nth-child(3)::after {
+      background: rgba(255,92,168,.14);
+    }
+
+    .create-card:nth-child(4)::after {
+      background: rgba(95,53,255,.2);
+    }
+
+    .create-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      background: linear-gradient(135deg,#ff2d8d,#9b35ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .create-card:nth-child(2) .create-icon {
+      background: linear-gradient(135deg,#7d2cff,#b23cff);
+    }
+
+    .create-card:nth-child(3) .create-icon {
+      background: linear-gradient(135deg,#ff438f,#ff6b3d);
+    }
+
+    .create-card:nth-child(4) .create-icon {
+      background: linear-gradient(135deg,#3f5bff,#8b3dff);
+    }
+
+    .create-card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .create-card p {
+      color: #888;
+      font-size: 10px;
+      line-height: 1.4;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* AI GENERATOR */
+
+    .generator {
+      margin: 8px 18px 25px;
+      padding: 18px;
+      border-radius: 20px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,45,141,.12),
+          rgba(155,53,255,.08)
+        );
+      border: 1px solid rgba(255,255,255,.09);
+    }
+
+    .generator-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .generator-title {
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .ai-badge {
+      padding: 6px 9px;
+      border-radius: 8px;
+      background: rgba(255,45,141,.15);
+      color: #ff5ca8;
+      font-size: 9px;
+      font-weight: bold;
+    }
+
+    .prompt-box {
+      width: 100%;
+      min-height: 105px;
+      resize: none;
+      padding: 13px;
+      border-radius: 13px;
+      background: #101010;
+      border: 1px solid rgba(255,255,255,.09);
+      outline: none;
+      color: white;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .prompt-box::placeholder {
+      color: #666;
+    }
+
+    .settings-row {
+      display: flex;
+      gap: 9px;
+      margin-top: 12px;
+    }
+
+    .setting {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      background: #111;
+      border: 1px solid rgba(255,255,255,.08);
+      color: #aaa;
+      font-size: 10px;
+    }
+
+    .generate-btn {
+      width: 100%;
+      margin-top: 14px;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg,#ff2d8d,#9b35ff);
+      color: white;
+      font-weight: bold;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    /* UPLOAD */
+
+    .upload-section {
+      margin: 0 18px 25px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 13px;
+    }
+
+    .section-title h2 {
+      font-size: 18px;
+    }
+
+    .section-title span {
+      color: #ff4b9d;
+      font-size: 10px;
+    }
+
+    .upload-box {
+      height: 130px;
+      border-radius: 17px;
+      border: 1px dashed rgba(255,255,255,.22);
+      background: #121212;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .upload-box strong {
+      color: #fff;
+      font-size: 13px;
+    }
+
+    .upload-box span {
+      font-size: 10px;
+    }
+
+    .upload-icon {
+      font-size: 25px;
+      color: #ff4b9d;
+    }
+
+    #fileInput {
+      display: none;
+    }
+
+    /* RECENT PROJECTS */
+
+    .projects {
+      margin: 0 18px;
+    }
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project {
+      padding: 12px;
+      border-radius: 13px;
+      background: #141414;
+      border: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .project-thumb {
+      width: 55px;
+      height: 55px;
+      border-radius: 10px;
+      background: linear-gradient(135deg,#3d164c,#9c246e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .project-info {
+      flex: 1;
+    }
+
+    .project-name {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .project-meta {
+      font-size: 9px;
+      color: #777;
+    }
+
+    .project-status {
+      font-size: 9px;
+      color: #ff4b9d;
+    }
+
+    /* BOTTOM NAV */
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 76px;
+      background: rgba(12,12,12,.97);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 200;
+    }
+
+    .nav-item {
+      width: 20%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      color: #777;
+      font-size: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .nav-item.active {
+      color: #ff4b9d;
+    }
+
+    .nav-icon {
+      font-size: 21px;
+    }
+
+    .create-button {
+      width: 54px;
+      height: 54px;
+      margin-top: -28px;
+      border-radius: 18px;
+      background: linear-gradient(135deg,#ff2d8d,#9b35ff);
+      border: 4px solid #080808;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 8px 25px rgba(255,45,141,.35);
+    }
+
+    @media (min-width: 768px) {
+
+      .create-grid {
+        grid-template-columns: repeat(4,1fr);
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+
+      .intro,
+      .generator,
+      .upload-section,
+      .projects {
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="header">
+  <!-- HEADER -->
 
-<button
-class="back"
-onclick="goBack()"
->
+  <header class="header">
 
-←
+    <div class="logo">
+      <div class="logo-icon">R</div>
+      <span>REITOON</span>
+    </div>
 
-</button>
+    <div class="credit-box">
 
-<div class="logo">
+      <div class="credit-icon">
+        C
+      </div>
 
-Reitoon
+      <div class="credit-value">
+        1.250 Credit
+      </div>
 
-</div>
+    </div>
 
-<div class="header-space"></div>
+  </header>
 
-</header>
 
-<main class="container">
+  <!-- INTRO -->
 
-<h1 class="title">
+  <section class="intro">
 
-Create <span>Story</span>
+    <h1>
+      Create Something<br>
+      Amazing.
+    </h1>
 
-</h1>
+    <p>
+      Gunakan kreativitasmu dan buat konten
+      luar biasa bersama teknologi REITOON.
+    </p>
 
-<p class="subtitle">
+  </section>
 
-Buat cerita baru atau lanjutkan project yang dibuat dengan AI Studio.
 
-</p>
+  <!-- CREATE OPTIONS -->
 
+  <section class="create-grid">
 
-<!-- AI PROJECT -->
+    <div class="create-card"
+      onclick="showGenerator()">
 
-<section
-class="ai-project"
-id="aiProject"
->
+      <div class="create-icon">
+        ✦
+      </div>
 
-<div class="ai-project-title">
+      <h3>
+        AI Video
+      </h3>
 
-🤖 Project AI Tersedia
+      <p>
+        Buat video menggunakan teknologi AI.
+      </p>
 
-</div>
+    </div>
 
-<div
-class="ai-project-info"
-id="aiProjectInfo"
->
 
-</div>
+    <div class="create-card"
+      onclick="uploadVideo()">
 
-<button
-class="use-ai-button"
-onclick="useAIProject()"
->
+      <div class="create-icon">
+        ↑
+      </div>
 
-✨ Gunakan Project AI Ini
+      <h3>
+        Upload Video
+      </h3>
 
-</button>
+      <p>
+        Bagikan video dan karya terbaikmu.
+      </p>
 
-</section>
+    </div>
 
 
-<!-- FORM -->
+    <div class="create-card"
+      onclick="createImage()">
 
-<section class="form-card">
+      <div class="create-icon">
+        ◈
+      </div>
 
-<div class="form-group">
+      <h3>
+        AI Image
+      </h3>
 
-<label>
+      <p>
+        Buat gambar kreatif dengan AI.
+      </p>
 
-Judul Cerita
+    </div>
 
-</label>
 
-<input
-type="text"
-id="storyTitle"
-placeholder="Contoh: Love Beyond Time"
->
+    <div class="create-card"
+      onclick="createStory()">
 
-</div>
+      <div class="create-icon">
+        ✎
+      </div>
 
+      <h3>
+        AI Story
+      </h3>
 
-<div class="form-group">
+      <p>
+        Buat cerita dan dunia imajinasimu.
+      </p>
 
-<label>
+    </div>
 
-Jenis Cerita
+  </section>
 
-</label>
 
-<select id="storyType">
+  <!-- AI GENERATOR -->
 
-<option value="Film">
+  <section class="generator"
+    id="generator">
 
-🎬 Film
+    <div class="generator-header">
 
-</option>
+      <div class="generator-title">
+        AI Video Generator
+      </div>
 
-<option value="Series">
+      <div class="ai-badge">
+        POWERED BY AI
+      </div>
 
-📺 Series
+    </div>
 
-</option>
+    <textarea
+      class="prompt-box"
+      id="prompt"
+      placeholder="Deskripsikan video yang ingin kamu buat... Contoh: Seorang karakter berjalan di kota futuristik dengan cahaya neon..."></textarea>
 
-<option value="Short Film">
+    <div class="settings-row">
 
-🎞️ Short Film
+      <div class="setting">
+        🎬 Video
+      </div>
 
-</option>
+      <div class="setting">
+        ◈ 9:16
+      </div>
 
-<option value="Animation">
+      <div class="setting">
+        ⏱ 10s
+      </div>
 
-🎨 Animation
+    </div>
 
-</option>
+    <button
+      class="generate-btn"
+      onclick="generateVideo()">
 
-</select>
+      ✦ Generate Video — 100 Credit
 
-</div>
+    </button>
 
+  </section>
 
-<div class="form-group">
 
-<label>
+  <!-- UPLOAD -->
 
-Genre
+  <section class="upload-section">
 
-</label>
+    <div class="section-title">
 
-<select id="storyGenre">
+      <h2>
+        Upload Konten
+      </h2>
 
-<option value="Romance">
+      <span>
+        Bagikan ke dunia
+      </span>
 
-Romance
+    </div>
 
-</option>
+    <label
+      class="upload-box"
+      for="fileInput">
 
-<option value="Action">
+      <div class="upload-icon">
+        ↑
+      </div>
 
-Action
+      <strong>
+        Pilih Video dari Perangkat
+      </strong>
 
-</option>
+      <span>
+        MP4, MOV, WEBM • Maksimal 500 MB
+      </span>
 
-<option value="Drama">
+    </label>
 
-Drama
+    <input
+      type="file"
+      id="fileInput"
+      accept="video/*"
+      onchange="handleUpload(event)">
 
-</option>
+  </section>
 
-<option value="Fantasy">
 
-Fantasy
+  <!-- RECENT PROJECTS -->
 
-</option>
+  <section class="projects">
 
-<option value="Comedy">
+    <div class="section-title">
 
-Comedy
+      <h2>
+        Project Terbaru
+      </h2>
 
-</option>
+      <span>
+        Lihat Semua
+      </span>
 
-<option value="Horror">
+    </div>
 
-Horror
+    <div class="project-list">
 
-</option>
+      <div class="project">
 
-</select>
+        <div class="project-thumb">
+          AI
+        </div>
 
-</div>
+        <div class="project-info">
 
+          <div class="project-name">
+            Neon City Story
+          </div>
 
-<div class="form-group">
+          <div class="project-meta">
+            Video AI • 2 jam lalu
+          </div>
 
-<label>
+        </div>
 
-Deskripsi Cerita
+        <div class="project-status">
+          Draft
+        </div>
 
-</label>
+      </div>
 
-<textarea
-id="storyDescription"
-placeholder="Tuliskan deskripsi cerita kamu..."
-></textarea>
 
-</div>
+      <div class="project">
 
+        <div class="project-thumb">
+          R
+        </div>
 
-<div class="form-group">
+        <div class="project-info">
 
-<label>
+          <div class="project-name">
+            My First Reitoon
+          </div>
 
-Cover Cerita
+          <div class="project-meta">
+            Video • Kemarin
+          </div>
 
-</label>
+        </div>
 
-<div class="cover-box">
+        <div class="project-status">
+          Published
+        </div>
 
-<img
-id="coverPreview"
-class="cover-preview"
->
+      </div>
 
-<label
-class="cover-button"
-for="coverInput"
->
+    </div>
 
-🖼️ Pilih Cover
+  </section>
 
-</label>
 
-<input
-type="file"
-id="coverInput"
-accept="image/*"
-onchange="previewCover(event)"
->
+  <!-- BOTTOM NAV -->
 
-</div>
+  <nav class="bottom-nav">
 
-</div>
+    <div class="nav-item"
+      onclick="goHome()">
 
+      <div class="nav-icon">
+        ⌂
+      </div>
 
-<button
-class="save-button"
-onclick="saveStory()"
->
+      <span>
+        Home
+      </span>
 
-💾 Simpan Cerita
+    </div>
 
-</button>
 
+    <div class="nav-item"
+      onclick="openWatch()">
 
-<button
-class="reset-button"
-onclick="resetForm()"
->
+      <div class="nav-icon">
+        ▷
+      </div>
 
-🔄 Reset Form
+      <span>
+        Watch
+      </span>
 
-</button>
+    </div>
 
-</section>
 
-</main>
+    <div class="nav-item active">
 
+      <div class="create-button">
+        ＋
+      </div>
 
-<nav class="bottom-nav">
+    </div>
 
-<a
-class="nav-item"
-href="index.html"
->
 
-<span class="nav-icon">
+    <div class="nav-item"
+      onclick="openStudio()">
 
-🏠
+      <div class="nav-icon">
+        ◈
+      </div>
 
-</span>
+      <span>
+        Studio
+      </span>
 
-Home
+    </div>
 
-</a>
 
+    <div class="nav-item"
+      onclick="openProfile()">
 
-<a
-class="nav-item"
-href="watch.html"
->
+      <div class="nav-icon">
+        ◉
+      </div>
 
-<span class="nav-icon">
+      <span>
+        Profile
+      </span>
 
-▶️
+    </div>
 
-</span>
+  </nav>
 
-Watch
 
-</a>
+  <!-- JAVASCRIPT -->
 
+  <script>
 
-<a
-class="nav-item active"
-href="create.html"
->
+    function goHome() {
+      window.location.href = "index.html";
+    }
 
-<span class="nav-icon">
+    function openWatch() {
+      window.location.href = "watch.html";
+    }
 
-✨
+    function openStudio() {
+      window.location.href = "studio.html";
+    }
 
-</span>
+    function openProfile() {
+      window.location.href = "profile.html";
+    }
 
-Create
 
-</a>
+    function showGenerator() {
 
+      document
+        .getElementById("generator")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
 
-<a
-class="nav-item"
-href="studio.html"
->
+    }
 
-<span class="nav-icon">
 
-🎥
+    function uploadVideo() {
 
-</span>
+      document
+        .getElementById("fileInput")
+        .click();
 
-Studio
+    }
 
-</a>
 
+    function createImage() {
 
-<a
-class="nav-item"
-href="profile.html"
->
+      alert(
+        "AI Image Generator akan segera tersedia."
+      );
 
-<span class="nav-icon">
+    }
 
-👤
 
-</span>
+    function createStory() {
 
-Profile
+      alert(
+        "AI Story Generator akan segera tersedia."
+      );
 
-</a>
+    }
 
-</nav>
 
+    function generateVideo() {
 
-<div
-class="toast"
-id="toast"
-></div>
+      const prompt =
+        document
+        .getElementById("prompt")
+        .value
+        .trim();
 
+      if (!prompt) {
 
-<script>
+        alert(
+          "Tulis deskripsi video terlebih dahulu."
+        );
 
-let selectedCover="";
+        return;
 
-let aiProject=null;
+      }
 
+      alert(
+        "Video sedang diproses menggunakan 100 Credit."
+      );
 
-/* LOAD AI PROJECT */
+    }
 
-function loadAIProject(){
 
-const savedAI=
-localStorage.getItem(
-"reitoon_ai_project"
-);
+    function handleUpload(event) {
 
-if(!savedAI){
+      const file =
+        event.target.files[0];
 
-return;
+      if (!file) return;
 
-}
+      alert(
+        "File berhasil dipilih: " +
+        file.name
+      );
 
-aiProject=
-JSON.parse(savedAI);
+    }
 
-const aiBox=
-document.getElementById(
-"aiProject"
-);
-
-const aiInfo=
-document.getElementById(
-"aiProjectInfo"
-);
-
-aiBox.classList.add("show");
-
-aiInfo.textContent=
-
-"Judul: "+
-aiProject.title+
-" | Genre: "+
-aiProject.genre+
-" | AI: "+
-aiProject.type;
-
-}
-
-
-/* GUNAKAN PROJECT AI */
-
-function useAIProject(){
-
-if(!aiProject){
-
-return;
-
-}
-
-document
-.getElementById("storyTitle")
-.value=
-aiProject.title;
-
-document
-.getElementById("storyGenre")
-.value=
-aiProject.genre;
-
-document
-.getElementById("storyDescription")
-.value=
-aiProject.prompt;
-
-showToast(
-"🤖 Project AI berhasil dimuat"
-);
-
-}
-
-
-/* PREVIEW COVER */
-
-function previewCover(event){
-
-const file=
-event.target.files[0];
-
-if(!file){
-
-return;
-
-}
-
-const reader=
-new FileReader();
-
-reader.onload=function(e){
-
-selectedCover=
-e.target.result;
-
-const preview=
-document.getElementById(
-"coverPreview"
-);
-
-preview.src=
-selectedCover;
-
-preview.classList.add("show");
-
-};
-
-reader.readAsDataURL(file);
-
-}
-
-
-/* SIMPAN CERITA */
-
-function saveStory(){
-
-const title=
-document
-.getElementById("storyTitle")
-.value
-.trim();
-
-const type=
-document
-.getElementById("storyType")
-.value;
-
-const genre=
-document
-.getElementById("storyGenre")
-.value;
-
-const description=
-document
-.getElementById("storyDescription")
-.value
-.trim();
-
-if(!title){
-
-showToast(
-"Masukkan judul cerita"
-);
-
-return;
-
-}
-
-if(!description){
-
-showToast(
-"Masukkan deskripsi cerita"
-);
-
-return;
-
-}
-
-const story={
-
-title:title,
-
-type:type,
-
-genre:genre,
-
-description:description,
-
-cover:selectedCover,
-
-published:false,
-
-createdAt:
-new Date().toISOString()
-
-};
-
-localStorage.setItem(
-
-"reitoon_story",
-
-JSON.stringify(story)
-
-);
-
-showToast(
-"✅ Cerita berhasil disimpan"
-);
-
-setTimeout(function(){
-
-window.location.href=
-"studio.html";
-
-},1000);
-
-}
-
-
-/* RESET */
-
-function resetForm(){
-
-document
-.getElementById("storyTitle")
-.value="";
-
-document
-.getElementById("storyDescription")
-.value="";
-
-document
-.getElementById("storyGenre")
-.value="Romance";
-
-selectedCover="";
-
-document
-.getElementById("coverPreview")
-.classList.remove("show");
-
-document
-.getElementById("coverPreview")
-.src="";
-
-showToast(
-"Form berhasil direset"
-);
-
-}
-
-
-/* TOAST */
-
-function showToast(message){
-
-const toast=
-document
-.getElementById("toast");
-
-toast.textContent=
-message;
-
-toast.classList.add("show");
-
-setTimeout(function(){
-
-toast.classList.remove("show");
-
-},2500);
-
-}
-
-
-/* BACK */
-
-function goBack(){
-
-if(document.referrer){
-
-history.back();
-
-}else{
-
-window.location.href=
-"index.html";
-
-}
-
-}
-
-
-loadAIProject();
-
-</script>
+  </script>
 
 </body>
-
 </html>
