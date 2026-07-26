@@ -1,832 +1,436 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="theme-color" content="#08070d">
-
 <title>Watch - Reitoon</title>
 
 <style>
-
-*{
-
-box-sizing:border-box;
-margin:0;
-padding:0;
-
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-
 --bg:#08070d;
 --surface:#191722;
 --surface-light:#211f2b;
---text:#fff;
 --muted:#aaa3b0;
 --pink:#ff2f8d;
 --purple:#762dff;
---border:rgba(255,255,255,.1);
-
+--border:rgba(255,255,255,.1)
 }
 
 body{
-
 min-height:100vh;
-
 background:
-radial-gradient(
-circle at 100% 0%,
-rgba(255,40,145,.14),
-transparent 35%
-),
-radial-gradient(
-circle at 0% 30%,
-rgba(112,45,255,.1),
-transparent 30%
-),
+radial-gradient(circle at 100% 0%,rgba(255,40,145,.14),transparent 35%),
+radial-gradient(circle at 0% 30%,rgba(112,45,255,.1),transparent 30%),
 var(--bg);
-
-color:white;
-
+color:#fff;
 font-family:Arial,Helvetica,sans-serif;
-
-padding-bottom:100px;
-
+padding-bottom:100px
 }
 
 .header{
-
 height:76px;
-
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 padding:16px 20px;
-
 background:rgba(8,7,13,.94);
-
 border-bottom:1px solid var(--border);
-
 position:sticky;
 top:0;
-z-index:20;
-
+z-index:10
 }
 
 .logo{
-
-font-size:28px;
+font-size:29px;
 font-weight:800;
-
-background:
-linear-gradient(
-135deg,
-white,
-var(--pink),
-var(--purple)
-);
-
+background:linear-gradient(135deg,#fff,var(--pink),var(--purple));
 -webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-}
-
-.back{
-
-width:42px;
-height:42px;
-
-border-radius:14px;
-
-border:1px solid var(--border);
-
-background:var(--surface);
-
-color:white;
-
-font-size:20px;
-
+-webkit-text-fill-color:transparent
 }
 
 .container{
-
-width:100%;
-max-width:650px;
-
+max-width:600px;
 margin:auto;
-
-padding:24px 16px;
-
+padding:25px 16px
 }
 
-.title{
-
-font-size:31px;
-margin-bottom:8px;
-
-}
-
+.title{font-size:30px}
 .title span{
-
-background:
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
+background:linear-gradient(135deg,var(--pink),var(--purple));
 -webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
+-webkit-text-fill-color:transparent
 }
 
 .subtitle{
-
-font-size:14px;
 color:var(--muted);
+font-size:13px;
 line-height:1.5;
-
-margin-bottom:20px;
-
+margin-top:8px
 }
 
 .search{
-
 width:100%;
-
-padding:14px 16px;
-
-border-radius:14px;
-
+margin-top:20px;
+padding:14px;
+border-radius:13px;
 border:1px solid var(--border);
-
 background:var(--surface);
-
-color:white;
-
-outline:none;
-
-font-size:14px;
-
-margin-bottom:16px;
-
-}
-
-.search:focus{
-
-border-color:var(--pink);
-
+color:#fff;
+outline:none
 }
 
 .categories{
-
 display:flex;
 gap:8px;
-
 overflow-x:auto;
-
-padding-bottom:5px;
-
-margin-bottom:22px;
-
+margin-top:15px;
+padding-bottom:3px
 }
 
 .category{
-
-flex-shrink:0;
-
+flex:none;
 padding:9px 15px;
-
 border-radius:20px;
-
 border:1px solid var(--border);
-
 background:var(--surface);
-
-color:var(--muted);
-
-font-size:12px;
-
-cursor:pointer;
-
+color:#aaa3b0;
+cursor:pointer
 }
 
 .category.active{
-
-background:
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
-border-color:transparent;
-color:white;
-
+background:linear-gradient(135deg,var(--pink),var(--purple));
+color:#fff;
+border:none
 }
 
-.section-title{
-
-font-size:18px;
-margin-bottom:14px;
-
-}
-
-.movie-grid{
-
+.grid{
 display:grid;
-
 grid-template-columns:repeat(2,1fr);
-
 gap:14px;
-
+margin-top:22px
 }
 
-.movie-card{
-
+.card{
 overflow:hidden;
-
 border-radius:18px;
-
 background:var(--surface);
-
 border:1px solid var(--border);
-
-cursor:pointer;
-
-transition:.25s;
-
-}
-
-.movie-card:hover{
-
-transform:translateY(-3px);
-
-border-color:var(--pink);
-
+cursor:pointer
 }
 
 .poster{
-
 height:220px;
-
-position:relative;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
-text-align:center;
-
-padding:15px;
-
-overflow:hidden;
-
+position:relative;
 background:
-linear-gradient(
-135deg,
-#35132f,
-#28156b
-);
-
+linear-gradient(135deg,#29132b,#141327)
 }
 
-.poster:nth-child(2){
-
-background:
-linear-gradient(
-135deg,
-#20133f,
-#561d4f
-);
-
+.poster img{
+width:100%;
+height:100%;
+object-fit:cover
 }
 
-.poster-title{
-
-font-size:20px;
-font-weight:bold;
-line-height:1.2;
-
-text-shadow:0 3px 12px rgba(0,0,0,.5);
-
-}
-
-.badge{
-
-position:absolute;
-
-top:10px;
-left:10px;
-
-padding:5px 8px;
-
-border-radius:8px;
-
-background:var(--pink);
-
-font-size:9px;
-font-weight:bold;
-
+.poster-placeholder{
+font-size:45px
 }
 
 .play{
-
 position:absolute;
-
-right:10px;
-bottom:10px;
-
-width:40px;
-height:40px;
-
-border-radius:50%;
-
+bottom:12px;
+right:12px;
+width:42px;
+height:42px;
 border:none;
-
-background:rgba(255,255,255,.92);
-
-color:#16121e;
-
-font-size:16px;
-
-cursor:pointer;
-
+border-radius:50%;
+background:var(--pink);
+color:#fff;
+font-size:17px
 }
 
-.movie-info{
-
-padding:13px;
-
+.card-info{
+padding:12px
 }
 
-.movie-info h3{
-
+.card-title{
 font-size:14px;
-margin-bottom:5px;
-
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis
 }
 
-.movie-info p{
-
-font-size:11px;
+.card-meta{
 color:var(--muted);
-
+font-size:11px;
+margin-top:5px
 }
 
-.user-story{
-
-grid-column:1/-1;
-
-display:none;
-
-}
-
-.user-story.show{
-
-display:block;
-
-}
-
-.user-story .movie-card{
-
-width:100%;
-
+.badge{
+position:absolute;
+top:10px;
+left:10px;
+padding:5px 8px;
+border-radius:8px;
+font-size:9px;
+background:var(--pink);
+color:#fff
 }
 
 .empty{
-
 grid-column:1/-1;
-
 text-align:center;
-
-padding:40px 20px;
-
-color:var(--muted);
-
-font-size:13px;
-
+padding:50px 20px;
+color:var(--muted)
 }
 
 .bottom-nav{
-
 position:fixed;
-
 bottom:0;
 left:0;
 right:0;
-
 height:76px;
-
 display:flex;
 justify-content:space-around;
 align-items:center;
-
 background:rgba(14,13,21,.96);
-
 border-top:1px solid var(--border);
-
-z-index:30;
-
+z-index:20
 }
 
-.nav-item{
-
+.nav{
 color:var(--muted);
 text-decoration:none;
-
 text-align:center;
-font-size:10px;
-
-min-width:60px;
-
+font-size:10px
 }
 
 .nav-icon{
-
 display:block;
 font-size:21px;
-margin-bottom:4px;
-
+margin-bottom:4px
 }
 
-.nav-item.active{
+.nav.active{color:var(--pink)}
 
-color:var(--pink);
-
+@media(max-width:380px){
+.grid{grid-template-columns:1fr}
 }
-
-@media(max-width:500px){
-
-.poster{
-
-height:190px;
-
-}
-
-.movie-grid{
-
-gap:10px;
-
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
 <header class="header">
 
-<button
-class="back"
-onclick="history.back()"
->
-
-←
-
-</button>
-
 <div class="logo">Reitoon</div>
 
-<div style="width:42px;"></div>
+<div style="width:42px"></div>
 
 </header>
-
 
 <main class="container">
 
 <h1 class="title">
-
-Watch <span>Reitoon</span>
-
+Watch <span>Stories</span>
 </h1>
 
 <p class="subtitle">
-
-Temukan film, drama, dan cerita original dari creator Reitoon.
-
+Temukan cerita dan film menarik dari creator Reitoon.
 </p>
-
 
 <input
 class="search"
-id="searchInput"
-placeholder="🔍 Cari film atau drama..."
+id="search"
+placeholder="🔍 Cari film atau cerita..."
+oninput="renderStories()"
 >
-
 
 <div class="categories">
 
-<button
-class="category active"
-onclick="filterMovies('all',this)"
->
-
+<button class="category active" onclick="setCategory('all',this)">
 All
-
 </button>
 
-<button
-class="category"
-onclick="filterMovies('drama',this)"
->
-
-Drama
-
-</button>
-
-<button
-class="category"
-onclick="filterMovies('romance',this)"
->
-
+<button class="category" onclick="setCategory('Romance',this)">
 Romance
-
 </button>
 
-<button
-class="category"
-onclick="filterMovies('action',this)"
->
+<button class="category" onclick="setCategory('Drama',this)">
+Drama
+</button>
 
+<button class="category" onclick="setCategory('Action',this)">
 Action
-
 </button>
 
-<button
-class="category"
-onclick="filterMovies('fantasy',this)"
->
-
+<button class="category" onclick="setCategory('Fantasy',this)">
 Fantasy
-
 </button>
 
 </div>
 
-
-<h2 class="section-title">
-
-🔥 Trending
-
-</h2>
-
-
-<div
-class="movie-grid"
-id="movieGrid"
->
-
-
-<article
-class="movie-card"
-data-category="romance"
-data-title="Love Beyond Time"
-onclick="openStaticMovie('Love Beyond Time','Romance • Drama','Kisah cinta yang melampaui waktu dan takdir.')"
->
-
-<div class="poster">
-
-<span class="badge">TRENDING</span>
-
-<div class="poster-title">
-
-❤️<br>
-Love Beyond Time
-
-</div>
-
-<button
-class="play"
-onclick="event.stopPropagation();openStaticMovie('Love Beyond Time','Romance • Drama','Kisah cinta yang melampaui waktu dan takdir.')"
->
-
-▶
-
-</button>
-
-</div>
-
-<div class="movie-info">
-
-<h3>Love Beyond Time</h3>
-
-<p>Romance • Drama</p>
-
-</div>
-
-</article>
-
-
-<article
-class="movie-card"
-data-category="action"
-data-title="The Last Kingdom"
-onclick="openStaticMovie('The Last Kingdom','Action • Fantasy','Perjalanan seorang pahlawan dalam merebut kembali kerajaannya.')"
->
-
-<div class="poster">
-
-<span class="badge">#2</span>
-
-<div class="poster-title">
-
-⚔️<br>
-The Last Kingdom
-
-</div>
-
-<button
-class="play"
-onclick="event.stopPropagation();openStaticMovie('The Last Kingdom','Action • Fantasy','Perjalanan seorang pahlawan dalam merebut kembali kerajaannya.')"
->
-
-▶
-
-</button>
-
-</div>
-
-<div class="movie-info">
-
-<h3>The Last Kingdom</h3>
-
-<p>Action • Fantasy</p>
-
-</div>
-
-</article>
-
-
-<article
-class="movie-card"
-data-category="drama"
-data-title="Hidden Truth"
-onclick="openStaticMovie('Hidden Truth','Mystery • Drama','Sebuah rahasia lama perlahan terungkap.')"
->
-
-<div class="poster">
-
-<span class="badge">#3</span>
-
-<div class="poster-title">
-
-🔍<br>
-Hidden Truth
-
-</div>
-
-<button
-class="play"
-onclick="event.stopPropagation();openStaticMovie('Hidden Truth','Mystery • Drama','Sebuah rahasia lama perlahan terungkap.')"
->
-
-▶
-
-</button>
-
-</div>
-
-<div class="movie-info">
-
-<h3>Hidden Truth</h3>
-
-<p>Mystery • Drama</p>
-
-</div>
-
-</article>
-
-
-<div id="userStories"></div>
-
-
-</div>
+<section class="grid" id="movieGrid"></section>
 
 </main>
 
-
 <nav class="bottom-nav">
 
-<a class="nav-item" href="index.html">
-
+<a class="nav" href="index.html">
 <span class="nav-icon">🏠</span>
 Home
-
 </a>
 
-<a class="nav-item active" href="watch.html">
-
+<a class="nav active" href="watch.html">
 <span class="nav-icon">▶️</span>
 Watch
-
 </a>
 
-<a class="nav-item" href="create.html">
-
+<a class="nav" href="create.html">
 <span class="nav-icon">✨</span>
 Create
-
 </a>
 
-<a class="nav-item" href="studio.html">
-
+<a class="nav" href="studio.html">
 <span class="nav-icon">🎥</span>
 Studio
-
 </a>
 
-<a class="nav-item" href="profile.html">
-
+<a class="nav" href="profile.html">
 <span class="nav-icon">👤</span>
 Profile
-
 </a>
 
 </nav>
 
-
 <script>
 
-let currentCategory="all";
+let category="all";
 
+const defaultMovies=[
 
-function openStaticMovie(title,genre,description){
-
-const data={
-
-title:title,
-genre:genre,
-description:description,
+{
+id:"love-beyond-time",
+title:"Love Beyond Time",
+genre:"Romance",
+description:"Sebuah kisah cinta yang melampaui waktu.",
 cover:"",
 type:"Film",
-static:true
+status:"public"
+},
 
-};
+{
+id:"last-kingdom",
+title:"The Last Kingdom",
+genre:"Action",
+description:"Pertarungan besar demi masa depan kerajaan.",
+cover:"",
+type:"Film",
+status:"public"
+},
 
+{
+id:"hidden-truth",
+title:"Hidden Truth",
+genre:"Drama",
+description:"Sebuah rahasia besar perlahan terungkap.",
+cover:"",
+type:"Film",
+status:"public"
+}
 
-localStorage.setItem(
+];
 
-"reitoon_selected_movie",
+function getMovies(){
 
-JSON.stringify(data)
+let movies=[...defaultMovies];
 
-);
+const saved=localStorage.getItem("reitoon_story");
 
+if(saved){
 
-window.location.href="detail.html";
+const story=JSON.parse(saved);
+
+if(story.status==="public"){
+
+movies.push(story);
 
 }
 
+}
 
-function openUserMovie(id){
-
-window.location.href="detail.html?id="+id;
+return movies;
 
 }
 
+function setCategory(value,button){
 
-function loadUserStories(){
+category=value;
 
-const stories=JSON.parse(
+document.querySelectorAll(".category")
+.forEach(x=>x.classList.remove("active"));
 
-localStorage.getItem("reitoon_stories")
+button.classList.add("active");
 
-)||[];
+renderStories();
 
-const container=document.getElementById("userStories");
+}
 
-container.innerHTML="";
+function renderStories(){
 
+const grid=document.getElementById("movieGrid");
 
-stories
-.filter(story=>story.status==="public")
-.forEach(story=>{
+const keyword=
+document.getElementById("search")
+.value.toLowerCase();
+
+const movies=getMovies().filter(movie=>{
+
+const matchSearch=
+movie.title.toLowerCase().includes(keyword);
+
+const matchCategory=
+category==="all" ||
+movie.genre===category;
+
+return matchSearch && matchCategory;
+
+});
+
+grid.innerHTML="";
+
+if(movies.length===0){
+
+grid.innerHTML=
+`<div class="empty">😔<br><br>Belum ada cerita ditemukan.</div>`;
+
+return;
+
+}
+
+movies.forEach(movie=>{
 
 const card=document.createElement("article");
 
-card.className="movie-card user-story show";
+card.className="card";
 
-card.dataset.category=story.genre.toLowerCase();
+card.onclick=()=>{
 
-card.dataset.title=story.title.toLowerCase();
+window.location.href=
+"detail.html?id="+movie.id;
 
-const poster=story.cover
+};
 
-?`<img src="${story.cover}" style="width:100%;height:100%;object-fit:cover;">`
+const poster=movie.cover
 
-:`<div class="poster-title">🎬<br>${story.title}</div>`;
+?`<img src="${movie.cover}" alt="${movie.title}">`
 
+:`<div class="poster-placeholder">🎬</div>`;
 
 card.innerHTML=`
 
@@ -834,100 +438,46 @@ card.innerHTML=`
 
 ${poster}
 
-<button class="play">
+<span class="badge">
+${movie.status==="public"?"PUBLIC":"TRENDING"}
+</span>
 
+<button class="play" onclick="event.stopPropagation(); openMovie('${movie.id}')">
 ▶
-
 </button>
 
 </div>
 
-<div class="movie-info">
+<div class="card-info">
 
-<h3>${story.title}</h3>
+<h3 class="card-title">
+${movie.title}
+</h3>
 
-<p>${story.genre} • ${story.type}</p>
+<p class="card-meta">
+${movie.genre} • ${movie.type}
+</p>
 
 </div>
 
 `;
 
-card.onclick=()=>openUserMovie(story.id);
-
-container.appendChild(card);
+grid.appendChild(card);
 
 });
 
 }
 
+function openMovie(id){
 
-function filterMovies(category,button){
-
-currentCategory=category;
-
-document
-.querySelectorAll(".category")
-.forEach(btn=>{
-
-btn.classList.remove("active");
-
-});
-
-button.classList.add("active");
-
-applyFilters();
+window.location.href=
+"detail.html?id="+id;
 
 }
 
-
-function applyFilters(){
-
-const keyword=document
-.getElementById("searchInput")
-.value
-.toLowerCase();
-
-document
-.querySelectorAll(".movie-card")
-.forEach(card=>{
-
-const title=card.dataset.title.toLowerCase();
-
-const category=card.dataset.category;
-
-const matchesSearch=title.includes(keyword);
-
-const matchesCategory=
-
-currentCategory==="all"||
-
-category===currentCategory;
-
-card.style.display=
-
-matchesSearch&&matchesCategory
-
-?"block"
-
-:"none";
-
-});
-
-}
-
-
-document
-.getElementById("searchInput")
-.addEventListener(
-"input",
-applyFilters
-);
-
-
-loadUserStories();
+renderStories();
 
 </script>
 
 </body>
-
 </html>
