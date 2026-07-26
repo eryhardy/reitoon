@@ -1,133 +1,958 @@
-<!-- WALLET & REFERRAL BUTTON --><a href="wallet.html" class="profile-menu-item"><span class="profile-menu-icon">💰</span>
+<!DOCTYPE html>
+<html lang="id">
+<head>
 
-<span class="profile-menu-text">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <strong>Wallet & Referral</strong>
+<title>Profile — REITOON</title>
 
-    <small>Saldo, referral & penarikan</small>
+<style>
 
-</span>
-
-<span class="profile-menu-arrow">›</span>
-
-</a><style>
-
-.profile-menu-item{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    width:100%;
-
-    padding:15px;
-
-    margin-bottom:10px;
-
-    border-radius:15px;
-
-    background:#191722;
-
-    border:1px solid rgba(255,255,255,.10);
-
-    color:#fff;
-
-    text-decoration:none;
-
-    transition:.2s;
-
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
-.profile-menu-item:hover{
-
-    transform:translateY(-2px);
-
-    border-color:#ff2f8d;
-
-    background:
-
-    linear-gradient(
-
-        135deg,
-
-        rgba(255,47,141,.12),
-
-        rgba(118,45,255,.12)
-
-    ),
-
-    #191722;
-
+body{
+  background:#080808;
+  color:#fff;
+  padding-bottom:100px;
 }
 
-.profile-menu-icon{
+/* HEADER */
 
-    width:42px;
+.header{
+  height:65px;
+  padding:0 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#080808;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
 
-    height:42px;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:21px;
+  font-weight:900;
+}
 
-    display:flex;
+.logo-icon{
+  width:35px;
+  height:35px;
+  border-radius:11px;
+  background:linear-gradient(
+    135deg,
+    #ff2d8d,
+    #9b35ff
+  );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+}
 
-    align-items:center;
+.settings-button{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#171717;
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+}
 
-    justify-content:center;
+/* PROFILE HERO */
 
-    border-radius:12px;
-
-    background:
-
-    linear-gradient(
-
-        135deg,
-
-        #ff2f8d,
-
-        #762dff
-
+.profile-hero{
+  padding:28px 18px 22px;
+  text-align:center;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(155,53,255,.18),
+      transparent 45%
     );
-
-    font-size:22px;
-
-    flex-shrink:0;
-
 }
 
-.profile-menu-text{
-
-    flex:1;
-
+.profile-avatar{
+  width:92px;
+  height:92px;
+  margin:0 auto 13px;
+  border-radius:50%;
+  background:
+    linear-gradient(
+      135deg,
+      #ff2d8d,
+      #762dff
+    );
+  border:4px solid #191919;
+  box-shadow:
+    0 0 0 2px rgba(255,45,141,.4),
+    0 0 30px rgba(255,45,141,.22);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:36px;
+  font-weight:900;
 }
 
-.profile-menu-text strong{
-
-    display:block;
-
-    font-size:13px;
-
-    font-weight:bold;
-
+.profile-name{
+  font-size:22px;
+  font-weight:900;
+  margin-bottom:5px;
 }
 
-.profile-menu-text small{
-
-    display:block;
-
-    margin-top:4px;
-
-    color:#aaa3b0;
-
-    font-size:10px;
-
+.profile-username{
+  color:#888;
+  font-size:12px;
+  margin-bottom:14px;
 }
 
-.profile-menu-arrow{
+.edit-profile{
+  display:inline-block;
+  padding:9px 18px;
+  border-radius:10px;
+  background:#191919;
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;
+  font-size:11px;
+  text-decoration:none;
+}
 
-    font-size:25px;
+/* STATS */
 
-    color:#aaa3b0;
+.profile-stats{
+  display:flex;
+  justify-content:center;
+  gap:38px;
+  margin-top:22px;
+}
+
+.profile-stat{
+  text-align:center;
+}
+
+.profile-stat strong{
+  display:block;
+  font-size:17px;
+  margin-bottom:4px;
+}
+
+.profile-stat span{
+  color:#777;
+  font-size:10px;
+}
+
+/* BALANCE */
+
+.balance-card{
+  margin:0 18px 20px;
+  padding:17px;
+  border-radius:18px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,45,141,.14),
+      rgba(118,45,255,.14)
+    );
+  border:1px solid rgba(255,255,255,.09);
+}
+
+.balance-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.balance-title{
+  color:#aaa;
+  font-size:11px;
+}
+
+.balance-icon{
+  font-size:19px;
+}
+
+.balance-value{
+  font-size:26px;
+  font-weight:900;
+  margin-bottom:14px;
+}
+
+.balance-footer{
+  display:flex;
+  justify-content:space-between;
+  color:#888;
+  font-size:10px;
+}
+
+/* CREDIT POINT */
+
+.resource-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin:0 18px 20px;
+}
+
+.resource-card{
+  padding:15px;
+  border-radius:15px;
+  background:#151515;
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.resource-icon{
+  width:35px;
+  height:35px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(
+    135deg,
+    #ff2d8d,
+    #762dff
+  );
+  margin-bottom:10px;
+}
+
+.resource-card:nth-child(2)
+.resource-icon{
+  background:linear-gradient(
+    135deg,
+    #762dff,
+    #b82dff
+  );
+}
+
+.resource-title{
+  color:#888;
+  font-size:10px;
+  margin-bottom:5px;
+}
+
+.resource-value{
+  font-size:19px;
+  font-weight:900;
+}
+
+/* ACCOUNT MENU */
+
+.section{
+  margin:0 18px 22px;
+}
+
+.section-title{
+  font-size:17px;
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+/* WALLET REFERRAL SMALL CARDS */
+
+.profile-account-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  width:100%;
+}
+
+.profile-mini-card{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:0;
+  padding:12px;
+  border-radius:15px;
+  background:#191722;
+  border:1px solid rgba(255,255,255,.10);
+  color:#fff;
+  text-decoration:none;
+  transition:.2s;
+}
+
+.profile-mini-card:hover{
+  transform:translateY(-2px);
+  border-color:#ff2f8d;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,47,141,.12),
+      rgba(118,45,255,.12)
+    ),
+    #191722;
+}
+
+.profile-mini-icon{
+  width:36px;
+  height:36px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:11px;
+  background:
+    linear-gradient(
+      135deg,
+      #ff2f8d,
+      #762dff
+    );
+  font-size:18px;
+}
+
+.referral-icon{
+  background:
+    linear-gradient(
+      135deg,
+      #762dff,
+      #b52dff
+    );
+}
+
+.profile-mini-info{
+  min-width:0;
+  flex:1;
+}
+
+.profile-mini-info strong{
+  display:block;
+  font-size:12px;
+  margin-bottom:3px;
+}
+
+.profile-mini-info small{
+  display:block;
+  color:#888;
+  font-size:9px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.profile-mini-arrow{
+  color:#777;
+  font-size:18px;
+}
+
+/* OTHER MENU */
+
+.menu-list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.menu-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px;
+  border-radius:14px;
+  background:#151515;
+  border:1px solid rgba(255,255,255,.07);
+  color:#fff;
+  text-decoration:none;
+}
+
+.menu-icon{
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  background:#242424;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:17px;
+}
+
+.menu-text{
+  flex:1;
+}
+
+.menu-text strong{
+  display:block;
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.menu-text small{
+  color:#777;
+  font-size:9px;
+}
+
+.menu-arrow{
+  color:#777;
+  font-size:19px;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:76px;
+  background:rgba(12,12,12,.97);
+  backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  z-index:200;
+}
+
+.nav-item{
+  width:20%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  color:#777;
+  font-size:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.nav-item.active{
+  color:#ff4b9d;
+}
+
+.nav-icon{
+  font-size:21px;
+}
+
+.create-button{
+  width:54px;
+  height:54px;
+  margin-top:-28px;
+  border-radius:18px;
+  background:
+    linear-gradient(
+      135deg,
+      #ff2d8d,
+      #9b35ff
+    );
+  border:4px solid #080808;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  box-shadow:
+    0 8px 25px rgba(255,45,141,.35);
+}
+
+/* DESKTOP */
+
+@media(min-width:768px){
+
+  .profile-hero{
+    padding-top:45px;
+  }
+
+  .balance-card,
+  .resource-grid,
+  .section{
+    margin-left:50px;
+    margin-right:50px;
+  }
+
+  .profile-account-grid{
+    grid-template-columns:repeat(2, minmax(250px,1fr));
+  }
 
 }
 
 </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+  <div class="logo">
+
+    <div class="logo-icon">
+      R
+    </div>
+
+    <span>
+      REITOON
+    </span>
+
+  </div>
+
+  <div class="settings-button">
+    ⚙
+  </div>
+
+</header>
+
+
+<!-- PROFILE -->
+
+<section class="profile-hero">
+
+  <div class="profile-avatar">
+    R
+  </div>
+
+  <div class="profile-name">
+    Reitoon User
+  </div>
+
+  <div class="profile-username">
+    @reitoon_user
+  </div>
+
+  <a
+    href="#"
+    class="edit-profile">
+
+    Edit Profile
+
+  </a>
+
+
+  <div class="profile-stats">
+
+    <div class="profile-stat">
+
+      <strong>
+        48
+      </strong>
+
+      <span>
+        Video
+      </span>
+
+    </div>
+
+
+    <div class="profile-stat">
+
+      <strong>
+        24.8K
+      </strong>
+
+      <span>
+        Followers
+      </span>
+
+    </div>
+
+
+    <div class="profile-stat">
+
+      <strong>
+        1.2M
+      </strong>
+
+      <span>
+        Likes
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- BALANCE -->
+
+<section class="balance-card">
+
+  <div class="balance-header">
+
+    <div class="balance-title">
+      Total Point
+    </div>
+
+    <div class="balance-icon">
+      ✦
+    </div>
+
+  </div>
+
+  <div class="balance-value">
+    8.500 Point
+  </div>
+
+  <div class="balance-footer">
+
+    <span>
+      Point dapat ditukar dengan hadiah
+    </span>
+
+    <span>
+      ›
+    </span>
+
+  </div>
+
+</section>
+
+
+<!-- CREDIT & POINT -->
+
+<section class="resource-grid">
+
+  <div class="resource-card">
+
+    <div class="resource-icon">
+      C
+    </div>
+
+    <div class="resource-title">
+      Credit
+    </div>
+
+    <div class="resource-value">
+      1.250
+    </div>
+
+  </div>
+
+
+  <div class="resource-card">
+
+    <div class="resource-icon">
+      P
+    </div>
+
+    <div class="resource-title">
+      Point
+    </div>
+
+    <div class="resource-value">
+      8.500
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ACCOUNT -->
+
+<section class="section">
+
+  <div class="section-title">
+    Account
+  </div>
+
+
+  <!-- WALLET & REFERRAL -->
+
+  <div class="profile-account-grid">
+
+
+    <a
+      href="wallet.html"
+      class="profile-mini-card">
+
+      <div class="profile-mini-icon">
+        💰
+      </div>
+
+      <div class="profile-mini-info">
+
+        <strong>
+          Wallet
+        </strong>
+
+        <small>
+          Saldo & penarikan
+        </small>
+
+      </div>
+
+      <span class="profile-mini-arrow">
+        ›
+      </span>
+
+    </a>
+
+
+    <a
+      href="wallet.html#referral"
+      class="profile-mini-card">
+
+      <div class="profile-mini-icon referral-icon">
+        🎁
+      </div>
+
+      <div class="profile-mini-info">
+
+        <strong>
+          Referral
+        </strong>
+
+        <small>
+          Undang teman
+        </small>
+
+      </div>
+
+      <span class="profile-mini-arrow">
+        ›
+      </span>
+
+    </a>
+
+
+  </div>
+
+</section>
+
+
+<!-- OTHER SETTINGS -->
+
+<section class="section">
+
+  <div class="section-title">
+    Settings
+  </div>
+
+
+  <div class="menu-list">
+
+
+    <a
+      href="#"
+      class="menu-item">
+
+      <div class="menu-icon">
+        ⚙
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          Pengaturan
+        </strong>
+
+        <small>
+          Atur preferensi aplikasi
+        </small>
+
+      </div>
+
+      <span class="menu-arrow">
+        ›
+      </span>
+
+    </a>
+
+
+    <a
+      href="#"
+      class="menu-item">
+
+      <div class="menu-icon">
+        🔔
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          Notifikasi
+        </strong>
+
+        <small>
+          Atur notifikasi REITOON
+        </small>
+
+      </div>
+
+      <span class="menu-arrow">
+        ›
+      </span>
+
+    </a>
+
+
+    <a
+      href="#"
+      class="menu-item">
+
+      <div class="menu-icon">
+        🛡️
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          Keamanan
+        </strong>
+
+        <small>
+          Privasi dan keamanan akun
+        </small>
+
+      </div>
+
+      <span class="menu-arrow">
+        ›
+      </span>
+
+    </a>
+
+
+    <a
+      href="#"
+      class="menu-item">
+
+      <div class="menu-icon">
+        ❓
+      </div>
+
+      <div class="menu-text">
+
+        <strong>
+          Bantuan
+        </strong>
+
+        <small>
+          Pusat bantuan REITOON
+        </small>
+
+      </div>
+
+      <span class="menu-arrow">
+        ›
+      </span>
+
+    </a>
+
+
+  </div>
+
+</section>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+
+  <div
+    class="nav-item"
+    onclick="goHome()">
+
+    <div class="nav-icon">
+      ⌂
+    </div>
+
+    <span>
+      Home
+    </span>
+
+  </div>
+
+
+  <div
+    class="nav-item"
+    onclick="openWatch()">
+
+    <div class="nav-icon">
+      ▷
+    </div>
+
+    <span>
+      Watch
+    </span>
+
+  </div>
+
+
+  <div class="nav-item">
+
+    <div
+      class="create-button"
+      onclick="openCreate()">
+
+      ＋
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="nav-item"
+    onclick="openStudio()">
+
+    <div class="nav-icon">
+      ◈
+    </div>
+
+    <span>
+      Studio
+    </span>
+
+  </div>
+
+
+  <div
+    class="nav-item active">
+
+    <div class="nav-icon">
+      ◉
+    </div>
+
+    <span>
+      Profile
+    </span>
+
+  </div>
+
+
+</nav>
+
+
+<script>
+
+function goHome(){
+
+  window.location.href="index.html";
+
+}
+
+function openWatch(){
+
+  window.location.href="watch.html";
+
+}
+
+function openCreate(){
+
+  window.location.href="create.html";
+
+}
+
+function openStudio(){
+
+  window.location.href="studio.html";
+
+}
+
+</script>
+
+</body>
+</html>
