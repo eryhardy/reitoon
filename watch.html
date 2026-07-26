@@ -4,10 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#08070d">
+
 <title>Watch - Reitoon</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
 :root{
 --bg:#08070d;
@@ -21,452 +27,1047 @@
 }
 
 body{
+
 min-height:100vh;
+
 background:
-radial-gradient(circle at 100% 0%,rgba(255,40,145,.14),transparent 35%),
-radial-gradient(circle at 0% 30%,rgba(112,45,255,.1),transparent 30%),
+
+radial-gradient(
+circle at 100% 0%,
+rgba(255,40,145,.14),
+transparent 35%
+),
+
+radial-gradient(
+circle at 0% 30%,
+rgba(112,45,255,.1),
+transparent 30%
+),
+
 var(--bg);
+
 color:var(--text);
-font-family:Arial,Helvetica,sans-serif;
+
+font-family:
+Arial,
+Helvetica,
+sans-serif;
+
 padding-bottom:100px;
+
 }
 
 .header{
-height:76px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:16px 20px;
-background:rgba(8,7,13,.94);
-border-bottom:1px solid var(--border);
-position:sticky;
-top:0;
-z-index:20;
-}
 
-.logo{
-font-size:29px;
-font-weight:800;
-background:linear-gradient(135deg,#fff,var(--pink),var(--purple));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+height:76px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:16px 20px;
+
+background:rgba(8,7,13,.94);
+
+border-bottom:1px solid var(--border);
+
+position:sticky;
+
+top:0;
+
+z-index:20;
+
 }
 
 .back{
+
 width:42px;
+
 height:42px;
+
 border-radius:14px;
+
 border:1px solid var(--border);
+
 background:var(--surface);
-color:#fff;
+
+color:white;
+
 font-size:20px;
+
+cursor:pointer;
+
 }
 
-.header-space{width:42px}
+.logo{
+
+font-size:29px;
+
+font-weight:800;
+
+background:
+
+linear-gradient(
+135deg,
+white,
+var(--pink),
+var(--purple)
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.header-space{
+
+width:42px;
+
+}
 
 .container{
+
 width:100%;
+
 max-width:600px;
+
 margin:auto;
-padding:24px 16px;
+
+padding:25px 16px;
+
 }
 
 .title{
-font-size:32px;
+
+font-size:31px;
+
 margin-bottom:8px;
+
 }
 
 .title span{
-background:linear-gradient(135deg,var(--pink),var(--purple));
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
 -webkit-background-clip:text;
+
 -webkit-text-fill-color:transparent;
+
 }
 
 .subtitle{
+
 color:var(--muted);
+
 font-size:14px;
+
 line-height:1.5;
+
+margin-bottom:20px;
+
 }
 
 .search{
-margin-top:20px;
+
 display:flex;
+
 align-items:center;
+
 gap:10px;
+
 padding:14px 16px;
+
 border-radius:15px;
+
 background:var(--surface);
+
 border:1px solid var(--border);
+
+margin-bottom:18px;
+
 }
 
 .search input{
+
 width:100%;
-background:none;
+
 border:none;
+
 outline:none;
-color:#fff;
+
+background:transparent;
+
+color:white;
+
 font-size:14px;
+
 }
 
 .categories{
+
 display:flex;
+
 gap:8px;
+
 overflow-x:auto;
-margin:18px 0;
-padding-bottom:4px;
+
+padding-bottom:5px;
+
+margin-bottom:24px;
+
 }
 
 .category{
+
 white-space:nowrap;
+
 padding:10px 15px;
+
 border-radius:20px;
+
 border:1px solid var(--border);
+
 background:var(--surface);
+
 color:var(--muted);
+
 cursor:pointer;
+
 }
 
 .category.active{
-color:#fff;
+
+color:white;
+
 border-color:var(--pink);
+
 background:rgba(255,47,141,.15);
+
 }
 
 .section-title{
-font-size:18px;
-margin:20px 0 14px;
+
+font-size:19px;
+
+margin-bottom:15px;
+
 }
 
 .movie-grid{
+
 display:grid;
+
 grid-template-columns:repeat(2,1fr);
+
 gap:14px;
+
 }
 
 .movie-card{
+
 overflow:hidden;
+
 border-radius:18px;
+
 background:var(--surface);
+
 border:1px solid var(--border);
+
 cursor:pointer;
+
 transition:.25s;
+
 }
 
 .movie-card:hover{
+
 transform:translateY(-3px);
+
 }
 
 .poster{
+
 height:210px;
-position:relative;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
+position:relative;
+
 background-size:cover;
+
 background-position:center;
+
 }
 
 .poster1{
-background:linear-gradient(135deg,#ff2f8d,#762dff);
+
+background:
+linear-gradient(
+135deg,
+#ff2f8d,
+#762dff
+);
+
 }
 
 .poster2{
-background:linear-gradient(135deg,#151515,#7b1d42);
+
+background:
+linear-gradient(
+135deg,
+#151515,
+#7b1d42
+);
+
 }
 
 .poster3{
-background:linear-gradient(135deg,#151a3c,#43258a);
+
+background:
+linear-gradient(
+135deg,
+#151a3c,
+#43258a
+);
+
 }
 
 .poster4{
-background:linear-gradient(135deg,#ff7b54,#9d2b66);
+
+background:
+linear-gradient(
+135deg,
+#ff7b54,
+#9d2b66
+);
+
 }
 
-.poster5{
-background:linear-gradient(135deg,#182848,#4b6cb7);
-}
+.custom-poster{
 
-.poster6{
-background:linear-gradient(135deg,#050505,#3b1b5a);
+background:
+linear-gradient(
+135deg,
+#3b1d5c,
+#ff2f8d
+);
+
 }
 
 .badge{
+
 position:absolute;
+
 top:10px;
+
 left:10px;
+
 padding:6px 8px;
+
 border-radius:8px;
+
 font-size:9px;
+
 font-weight:bold;
+
 background:var(--pink);
+
 }
 
-.play{
+.play-button{
+
 width:48px;
+
 height:48px;
+
 border-radius:50%;
+
 border:none;
+
 background:rgba(255,255,255,.92);
+
 color:#111;
+
 font-size:18px;
+
 cursor:pointer;
+
 }
 
 .movie-info{
+
 padding:12px;
+
 }
 
 .movie-info h3{
+
 font-size:14px;
+
 margin-bottom:5px;
+
+white-space:nowrap;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
 }
 
 .movie-info p{
+
 color:var(--muted);
+
 font-size:11px;
+
 }
 
 .empty{
+
 display:none;
+
 text-align:center;
+
 padding:50px 20px;
+
 color:var(--muted);
+
 }
 
 .bottom-nav{
+
 position:fixed;
+
 bottom:0;
+
 left:0;
+
 right:0;
+
 height:76px;
+
 display:flex;
+
 justify-content:space-around;
+
 align-items:center;
+
 background:rgba(14,13,21,.96);
+
 border-top:1px solid var(--border);
+
 z-index:30;
+
 }
 
 .nav-item{
+
 color:var(--muted);
+
 text-decoration:none;
+
 text-align:center;
+
 font-size:10px;
+
 min-width:60px;
+
 }
 
 .nav-icon{
+
 display:block;
+
 font-size:21px;
+
 margin-bottom:4px;
+
 }
 
 .nav-item.active{
+
 color:var(--pink);
+
 }
+
 </style>
+
 </head>
 
 <body>
 
 <header class="header">
-<button class="back" onclick="history.back()">←</button>
-<div class="logo">Reitoon</div>
+
+<button
+class="back"
+onclick="history.back()"
+>
+
+←
+
+</button>
+
+<div class="logo">
+
+Reitoon
+
+</div>
+
 <div class="header-space"></div>
+
 </header>
 
 <main class="container">
 
-<h1 class="title">Watch <span>Stories</span></h1>
+<h1 class="title">
+
+Watch <span>Stories</span>
+
+</h1>
 
 <p class="subtitle">
+
 Temukan film dan cerita menarik dari creator Reitoon.
+
 </p>
 
 <div class="search">
+
 <span>🔍</span>
-<input id="searchInput" type="text" placeholder="Cari film atau cerita...">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Cari film atau cerita..."
+>
+
 </div>
 
 <div class="categories">
-<button class="category active" onclick="filterCategory('all',this)">All</button>
-<button class="category" onclick="filterCategory('Romance',this)">Romance</button>
-<button class="category" onclick="filterCategory('Action',this)">Action</button>
-<button class="category" onclick="filterCategory('Fantasy',this)">Fantasy</button>
-<button class="category" onclick="filterCategory('Drama',this)">Drama</button>
-<button class="category" onclick="filterCategory('Comedy',this)">Comedy</button>
-</div>
 
-<h2 class="section-title">🔥 Trending</h2>
+<button
+class="category active"
+onclick="filterCategory('all',this)"
+>
 
-<div class="movie-grid" id="movieGrid">
+All
 
-<article class="movie-card"
-data-title="Love Beyond Time"
-data-genre="Romance"
-onclick="openMovie('Love Beyond Time','Romance','Kisah cinta yang melampaui waktu.','poster1')">
+</button>
 
-<div class="poster poster1">
-<span class="badge">TRENDING</span>
-<button class="play" onclick="event.stopPropagation();openMovie('Love Beyond Time','Romance','Kisah cinta yang melampaui waktu.','poster1')">▶</button>
-</div>
+<button
+class="category"
+onclick="filterCategory('Romance',this)"
+>
 
-<div class="movie-info">
-<h3>Love Beyond Time</h3>
-<p>Romance · Drama</p>
-</div>
+Romance
 
-</article>
+</button>
 
-<article class="movie-card"
-data-title="The Last Kingdom"
-data-genre="Action"
-onclick="openMovie('The Last Kingdom','Action','Pertarungan terakhir demi menyelamatkan kerajaan.','poster2')">
+<button
+class="category"
+onclick="filterCategory('Action',this)"
+>
 
-<div class="poster poster2">
-<span class="badge">#2</span>
-<button class="play" onclick="event.stopPropagation();openMovie('The Last Kingdom','Action','Pertarungan terakhir demi menyelamatkan kerajaan.','poster2')">▶</button>
-</div>
+Action
 
-<div class="movie-info">
-<h3>The Last Kingdom</h3>
-<p>Action · Fantasy</p>
-</div>
+</button>
 
-</article>
+<button
+class="category"
+onclick="filterCategory('Fantasy',this)"
+>
 
-<article class="movie-card"
-data-title="Hidden Truth"
-data-genre="Drama"
-onclick="openMovie('Hidden Truth','Drama','Sebuah rahasia besar akhirnya terungkap.','poster3')">
+Fantasy
 
-<div class="poster poster3">
-<span class="badge">#3</span>
-<button class="play" onclick="event.stopPropagation();openMovie('Hidden Truth','Drama','Sebuah rahasia besar akhirnya terungkap.','poster3')">▶</button>
-</div>
+</button>
 
-<div class="movie-info">
-<h3>Hidden Truth</h3>
-<p>Mystery · Drama</p>
-</div>
+<button
+class="category"
+onclick="filterCategory('Drama',this)"
+>
 
-</article>
+Drama
 
-<article class="movie-card"
-data-title="First Meeting"
-data-genre="Romance"
-onclick="openMovie('First Meeting','Romance','Satu pertemuan yang mengubah segalanya.','poster4')">
+</button>
 
-<div class="poster poster4">
-<span class="badge">NEW</span>
-<button class="play" onclick="event.stopPropagation();openMovie('First Meeting','Romance','Satu pertemuan yang mengubah segalanya.','poster4')">▶</button>
-</div>
+<button
+class="category"
+onclick="filterCategory('Comedy',this)"
+>
 
-<div class="movie-info">
-<h3>First Meeting</h3>
-<p>Romance</p>
-</div>
+Comedy
 
-</article>
+</button>
 
 </div>
 
-<div class="empty" id="empty">
-Tidak ada film yang ditemukan.
+<h2 class="section-title">
+
+🔥 All Stories
+
+</h2>
+
+<div
+class="movie-grid"
+id="movieGrid"
+>
+
+<!-- CERITA BUATAN USER AKAN MUNCUL DI SINI -->
+
+</div>
+
+<div
+class="empty"
+id="emptyState"
+>
+
+Belum ada cerita yang ditemukan.
+
 </div>
 
 </main>
 
 <nav class="bottom-nav">
 
-<a class="nav-item" href="index.html">
-<span class="nav-icon">🏠</span>
+<a
+class="nav-item"
+href="index.html"
+>
+
+<span class="nav-icon">
+
+🏠
+
+</span>
+
 Home
+
 </a>
 
-<a class="nav-item active" href="watch.html">
-<span class="nav-icon">▶️</span>
+<a
+class="nav-item active"
+href="watch.html"
+>
+
+<span class="nav-icon">
+
+▶️
+
+</span>
+
 Watch
+
 </a>
 
-<a class="nav-item" href="create.html">
-<span class="nav-icon">✨</span>
+<a
+class="nav-item"
+href="create.html"
+>
+
+<span class="nav-icon">
+
+✨
+
+</span>
+
 Create
+
 </a>
 
-<a class="nav-item" href="studio.html">
-<span class="nav-icon">🎥</span>
+<a
+class="nav-item"
+href="studio.html"
+>
+
+<span class="nav-icon">
+
+🎥
+
+</span>
+
 Studio
+
 </a>
 
-<a class="nav-item" href="profile.html">
-<span class="nav-icon">👤</span>
+<a
+class="nav-item"
+href="profile.html"
+>
+
+<span class="nav-icon">
+
+👤
+
+</span>
+
 Profile
+
 </a>
 
 </nav>
 
 <script>
 
-function openMovie(title,genre,description,poster){
+const movieGrid=
+document.getElementById("movieGrid");
 
-localStorage.setItem("reitoon_selected_movie",JSON.stringify({
-title:title,
-genre:genre,
-description:description,
-poster:poster
-}));
+const emptyState=
+document.getElementById("emptyState");
 
-window.location.href="detail.html";
+let allMovies=[];
+
+
+/* FILM DEMO */
+
+const demoMovies=[
+
+{
+
+title:"Love Beyond Time",
+
+genre:"Romance",
+
+description:
+"Kisah cinta yang melampaui waktu.",
+
+poster:"poster1"
+
+},
+
+{
+
+title:"The Last Kingdom",
+
+genre:"Action",
+
+description:
+"Pertarungan terakhir demi menyelamatkan kerajaan.",
+
+poster:"poster2"
+
+},
+
+{
+
+title:"Hidden Truth",
+
+genre:"Drama",
+
+description:
+"Sebuah rahasia besar akhirnya terungkap.",
+
+poster:"poster3"
+
+},
+
+{
+
+title:"First Meeting",
+
+genre:"Romance",
+
+description:
+"Satu pertemuan yang mengubah segalanya.",
+
+poster:"poster4"
 
 }
 
-const searchInput=document.getElementById("searchInput");
+];
 
-searchInput.addEventListener("input",function(){
 
-const keyword=this.value.toLowerCase();
+/* LOAD CERITA USER */
 
-document.querySelectorAll(".movie-card").forEach(card=>{
+function loadMovies(){
 
-const title=card.dataset.title.toLowerCase();
+allMovies=[...demoMovies];
 
-card.style.display=title.includes(keyword)?"block":"none";
+const savedStory=
+localStorage.getItem("reitoon_story");
+
+if(savedStory){
+
+const story=
+JSON.parse(savedStory);
+
+if(story.published){
+
+allMovies.unshift({
+
+title:story.title,
+
+genre:story.genre,
+
+description:story.description,
+
+cover:story.cover,
+
+custom:true
 
 });
 
+}
+
+}
+
+renderMovies(allMovies);
+
+}
+
+
+/* RENDER FILM */
+
+function renderMovies(movies){
+
+movieGrid.innerHTML="";
+
+if(movies.length===0){
+
+emptyState.style.display="block";
+
+return;
+
+}
+
+emptyState.style.display="none";
+
+movies.forEach(function(movie){
+
+const card=
+document.createElement("article");
+
+card.className="movie-card";
+
+card.dataset.title=
+movie.title.toLowerCase();
+
+card.dataset.genre=
+movie.genre;
+
+let posterHTML="";
+
+if(movie.cover){
+
+posterHTML=
+
+`
+
+<div
+class="poster custom-poster"
+style="background-image:url('${movie.cover}')"
+>
+
+<span class="badge">
+
+ORIGINAL
+
+</span>
+
+<button
+class="play-button"
+onclick="event.stopPropagation();openMovie('${escapeText(movie.title)}','${escapeText(movie.genre)}','${escapeText(movie.description)}','${movie.cover}')"
+>
+
+▶
+
+</button>
+
+</div>
+
+`;
+
+}else{
+
+posterHTML=
+
+`
+
+<div
+class="poster ${movie.poster}"
+>
+
+<button
+class="play-button"
+onclick="event.stopPropagation();openMovie('${escapeText(movie.title)}','${escapeText(movie.genre)}','${escapeText(movie.description)}','${movie.poster}')"
+>
+
+▶
+
+</button>
+
+</div>
+
+`;
+
+}
+
+card.innerHTML=
+
+posterHTML+
+
+`
+
+<div class="movie-info">
+
+<h3>
+
+${movie.title}
+
+</h3>
+
+<p>
+
+${movie.genre}
+
+</p>
+
+</div>
+
+`;
+
+card.onclick=function(){
+
+openMovie(
+movie.title,
+movie.genre,
+movie.description,
+movie.cover||movie.poster
+);
+
+};
+
+movieGrid.appendChild(card);
+
 });
 
-function filterCategory(category,button){
+}
 
-document.querySelectorAll(".category").forEach(btn=>{
+
+/* OPEN DETAIL */
+
+function openMovie(
+title,
+genre,
+description,
+poster
+){
+
+localStorage.setItem(
+
+"reitoon_selected_movie",
+
+JSON.stringify({
+
+title:title,
+
+genre:genre,
+
+description:description,
+
+poster:poster
+
+})
+
+);
+
+window.location.href=
+"detail.html";
+
+}
+
+
+/* SEARCH */
+
+document
+.getElementById("searchInput")
+.addEventListener(
+"input",
+function(){
+
+const keyword=
+this.value.toLowerCase();
+
+const filtered=
+allMovies.filter(function(movie){
+
+return movie.title
+.toLowerCase()
+.includes(keyword);
+
+});
+
+renderMovies(filtered);
+
+}
+
+);
+
+
+/* FILTER */
+
+function filterCategory(
+category,
+button
+){
+
+document
+.querySelectorAll(".category")
+.forEach(function(btn){
+
 btn.classList.remove("active");
+
 });
 
 button.classList.add("active");
 
-let found=0;
+if(category==="all"){
 
-document.querySelectorAll(".movie-card").forEach(card=>{
+renderMovies(allMovies);
 
-if(category==="all" || card.dataset.genre===category){
-
-card.style.display="block";
-found++;
-
-}else{
-
-card.style.display="none";
+return;
 
 }
+
+const filtered=
+allMovies.filter(function(movie){
+
+return movie.genre===category;
 
 });
 
-document.getElementById("empty").style.display=found?"none":"block";
+renderMovies(filtered);
 
 }
+
+
+/* MENCEGAH ERROR APOSTROPHE */
+
+function escapeText(text){
+
+return String(text)
+.replace(/'/g,"\\'")
+.replace(/"/g,'\\"');
+
+}
+
+
+loadMovies();
 
 </script>
 
 </body>
+
 </html>
