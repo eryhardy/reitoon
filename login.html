@@ -1,220 +1,934 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08070d">
-  <title>Login - Reitoon</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(255,40,145,.18), transparent 35%),
-        radial-gradient(circle at 0% 100%, rgba(112,45,255,.16), transparent 35%),
-        #08070d;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    .login-box {
-      width: 100%;
-      max-width: 430px;
-      padding: 28px 20px;
-      border-radius: 25px;
-      background: #191722;
-      border: 1px solid rgba(255,255,255,.1);
-    }
+<meta name="theme-color"
+content="#08070d">
 
-    .logo {
-      text-align: center;
-      font-size: 36px;
-      font-weight: bold;
-      background: linear-gradient(135deg, white, #ff2f8d, #762dff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+<title>Login - REITOON</title>
 
-    .subtitle {
-      text-align: center;
-      color: #aaa3b0;
-      margin: 8px 0 25px;
-      font-size: 13px;
-    }
+<style>
 
-    .input {
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 12px;
-      border-radius: 13px;
-      border: 1px solid rgba(255,255,255,.1);
-      background: #100f17;
-      color: white;
-      outline: none;
-    }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    .login-button {
-      width: 100%;
-      padding: 15px;
-      border: none;
-      border-radius: 13px;
-      background: linear-gradient(135deg, #ff2f8d, #762dff);
-      color: white;
-      font-weight: bold;
-      margin-top: 5px;
-    }
+body{
 
-    .divider {
-      text-align: center;
-      color: #aaa3b0;
-      margin: 22px 0;
-      font-size: 12px;
-    }
+  min-height:100vh;
 
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
+  display:flex;
 
-    .social-button {
-      padding: 13px 8px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.1);
-      background: #211f2b;
-      color: white;
-    }
+  align-items:center;
 
-    .note {
-      color: #77727f;
-      text-align: center;
-      font-size: 11px;
-      line-height: 1.5;
-      margin-top: 20px;
-    }
-  </style>
+  justify-content:center;
+
+  padding:20px;
+
+  background:
+
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(255,40,145,.18),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(112,45,255,.16),
+      transparent 35%
+    ),
+
+    #08070d;
+
+  color:white;
+
+  font-family:Arial,sans-serif;
+
+}
+
+.login-box{
+
+  width:100%;
+
+  max-width:430px;
+
+  padding:28px 20px;
+
+  border-radius:25px;
+
+  background:#191722;
+
+  border:1px solid rgba(255,255,255,.1);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.4);
+
+}
+
+.logo{
+
+  text-align:center;
+
+  font-size:36px;
+
+  font-weight:bold;
+
+  background:
+    linear-gradient(
+      135deg,
+      white,
+      #ff2f8d,
+      #762dff
+    );
+
+  -webkit-background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+
+}
+
+.subtitle{
+
+  text-align:center;
+
+  color:#aaa3b0;
+
+  margin:8px 0 25px;
+
+  font-size:13px;
+
+}
+
+.input-group{
+
+  position:relative;
+
+  margin-bottom:12px;
+
+}
+
+.input{
+
+  width:100%;
+
+  padding:15px;
+
+  border-radius:13px;
+
+  border:1px solid rgba(255,255,255,.1);
+
+  background:#100f17;
+
+  color:white;
+
+  outline:none;
+
+  font-size:14px;
+
+}
+
+.input:focus{
+
+  border-color:#ff2f8d;
+
+  box-shadow:
+    0 0 0 3px rgba(255,47,141,.08);
+
+}
+
+.password-toggle{
+
+  position:absolute;
+
+  right:14px;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:#888;
+
+  cursor:pointer;
+
+  font-size:15px;
+
+}
+
+.login-button{
+
+  width:100%;
+
+  padding:15px;
+
+  border:none;
+
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff2f8d,
+      #762dff
+    );
+
+  color:white;
+
+  font-weight:bold;
+
+  margin-top:5px;
+
+  cursor:pointer;
+
+  font-size:14px;
+
+}
+
+.login-button:active{
+
+  transform:scale(.98);
+
+}
+
+.divider{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  color:#77727f;
+
+  margin:22px 0;
+
+  font-size:12px;
+
+}
+
+.divider::before,
+.divider::after{
+
+  content:"";
+
+  flex:1;
+
+  height:1px;
+
+  background:rgba(255,255,255,.1);
+
+}
+
+.social-grid{
+
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:10px;
+
+}
+
+.social-button{
+
+  padding:13px 8px;
+
+  border-radius:12px;
+
+  border:1px solid rgba(255,255,255,.1);
+
+  background:#211f2b;
+
+  color:white;
+
+  cursor:pointer;
+
+  font-size:12px;
+
+  transition:.2s;
+
+}
+
+.social-button:hover{
+
+  border-color:#ff2f8d;
+
+  background:#292633;
+
+}
+
+.social-button:active{
+
+  transform:scale(.97);
+
+}
+
+.google{
+
+  color:#fff;
+
+}
+
+.tiktok{
+
+  color:#fff;
+
+}
+
+.whatsapp{
+
+  color:#42e878;
+
+}
+
+.phone{
+
+  color:#ff75b7;
+
+}
+
+.extra-actions{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  margin-top:13px;
+
+  font-size:11px;
+
+}
+
+.extra-actions a{
+
+  color:#ff5ca8;
+
+  text-decoration:none;
+
+  cursor:pointer;
+
+}
+
+.register{
+
+  text-align:center;
+
+  margin-top:22px;
+
+  color:#888;
+
+  font-size:12px;
+
+}
+
+.register a{
+
+  color:#ff4b9d;
+
+  font-weight:bold;
+
+  text-decoration:none;
+
+}
+
+.note{
+
+  color:#77727f;
+
+  text-align:center;
+
+  font-size:11px;
+
+  line-height:1.5;
+
+  margin-top:20px;
+
+}
+
+.message{
+
+  display:none;
+
+  padding:11px;
+
+  margin-bottom:13px;
+
+  border-radius:10px;
+
+  background:rgba(255,45,141,.12);
+
+  border:1px solid rgba(255,45,141,.25);
+
+  color:#ff83bd;
+
+  text-align:center;
+
+  font-size:11px;
+
+}
+
+.loading{
+
+  display:none;
+
+  text-align:center;
+
+  color:#aaa;
+
+  font-size:11px;
+
+  margin-top:12px;
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-  <main class="login-box">
 
-    <div class="logo">Reitoon</div>
+<div class="login-box">
 
-    <p class="subtitle">
-      Masuk dan mulai membuat cerita kamu
-    </p>
+
+  <div class="logo">
+
+    REITOON
+
+  </div>
+
+
+  <div class="subtitle">
+
+    Masuk dan lanjutkan perjalanan kreatifmu
+
+  </div>
+
+
+  <div
+    id="message"
+    class="message">
+
+  </div>
+
+
+  <!-- EMAIL LOGIN -->
+
+  <form
+    id="loginForm">
+
 
     <input
-      class="input"
+
+      type="email"
+
       id="email"
-      type="text"
-      placeholder="Email atau nomor telepon"
-    >
 
-    <input
       class="input"
-      id="password"
-      type="password"
-      placeholder="Password"
-    >
+
+      placeholder="Email atau Gmail"
+
+      required>
+
+
+    <div class="input-group">
+
+
+      <input
+
+        type="password"
+
+        id="password"
+
+        class="input"
+
+        placeholder="Password"
+
+        required>
+
+
+      <span
+
+        class="password-toggle"
+
+        onclick="togglePassword()">
+
+        👁
+
+      </span>
+
+
+    </div>
+
 
     <button
-      class="login-button"
-      onclick="login()"
-    >
-      🔐 Login
+
+      type="submit"
+
+      class="login-button">
+
+      Masuk ke REITOON
+
     </button>
 
-    <div class="divider">
-      atau lanjutkan dengan
-    </div>
 
-    <div class="social-grid">
+  </form>
 
-      <button class="social-button" onclick="socialLogin('Google')">
-        Google
-      </button>
 
-      <button class="social-button" onclick="socialLogin('Facebook')">
-        Facebook
-      </button>
+  <div class="extra-actions">
 
-      <button class="social-button" onclick="socialLogin('TikTok')">
-        TikTok
-      </button>
 
-      <button class="social-button" onclick="socialLogin('WhatsApp')">
-        WhatsApp
-      </button>
+    <a
+      onclick="forgotPassword()">
 
-    </div>
+      Lupa password?
 
-    <p class="note">
-      Prototype Reitoon. Login sosial asli membutuhkan integrasi OAuth resmi dan backend.
-    </p>
+    </a>
 
-  </main>
 
-  <script>
+    <a
+      onclick="openPhoneLogin()">
 
-    function login() {
+      Login dengan OTP
+
+    </a>
+
+
+  </div>
+
+
+  <div class="divider">
+
+    ATAU LOGIN DENGAN
+
+  </div>
+
+
+  <!-- SOCIAL LOGIN -->
+
+  <div class="social-grid">
+
+
+    <button
+
+      class="social-button google"
+
+      onclick="loginGoogle()">
+
+      🔵 Google / Gmail
+
+    </button>
+
+
+    <button
+
+      class="social-button tiktok"
+
+      onclick="loginTikTok()">
+
+      🎵 TikTok
+
+    </button>
+
+
+    <button
+
+      class="social-button whatsapp"
+
+      onclick="loginWhatsApp()">
+
+      🟢 WhatsApp
+
+    </button>
+
+
+    <button
+
+      class="social-button phone"
+
+      onclick="openPhoneLogin()">
+
+      📱 Nomor HP
+
+    </button>
+
+
+  </div>
+
+
+  <div class="register">
+
+    Belum punya akun?
+
+    <a
+      onclick="registerAccount()">
+
+      Daftar Sekarang
+
+    </a>
+
+  </div>
+
+
+  <div class="note">
+
+    Dengan melanjutkan, kamu menyetujui
+    Syarat Penggunaan dan Kebijakan Privasi REITOON.
+
+  </div>
+
+
+  <div
+    id="loading"
+    class="loading">
+
+    Memproses login...
+
+  </div>
+
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   LOGIN EMAIL
+========================= */
+
+document
+
+  .getElementById("loginForm")
+
+  .addEventListener(
+
+    "submit",
+
+    function(event){
+
+      event.preventDefault();
+
 
       const email =
-        document.getElementById("email").value.trim();
+        document
+        .getElementById("email")
+        .value
+        .trim();
 
-      if (!email) {
 
-        alert("Masukkan email atau nomor telepon");
+      const password =
+        document
+        .getElementById("password")
+        .value;
+
+
+      if(!email || !password){
+
+        showMessage(
+          "Email dan password wajib diisi."
+        );
 
         return;
 
       }
 
-      localStorage.setItem(
-        "reitoon_logged_in",
-        "true"
-      );
 
-      localStorage.setItem(
-        "reitoon_login_user",
-        email
-      );
-
-      window.location.href =
-        "index.html";
-
-    }
+      startLoading();
 
 
-    function socialLogin(provider) {
+      /*
+        NANTI DIHUBUNGKAN KE BACKEND
+        / FIREBASE AUTHENTICATION
+      */
 
-      localStorage.setItem(
-        "reitoon_logged_in",
-        "true"
-      );
 
-      localStorage.setItem(
-        "reitoon_login_user",
-        provider + " User"
-      );
+      setTimeout(function(){
 
-      window.location.href =
-        "index.html";
+        localStorage.setItem(
+          "reitoon_logged_in",
+          "true"
+        );
+
+        localStorage.setItem(
+          "reitoon_email",
+          email
+        );
+
+
+        window.location.href =
+          "index.html";
+
+
+      },1000);
 
     }
 
-  </script>
+  );
+
+
+/* =========================
+   GOOGLE / GMAIL
+========================= */
+
+function loginGoogle(){
+
+  showMessage(
+    "Login Google akan membuka halaman autentikasi Google."
+  );
+
+
+  /*
+    DI SINI NANTI MASUKKAN
+    GOOGLE AUTHENTICATION
+  */
+
+}
+
+
+/* =========================
+   TIKTOK
+========================= */
+
+function loginTikTok(){
+
+  showMessage(
+    "Login TikTok akan membuka autentikasi TikTok."
+  );
+
+
+  /*
+    DI SINI NANTI MASUKKAN
+    TIKTOK OAUTH
+  */
+
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+function loginWhatsApp(){
+
+  showMessage(
+    "Masukkan nomor WhatsApp untuk menerima kode OTP."
+  );
+
+
+  openPhoneLogin();
+
+}
+
+
+/* =========================
+   LOGIN NOMOR TELEPON
+========================= */
+
+function openPhoneLogin(){
+
+  const phone =
+    prompt(
+      "Masukkan nomor telepon kamu:\nContoh: 081234567890"
+    );
+
+
+  if(!phone){
+
+    return;
+
+  }
+
+
+  const cleanPhone =
+    phone.replace(/\D/g,"");
+
+
+  if(cleanPhone.length < 10){
+
+    showMessage(
+      "Nomor telepon tidak valid."
+    );
+
+    return;
+
+  }
+
+
+  const otp =
+    prompt(
+      "Kode OTP telah dikirim ke nomor:\n" +
+      phone +
+      "\n\nMasukkan kode OTP:"
+    );
+
+
+  if(!otp){
+
+    return;
+
+  }
+
+
+  if(otp.length < 4){
+
+    showMessage(
+      "Kode OTP tidak valid."
+    );
+
+    return;
+
+  }
+
+
+  localStorage.setItem(
+    "reitoon_logged_in",
+    "true"
+  );
+
+  localStorage.setItem(
+    "reitoon_phone",
+    phone
+  );
+
+
+  window.location.href =
+    "index.html";
+
+}
+
+
+/* =========================
+   REGISTER
+========================= */
+
+function registerAccount(){
+
+  const email =
+    prompt(
+      "Masukkan email untuk membuat akun REITOON:"
+    );
+
+
+  if(!email){
+
+    return;
+
+  }
+
+
+  localStorage.setItem(
+    "reitoon_register_email",
+    email
+  );
+
+
+  alert(
+    "Akun berhasil disiapkan.\n" +
+    "Silakan lanjutkan proses pendaftaran."
+  );
+
+}
+
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+function forgotPassword(){
+
+  const email =
+    prompt(
+      "Masukkan email akun REITOON:"
+    );
+
+
+  if(!email){
+
+    return;
+
+  }
+
+
+  alert(
+    "Link reset password akan dikirim ke:\n" +
+    email
+  );
+
+}
+
+
+/* =========================
+   PASSWORD TOGGLE
+========================= */
+
+function togglePassword(){
+
+  const password =
+    document
+    .getElementById("password");
+
+
+  if(
+    password.type ===
+    "password"
+  ){
+
+    password.type =
+      "text";
+
+  }else{
+
+    password.type =
+      "password";
+
+  }
+
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(text){
+
+  const message =
+    document
+    .getElementById("message");
+
+
+  message.innerText =
+    text;
+
+
+  message.style.display =
+    "block";
+
+}
+
+
+function startLoading(){
+
+  document
+    .getElementById("loading")
+    .style.display =
+    "block";
+
+}
+
+</script>
+
 
 </body>
+
 </html>
