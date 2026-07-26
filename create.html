@@ -1,424 +1,440 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08070d">
-<title>Create - Reitoon</title><style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-:root{
---bg:#08070d;
---surface:#191722;
---surface-light:#211f2b;
---text:#fff;
---muted:#aaa3b0;
---pink:#ff2f8d;
---purple:#762dff;
---border:rgba(255,255,255,.1)
-}
-
-body{
-min-height:100vh;
-background:
-radial-gradient(circle at 100% 0%,rgba(255,40,145,.14),transparent 35%),
-radial-gradient(circle at 0% 30%,rgba(112,45,255,.1),transparent 30%),
-var(--bg);
-color:var(--text);
-font-family:Arial,Helvetica,sans-serif;
-padding-bottom:100px
-}
-
-.header{
-height:76px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:16px 20px;
-background:rgba(8,7,13,.94);
-border-bottom:1px solid var(--border);
-position:sticky;
-top:0;
-z-index:20
-}
-
-.back{
-width:42px;
-height:42px;
-border-radius:14px;
-border:1px solid var(--border);
-background:var(--surface);
-color:white;
-font-size:20px
-}
-
-.logo{
-font-size:29px;
-font-weight:800;
-background:linear-gradient(135deg,#fff,var(--pink),var(--purple));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent
-}
-
-.container{
-width:100%;
-max-width:600px;
-margin:auto;
-padding:26px 16px
-}
-
-h1{font-size:30px}
-h1 span{
-background:linear-gradient(135deg,var(--pink),var(--purple));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent
-}
-
-.subtitle{
-color:var(--muted);
-font-size:14px;
-line-height:1.5;
-margin-top:8px
-}
-
-.types{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-margin-top:24px
-}
-
-.type{
-padding:18px;
-border-radius:18px;
-background:var(--surface);
-border:1px solid var(--border);
-cursor:pointer
-}
-
-.type.active{
-border-color:var(--pink);
-background:linear-gradient(135deg,rgba(255,47,141,.15),rgba(118,45,255,.12)),var(--surface)
-}
-
-.type-icon{font-size:28px;margin-bottom:10px}
-.type h3{font-size:15px}
-.type p{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4}
-
-.form{
-margin-top:22px;
-padding:20px;
-border-radius:22px;
-background:var(--surface);
-border:1px solid var(--border)
-}
-
-.group{margin-bottom:17px}
-label{
-display:block;
-font-size:13px;
-font-weight:bold;
-margin-bottom:7px
-}
-
-input,textarea,select{
-width:100%;
-padding:14px;
-border-radius:12px;
-border:1px solid var(--border);
-background:#100f17;
-color:white;
-font-size:14px;
-outline:none
-}
-
-textarea{
-height:120px;
-resize:none
-}
-
-input:focus,textarea:focus,select:focus{
-border-color:var(--pink)
-}
-
-.upload{
-min-height:150px;
-border:1px dashed rgba(255,255,255,.25);
-border-radius:16px;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-text-align:center;
-cursor:pointer
-}
-
-.upload-icon{font-size:38px}
-.upload p{
-font-size:11px;
-color:var(--muted);
-margin-top:6px
-}
-
-.upload input{display:none}
-
-.preview{
-display:none;
-width:100%;
-max-height:220px;
-object-fit:cover;
-border-radius:14px;
-margin-top:12px
-}
-
-.create-btn{
-width:100%;
-padding:16px;
-border:none;
-border-radius:14px;
-color:white;
-font-size:15px;
-font-weight:bold;
-background:linear-gradient(135deg,var(--pink),var(--purple));
-cursor:pointer
-}
-
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:76px;
-display:flex;
-justify-content:space-around;
-align-items:center;
-background:rgba(14,13,21,.96);
-backdrop-filter:blur(18px);
-border-top:1px solid var(--border);
-z-index:30
-}
-
-.nav-item{
-color:var(--muted);
-text-decoration:none;
-text-align:center;
-font-size:10px;
-min-width:60px
-}
-
-.nav-icon{
-display:block;
-font-size:21px;
-margin-bottom:4px
-}
-
-.nav-item.active{color:var(--pink)}
-
-.toast{
-position:fixed;
-left:50%;
-bottom:95px;
-transform:translateX(-50%) translateY(20px);
-background:var(--surface-light);
-border:1px solid var(--border);
-border-radius:14px;
-padding:13px 18px;
-font-size:13px;
-opacity:0;
-pointer-events:none;
-transition:.3s;
-z-index:50;
-white-space:nowrap
-}
-
-.toast.show{
-opacity:1;
-transform:translateX(-50%) translateY(0)
-}
-</style></head><body><header class="header">
-<button class="back" onclick="history.back()">←</button>
-<div class="logo">Reitoon</div>
-<div style="width:42px"></div>
-</header><main class="container"><h1>Create <span>Your Story</span></h1><p class="subtitle">
-Ubah ide dan imajinasi kamu menjadi cerita original di Reitoon.
-</p><section class="types"><div class="type active" onclick="selectType(this,'Film')">
-<div class="type-icon">🎬</div>
-<h3>Create Film</h3>
-<p>Buat cerita visual dan film kamu.</p>
-</div><div class="type" onclick="selectType(this,'Story')">
-<div class="type-icon">✍️</div>
-<h3>Create Story</h3>
-<p>Tulis cerita dan drama original.</p>
-</div></section><section class="form"><div class="group">
-<label>Judul Cerita</label>
-<input id="title" type="text" placeholder="Contoh: Love Beyond Time">
-</div><div class="group">
-<label>Genre</label>
-<select id="genre">
-<option value="">Pilih Genre</option>
-<option>Romance</option>
-<option>Drama</option>
-<option>Action</option>
-<option>Fantasy</option>
-<option>Comedy</option>
-<option>Thriller</option>
-</select>
-</div><div class="group">
-<label>Deskripsi Cerita</label>
-<textarea id="description" placeholder="Ceritakan ide utama cerita kamu..."></textarea>
-</div><div class="group">
-<label>Cover Cerita</label><label class="upload">
-<div class="upload-icon">🖼️</div>
-<strong>Upload Cover</strong>
-<p>JPG atau PNG</p><input
-type="file"
-id="cover"
-accept="image/*"
-onchange="previewCover(event)"
-
-«»
-
-</label><img id="preview" class="preview">
-</div><div class="group">
-<label>Status</label><select id="status">
-<option value="draft">Simpan sebagai Draft</option>
-<option value="published">Publikasikan ke Watch</option>
-</select>
-</div><button class="create-btn" onclick="createStory()">
-🚀 Create My Story
-</button></section></main><nav class="bottom-nav"><a class="nav-item" href="index.html">
-<span class="nav-icon">🏠</span>
-Home
-</a><a class="nav-item" href="watch.html">
-<span class="nav-icon">▶️</span>
-Watch
-</a><a class="nav-item active" href="create.html">
-<span class="nav-icon">✨</span>
-Create
-</a><a class="nav-item" href="studio.html">
-<span class="nav-icon">🎥</span>
-Studio
-</a><a class="nav-item" href="profile.html">
-<span class="nav-icon">👤</span>
-Profile
-</a></nav><div class="toast" id="toast"></div><script>
-
-let selectedType="Film";
-let coverData="";
-
-function selectType(element,type){
-
-document.querySelectorAll(".type")
-.forEach(item=>item.classList.remove("active"));
-
-element.classList.add("active");
-
-selectedType=type;
-
-}
-
-function previewCover(event){
-
-const file=event.target.files[0];
-
-if(!file)return;
-
-const reader=new FileReader();
-
-reader.onload=function(e){
-
-coverData=e.target.result;
-
-const preview=document.getElementById("preview");
-
-preview.src=coverData;
-
-preview.style.display="block";
-
-};
-
-reader.readAsDataURL(file);
-
-}
-
-function createStory(){
-
-const title=document.getElementById("title").value.trim();
-const genre=document.getElementById("genre").value;
-const description=document.getElementById("description").value.trim();
-const status=document.getElementById("status").value;
-
-if(!title){
-showToast("Masukkan judul cerita");
-return;
-}
-
-if(!genre){
-showToast("Pilih genre cerita");
-return;
-}
-
-if(!description){
-showToast("Masukkan deskripsi cerita");
-return;
-}
-
-let stories=
-JSON.parse(localStorage.getItem("reitoon_stories"))||[];
-
-const newStory={
-
-id:Date.now(),
-
-type:selectedType,
-
-title:title,
-
-genre:genre,
-
-description:description,
-
-cover:coverData,
-
-status:status,
-
-views:0,
-
-createdAt:new Date().toISOString()
-
-};
-
-stories.push(newStory);
-
-localStorage.setItem(
-"reitoon_stories",
-JSON.stringify(stories)
-);
-
-showToast("🎉 Cerita berhasil dibuat!");
-
-setTimeout(()=>{
-
-window.location.href="studio.html";
-
-},1200);
-
-}
-
-function showToast(message){
-
-const toast=document.getElementById("toast");
-
-toast.textContent=message;
-
-toast.classList.add("show");
-
-setTimeout(()=>{
-
-toast.classList.remove("show");
-
-},2500);
-
-}
-
-</script></body>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#08070d"
+  >
+
+  <title>Create - Reitoon</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+<body>
+
+  <header class="top-header">
+
+    <button
+      class="back-button"
+      onclick="history.back()"
+    >
+      ←
+    </button>
+
+    <div class="brand-name">
+      Reitoon
+    </div>
+
+    <div style="width:42px;"></div>
+
+  </header>
+
+
+  <main class="create-container">
+
+    <section>
+
+      <span class="section-label">
+        REITOON CREATOR
+      </span>
+
+      <h1 style="font-size:31px;margin-top:8px;">
+        Create <span style="color:#ff2f8d;">Your Story</span>
+      </h1>
+
+      <p style="color:#aaa3b0;font-size:14px;margin-top:8px;">
+        Ubah ide kamu menjadi cerita dan film.
+      </p>
+
+    </section>
+
+
+    <section class="create-types">
+
+      <div
+        class="type-card active"
+        onclick="selectType(this,'Film')"
+      >
+
+        <div class="type-icon">
+          🎬
+        </div>
+
+        <h3>
+          Create Film
+        </h3>
+
+        <p>
+          Buat film dengan bantuan AI.
+        </p>
+
+      </div>
+
+
+      <div
+        class="type-card"
+        onclick="selectType(this,'Story')"
+      >
+
+        <div class="type-icon">
+          ✍️
+        </div>
+
+        <h3>
+          Create Story
+        </h3>
+
+        <p>
+          Tulis cerita dan dunia original.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="form-card">
+
+      <h2 style="margin-bottom:20px;">
+        ✨ Informasi Cerita
+      </h2>
+
+
+      <div class="form-group">
+
+        <label>
+          Judul Cerita
+        </label>
+
+        <input
+          id="storyTitle"
+          placeholder="Contoh: The Last Promise"
+        >
+
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label>
+            Genre
+          </label>
+
+          <select id="genre">
+
+            <option value="">
+              Pilih Genre
+            </option>
+
+            <option>Romance</option>
+            <option>Action</option>
+            <option>Drama</option>
+            <option>Fantasy</option>
+            <option>Comedy</option>
+            <option>Thriller</option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Bahasa
+          </label>
+
+          <select id="language">
+
+            <option>
+              Bahasa Indonesia
+            </option>
+
+            <option>
+              English
+            </option>
+
+            <option>
+              中文 Chinese
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Deskripsi Cerita
+        </label>
+
+        <textarea
+          id="storyDescription"
+          placeholder="Ceritakan ide utama kamu..."
+        ></textarea>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Cover Cerita
+        </label>
+
+        <label class="upload-box">
+
+          <div style="font-size:38px;">
+            🖼️
+          </div>
+
+          <strong>
+            Upload Cover
+          </strong>
+
+          <p style="color:#aaa3b0;font-size:12px;margin-top:5px;">
+            JPG atau PNG
+          </p>
+
+          <input
+            type="file"
+            id="coverInput"
+            accept="image/*"
+            hidden
+            onchange="previewCover(event)"
+          >
+
+        </label>
+
+        <img
+          id="coverPreview"
+          class="preview-image"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Status
+        </label>
+
+        <select id="status">
+
+          <option value="draft">
+            Draft
+          </option>
+
+          <option value="public">
+            Public
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+        class="create-button"
+        onclick="createStory()"
+      >
+
+        🚀 Create My Story
+
+      </button>
+
+    </section>
+
+
+    <section class="earn-info">
+
+      <strong>
+        💰 Creator Earnings
+      </strong>
+
+      <p style="color:#aaa3b0;font-size:12px;margin-top:6px;">
+        Cerita yang berhasil mendapatkan penonton dapat dikembangkan menjadi karya yang menghasilkan pendapatan.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <nav class="bottom-navigation">
+
+    <a class="nav-item" href="index.html">
+      <span class="nav-icon">🏠</span>
+      Home
+    </a>
+
+    <a class="nav-item" href="watch.html">
+      <span class="nav-icon">▶️</span>
+      Watch
+    </a>
+
+    <a class="nav-item active" href="create.html">
+      <span class="nav-icon">✨</span>
+      Create
+    </a>
+
+    <a class="nav-item" href="studio.html">
+      <span class="nav-icon">🎥</span>
+      Studio
+    </a>
+
+    <a class="nav-item" href="profile.html">
+      <span class="nav-icon">👤</span>
+      Profile
+    </a>
+
+  </nav>
+
+
+  <script>
+
+    let selectedType =
+      "Film";
+
+
+    function selectType(element,type) {
+
+      document
+        .querySelectorAll(".type-card")
+        .forEach(card => {
+
+          card.classList.remove("active");
+
+        });
+
+      element.classList.add("active");
+
+      selectedType = type;
+
+    }
+
+
+    function previewCover(event) {
+
+      const file =
+        event.target.files[0];
+
+      if (!file) return;
+
+      const reader =
+        new FileReader();
+
+      reader.onload =
+        function(e) {
+
+          document
+            .getElementById("coverPreview")
+            .src = e.target.result;
+
+          document
+            .getElementById("coverPreview")
+            .style.display = "block";
+
+        };
+
+      reader.readAsDataURL(file);
+
+    }
+
+
+    function createStory() {
+
+      const title =
+        document
+        .getElementById("storyTitle")
+        .value
+        .trim();
+
+      const genre =
+        document
+        .getElementById("genre")
+        .value;
+
+      const description =
+        document
+        .getElementById("storyDescription")
+        .value
+        .trim();
+
+      const language =
+        document
+        .getElementById("language")
+        .value;
+
+
+      if (!title || !genre || !description) {
+
+        alert(
+          "Lengkapi judul, genre, dan deskripsi."
+        );
+
+        return;
+
+      }
+
+
+      const story = {
+
+        type: selectedType,
+
+        title: title,
+
+        genre: genre,
+
+        description: description,
+
+        language: language,
+
+        createdAt:
+          new Date().toISOString()
+
+      };
+
+
+      localStorage.setItem(
+
+        "reitoon_story",
+
+        JSON.stringify(story)
+
+      );
+
+
+      alert(
+        "🎉 Cerita berhasil dibuat!"
+      );
+
+
+      window.location.href =
+        "studio.html";
+
+    }
+
+  </script>
+
+</body>
 </html>
