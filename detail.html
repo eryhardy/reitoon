@@ -1,76 +1,44 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id"><head>  <meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
 
-<head>
+«»
 
-  <meta charset="UTF-8">
+<meta
+name="theme-color"
+content="#08080d"
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+«»
 
-  <meta
-    name="theme-color"
-    content="#08070d"
-  >
-
-  <title>Detail Film - Reitoon</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #08070d;
-      --surface: #191722;
-      --surface-light: #211f2b;
-      --text: #ffffff;
-      --muted: #aaa3b0;
-      --pink: #ff2f8d;
-      --purple: #762dff;
-      --border: rgba(255,255,255,0.10);
-    }
+  <title>Detail Film - Reitoon</title>  <link
+    rel="stylesheet"
+    href="style.css"
+  >  <style>
 
     body {
-      min-height: 100vh;
-      background:
-        radial-gradient(
-          circle at 100% 0%,
-          rgba(255,40,145,0.14),
-          transparent 35%
-        ),
-        var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .detail-page {
       padding-bottom: 100px;
     }
 
-    .app {
-      width: 100%;
-      max-width: 600px;
-      margin: auto;
-      min-height: 100vh;
-    }
-
-    /* HEADER */
-
-    .header {
-      height: 70px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .detail-header {
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(8,7,13,0.94);
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: rgba(8,8,13,0.92);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(15px);
+    }
+
+    .detail-header h2 {
+      font-size: 18px;
     }
 
     .back-button {
@@ -81,204 +49,145 @@
       background: var(--surface);
       color: white;
       font-size: 20px;
+      cursor: pointer;
     }
 
-    .logo {
-      font-size: 27px;
-      font-weight: 800;
+    .video-container {
+      width: 100%;
+      background: #000;
+      position: relative;
+    }
+
+    .video-container video {
+      display: block;
+      width: 100%;
+      max-height: 280px;
+      background: #000;
+    }
+
+    .video-placeholder {
+      display: none;
+      aspect-ratio: 16 / 9;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
       background:
         linear-gradient(
           135deg,
-          white,
-          var(--pink),
-          var(--purple)
+          #24152f,
+          #0b0b12
         );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: white;
     }
 
-    .header-space {
-      width: 42px;
+    .video-placeholder span {
+      font-size: 48px;
     }
 
-    /* HERO POSTER */
-
-    .hero-poster {
-      height: 390px;
-      margin: 16px;
-      border-radius: 24px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-
-      background:
-        linear-gradient(
-          to top,
-          rgba(8,7,13,0.98),
-          rgba(8,7,13,0.15)
-        ),
-        linear-gradient(
-          145deg,
-          #b43f8f,
-          #24152f
-        );
+    .detail-content {
+      padding: 22px 20px;
     }
 
-    .hero-poster::before {
-      content: "🎬";
-      position: absolute;
-      top: 45px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 100px;
-      opacity: 0.35;
-    }
-
-    .poster-content {
-      position: relative;
-      z-index: 2;
-      padding: 22px;
-      width: 100%;
-    }
-
-    .badge {
+    .detail-badge {
       display: inline-block;
       padding: 6px 10px;
-      border-radius: 7px;
-      background: var(--pink);
-      color: white;
+      border-radius: 8px;
+      background: rgba(255,47,141,0.15);
+      border: 1px solid rgba(255,47,141,0.35);
+      color: var(--pink-light);
       font-size: 10px;
       font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .detail-title {
+      font-size: 30px;
+      line-height: 1.1;
       margin-bottom: 10px;
     }
 
-    .poster-content h1 {
-      font-size: 30px;
-      line-height: 1.1;
-      margin-bottom: 8px;
-    }
-
-    .meta {
-      color: #ddd;
-      font-size: 12px;
-    }
-
-    /* CONTENT */
-
-    .content {
-      padding: 0 18px;
-    }
-
-    .action-buttons {
+    .detail-meta {
       display: flex;
-      gap: 10px;
-      margin: 18px 0;
-    }
-
-    .watch-button {
-      flex: 1;
-      border: none;
-      border-radius: 14px;
-      padding: 15px;
-      color: white;
-      font-weight: bold;
-      font-size: 14px;
-      background:
-        linear-gradient(
-          135deg,
-          var(--pink),
-          var(--purple)
-        );
-    }
-
-    .save-button {
-      width: 52px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--surface);
-      color: white;
-      font-size: 20px;
-    }
-
-    .description {
-      padding: 18px;
-      border-radius: 18px;
-      background: var(--surface);
-      border: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
       margin-bottom: 20px;
     }
 
-    .description h2 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .description p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 25px;
-    }
-
-    .info-box {
-      padding: 14px 8px;
-      text-align: center;
-      border-radius: 15px;
+    .meta-item {
+      padding: 7px 10px;
+      border-radius: 8px;
       background: var(--surface);
       border: 1px solid var(--border);
     }
 
-    .info-box strong {
-      display: block;
-      font-size: 13px;
-      margin-bottom: 5px;
+    .detail-description {
+      color: #c8c5ce;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 22px;
     }
 
-    .info-box span {
-      color: var(--muted);
-      font-size: 10px;
-    }
-
-    /* EPISODES */
-
-    .section-title {
-      font-size: 20px;
-      margin-bottom: 14px;
-    }
-
-    .episode {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 13px;
-      margin-bottom: 10px;
-      border-radius: 15px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-    }
-
-    .episode-number {
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 11px;
+    .watch-button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 14px;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
       background:
         linear-gradient(
           135deg,
           var(--pink),
           var(--purple)
         );
+      box-shadow:
+        0 10px 25px rgba(255,47,141,0.25);
+    }
+
+    .section-title {
+      font-size: 19px;
+      margin: 28px 0 14px;
+    }
+
+    .episode-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .episode-card.active {
+      border-color: var(--pink);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,47,141,0.12),
+          rgba(118,45,255,0.10)
+        ),
+        var(--surface);
+    }
+
+    .episode-number {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: var(--surface-light);
+      color: var(--pink-light);
       font-weight: bold;
-      font-size: 13px;
+      font-size: 14px;
     }
 
     .episode-info {
@@ -288,394 +197,857 @@
     .episode-info strong {
       display: block;
       font-size: 13px;
-    }
-
-    .episode-info span {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 4px;
-    }
-
-    .episode-play {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: var(--surface-light);
-      color: white;
-    }
-
-    /* BOTTOM NAV */
-
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 76px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      background: rgba(14,13,21,0.96);
-      border-top: 1px solid var(--border);
-      backdrop-filter: blur(15px);
-      z-index: 30;
-    }
-
-    .nav-item {
-      text-decoration: none;
-      color: var(--muted);
-      text-align: center;
-      font-size: 10px;
-      min-width: 55px;
-    }
-
-    .nav-icon {
-      display: block;
-      font-size: 20px;
       margin-bottom: 4px;
     }
 
-    .nav-item.active {
-      color: var(--pink);
+    .episode-info span {
+      color: var(--muted);
+      font-size: 11px;
     }
 
-  </style>
+    .episode-play {
+      font-size: 18px;
+    }
 
-</head>
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
 
-<body>
+    .related-card {
+      padding: 14px;
+      border-radius: 15px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
 
-  <div class="app">
+    .related-poster {
+      height: 120px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
 
-    <!-- HEADER -->
+    .related-card h3 {
+      font-size: 13px;
+    }
 
-    <header class="header">
+    .related-card p {
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 5px;
+    }
 
-      <button
-        class="back-button"
-        onclick="history.back()"
-      >
-        ←
-      </button>
+    @media (max-width: 420px) {
 
-      <div class="logo">
-        Reitoon
-      </div>
+      .detail-title {
+        font-size: 27px;
+      }
 
-      <div class="header-space"></div>
+      .video-container video {
+        max-height: 240px;
+      }
 
-    </header>
+    }
 
+  </style></head><body>  <div class="detail-page"><!-- HEADER -->
 
-    <!-- HERO -->
+<header class="detail-header">
 
-    <section class="hero-poster">
+  <button
+    class="back-button"
+    onclick="goBack()"
+  >
 
-      <div class="poster-content">
+    ←
 
-        <span class="badge">
-          TRENDING
-        </span>
+  </button>
 
-        <h1>
-          Love Beyond Time
-        </h1>
 
-        <div class="meta">
-          Romance · Drama · 2026
-        </div>
+  <h2>
 
-      </div>
+    Reitoon
 
-    </section>
+  </h2>
 
 
-    <!-- CONTENT -->
+  <button
+    class="back-button"
+    onclick="shareMovie()"
+  >
 
-    <main class="content">
+    ↗
 
-      <div class="action-buttons">
+  </button>
 
-        <button
-          class="watch-button"
-          onclick="watchMovie()"
-        >
+</header>
 
-          ▶ Watch Now
 
-        </button>
+<!-- VIDEO PLAYER -->
 
-        <button
-          class="save-button"
-          onclick="saveMovie()"
-        >
+<section class="video-container">
 
-          ♡
 
-        </button>
+  <video
+    id="movieVideo"
+    controls
+    playsinline
+    poster=""
+  >
 
-      </div>
+    <source
+      id="videoSource"
+      src=""
+      type="video/mp4"
+    >
 
+    Browser kamu tidak mendukung video.
 
-      <section class="description">
+  </video>
 
-        <h2>
-          About This Story
-        </h2>
 
-        <p>
-          Dua orang yang dipisahkan oleh waktu
-          menemukan cara untuk bertemu kembali.
-          Namun setiap pertemuan membawa rahasia
-          dan pilihan yang dapat mengubah masa depan.
-        </p>
+  <div
+    class="video-placeholder"
+    id="videoPlaceholder"
+  >
 
-      </section>
+    <span>
 
+      🎬
 
-      <section class="info-grid">
+    </span>
 
-        <div class="info-box">
 
-          <strong>
-            8.9
-          </strong>
+    <p>
 
-          <span>
-            Rating
-          </span>
+      Video belum tersedia
 
-        </div>
-
-
-        <div class="info-box">
-
-          <strong>
-            12+
-          </strong>
-
-          <span>
-            Age
-          </span>
-
-        </div>
-
-
-        <div class="info-box">
-
-          <strong>
-            24m
-          </strong>
-
-          <span>
-            Duration
-          </span>
-
-        </div>
-
-      </section>
-
-
-      <h2 class="section-title">
-        Episodes
-      </h2>
-
-
-      <div class="episode">
-
-        <div class="episode-number">
-          01
-        </div>
-
-        <div class="episode-info">
-
-          <strong>
-            The First Meeting
-          </strong>
-
-          <span>
-            24 min · Episode 1
-          </span>
-
-        </div>
-
-        <button
-          class="episode-play"
-          onclick="watchEpisode(1)"
-        >
-          ▶
-        </button>
-
-      </div>
-
-
-      <div class="episode">
-
-        <div class="episode-number">
-          02
-        </div>
-
-        <div class="episode-info">
-
-          <strong>
-            A Strange Connection
-          </strong>
-
-          <span>
-            26 min · Episode 2
-          </span>
-
-        </div>
-
-        <button
-          class="episode-play"
-          onclick="watchEpisode(2)"
-        >
-          ▶
-        </button>
-
-      </div>
-
-
-      <div class="episode">
-
-        <div class="episode-number">
-          03
-        </div>
-
-        <div class="episode-info">
-
-          <strong>
-            The Secret
-          </strong>
-
-          <span>
-            28 min · Episode 3
-          </span>
-
-        </div>
-
-        <button
-          class="episode-play"
-          onclick="watchEpisode(3)"
-        >
-          ▶
-        </button>
-
-      </div>
-
-    </main>
-
-
-    <!-- BOTTOM NAV -->
-
-    <nav class="bottom-nav">
-
-      <a
-        class="nav-item"
-        href="index.html"
-      >
-
-        <span class="nav-icon">
-          🏠
-        </span>
-
-        Home
-
-      </a>
-
-
-      <a
-        class="nav-item active"
-        href="watch.html"
-      >
-
-        <span class="nav-icon">
-          ▶️
-        </span>
-
-        Watch
-
-      </a>
-
-
-      <a
-        class="nav-item"
-        href="create.html"
-      >
-
-        <span class="nav-icon">
-          ✨
-        </span>
-
-        Create
-
-      </a>
-
-
-      <a
-        class="nav-item"
-        href="studio.html"
-      >
-
-        <span class="nav-icon">
-          🎥
-        </span>
-
-        Studio
-
-      </a>
-
-
-      <a
-        class="nav-item"
-        href="profile.html"
-      >
-
-        <span class="nav-icon">
-          👤
-        </span>
-
-        Profile
-
-      </a>
-
-    </nav>
+    </p>
 
   </div>
 
 
-  <script>
+</section>
 
-    function watchMovie() {
+
+<!-- DETAIL -->
+
+<main class="detail-content">
+
+
+  <span
+    class="detail-badge"
+    id="movieBadge"
+  >
+
+    REITOON ORIGINAL
+
+  </span>
+
+
+  <h1
+    class="detail-title"
+    id="movieTitle"
+  >
+
+    Love Beyond Time
+
+  </h1>
+
+
+  <div class="detail-meta">
+
+
+    <span
+      class="meta-item"
+      id="movieGenre"
+    >
+
+      Romance · Drama
+
+    </span>
+
+
+    <span
+      class="meta-item"
+      id="movieYear"
+    >
+
+      2026
+
+    </span>
+
+
+    <span
+      class="meta-item"
+      id="movieDuration"
+    >
+
+      2h 10m
+
+    </span>
+
+
+    <span
+      class="meta-item"
+      id="movieRating"
+    >
+
+      ⭐ 9.2
+
+    </span>
+
+
+  </div>
+
+
+  <p
+    class="detail-description"
+    id="movieDescription"
+  >
+
+    Dua orang yang dipisahkan oleh waktu bertemu kembali dalam sebuah kisah cinta yang tidak pernah benar-benar berakhir.
+
+  </p>
+
+
+  <button
+    class="watch-button"
+    onclick="playMovie()"
+  >
+
+    ▶ Watch Now
+
+  </button>
+
+
+  <!-- EPISODES -->
+
+  <h2 class="section-title">
+
+    Episodes
+
+  </h2>
+
+
+  <div class="episode-card active">
+
+    <div class="episode-number">
+
+      01
+
+    </div>
+
+
+    <div class="episode-info">
+
+      <strong>
+
+        The Beginning
+
+      </strong>
+
+
+      <span>
+
+        Episode 1 · 24 min
+
+      </span>
+
+    </div>
+
+
+    <div class="episode-play">
+
+      ▶
+
+    </div>
+
+  </div>
+
+
+  <div class="episode-card">
+
+    <div class="episode-number">
+
+      02
+
+    </div>
+
+
+    <div class="episode-info">
+
+      <strong>
+
+        A New Meeting
+
+      </strong>
+
+
+      <span>
+
+        Episode 2 · 27 min
+
+      </span>
+
+    </div>
+
+
+    <div class="episode-play">
+
+      🔒
+
+    </div>
+
+  </div>
+
+
+  <div class="episode-card">
+
+    <div class="episode-number">
+
+      03
+
+    </div>
+
+
+    <div class="episode-info">
+
+      <strong>
+
+        The Secret
+
+      </strong>
+
+
+      <span>
+
+        Episode 3 · 31 min
+
+      </span>
+
+    </div>
+
+
+    <div class="episode-play">
+
+      🔒
+
+    </div>
+
+  </div>
+
+
+  <!-- RELATED -->
+
+  <h2 class="section-title">
+
+    You May Also Like
+
+  </h2>
+
+
+  <div class="related-grid">
+
+
+    <div
+      class="related-card"
+      onclick="openRelated('the-last-kingdom')"
+    >
+
+      <div
+        class="related-poster poster-two"
+      ></div>
+
+
+      <h3>
+
+        The Last Kingdom
+
+      </h3>
+
+
+      <p>
+
+        Action · Fantasy
+
+      </p>
+
+    </div>
+
+
+    <div
+      class="related-card"
+      onclick="openRelated('hidden-truth')"
+    >
+
+      <div
+        class="related-poster poster-three"
+      ></div>
+
+
+      <h3>
+
+        Hidden Truth
+
+      </h3>
+
+
+      <p>
+
+        Mystery · Drama
+
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+</main>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-navigation">
+
+
+  <a
+    href="index.html"
+    class="nav-item"
+    style="text-decoration:none;"
+  >
+
+    <span class="nav-icon">
+
+      🏠
+
+    </span>
+
+
+    <span class="nav-label">
+
+      Home
+
+    </span>
+
+  </a>
+
+
+  <a
+    href="watch.html"
+    class="nav-item active"
+    style="text-decoration:none;"
+  >
+
+    <span class="nav-icon">
+
+      ▶️
+
+    </span>
+
+
+    <span class="nav-label">
+
+      Watch
+
+    </span>
+
+  </a>
+
+
+  <a
+    href="create.html"
+    class="nav-item create-nav-button"
+    style="text-decoration:none;"
+  >
+
+    <span class="create-nav-icon">
+
+      ＋
+
+    </span>
+
+
+    <span class="nav-label">
+
+      Create
+
+    </span>
+
+  </a>
+
+
+  <a
+    href="studio.html"
+    class="nav-item"
+    style="text-decoration:none;"
+  >
+
+    <span class="nav-icon">
+
+      🎬
+
+    </span>
+
+
+    <span class="nav-label">
+
+      Studio
+
+    </span>
+
+  </a>
+
+
+  <a
+    href="profile.html"
+    class="nav-item"
+    style="text-decoration:none;"
+  >
+
+    <span class="nav-icon">
+
+      👤
+
+    </span>
+
+
+    <span class="nav-label">
+
+      Profile
+
+    </span>
+
+  </a>
+
+
+</nav>
+
+  </div>  <script>
+
+
+    const movieData = {
+
+
+      "love-beyond-time": {
+
+        title: "Love Beyond Time",
+
+        genre: "Romance · Drama",
+
+        year: "2026",
+
+        duration: "2h 10m",
+
+        rating: "⭐ 9.2",
+
+        badge: "TRENDING",
+
+        description:
+        "Dua orang yang dipisahkan oleh waktu bertemu kembali dalam sebuah kisah cinta yang tidak pernah benar-benar berakhir.",
+
+        video:
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+
+      },
+
+
+      "the-last-kingdom": {
+
+        title: "The Last Kingdom",
+
+        genre: "Action · Fantasy",
+
+        year: "2026",
+
+        duration: "1h 58m",
+
+        rating: "⭐ 8.9",
+
+        badge: "POPULAR",
+
+        description:
+        "Sebuah kerajaan berada di ambang kehancuran. Seorang pejuang muda harus melindungi rakyatnya dari kekuatan misterius.",
+
+        video:
+        "https://www.w3schools.com/html/movie.mp4"
+
+      },
+
+
+      "hidden-truth": {
+
+        title: "Hidden Truth",
+
+        genre: "Mystery · Drama",
+
+        year: "2026",
+
+        duration: "1h 45m",
+
+        rating: "⭐ 8.7",
+
+        badge: "MYSTERY",
+
+        description:
+        "Sebuah rahasia lama kembali muncul dan mengubah kehidupan semua orang yang terlibat.",
+
+        video:
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+
+      },
+
+
+      "first-meeting": {
+
+        title: "First Meeting",
+
+        genre: "Romance",
+
+        year: "2026",
+
+        duration: "1h 32m",
+
+        rating: "⭐ 8.5",
+
+        badge: "NEW",
+
+        description:
+        "Satu pertemuan sederhana berubah menjadi awal dari kisah cinta yang tidak pernah mereka bayangkan.",
+
+        video:
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+
+      },
+
+
+      "one-last-chance": {
+
+        title: "One Last Chance",
+
+        genre: "Drama",
+
+        year: "2026",
+
+        duration: "1h 40m",
+
+        rating: "⭐ 8.6",
+
+        badge: "NEW",
+
+        description:
+        "Ketika semua harapan tampak hilang, seseorang mendapatkan satu kesempatan terakhir untuk memperbaiki masa lalu.",
+
+        video:
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+
+      },
+
+
+      "midnight-story": {
+
+        title: "Midnight Story",
+
+        genre: "Thriller · Action",
+
+        year: "2026",
+
+        duration: "1h 50m",
+
+        rating: "⭐ 8.8",
+
+        badge: "NEW",
+
+        description:
+        "Sebuah cerita misterius dimulai tepat tengah malam dan membawa seorang tokoh utama ke dalam bahaya.",
+
+        video:
+        "https://www.w3schools.com/html/mov_bbb.mp4"
+
+      }
+
+    };
+
+
+    function loadMovie() {
+
+
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+
+      const movieId =
+        params.get("movie")
+        || "love-beyond-time";
+
+
+      const movie =
+        movieData[movieId];
+
+
+      if (!movie) {
+
+        return;
+
+      }
+
+
+      document
+        .getElementById("movieTitle")
+        .textContent =
+        movie.title;
+
+
+      document
+        .getElementById("movieGenre")
+        .textContent =
+        movie.genre;
+
+
+      document
+        .getElementById("movieYear")
+        .textContent =
+        movie.year;
+
+
+      document
+        .getElementById("movieDuration")
+        .textContent =
+        movie.duration;
+
+
+      document
+        .getElementById("movieRating")
+        .textContent =
+        movie.rating;
+
+
+      document
+        .getElementById("movieBadge")
+        .textContent =
+        movie.badge;
+
+
+      document
+        .getElementById("movieDescription")
+        .textContent =
+        movie.description;
+
+
+      const video =
+        document.getElementById(
+          "movieVideo"
+        );
+
+
+      const source =
+        document.getElementById(
+          "videoSource"
+        );
+
+
+      source.src =
+        movie.video;
+
+
+      video.load();
+
+    }
+
+
+    function playMovie() {
+
+
+      const video =
+        document.getElementById(
+          "movieVideo"
+        );
+
+
+      video.play();
+
+
+      video.scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "center"
+
+      });
+
+    }
+
+
+    function goBack() {
+
+
+      if (
+        document.referrer
+      ) {
+
+        history.back();
+
+      } else {
+
+        window.location.href =
+          "watch.html";
+
+      }
+
+    }
+
+
+    function shareMovie() {
+
+
+      if (
+        navigator.share
+      ) {
+
+        navigator.share({
+
+          title:
+          document
+          .getElementById(
+            "movieTitle"
+          )
+          .textContent,
+
+          text:
+          "Tonton film ini di Reitoon!",
+
+          url:
+          window.location.href
+
+        });
+
+      } else {
+
+        alert(
+          "Link film siap dibagikan!"
+        );
+
+      }
+
+    }
+
+
+    function openRelated(movieId) {
+
 
       window.location.href =
-        "player.html";
+        "detail.html?movie="
+        + movieId;
 
     }
 
 
-    function watchEpisode(number) {
-
-      window.location.href =
-        "player.html?episode=" +
-        number;
-
-    }
+    loadMovie();
 
 
-    function saveMovie() {
-
-      alert(
-        "❤️ Film disimpan ke My List"
-      );
-
-    }
-
-  </script>
-
-</body>
-
-</html>
+  </script></body></html>
