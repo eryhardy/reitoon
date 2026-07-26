@@ -1,808 +1,430 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="theme-color" content="#08070d">
-
 <title>Studio - Reitoon</title>
 
 <style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-
 --bg:#08070d;
 --surface:#191722;
 --surface-light:#211f2b;
---text:#fff;
 --muted:#aaa3b0;
 --pink:#ff2f8d;
 --purple:#762dff;
---border:rgba(255,255,255,.1);
-
+--border:rgba(255,255,255,.1)
 }
 
 body{
-
 min-height:100vh;
-
 background:
-radial-gradient(
-circle at 100% 0%,
-rgba(255,40,145,.14),
-transparent 35%
-),
-radial-gradient(
-circle at 0% 30%,
-rgba(112,45,255,.1),
-transparent 30%
-),
+radial-gradient(circle at 100% 0%,rgba(255,40,145,.14),transparent 35%),
+radial-gradient(circle at 0% 30%,rgba(112,45,255,.1),transparent 30%),
 var(--bg);
-
-color:white;
+color:#fff;
 font-family:Arial,Helvetica,sans-serif;
-
-padding-bottom:100px;
-
+padding-bottom:100px
 }
 
 .header{
-
 height:76px;
-
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 padding:16px 20px;
-
 background:rgba(8,7,13,.94);
 border-bottom:1px solid var(--border);
-
 position:sticky;
 top:0;
-z-index:10;
-
+z-index:10
 }
 
 .back{
-
 width:42px;
 height:42px;
-
 border-radius:14px;
-
 border:1px solid var(--border);
-
 background:var(--surface);
-color:white;
-
-font-size:20px;
-
+color:#fff;
+font-size:20px
 }
 
 .logo{
-
-font-size:28px;
+font-size:29px;
 font-weight:800;
-
-background:
-linear-gradient(
-135deg,
-white,
-var(--pink),
-var(--purple)
-);
-
+background:linear-gradient(135deg,#fff,var(--pink),var(--purple));
 -webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
+-webkit-text-fill-color:transparent
 }
 
 .container{
-
-width:100%;
 max-width:600px;
-
 margin:auto;
-
-padding:26px 16px;
-
+padding:28px 16px
 }
 
-.title{
-
-font-size:30px;
-margin-bottom:8px;
-
-}
-
+.title{font-size:30px}
 .title span{
-
-background:
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
+background:linear-gradient(135deg,var(--pink),var(--purple));
 -webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
+-webkit-text-fill-color:transparent
 }
 
 .subtitle{
-
 color:var(--muted);
 font-size:14px;
 line-height:1.5;
-
-margin-bottom:22px;
-
+margin-top:8px
 }
 
 .stats{
-
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:10px;
-
-margin-bottom:22px;
-
+margin-top:22px
 }
 
 .stat{
-
 padding:16px 8px;
-
 text-align:center;
-
 border-radius:16px;
-
 background:var(--surface);
-border:1px solid var(--border);
-
+border:1px solid var(--border)
 }
 
 .stat strong{
-
 display:block;
-font-size:19px;
-margin-bottom:5px;
-
+font-size:19px
 }
 
 .stat span{
-
+display:block;
 color:var(--muted);
 font-size:10px;
-
+margin-top:5px
 }
 
 .empty{
-
-padding:55px 20px;
-
+margin-top:22px;
+padding:50px 20px;
 text-align:center;
-
 border:1px dashed rgba(255,255,255,.2);
-border-radius:22px;
-
-background:rgba(255,255,255,.02);
-
+border-radius:22px
 }
 
-.empty-icon{
-
-font-size:50px;
-margin-bottom:14px;
-
-}
-
-.empty h2{
-
-font-size:20px;
-margin-bottom:8px;
-
-}
-
+.empty-icon{font-size:48px}
+.empty h2{margin-top:12px}
 .empty p{
-
 color:var(--muted);
 font-size:13px;
 line-height:1.5;
-margin-bottom:20px;
-
+margin:8px 0 20px
 }
 
-.create-button{
-
+.create-btn{
 display:inline-block;
-
-padding:14px 20px;
-
-border-radius:13px;
-
+padding:13px 18px;
+border-radius:12px;
+background:linear-gradient(135deg,var(--pink),var(--purple));
+color:#fff;
 text-decoration:none;
-
-color:white;
-
 font-weight:bold;
-font-size:13px;
-
-background:
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
-}
-
-.story-list{
-
-display:flex;
-flex-direction:column;
-gap:15px;
-
+font-size:13px
 }
 
 .story-card{
-
-padding:16px;
-
+display:none;
+margin-top:22px;
+padding:18px;
 border-radius:20px;
-
 background:var(--surface);
-border:1px solid var(--border);
-
+border:1px solid var(--border)
 }
 
-.story-top{
-
-display:flex;
-gap:14px;
-
-}
-
-.story-cover{
-
-width:85px;
-height:115px;
-
-border-radius:12px;
-
-background:
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:28px;
-
-overflow:hidden;
-flex-shrink:0;
-
-}
-
-.story-cover img{
-
+.cover{
 width:100%;
-height:100%;
+height:210px;
 object-fit:cover;
-
+border-radius:15px;
+background:
+linear-gradient(135deg,var(--pink),var(--purple))
 }
 
-.story-info{
-
-flex:1;
-
+.story-title{
+font-size:21px;
+margin-top:15px
 }
 
-.story-info h2{
-
-font-size:17px;
-margin-bottom:6px;
-
-}
-
-.story-meta{
-
-font-size:11px;
+.meta{
 color:var(--pink);
-
-margin-bottom:8px;
-
+font-size:12px;
+margin-top:6px
 }
 
-.story-description{
-
-font-size:12px;
+.description{
 color:var(--muted);
-line-height:1.5;
-
-display:-webkit-box;
--webkit-line-clamp:3;
--webkit-box-orient:vertical;
-overflow:hidden;
-
+font-size:13px;
+line-height:1.6;
+margin-top:12px
 }
 
 .status{
-
 display:inline-block;
-
-margin-top:10px;
-
-padding:5px 9px;
-
+margin-top:12px;
+padding:6px 10px;
 border-radius:20px;
-
 font-size:10px;
-
 background:rgba(255,47,141,.15);
-color:#ff7ab3;
-
+color:#ff75b0
 }
 
 .actions{
-
 display:flex;
-gap:8px;
-
-margin-top:15px;
-
+gap:10px;
+margin-top:18px
 }
 
 .action{
-
 flex:1;
-
-padding:11px;
-
-border-radius:11px;
-
+padding:12px;
 border:1px solid var(--border);
-
+border-radius:12px;
 background:var(--surface-light);
-
-color:white;
-
-font-size:11px;
-font-weight:bold;
-
-cursor:pointer;
-
+color:#fff;
+font-weight:bold
 }
 
 .action.primary{
-
 border:none;
-
-background:
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
+background:linear-gradient(135deg,var(--pink),var(--purple))
 }
 
-.action.delete{
-
-color:#ff6b8a;
-
-}
+.action.delete{color:#ff6b8a}
 
 .bottom-nav{
-
 position:fixed;
 bottom:0;
 left:0;
 right:0;
-
 height:76px;
-
 display:flex;
 justify-content:space-around;
 align-items:center;
-
 background:rgba(14,13,21,.96);
-
 border-top:1px solid var(--border);
-
-z-index:20;
-
+z-index:20
 }
 
-.nav-item{
-
+.nav{
 color:var(--muted);
 text-decoration:none;
-
 text-align:center;
-font-size:10px;
-
-min-width:60px;
-
+font-size:10px
 }
 
 .nav-icon{
-
 display:block;
 font-size:21px;
-margin-bottom:4px;
-
+margin-bottom:4px
 }
 
-.nav-item.active{
-
-color:var(--pink);
-
-}
-
+.nav.active{color:var(--pink)}
 </style>
-
 </head>
 
 <body>
 
 <header class="header">
 
-<button
-class="back"
-onclick="history.back()"
->
-
-←
-
-</button>
+<button class="back" onclick="history.back()">←</button>
 
 <div class="logo">Reitoon</div>
 
-<div style="width:42px;"></div>
+<div style="width:42px"></div>
 
 </header>
-
 
 <main class="container">
 
 <h1 class="title">
-
 My <span>Studio</span>
-
 </h1>
 
 <p class="subtitle">
-
-Kelola semua cerita dan project kamu di satu tempat.
-
+Kelola cerita dan project kamu di satu tempat.
 </p>
-
 
 <section class="stats">
 
 <div class="stat">
-
 <strong id="storyCount">0</strong>
-
-<span>Total Story</span>
-
+<span>Stories</span>
 </div>
 
 <div class="stat">
-
 <strong id="viewCount">0</strong>
-
 <span>Views</span>
-
 </div>
 
 <div class="stat">
-
 <strong>Rp0</strong>
-
 <span>Earnings</span>
-
 </div>
 
 </section>
 
-
-<section
-class="empty"
-id="emptyState"
->
+<section class="empty" id="empty">
 
 <div class="empty-icon">✨</div>
 
 <h2>Belum ada cerita</h2>
 
 <p>
-
-Mulai buat cerita pertama kamu dan bangun dunia kreatifmu bersama Reitoon.
-
+Buat cerita pertamamu dan publikasikan ke Reitoon.
 </p>
 
-<a
-href="create.html"
-class="create-button"
->
-
-🚀 Create Your Story
-
+<a class="create-btn" href="create.html">
+🚀 Create Story
 </a>
 
 </section>
 
+<section class="story-card" id="storyCard">
 
-<section
-class="story-list"
-id="storyList"
->
+<img id="cover" class="cover">
+
+<h2 id="title" class="story-title"></h2>
+
+<div id="meta" class="meta"></div>
+
+<p id="description" class="description"></p>
+
+<span id="status" class="status"></span>
+
+<div class="actions">
+
+<button class="action primary" onclick="openStory()">
+▶️ Lihat Detail
+</button>
+
+<button class="action" onclick="editStory()">
+✏️ Edit
+</button>
+
+<button class="action delete" onclick="deleteStory()">
+🗑️
+</button>
+
+</div>
 
 </section>
 
 </main>
 
-
 <nav class="bottom-nav">
 
-<a class="nav-item" href="index.html">
-
+<a class="nav" href="index.html">
 <span class="nav-icon">🏠</span>
 Home
-
 </a>
 
-<a class="nav-item" href="watch.html">
-
+<a class="nav" href="watch.html">
 <span class="nav-icon">▶️</span>
 Watch
-
 </a>
 
-<a class="nav-item" href="create.html">
-
+<a class="nav" href="create.html">
 <span class="nav-icon">✨</span>
 Create
-
 </a>
 
-<a class="nav-item active" href="studio.html">
-
+<a class="nav active" href="studio.html">
 <span class="nav-icon">🎥</span>
 Studio
-
 </a>
 
-<a class="nav-item" href="profile.html">
-
+<a class="nav" href="profile.html">
 <span class="nav-icon">👤</span>
 Profile
-
 </a>
 
 </nav>
 
-
 <script>
 
-function loadStories(){
+let story=null;
 
-const stories=JSON.parse(
+function loadStory(){
 
-localStorage.getItem("reitoon_stories")
+const saved=localStorage.getItem("reitoon_story");
 
-)||[];
+if(!saved)return;
 
-const list=document.getElementById("storyList");
+story=JSON.parse(saved);
 
-const empty=document.getElementById("emptyState");
+document.getElementById("empty").style.display="none";
+document.getElementById("storyCard").style.display="block";
 
-document.getElementById("storyCount")
-.textContent=stories.length;
+document.getElementById("storyCount").textContent="1";
+document.getElementById("viewCount").textContent=story.views||0;
 
+document.getElementById("title").textContent=story.title;
 
-if(stories.length===0){
+document.getElementById("meta").textContent=
+story.type+" • "+story.genre;
 
-empty.style.display="block";
+document.getElementById("description").textContent=
+story.description;
 
-list.innerHTML="";
+document.getElementById("status").textContent=
+story.status==="public"?"PUBLIC":"DRAFT";
 
-return;
+const cover=document.getElementById("cover");
+
+if(story.cover){
+
+cover.src=story.cover;
+
+}else{
+
+cover.style.display="none";
 
 }
 
-
-empty.style.display="none";
-
-let totalViews=0;
-
-stories.forEach(story=>{
-
-totalViews+=story.views||0;
-
-});
-
-
-document.getElementById("viewCount")
-.textContent=totalViews;
-
-
-list.innerHTML="";
-
-
-stories.slice().reverse().forEach(story=>{
-
-const card=document.createElement("article");
-
-card.className="story-card";
-
-
-const cover=story.cover
-
-?`<img src="${story.cover}">`
-
-:"🎬";
-
-
-card.innerHTML=`
-
-<div class="story-top">
-
-<div class="story-cover">
-
-${cover}
-
-</div>
-
-<div class="story-info">
-
-<h2>${story.title}</h2>
-
-<div class="story-meta">
-
-${story.type} • ${story.genre}
-
-</div>
-
-<div class="story-description">
-
-${story.description}
-
-</div>
-
-<span class="status">
-
-${story.status==="public"?"PUBLIC":"DRAFT"}
-
-</span>
-
-</div>
-
-</div>
-
-
-<div class="actions">
-
-<button
-class="action primary"
-onclick="openDetail(${story.id})"
->
-
-▶️ View
-
-</button>
-
-<button
-class="action"
-onclick="editStory(${story.id})"
->
-
-✏️ Edit
-
-</button>
-
-<button
-class="action delete"
-onclick="deleteStory(${story.id})"
->
-
-🗑️ Delete
-
-</button>
-
-</div>
-
-`;
-
-list.appendChild(card);
-
-});
-
 }
 
-
-function openDetail(id){
-
-window.location.href="detail.html?id="+id;
-
-}
-
-
-function editStory(id){
-
-const stories=JSON.parse(
-
-localStorage.getItem("reitoon_stories")
-
-)||[];
-
-const story=stories.find(item=>item.id===id);
+function openStory(){
 
 if(!story)return;
 
-localStorage.setItem(
+window.location.href=
+"detail.html?id="+story.id;
 
-"reitoon_story_edit",
+}
 
-JSON.stringify(story)
-
-);
+function editStory(){
 
 window.location.href="create.html";
 
 }
 
-
-function deleteStory(id){
+function deleteStory(){
 
 if(!confirm("Hapus cerita ini?"))return;
 
-let stories=JSON.parse(
+localStorage.removeItem("reitoon_story");
 
-localStorage.getItem("reitoon_stories")
-
-)||[];
-
-stories=stories.filter(
-
-story=>story.id!==id
-
-);
-
-localStorage.setItem(
-
-"reitoon_stories",
-
-JSON.stringify(stories)
-
-);
-
-loadStories();
+location.reload();
 
 }
 
-
-loadStories();
+loadStory();
 
 </script>
 
 </body>
-
 </html>
