@@ -1,1516 +1,982 @@
-<!DOCTYPE html><html lang="id">
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08070d"><title>Watch - Reitoon</title><style>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch — REITOON</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #080808;
+      color: #fff;
+      padding-bottom: 90px;
+    }
+
+    /* HEADER */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 18px;
+      background: rgba(8,8,8,.94);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg,#ff2d8d,#9b35ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .header-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+      height: 48px;
+      border-radius: 14px;
+      background: #161616;
+      border: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      gap: 10px;
+    }
+
+    .search-box span {
+      font-size: 21px;
+      color: #999;
+    }
+
+    .search-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 14px;
+    }
+
+    .search-box input::placeholder {
+      color: #777;
+    }
+
+    /* CATEGORIES */
+
+    .categories {
+      display: flex;
+      gap: 9px;
+      overflow-x: auto;
+      padding: 15px 18px 4px;
+      scrollbar-width: none;
+    }
+
+    .categories::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category {
+      white-space: nowrap;
+      padding: 9px 15px;
+      border-radius: 20px;
+      background: #171717;
+      border: 1px solid rgba(255,255,255,.07);
+      color: #999;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .category.active {
+      background: linear-gradient(135deg,#ff2d8d,#9b35ff);
+      color: white;
+      border: none;
+    }
+
+    /* HERO BANNER */
+
+    .banner {
+      margin: 20px 18px;
+      height: 215px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(
+          circle at 75% 35%,
+          rgba(255,255,255,.2),
+          transparent 25%
+        ),
+        linear-gradient(
+          135deg,
+          #371143,
+          #b32271 50%,
+          #21103f
+        );
+    }
+
+    .banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.8),
+        transparent 75%
+      );
+    }
+
+    .banner-content {
+      position: absolute;
+      z-index: 2;
+      left: 20px;
+      bottom: 20px;
+      max-width: 230px;
+    }
+
+    .banner-label {
+      color: #ff64ad;
+      font-size: 10px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .banner-title {
+      font-size: 25px;
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .banner-description {
+      font-size: 11px;
+      color: #ccc;
+      line-height: 1.4;
+      margin-bottom: 13px;
+    }
+
+    .watch-btn {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 10px;
+      background: white;
+      color: #111;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    /* SECTION */
+
+    .section {
+      margin: 25px 18px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .section-title h2 {
+      font-size: 19px;
+    }
+
+    .section-title span {
+      color: #ff4b9d;
+      font-size: 11px;
+    }
+
+    /* TRENDING */
+
+    .trending-row {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .trending-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .trending-card {
+      min-width: 210px;
+      height: 115px;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(
+          135deg,
+          #29103c,
+          #a82770,
+          #17102e
+        );
+    }
+
+    .trending-card:nth-child(2) {
+      background:
+        linear-gradient(
+          135deg,
+          #171a43,
+          #5833a8,
+          #111
+        );
+    }
+
+    .trending-card:nth-child(3) {
+      background:
+        linear-gradient(
+          135deg,
+          #4b1830,
+          #d34370,
+          #20101d
+        );
+    }
+
+    .trending-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,.8),
+        transparent
+      );
+    }
+
+    .trending-info {
+      position: absolute;
+      bottom: 12px;
+      left: 13px;
+      z-index: 2;
+    }
+
+    .trending-number {
+      font-size: 23px;
+      font-weight: 900;
+      color: rgba(255,255,255,.4);
+    }
+
+    .trending-name {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* VIDEO GRID */
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 14px;
+    }
+
+    .video-card {
+      background: #141414;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .thumbnail {
+      height: 145px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(
+          135deg,
+          #321042,
+          #a6226c,
+          #18112f
+        );
+    }
+
+    .video-card:nth-child(2) .thumbnail {
+      background:
+        linear-gradient(
+          135deg,
+          #182849,
+          #4436a2,
+          #10101e
+        );
+    }
+
+    .video-card:nth-child(3) .thumbnail {
+      background:
+        linear-gradient(
+          135deg,
+          #512128,
+          #d14c6e,
+          #1d1017
+        );
+    }
+
+    .video-card:nth-child(4) .thumbnail {
+      background:
+        linear-gradient(
+          135deg,
+          #281746,
+          #6939b3,
+          #0e0e18
+        );
+    }
+
+    .thumbnail-text {
+      font-size: 28px;
+      font-weight: 900;
+      opacity: .8;
+    }
+
+    .play-button {
+      position: absolute;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .duration {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      padding: 4px 6px;
+      border-radius: 5px;
+      background: rgba(0,0,0,.75);
+      font-size: 9px;
+    }
+
+    .video-info {
+      padding: 10px;
+    }
+
+    .video-title {
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .video-meta {
+      color: #777;
+      font-size: 9px;
+    }
+
+    /* BOTTOM NAV */
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 76px;
+      background: rgba(12,12,12,.97);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 200;
+    }
+
+    .nav-item {
+      width: 20%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      color: #777;
+      font-size: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .nav-item.active {
+      color: #ff4b9d;
+    }
+
+    .nav-icon {
+      font-size: 21px;
+    }
+
+    .create-button {
+      width: 54px;
+      height: 54px;
+      margin-top: -28px;
+      border-radius: 18px;
+      background: linear-gradient(135deg,#ff2d8d,#9b35ff);
+      border: 4px solid #080808;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 8px 25px rgba(255,45,141,.35);
+    }
+
+    @media (min-width: 768px) {
+
+      .video-grid {
+        grid-template-columns: repeat(4,1fr);
+      }
+
+      .thumbnail {
+        height: 220px;
+      }
+
+      .banner {
+        height: 300px;
+      }
+
+      .section {
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+
+      .categories {
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="header-top">
+
+      <div class="logo">
+        <div class="logo-icon">R</div>
+        <span>REITOON</span>
+      </div>
+
+      <div class="header-icon">
+        ♡
+      </div>
+
+    </div>
+
+    <div class="search-box">
+
+      <span>⌕</span>
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari film, video, creator..."
+        onkeyup="searchVideos()"
+      >
+
+    </div>
+
+  </header>
+
+
+  <!-- CATEGORIES -->
+
+  <div class="categories">
+
+    <div class="category active"
+      onclick="filterCategory('all', this)">
+      Semua
+    </div>
+
+    <div class="category"
+      onclick="filterCategory('drama', this)">
+      Drama
+    </div>
+
+    <div class="category"
+      onclick="filterCategory('music', this)">
+      Music
+    </div>
+
+    <div class="category"
+      onclick="filterCategory('ai', this)">
+      AI Video
+    </div>
+
+    <div class="category"
+      onclick="filterCategory('gaming', this)">
+      Gaming
+    </div>
+
+    <div class="category"
+      onclick="filterCategory('short', this)">
+      Shorts
+    </div>
+
+  </div>
+
+
+  <!-- HERO BANNER -->
+
+  <section class="banner">
+
+    <div class="banner-content">
+
+      <div class="banner-label">
+        ✦ REITOON EXCLUSIVE
+      </div>
+
+      <h1 class="banner-title">
+        The New World
+      </h1>
+
+      <p class="banner-description">
+        Temukan cerita baru dan hiburan terbaik
+        hanya di REITOON.
+      </p>
+
+      <button class="watch-btn">
+        ▶ Watch Now
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- TRENDING -->
+
+  <section class="section">
+
+    <div class="section-title">
+
+      <h2>
+        Trending
+      </h2>
+
+      <span>
+        Lihat Semua
+      </span>
+
+    </div>
+
+    <div class="trending-row">
+
+      <div class="trending-card">
+
+        <div class="trending-overlay"></div>
+
+        <div class="trending-info">
+
+          <div class="trending-number">
+            #01
+          </div>
+
+          <div class="trending-name">
+            AI Cinematic
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="trending-card">
+
+        <div class="trending-overlay"></div>
+
+        <div class="trending-info">
+
+          <div class="trending-number">
+            #02
+          </div>
+
+          <div class="trending-name">
+            Music Night
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="trending-card">
+
+        <div class="trending-overlay"></div>
+
+        <div class="trending-info">
+
+          <div class="trending-number">
+            #03
+          </div>
+
+          <div class="trending-name">
+            Viral Drama
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VIDEO FEED -->
+
+  <section class="section">
+
+    <div class="section-title">
+
+      <h2>
+        Untuk Kamu
+      </h2>
+
+      <span>
+        Refresh
+      </span>
+
+    </div>
+
+    <div class="video-grid" id="videoGrid">
+
+
+      <div class="video-card"
+        data-category="ai"
+        data-title="AI Cinematic Story">
+
+        <div class="thumbnail">
+
+          <div class="thumbnail-text">
+            AI
+          </div>
+
+          <div class="play-button">
+            ▶
+          </div>
+
+          <div class="duration">
+            12:45
+          </div>
+
+        </div>
+
+        <div class="video-info">
+
+          <div class="video-title">
+            AI Cinematic Story — The Beginning
+          </div>
+
+          <div class="video-meta">
+            REITOON Studio • 1.2M views
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="video-card"
+        data-category="music"
+        data-title="Neon Music Universe">
+
+        <div class="thumbnail">
+
+          <div class="thumbnail-text">
+            MUSIC
+          </div>
+
+          <div class="play-button">
+            ▶
+          </div>
+
+          <div class="duration">
+            04:32
+          </div>
+
+        </div>
+
+        <div class="video-info">
+
+          <div class="video-title">
+            Neon Music Universe
+          </div>
+
+          <div class="video-meta">
+            Rei Music • 860K views
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="video-card"
+        data-category="drama"
+        data-title="Short Drama Episode 1">
+
+        <div class="thumbnail">
+
+          <div class="thumbnail-text">
+            DRAMA
+          </div>
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0
-}
+          <div class="play-button">
+            ▶
+          </div>
 
-:root{
+          <div class="duration">
+            18:20
+          </div>
 
---bg:#08070d;
---surface:#191722;
---surface-light:#211f2b;
---text:#fff;
---muted:#aaa3b0;
---pink:#ff2f8d;
---purple:#762dff;
---yellow:#ffd35a;
---green:#25d366;
---border:rgba(255,255,255,.1)
+        </div>
 
-}
+        <div class="video-info">
 
-body{
+          <div class="video-title">
+            Short Drama — Episode 1
+          </div>
 
-min-height:100vh;
+          <div class="video-meta">
+            Reitoon Original • 2.4M views
+          </div>
 
-background:
+        </div>
 
-radial-gradient(
-circle at 100% 0%,
-rgba(255,40,145,.14),
-transparent 35%
-),
+      </div>
 
-radial-gradient(
-circle at 0% 30%,
-rgba(112,45,255,.1),
-transparent 30%
-),
 
-var(--bg);
+      <div class="video-card"
+        data-category="gaming"
+        data-title="Reitoon Game Challenge">
 
-color:var(--text);
+        <div class="thumbnail">
 
-font-family:
-Arial,
-Helvetica,
-sans-serif;
+          <div class="thumbnail-text">
+            GAME
+          </div>
 
-padding-bottom:100px
+          <div class="play-button">
+            ▶
+          </div>
 
-}
+          <div class="duration">
+            08:15
+          </div>
 
-.header{
+        </div>
 
-height:76px;
+        <div class="video-info">
 
-display:flex;
+          <div class="video-title">
+            Reitoon Game Challenge
+          </div>
 
-align-items:center;
+          <div class="video-meta">
+            Reitoon Gaming • 540K views
+          </div>
 
-justify-content:space-between;
+        </div>
 
-padding:16px 20px;
+      </div>
 
-background:rgba(8,7,13,.94);
 
-border-bottom:1px solid var(--border);
+    </div>
 
-position:sticky;
+  </section>
 
-top:0;
 
-z-index:20
+  <!-- BOTTOM NAVIGATION -->
 
-}
+  <nav class="bottom-nav">
 
-.back-button{
+    <div class="nav-item"
+      onclick="goHome()">
 
-width:42px;
+      <div class="nav-icon">
+        ⌂
+      </div>
 
-height:42px;
+      <span>
+        Home
+      </span>
 
-border-radius:14px;
+    </div>
 
-border:1px solid var(--border);
 
-background:var(--surface);
+    <div class="nav-item active">
 
-color:#fff;
+      <div class="nav-icon">
+        ▷
+      </div>
 
-font-size:20px;
+      <span>
+        Watch
+      </span>
 
-cursor:pointer
+    </div>
 
-}
 
-.logo{
+    <div class="nav-item">
 
-font-size:28px;
+      <div class="create-button"
+        onclick="openCreate()">
 
-font-weight:800;
+        ＋
 
-background:
+      </div>
 
-linear-gradient(
-135deg,
-#fff,
-var(--pink),
-var(--purple)
-);
+    </div>
 
--webkit-background-clip:text;
 
--webkit-text-fill-color:transparent
+    <div class="nav-item"
+      onclick="openStudio()">
 
-}
+      <div class="nav-icon">
+        ◈
+      </div>
 
-.header-space{
+      <span>
+        Studio
+      </span>
 
-width:42px
+    </div>
 
-}
 
-.container{
+    <div class="nav-item"
+      onclick="openProfile()">
 
-width:100%;
+      <div class="nav-icon">
+        ◉
+      </div>
 
-max-width:1000px;
+      <span>
+        Profile
+      </span>
 
-margin:auto;
+    </div>
 
-padding:22px 16px
+  </nav>
 
-}
 
-.hero{
+  <!-- JAVASCRIPT -->
 
-padding:24px;
+  <script>
 
-border-radius:24px;
+    function goHome() {
+      window.location.href = "index.html";
+    }
 
-margin-bottom:20px;
+    function openCreate() {
+      window.location.href = "create.html";
+    }
 
-background:
+    function openStudio() {
+      window.location.href = "studio.html";
+    }
 
-linear-gradient(
-135deg,
-rgba(255,47,141,.16),
-rgba(118,45,255,.16)
-),
+    function openProfile() {
+      window.location.href = "profile.html";
+    }
 
-var(--surface);
 
-border:1px solid var(--border)
+    function filterCategory(category, element) {
 
-}
+      document
+        .querySelectorAll(".category")
+        .forEach(item => {
+          item.classList.remove("active");
+        });
 
-.hero h1{
+      element.classList.add("active");
 
-font-size:26px;
+      const cards =
+        document.querySelectorAll(".video-card");
 
-margin-bottom:8px
+      cards.forEach(card => {
 
-}
+        if (
+          category === "all" ||
+          card.dataset.category === category
+        ) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
 
-.hero p{
+      });
 
-font-size:13px;
+    }
 
-color:var(--muted);
 
-line-height:1.6
+    function searchVideos() {
 
-}
+      const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
 
-.search-box{
+      const cards =
+        document.querySelectorAll(".video-card");
 
-display:flex;
+      cards.forEach(card => {
 
-gap:10px;
+        const title =
+          card.dataset.title.toLowerCase();
 
-margin-bottom:16px
+        if (title.includes(search)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
 
-}
+      });
 
-.search-box input{
+    }
 
-flex:1;
+  </script>
 
-padding:14px;
-
-border-radius:13px;
-
-border:1px solid var(--border);
-
-outline:none;
-
-background:var(--surface);
-
-color:#fff;
-
-font-size:13px
-
-}
-
-.search-box input:focus{
-
-border-color:var(--pink)
-
-}
-
-.search-button{
-
-width:52px;
-
-border:none;
-
-border-radius:13px;
-
-background:
-
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
-color:#fff;
-
-font-size:18px;
-
-cursor:pointer
-
-}
-
-.category-scroll{
-
-display:flex;
-
-gap:9px;
-
-overflow-x:auto;
-
-padding-bottom:6px;
-
-margin-bottom:20px
-
-}
-
-.category-scroll::-webkit-scrollbar{
-
-display:none
-
-}
-
-.category-button{
-
-white-space:nowrap;
-
-padding:10px 15px;
-
-border-radius:20px;
-
-border:1px solid var(--border);
-
-background:var(--surface);
-
-color:var(--muted);
-
-font-size:11px;
-
-cursor:pointer
-
-}
-
-.category-button.active{
-
-background:
-
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
-border:none;
-
-color:#fff
-
-}
-
-.section-header{
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-margin:20px 0 12px
-
-}
-
-.section-title{
-
-font-size:18px
-
-}
-
-.section-count{
-
-font-size:11px;
-
-color:var(--muted)
-
-}
-
-.drama-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(2,1fr);
-
-gap:12px
-
-}
-
-.drama-card{
-
-overflow:hidden;
-
-border-radius:18px;
-
-background:var(--surface);
-
-border:1px solid var(--border);
-
-transition:.2s
-
-}
-
-.drama-card:hover{
-
-transform:translateY(-3px);
-
-border-color:var(--pink)
-
-}
-
-.poster{
-
-height:210px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-position:relative;
-
-font-size:48px;
-
-background:
-
-linear-gradient(
-135deg,
-#351020,
-#5b1b51
-)
-
-}
-
-.poster:nth-child(2n){
-
-background:
-
-linear-gradient(
-135deg,
-#101f3e,
-#44206d
-)
-
-}
-
-.poster:nth-child(3n){
-
-background:
-
-linear-gradient(
-135deg,
-#291c0d,
-#6d3518
-)
-
-}
-
-.poster:nth-child(4n){
-
-background:
-
-linear-gradient(
-135deg,
-#111c28,
-#263f5c
-)
-
-}
-
-.badge{
-
-position:absolute;
-
-top:10px;
-
-left:10px;
-
-padding:5px 8px;
-
-border-radius:7px;
-
-font-size:9px;
-
-font-weight:bold
-
-}
-
-.badge.free{
-
-background:
-
-rgba(37,211,102,.18);
-
-color:#8cffb1
-
-}
-
-.badge.licensed{
-
-background:
-
-rgba(255,211,90,.18);
-
-color:var(--yellow)
-
-}
-
-.drama-info{
-
-padding:13px
-
-}
-
-.drama-title{
-
-font-size:14px;
-
-font-weight:bold;
-
-margin-bottom:6px;
-
-white-space:nowrap;
-
-overflow:hidden;
-
-text-overflow:ellipsis
-
-}
-
-.drama-meta{
-
-font-size:10px;
-
-color:var(--muted);
-
-margin-bottom:8px
-
-}
-
-.drama-description{
-
-font-size:10px;
-
-color:var(--muted);
-
-line-height:1.5;
-
-height:31px;
-
-overflow:hidden;
-
-margin-bottom:12px
-
-}
-
-.drama-actions{
-
-display:flex;
-
-gap:7px
-
-}
-
-.watch-button,
-
-.detail-button{
-
-flex:1;
-
-padding:9px 5px;
-
-border-radius:9px;
-
-font-size:10px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-text-align:center;
-
-text-decoration:none
-
-}
-
-.watch-button{
-
-border:none;
-
-background:
-
-linear-gradient(
-135deg,
-var(--pink),
-var(--purple)
-);
-
-color:#fff
-
-}
-
-.watch-button.disabled{
-
-background:
-
-var(--surface-light);
-
-color:var(--muted);
-
-border:1px solid var(--border);
-
-cursor:not-allowed
-
-}
-
-.detail-button{
-
-border:1px solid var(--border);
-
-background:var(--surface-light);
-
-color:#fff
-
-}
-
-.empty{
-
-padding:40px 15px;
-
-text-align:center;
-
-color:var(--muted);
-
-font-size:13px;
-
-border:1px dashed rgba(255,255,255,.15);
-
-border-radius:18px;
-
-display:none
-
-}
-
-.bottom-nav{
-
-position:fixed;
-
-bottom:0;
-
-left:0;
-
-right:0;
-
-height:76px;
-
-display:flex;
-
-justify-content:space-around;
-
-align-items:center;
-
-background:rgba(14,13,21,.96);
-
-backdrop-filter:blur(18px);
-
-border-top:1px solid var(--border);
-
-z-index:30
-
-}
-
-.nav-item{
-
-color:var(--muted);
-
-text-decoration:none;
-
-text-align:center;
-
-font-size:10px;
-
-min-width:60px
-
-}
-
-.nav-icon{
-
-display:block;
-
-font-size:21px;
-
-margin-bottom:4px
-
-}
-
-.nav-item.active{
-
-color:var(--pink)
-
-}
-
-@media(min-width:700px){
-
-.drama-grid{
-
-grid-template-columns:
-repeat(4,1fr)
-
-}
-
-.poster{
-
-height:250px
-
-}
-
-}
-
-</style></head><body><header class="header"><button
-class="back-button"
-onclick="goBack()"
-
-«»
-
-←
-</button>
-
-<div class="logo">
-Reitoon
-</div><div class="header-space"></div></header><main class="container"><section class="hero"><h1>
-🎬 Watch Chinese Drama
-</h1><p>
-Temukan katalog drama dan film Asia di Reitoon.
-Konten yang dapat ditonton harus memiliki hak penggunaan atau izin redistribusi yang sesuai.
-</p></section><div class="search-box"><input
-type="text"
-id="searchInput"
-placeholder="Cari judul drama..."
-oninput="applyFilters()"
-
-«»
-
-<button
-class="search-button"
-onclick="applyFilters()"
-
-«»
-
-🔍
-</button>
-
-</div><div class="category-scroll"><button
-class="category-button active"
-onclick="filterCategory('all',this)"
-
-«»
-
-🔥 Semua
-</button>
-
-<button
-class="category-button"
-onclick="filterCategory('romance',this)"
-
-«»
-
-❤️ Romance
-</button>
-
-<button
-class="category-button"
-onclick="filterCategory('fantasy',this)"
-
-«»
-
-✨ Fantasy
-</button>
-
-<button
-class="category-button"
-onclick="filterCategory('wuxia',this)"
-
-«»
-
-⚔️ Wuxia
-</button>
-
-<button
-class="category-button"
-onclick="filterCategory('historical',this)"
-
-«»
-
-🏯 Historical
-</button>
-
-<button
-class="category-button"
-onclick="filterCategory('modern',this)"
-
-«»
-
-🏙️ Modern
-</button>
-
-<button
-class="category-button"
-onclick="filterCategory('free',this)"
-
-«»
-
-🆓 Gratis
-</button>
-
-</div><div class="section-header"><h2 class="section-title">
-🔥 Semua Drama
-</h2><span
-class="section-count"
-id="resultCount"
-
-«»
-
-0 Video
-</span>
-
-</div><section
-class="drama-grid"
-id="dramaGrid"
->
-</section><div
-class="empty"
-id="emptyState"
->😔
-
-<br>
-<br>Video tidak ditemukan.
-
-</div></main><nav class="bottom-nav"><a
-class="nav-item"
-href="index.html"
-
-«»
-
-<span class="nav-icon">
-🏠
-</span>Home
-
-</a><a
-class="nav-item active"
-href="watch.html"
-
-«»
-
-<span class="nav-icon">
-▶️
-</span>Watch
-
-</a><a
-class="nav-item"
-href="create.html"
-
-«»
-
-<span class="nav-icon">
-✨
-</span>Create
-
-</a><a
-class="nav-item"
-href="studio.html"
-
-«»
-
-<span class="nav-icon">
-🎥
-</span>Studio
-
-</a><a
-class="nav-item"
-href="profile.html"
-
-«»
-
-<span class="nav-icon">
-👤
-</span>Profile
-
-</a></nav><script>
-
-/* =====================================
-   REITOON WATCH DATABASE
-===================================== */
-
-const TOTAL_VIDEOS = 500;
-
-let currentCategory = "all";
-
-
-/* =====================================
-   KATEGORI
-===================================== */
-
-const categories = [
-
-"romance",
-
-"fantasy",
-
-"wuxia",
-
-"historical",
-
-"modern"
-
-];
-
-
-const icons = [
-
-"❤️",
-
-"✨",
-
-"⚔️",
-
-"🏯",
-
-"🌸",
-
-"🔥",
-
-"🌙",
-
-"💫",
-
-"🐉",
-
-"👑"
-
-];
-
-
-/* =====================================
-   VIDEO LEGAL
-=====================================
-
-   Tambahkan hanya video yang:
-
-   ✓ Milik kamu
-   ✓ Public Domain
-   ✓ CC0
-   ✓ Memiliki lisensi
-   ✓ Memiliki izin redistribusi
-
-   Jangan memasukkan URL video tanpa izin.
-===================================== */
-
-const legalVideos = [
-
-/*
-
-Contoh format:
-
-{
-
-id:
-"legal-001",
-
-title:
-"Judul Drama Legal",
-
-category:
-"romance",
-
-type:
-"licensed",
-
-year:
-"2026",
-
-episodes:
-"Episode 1",
-
-rating:
-"⭐ 8.5",
-
-icon:
-"❤️",
-
-description:
-"Deskripsi drama legal.",
-
-videoUrl:
-"URL_VIDEO_LEGAL",
-
-posterUrl:
-"",
-
-license:
-"Lisensi resmi"
-
-}
-
-*/
-
-];
-
-
-/* =====================================
-   GENERATE 500 KATALOG
-===================================== */
-
-const generatedCatalog = [];
-
-
-for(
-
-let i = 1;
-
-i <= TOTAL_VIDEOS;
-
-i++
-
-){
-
-const category =
-
-categories[
-
-(i - 1)
-
-%
-
-categories.length
-
-];
-
-
-generatedCatalog.push({
-
-id:
-
-"reitoon-" +
-
-String(i)
-
-.padStart(3,"0"),
-
-
-title:
-
-"Chinese Drama Collection " +
-
-String(i)
-
-.padStart(3,"0"),
-
-
-category:
-
-
-category,
-
-
-type:
-
-"free",
-
-
-year:
-
-"Legal Catalog",
-
-
-episodes:
-
-"Video",
-
-
-rating:
-
-"⭐ " +
-
-(
-
-8 +
-
-((i % 20) / 10)
-
-)
-
-.toFixed(1),
-
-
-icon:
-
-icons[
-
-(i - 1)
-
-%
-
-icons.length
-
-],
-
-
-description:
-
-"Drama Asia dalam katalog Reitoon. Konten hanya dapat ditayangkan apabila memiliki hak penggunaan atau izin redistribusi yang sesuai.",
-
-
-videoUrl:
-
-"",
-
-
-posterUrl:
-
-"",
-
-
-license:
-
-"Belum diverifikasi"
-
-});
-
-}
-
-
-/* =====================================
-   DATABASE UTAMA
-===================================== */
-
-const dramas = [
-
-...legalVideos,
-
-...generatedCatalog
-
-];
-
-
-/* =====================================
-   RENDER DRAMA
-===================================== */
-
-function renderDramas(list){
-
-const grid =
-
-document
-
-.getElementById(
-
-"dramaGrid"
-
-);
-
-
-const empty =
-
-document
-
-.getElementById(
-
-"emptyState"
-
-);
-
-
-const count =
-
-document
-
-.getElementById(
-
-"resultCount"
-
-);
-
-
-count.textContent =
-
-list.length +
-
-" Video";
-
-
-if(!list.length){
-
-grid.innerHTML = "";
-
-empty.style.display =
-
-"block";
-
-return;
-
-}
-
-
-empty.style.display =
-
-"none";
-
-
-grid.innerHTML =
-
-list
-
-.map(function(drama){
-
-const canWatch =
-
-drama.videoUrl &&
-
-drama.videoUrl.trim() !== "";
-
-
-return `
-
-<article
-class="drama-card"
->
-
-<div
-class="poster"
->
-
-<span>
-${drama.icon}
-</span>
-
-<div
-class="badge ${drama.type}"
->
-
-${
-drama.type === "free"
-
-?
-
-"🆓 GRATIS"
-
-:
-
-"📜 BERLISENSI"
-
-}
-
-</div>
-
-</div>
-
-<div
-class="drama-info"
->
-
-<h3
-class="drama-title"
->
-
-${drama.title}
-
-</h3>
-
-<div
-class="drama-meta"
->
-
-${drama.year}
-
-•
-
-${drama.episodes}
-
-•
-
-${drama.rating}
-
-</div>
-
-<p
-class="drama-description"
->
-
-${drama.description}
-
-</p>
-
-<div
-class="drama-actions"
->
-
-${
-canWatch
-
-?
-
-`
-
-<button
-class="watch-button"
-onclick="openDetail('${drama.id}')"
->
-
-▶️ Tonton
-
-</button>
-
-`
-
-:
-
-`
-
-<button
-class="watch-button disabled"
-onclick="showLicenseWarning()"
->
-
-🔒 Segera Hadir
-
-</button>
-
-`
-
-}
-
-<button
-class="detail-button"
-onclick="openDetail('${drama.id}')"
->
-
-Detail
-
-</button>
-
-</div>
-
-</div>
-
-</article>
-
-`;
-
-})
-
-.join("");
-
-}
-
-
-/* =====================================
-   FILTER KATEGORI
-===================================== */
-
-function filterCategory(
-
-category,
-
-button
-
-){
-
-currentCategory =
-
-category;
-
-
-document
-
-.querySelectorAll(
-
-".category-button"
-
-)
-
-.forEach(function(item){
-
-item.classList.remove(
-
-"active"
-
-);
-
-});
-
-
-button.classList.add(
-
-"active"
-
-);
-
-
-applyFilters();
-
-}
-
-
-/* =====================================
-   SEARCH + FILTER
-===================================== */
-
-function applyFilters(){
-
-const search =
-
-document
-
-.getElementById(
-
-"searchInput"
-
-)
-
-.value
-
-.toLowerCase()
-
-.trim();
-
-
-const result =
-
-dramas
-
-.filter(function(drama){
-
-const matchSearch =
-
-drama.title
-
-.toLowerCase()
-
-.includes(search);
-
-
-let matchCategory =
-
-true;
-
-
-if(
-
-currentCategory ===
-
-"free"
-
-){
-
-matchCategory =
-
-drama.type ===
-
-"free";
-
-}
-
-else if(
-
-currentCategory !==
-
-"all"
-
-){
-
-matchCategory =
-
-drama.category ===
-
-currentCategory;
-
-}
-
-
-return
-
-matchSearch &&
-
-matchCategory;
-
-});
-
-
-renderDramas(result);
-
-}
-
-
-/* =====================================
-   DETAIL
-===================================== */
-
-function openDetail(id){
-
-localStorage.setItem(
-
-"reitoon_selected_drama",
-
-id
-
-);
-
-
-window.location.href =
-
-"detail.html?id=" +
-
-encodeURIComponent(id);
-
-}
-
-
-/* =====================================
-   WARNING
-===================================== */
-
-function showLicenseWarning(){
-
-alert(
-
-"Video ini belum tersedia karena belum memiliki sumber video legal yang terverifikasi. Tambahkan hanya konten yang kamu miliki atau memiliki izin redistribusi."
-
-);
-
-}
-
-
-/* =====================================
-   BACK
-===================================== */
-
-function goBack(){
-
-if(
-
-document.referrer
-
-){
-
-history.back();
-
-}
-
-else{
-
-window.location.href =
-
-"index.html";
-
-}
-
-}
-
-
-/* =====================================
-   INIT
-===================================== */
-
-renderDramas(
-
-dramas
-
-);
-
-</script></body></html>
+</body>
+</html>
