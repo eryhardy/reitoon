@@ -1,293 +1,391 @@
-// =====================================
-// REITOON APP JAVASCRIPT
-// =====================================
+/* =========================================
+   REITOON GLOBAL APP SYSTEM V1
+========================================= */
 
 
-// SEARCH BUTTON
+/* ================================
+   DEFAULT USER
+================================ */
 
-const searchButton = document.getElementById("searchButton");
-const searchBar = document.getElementById("searchBar");
-const searchInput = document.getElementById("searchInput");
+const defaultUser = {
 
-if (searchButton) {
+  loggedIn: false,
 
-  searchButton.addEventListener("click", function () {
+  name: "Reitoon Creator",
 
-    searchBar.classList.toggle("show");
+  email: "",
 
-    if (searchBar.classList.contains("show")) {
-      searchInput.focus();
-    }
+  phone: "",
 
-  });
+  avatar: "",
 
-}
+  credit: 0,
 
+  balance: 0
 
-// NOTIFICATION BUTTON
+};
 
-const notificationButton =
-  document.getElementById("notificationButton");
 
-const notificationPopup =
-  document.getElementById("notificationPopup");
+/* ================================
+   USER SYSTEM
+================================ */
 
-if (notificationButton) {
+function getUser() {
 
-  notificationButton.addEventListener("click", function () {
+  const savedUser =
+    localStorage.getItem("reitoon_user");
 
-    notificationPopup.classList.toggle("show");
+  if (!savedUser) {
 
-  });
-
-}
-
-
-// CREATE FILM BUTTON
-
-const createFilmButton =
-  document.getElementById("createFilmButton");
-
-const startCreatingButton =
-  document.getElementById("startCreatingButton");
-
-function openCreatePage() {
-
-  alert(
-    "🎬 Creator Studio\n\n" +
-    "Fitur Create Film akan segera tersedia.\n\n" +
-    "Di sini pengguna nantinya dapat membuat film sendiri."
-  );
-
-}
-
-if (createFilmButton) {
-  createFilmButton.addEventListener(
-    "click",
-    openCreatePage
-  );
-}
-
-if (startCreatingButton) {
-  startCreatingButton.addEventListener(
-    "click",
-    openCreatePage
-  );
-}
-
-
-// EARN BUTTON
-
-const earnButton =
-  document.getElementById("earnButton");
-
-if (earnButton) {
-
-  earnButton.addEventListener("click", function () {
-
-    alert(
-      "💰 Reitoon Creator Program\n\n" +
-      "Creator dapat memperoleh penghasilan dari karya yang mereka buat."
-    );
-
-  });
-
-}
-
-
-// NAVIGATION
-
-const navItems =
-  document.querySelectorAll(".nav-item");
-
-navItems.forEach(function (item) {
-
-  item.addEventListener("click", function () {
-
-    navItems.forEach(function (nav) {
-
-      nav.classList.remove("active");
-
-    });
-
-    this.classList.add("active");
-
-    const page =
-      this.getAttribute("data-page");
-
-    handleNavigation(page);
-
-  });
-
-});
-
-
-// QUICK MENU
-
-const quickItems =
-  document.querySelectorAll(".quick-item");
-
-quickItems.forEach(function (item) {
-
-  item.addEventListener("click", function () {
-
-    const page =
-      this.getAttribute("data-page");
-
-    handleNavigation(page);
-
-  });
-
-});
-
-
-// NAVIGATION HANDLER
-
-function handleNavigation(page) {
-
-  switch (page) {
-
-    case "home":
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-      break;
-
-
-    case "watch":
-
-      alert(
-        "▶ Watch\n\n" +
-        "Di sini pengguna dapat menonton film dan drama."
-      );
-
-      break;
-
-
-    case "create":
-
-      openCreatePage();
-
-      break;
-
-
-    case "earn":
-
-      alert(
-        "💰 Earn\n\n" +
-        "Creator dapat melihat penghasilan mereka di sini."
-      );
-
-      break;
-
-
-    case "trending":
-
-      alert(
-        "🔥 Trending\n\n" +
-        "Menampilkan film yang sedang populer."
-      );
-
-      break;
-
-
-    case "new-release":
-
-      alert(
-        "🆕 New Release\n\n" +
-        "Menampilkan film terbaru."
-      );
-
-      break;
-
-
-    case "studio":
-
-      alert(
-        "🎞️ Creator Studio\n\n" +
-        "Tempat creator mengelola film dan karya mereka."
-      );
-
-      break;
-
-
-    case "profile":
-
-      alert(
-        "👤 Profile\n\n" +
-        "Halaman profil pengguna Reitoon."
-      );
-
-      break;
+    return defaultUser;
 
   }
 
+  return JSON.parse(savedUser);
+
 }
 
 
-// MOVIE CARD
+function saveUser(user) {
 
-const movieCards =
-  document.querySelectorAll(".movie-card");
+  localStorage.setItem(
 
-movieCards.forEach(function (card) {
+    "reitoon_user",
 
-  card.addEventListener("click", function () {
+    JSON.stringify(user)
 
-    const title =
-      card.querySelector("h3").textContent;
-
-    alert(
-      "🎬 " + title + "\n\n" +
-      "Halaman detail film akan segera dibuat."
-    );
-
-  });
-
-});
-
-
-// SEARCH FUNCTION
-
-if (searchInput) {
-
-  searchInput.addEventListener(
-    "input",
-    function () {
-
-      const keyword =
-        this.value.toLowerCase();
-
-      movieCards.forEach(function (card) {
-
-        const title =
-          card.querySelector("h3")
-          .textContent
-          .toLowerCase();
-
-        if (title.includes(keyword)) {
-
-          card.style.display = "block";
-
-        } else {
-
-          card.style.display = "none";
-
-        }
-
-      });
-
-    }
   );
 
 }
 
 
-// WELCOME MESSAGE
+function isLoggedIn() {
 
-console.log(
-  "🎬 Welcome to Reitoon - Create Your Story"
-);
+  const user = getUser();
+
+  return user.loggedIn === true;
+
+}
+
+
+function loginUser(data = {}) {
+
+  const user = {
+
+    ...getUser(),
+
+    ...data,
+
+    loggedIn: true
+
+  };
+
+  saveUser(user);
+
+}
+
+
+function logoutUser() {
+
+  const user = getUser();
+
+  user.loggedIn = false;
+
+  saveUser(user);
+
+  window.location.href =
+    "login.html";
+
+}
+
+
+/* ================================
+   CREDIT SYSTEM
+================================ */
+
+function getCredit() {
+
+  const user = getUser();
+
+  return Number(user.credit || 0);
+
+}
+
+
+function addCredit(amount) {
+
+  const user = getUser();
+
+  user.credit =
+    Number(user.credit || 0)
+    + Number(amount);
+
+  saveUser(user);
+
+}
+
+
+function useCredit(amount) {
+
+  const user = getUser();
+
+  if (
+    Number(user.credit || 0)
+    < Number(amount)
+  ) {
+
+    showToast(
+      "Credit AI tidak cukup"
+    );
+
+    return false;
+
+  }
+
+  user.credit -= Number(amount);
+
+  saveUser(user);
+
+  return true;
+
+}
+
+
+/* ================================
+   BALANCE SYSTEM
+================================ */
+
+function getBalance() {
+
+  const user = getUser();
+
+  return Number(user.balance || 0);
+
+}
+
+
+function addBalance(amount) {
+
+  const user = getUser();
+
+  user.balance =
+    Number(user.balance || 0)
+    + Number(amount);
+
+  saveUser(user);
+
+}
+
+
+function withdrawBalance(amount) {
+
+  const user = getUser();
+
+  amount = Number(amount);
+
+  if (amount < 100000) {
+
+    showToast(
+      "Minimum penarikan adalah Rp100.000"
+    );
+
+    return false;
+
+  }
+
+  if (
+    Number(user.balance || 0)
+    < amount
+  ) {
+
+    showToast(
+      "Saldo tidak mencukupi"
+    );
+
+    return false;
+
+  }
+
+  user.balance -= amount;
+
+  saveUser(user);
+
+  return true;
+
+}
+
+
+/* ================================
+   STORY SYSTEM
+================================ */
+
+function getStories() {
+
+  const stories =
+    localStorage.getItem(
+      "reitoon_stories"
+    );
+
+  if (!stories) {
+
+    return [];
+
+  }
+
+  return JSON.parse(stories);
+
+}
+
+
+function saveStories(stories) {
+
+  localStorage.setItem(
+
+    "reitoon_stories",
+
+    JSON.stringify(stories)
+
+  );
+
+}
+
+
+function createStory(data) {
+
+  const stories =
+    getStories();
+
+  const story = {
+
+    id:
+      Date.now(),
+
+    ...data,
+
+    createdAt:
+      new Date().toISOString()
+
+  };
+
+  stories.push(story);
+
+  saveStories(stories);
+
+  return story;
+
+}
+
+
+function getStoryById(id) {
+
+  const stories =
+    getStories();
+
+  return stories.find(
+
+    story =>
+      String(story.id)
+      === String(id)
+
+  );
+
+}
+
+
+/* ================================
+   FORMAT MONEY
+================================ */
+
+function formatMoney(amount) {
+
+  return new Intl.NumberFormat(
+
+    "id-ID",
+
+    {
+
+      style: "currency",
+
+      currency: "IDR",
+
+      maximumFractionDigits: 0
+
+    }
+
+  ).format(amount);
+
+}
+
+
+/* ================================
+   TOAST
+================================ */
+
+function showToast(message) {
+
+  let toast =
+    document.getElementById(
+      "reitoonToast"
+    );
+
+  if (!toast) {
+
+    toast =
+      document.createElement(
+        "div"
+      );
+
+    toast.id =
+      "reitoonToast";
+
+    toast.className =
+      "toast";
+
+    document.body.appendChild(
+      toast
+    );
+
+  }
+
+  toast.textContent =
+    message;
+
+  toast.classList.add(
+    "show"
+  );
+
+  setTimeout(
+
+    () => {
+
+      toast.classList.remove(
+        "show"
+      );
+
+    },
+
+    2500
+
+  );
+
+}
+
+
+/* ================================
+   AUTH CHECK
+================================ */
+
+function requireLogin() {
+
+  if (!isLoggedIn()) {
+
+    window.location.href =
+      "login.html";
+
+    return false;
+
+  }
+
+  return true;
+
+}
