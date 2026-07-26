@@ -1,726 +1,220 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08070d"><title>Login - Reitoon</title><style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08070d">
+  <title>Login - Reitoon</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(255,40,145,.18), transparent 35%),
+        radial-gradient(circle at 0% 100%, rgba(112,45,255,.16), transparent 35%),
+        #08070d;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 430px;
+      padding: 28px 20px;
+      border-radius: 25px;
+      background: #191722;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      background: linear-gradient(135deg, white, #ff2f8d, #762dff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #aaa3b0;
+      margin: 8px 0 25px;
+      font-size: 13px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 12px;
+      border-radius: 13px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: #100f17;
+      color: white;
+      outline: none;
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 13px;
+      background: linear-gradient(135deg, #ff2f8d, #762dff);
+      color: white;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .divider {
+      text-align: center;
+      color: #aaa3b0;
+      margin: 22px 0;
+      font-size: 12px;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .social-button {
+      padding: 13px 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: #211f2b;
+      color: white;
+    }
+
+    .note {
+      color: #77727f;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.5;
+      margin-top: 20px;
+    }
+  </style>
+</head>
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+<body>
 
-:root {
-  --bg: #08070d;
-  --surface: #191722;
-  --surface-light: #211f2b;
-  --text: #ffffff;
-  --muted: #aaa3b0;
-  --pink: #ff2f8d;
-  --purple: #762dff;
-  --border: rgba(255,255,255,0.10);
-}
+  <main class="login-box">
 
-body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    <div class="logo">Reitoon</div>
 
-  padding: 20px;
-
-  background:
-    radial-gradient(
-      circle at 100% 0%,
-      rgba(255,40,145,0.16),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 0% 100%,
-      rgba(112,45,255,0.14),
-      transparent 35%
-    ),
-    var(--bg);
-
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.login-container {
-  width: 100%;
-  max-width: 430px;
-}
-
-.logo-section {
-  text-align: center;
-  margin-bottom: 28px;
-}
-
-.logo {
-  font-size: 42px;
-  font-weight: 900;
-  letter-spacing: -2px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffffff,
-      var(--pink),
-      var(--purple)
-    );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.tagline {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.login-card {
-  padding: 24px 20px;
-
-  border-radius: 24px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,47,141,0.10),
-      rgba(118,45,255,0.08)
-    ),
-    var(--surface);
-
-  border: 1px solid var(--border);
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.35);
-}
-
-.login-title {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 7px;
-}
-
-.login-subtitle {
-  text-align: center;
-  color: var(--muted);
-  font-size: 13px;
-  margin-bottom: 22px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 7px;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 14px;
-
-  border-radius: 13px;
-  border: 1px solid var(--border);
-
-  outline: none;
-
-  background: #100f17;
-  color: white;
-
-  font-size: 14px;
-}
-
-.form-group input:focus {
-  border-color: var(--pink);
-
-  box-shadow:
-    0 0 0 3px rgba(255,47,141,0.08);
-}
-
-.password-wrapper {
-  position: relative;
-}
-
-.password-wrapper input {
-  padding-right: 50px;
-}
-
-.toggle-password {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  border: none;
-  background: transparent;
-
-  color: var(--muted);
-
-  font-size: 17px;
-  cursor: pointer;
-}
-
-.forgot-password {
-  display: block;
-
-  margin-top: -5px;
-  margin-bottom: 17px;
-
-  text-align: right;
-
-  color: var(--pink);
-  font-size: 12px;
-
-  text-decoration: none;
-}
-
-.login-button {
-  width: 100%;
-
-  padding: 15px;
-
-  border: none;
-  border-radius: 14px;
-
-  color: white;
-
-  font-size: 15px;
-  font-weight: bold;
-
-  cursor: pointer;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--pink),
-      var(--purple)
-    );
-
-  box-shadow:
-    0 10px 25px rgba(255,47,141,0.18);
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  margin: 22px 0 17px;
-
-  color: var(--muted);
-  font-size: 11px;
-}
-
-.divider::before,
-.divider::after {
-  content: "";
-
-  flex: 1;
-
-  height: 1px;
-
-  background: var(--border);
-}
-
-.social-login {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 9px;
-}
-
-.social-button {
-  min-height: 55px;
-
-  border-radius: 13px;
-
-  border: 1px solid var(--border);
-
-  background: var(--surface-light);
-
-  color: white;
-
-  cursor: pointer;
-
-  font-size: 22px;
-}
-
-.social-button span {
-  display: block;
-
-  margin-top: 3px;
-
-  font-size: 9px;
-
-  color: var(--muted);
-}
-
-.register-text {
-  text-align: center;
-
-  color: var(--muted);
-
-  font-size: 13px;
-
-  margin-top: 22px;
-}
-
-.register-button {
-  border: none;
-
-  background: transparent;
-
-  color: var(--pink);
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  font-size: 13px;
-}
-
-.terms {
-  text-align: center;
-
-  color: #77727e;
-
-  font-size: 10px;
-
-  line-height: 1.5;
-
-  margin-top: 20px;
-}
-
-.toast {
-  position: fixed;
-
-  left: 50%;
-  bottom: 25px;
-
-  transform:
-    translateX(-50%)
-    translateY(20px);
-
-  opacity: 0;
-
-  pointer-events: none;
-
-  padding: 13px 18px;
-
-  border-radius: 14px;
-
-  background: var(--surface-light);
-
-  border: 1px solid var(--border);
-
-  color: white;
-
-  font-size: 13px;
-
-  transition: 0.3s;
-
-  z-index: 50;
-
-  white-space: nowrap;
-}
-
-.toast.show {
-  opacity: 1;
-
-  transform:
-    translateX(-50%)
-    translateY(0);
-}
-
-@media (max-width: 380px) {
-
-  .logo {
-    font-size: 36px;
-  }
-
-  .login-card {
-    padding: 20px 16px;
-  }
-
-}
-
-</style></head><body><div class="login-container">  <section class="logo-section"><div class="logo">
-  Reitoon
-</div>
-
-<p class="tagline">
-  Create. Watch. Imagine.
-</p>
-
-  </section>  <section class="login-card"><h1 class="login-title">
-  Welcome Back 👋
-</h1>
-
-<p class="login-subtitle">
-  Login untuk melanjutkan ke Reitoon
-</p>
-
-
-<form onsubmit="loginUser(event)">
-
-  <div class="form-group">
-
-    <label>
-      Email atau Nomor Telepon
-    </label>
+    <p class="subtitle">
+      Masuk dan mulai membuat cerita kamu
+    </p>
 
     <input
+      class="input"
+      id="email"
       type="text"
-      id="loginIdentity"
       placeholder="Email atau nomor telepon"
-      required
     >
 
-  </div>
+    <input
+      class="input"
+      id="password"
+      type="password"
+      placeholder="Password"
+    >
 
+    <button
+      class="login-button"
+      onclick="login()"
+    >
+      🔐 Login
+    </button>
 
-  <div class="form-group">
+    <div class="divider">
+      atau lanjutkan dengan
+    </div>
 
-    <label>
-      Password
-    </label>
+    <div class="social-grid">
 
-    <div class="password-wrapper">
+      <button class="social-button" onclick="socialLogin('Google')">
+        Google
+      </button>
 
-      <input
-        type="password"
-        id="loginPassword"
-        placeholder="Masukkan password"
-        required
-      >
+      <button class="social-button" onclick="socialLogin('Facebook')">
+        Facebook
+      </button>
 
-      <button
-        type="button"
-        class="toggle-password"
-        onclick="togglePassword()"
-      >
-        👁️
+      <button class="social-button" onclick="socialLogin('TikTok')">
+        TikTok
+      </button>
+
+      <button class="social-button" onclick="socialLogin('WhatsApp')">
+        WhatsApp
       </button>
 
     </div>
 
-  </div>
+    <p class="note">
+      Prototype Reitoon. Login sosial asli membutuhkan integrasi OAuth resmi dan backend.
+    </p>
 
+  </main>
 
-  <a
-    href="#"
-    class="forgot-password"
-    onclick="forgotPassword(event)"
-  >
-    Lupa password?
-  </a>
+  <script>
 
+    function login() {
 
-  <button
-    type="submit"
-    class="login-button"
-  >
-    🔐 Login ke Reitoon
-  </button>
+      const email =
+        document.getElementById("email").value.trim();
 
-</form>
+      if (!email) {
 
+        alert("Masukkan email atau nomor telepon");
 
-<div class="divider">
-  ATAU LOGIN DENGAN
-</div>
+        return;
 
+      }
 
-<div class="social-login">
+      localStorage.setItem(
+        "reitoon_logged_in",
+        "true"
+      );
 
-  <button
-    class="social-button"
-    onclick="socialLogin('Google')"
-  >
-    🌐
-    <span>Google</span>
-  </button>
+      localStorage.setItem(
+        "reitoon_login_user",
+        email
+      );
 
+      window.location.href =
+        "index.html";
 
-  <button
-    class="social-button"
-    onclick="socialLogin('Facebook')"
-  >
-    f
-    <span>Facebook</span>
-  </button>
+    }
 
 
-  <button
-    class="social-button"
-    onclick="socialLogin('TikTok')"
-  >
-    🎵
-    <span>TikTok</span>
-  </button>
+    function socialLogin(provider) {
 
+      localStorage.setItem(
+        "reitoon_logged_in",
+        "true"
+      );
 
-  <button
-    class="social-button"
-    onclick="socialLogin('WhatsApp')"
-  >
-    💬
-    <span>WhatsApp</span>
-  </button>
+      localStorage.setItem(
+        "reitoon_login_user",
+        provider + " User"
+      );
 
+      window.location.href =
+        "index.html";
 
-  <button
-    class="social-button"
-    onclick="socialLogin('Phone OTP')"
-  >
-    📱
-    <span>Phone OTP</span>
-  </button>
+    }
 
+  </script>
 
-  <button
-    class="social-button"
-    onclick="socialLogin('Email')"
-  >
-    ✉️
-    <span>Email</span>
-  </button>
-
-</div>
-
-
-<div class="register-text">
-
-  Belum punya akun?
-
-  <button
-    class="register-button"
-    onclick="registerUser()"
-  >
-    Daftar sekarang
-  </button>
-
-</div>
-
-
-<p class="terms">
-
-  Dengan melanjutkan, kamu menyetujui
-  Terms of Service dan Privacy Policy Reitoon.
-
-</p>
-
-  </section></div><div
-  class="toast"
-  id="toast"
-></div><script>
-
-function loginUser(event) {
-
-  event.preventDefault();
-
-
-  const identity =
-    document
-    .getElementById("loginIdentity")
-    .value
-    .trim();
-
-
-  const password =
-    document
-    .getElementById("loginPassword")
-    .value;
-
-
-  if (!identity || !password) {
-
-    showToast(
-      "Email/nomor telepon dan password wajib diisi"
-    );
-
-    return;
-
-  }
-
-
-  const account = {
-
-    identity: identity,
-
-    loginMethod: "Email / Phone",
-
-    loggedInAt:
-      new Date().toISOString()
-
-  };
-
-
-  localStorage.setItem(
-
-    "reitoon_account",
-
-    JSON.stringify(account)
-
-  );
-
-
-  showToast(
-    "✅ Login berhasil!"
-  );
-
-
-  setTimeout(() => {
-
-    window.location.href =
-      "index.html";
-
-  }, 1200);
-
-}
-
-
-function registerUser() {
-
-  const identity =
-    prompt(
-      "Masukkan email atau nomor telepon:"
-    );
-
-
-  if (!identity) return;
-
-
-  const name =
-    prompt(
-      "Masukkan nama kamu:"
-    );
-
-
-  if (!name) return;
-
-
-  const account = {
-
-    name: name,
-
-    identity: identity,
-
-    loginMethod: "Email / Phone",
-
-    createdAt:
-      new Date().toISOString()
-
-  };
-
-
-  localStorage.setItem(
-
-    "reitoon_account",
-
-    JSON.stringify(account)
-
-  );
-
-
-  showToast(
-    "🎉 Akun berhasil dibuat!"
-  );
-
-
-  setTimeout(() => {
-
-    window.location.href =
-      "index.html";
-
-  }, 1200);
-
-}
-
-
-function socialLogin(provider) {
-
-  showToast(
-    provider +
-    " Login akan dihubungkan ke sistem resmi"
-  );
-
-}
-
-
-function forgotPassword(event) {
-
-  event.preventDefault();
-
-
-  const identity =
-    prompt(
-      "Masukkan email atau nomor telepon akun kamu:"
-    );
-
-
-  if (identity) {
-
-    showToast(
-      "📩 Instruksi reset password akan dikirim"
-    );
-
-  }
-
-}
-
-
-function togglePassword() {
-
-  const input =
-    document
-    .getElementById("loginPassword");
-
-
-  if (
-    input.type === "password"
-  ) {
-
-    input.type = "text";
-
-  } else {
-
-    input.type = "password";
-
-  }
-
-}
-
-
-function showToast(message) {
-
-  const toast =
-    document
-    .getElementById("toast");
-
-
-  toast.textContent =
-    message;
-
-
-  toast.classList.add("show");
-
-
-  setTimeout(() => {
-
-    toast.classList.remove("show");
-
-  }, 2500);
-
-}
-
-</script></body>
+</body>
 </html>
