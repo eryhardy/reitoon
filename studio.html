@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08070d">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+name="theme-color"
+content="#08070d"
+>
+
 <title>Studio - Reitoon</title>
 
 <style>
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -14,567 +25,1207 @@ padding:0;
 }
 
 :root{
+
 --bg:#08070d;
 --surface:#191722;
---surface2:#211f2b;
---text:#fff;
+--surface-light:#211f2b;
+--text:#ffffff;
 --muted:#aaa3b0;
 --pink:#ff2f8d;
 --purple:#762dff;
---border:rgba(255,255,255,.1);
+--green:#25d366;
+--border:rgba(255,255,255,.10);
+
 }
 
 body{
+
 min-height:100vh;
+
 background:
-radial-gradient(circle at 100% 0%,rgba(255,40,145,.14),transparent 35%),
-radial-gradient(circle at 0% 30%,rgba(112,45,255,.1),transparent 30%),
+
+radial-gradient(
+circle at 100% 0%,
+rgba(255,40,145,.14),
+transparent 35%
+),
+
+radial-gradient(
+circle at 0% 30%,
+rgba(112,45,255,.10),
+transparent 30%
+),
+
 var(--bg);
-color:#fff;
-font-family:Arial,Helvetica,sans-serif;
+
+color:var(--text);
+
+font-family:
+Arial,
+Helvetica,
+sans-serif;
+
 padding-bottom:100px;
+
 }
 
 .header{
+
 height:76px;
+
 display:flex;
+
 align-items:center;
+
 justify-content:space-between;
+
 padding:16px 20px;
+
 background:rgba(8,7,13,.94);
+
 border-bottom:1px solid var(--border);
+
 position:sticky;
+
 top:0;
+
 z-index:20;
+
 }
 
 .back{
+
 width:42px;
+
 height:42px;
+
 border-radius:14px;
+
 border:1px solid var(--border);
+
 background:var(--surface);
-color:#fff;
+
+color:white;
+
 font-size:20px;
+
 cursor:pointer;
+
 }
 
 .logo{
+
 font-size:29px;
+
 font-weight:800;
-background:linear-gradient(135deg,#fff,var(--pink),var(--purple));
+
+background:
+
+linear-gradient(
+135deg,
+white,
+var(--pink),
+var(--purple)
+);
+
 -webkit-background-clip:text;
+
 -webkit-text-fill-color:transparent;
+
 }
 
-.space{
+.header-space{
+
 width:42px;
+
 }
 
 .container{
-max-width:600px;
+
+width:100%;
+
+max-width:650px;
+
 margin:auto;
+
 padding:25px 16px;
+
 }
 
-.title{
-font-size:31px;
-margin-bottom:8px;
+.page-title{
+
+font-size:30px;
+
+margin-bottom:7px;
+
 }
 
-.title span{
-background:linear-gradient(135deg,var(--pink),var(--purple));
+.page-title span{
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
 -webkit-background-clip:text;
+
 -webkit-text-fill-color:transparent;
+
 }
 
 .subtitle{
+
 color:var(--muted);
-font-size:14px;
+
+font-size:13px;
+
 line-height:1.5;
+
 margin-bottom:22px;
+
 }
 
 .stats{
+
 display:grid;
-grid-template-columns:repeat(3,1fr);
+
+grid-template-columns:
+repeat(3,1fr);
+
 gap:10px;
+
 margin-bottom:22px;
+
 }
 
 .stat{
+
 padding:16px 8px;
+
 text-align:center;
+
 border-radius:16px;
+
 background:var(--surface);
+
 border:1px solid var(--border);
+
 }
 
 .stat strong{
+
 display:block;
+
 font-size:20px;
+
 }
 
 .stat span{
+
 display:block;
+
 color:var(--muted);
+
 font-size:10px;
+
 margin-top:5px;
-}
 
-.empty{
-text-align:center;
-padding:55px 20px;
-border:1px dashed rgba(255,255,255,.2);
-border-radius:22px;
-background:rgba(255,255,255,.02);
-}
-
-.empty-icon{
-font-size:48px;
-margin-bottom:15px;
-}
-
-.empty h2{
-font-size:20px;
-margin-bottom:8px;
-}
-
-.empty p{
-color:var(--muted);
-font-size:13px;
-line-height:1.5;
-margin-bottom:20px;
 }
 
 .create-button{
-display:inline-block;
-padding:14px 20px;
-border-radius:13px;
+
+display:block;
+
+width:100%;
+
+padding:15px;
+
+margin-bottom:22px;
+
+border-radius:14px;
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+color:white;
+
+text-align:center;
+
 text-decoration:none;
-color:#fff;
+
 font-weight:bold;
+
 font-size:13px;
-background:linear-gradient(135deg,var(--pink),var(--purple));
+
 }
 
 .story-card{
-display:none;
+
 overflow:hidden;
+
 border-radius:22px;
+
 background:var(--surface);
+
 border:1px solid var(--border);
+
+margin-bottom:18px;
+
 }
 
 .story-cover{
-height:220px;
+
+width:100%;
+
+height:210px;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
-background:linear-gradient(135deg,var(--pink),var(--purple));
-background-size:cover;
-background-position:center;
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+font-size:48px;
+
+overflow:hidden;
+
 }
 
-.story-cover span{
-font-size:55px;
+.story-cover img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
 }
 
 .story-content{
+
 padding:18px;
+
 }
 
-.story-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-margin-bottom:15px;
-}
+.story-title{
 
-.story-header h2{
-font-size:20px;
-}
+font-size:21px;
 
-.status{
-padding:6px 10px;
-border-radius:20px;
-font-size:10px;
-background:rgba(255,47,141,.15);
-border:1px solid rgba(255,47,141,.35);
-white-space:nowrap;
-}
-
-.story-info{
-padding:15px;
-border-radius:15px;
-background:#100f17;
-}
-
-.story-info p{
-color:var(--muted);
-font-size:13px;
-line-height:1.6;
 margin-bottom:8px;
+
 }
 
-.story-info p:last-child{
-margin-bottom:0;
+.story-meta{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:7px;
+
+margin-bottom:13px;
+
 }
 
-.story-info strong{
-color:#fff;
+.badge{
+
+padding:6px 9px;
+
+border-radius:8px;
+
+background:var(--surface-light);
+
+color:#ddd;
+
+font-size:10px;
+
+}
+
+.badge.published{
+
+color:#8cffb1;
+
+background:rgba(37,211,102,.10);
+
+}
+
+.badge.draft{
+
+color:#ffc46b;
+
+background:rgba(255,180,80,.10);
+
+}
+
+.story-description{
+
+color:var(--muted);
+
+font-size:13px;
+
+line-height:1.6;
+
+margin-bottom:18px;
+
 }
 
 .actions{
-display:flex;
-gap:8px;
-margin-top:15px;
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:9px;
+
 }
 
-.action{
-flex:1;
-padding:12px 5px;
-border-radius:12px;
+.action-button{
+
+padding:12px 8px;
+
+border-radius:11px;
+
 border:1px solid var(--border);
-background:var(--surface2);
-color:#fff;
-font-size:12px;
+
+background:var(--surface-light);
+
+color:white;
+
+font-size:11px;
+
+font-weight:bold;
+
 cursor:pointer;
+
+text-decoration:none;
+
+text-align:center;
+
 }
 
-.action.primary{
-border:none;
-background:linear-gradient(135deg,var(--pink),var(--purple));
+.action-button.publish{
+
+background:rgba(37,211,102,.12);
+
+border-color:rgba(37,211,102,.35);
+
+color:#8cffb1;
+
 }
 
-.action.delete{
-color:#ff6b8a;
+.action-button.delete{
+
+background:rgba(255,47,141,.10);
+
+border-color:rgba(255,47,141,.25);
+
+color:#ff80b6;
+
+}
+
+.empty{
+
+padding:38px 20px;
+
+text-align:center;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.02);
+
+border:1px dashed rgba(255,255,255,.15);
+
+color:var(--muted);
+
+font-size:13px;
+
+line-height:1.6;
+
+}
+
+.empty-icon{
+
+font-size:42px;
+
+margin-bottom:14px;
+
 }
 
 .bottom-nav{
+
 position:fixed;
+
 bottom:0;
+
 left:0;
+
 right:0;
+
 height:76px;
+
 display:flex;
+
 justify-content:space-around;
+
 align-items:center;
+
 background:rgba(14,13,21,.96);
+
+backdrop-filter:blur(18px);
+
 border-top:1px solid var(--border);
+
 z-index:30;
+
 }
 
 .nav-item{
+
 color:var(--muted);
+
 text-decoration:none;
+
 text-align:center;
+
 font-size:10px;
+
 min-width:60px;
+
 }
 
 .nav-icon{
+
 display:block;
+
 font-size:21px;
+
 margin-bottom:4px;
+
 }
 
 .nav-item.active{
+
 color:var(--pink);
+
 }
 
 .toast{
+
 position:fixed;
+
 left:50%;
+
 bottom:95px;
+
 transform:translateX(-50%) translateY(20px);
-background:var(--surface2);
+
+background:var(--surface-light);
+
 border:1px solid var(--border);
+
 border-radius:14px;
+
 padding:13px 18px;
-font-size:13px;
+
+font-size:12px;
+
 opacity:0;
+
 pointer-events:none;
+
 transition:.3s;
+
 z-index:100;
+
 white-space:nowrap;
+
 }
 
 .toast.show{
+
 opacity:1;
+
 transform:translateX(-50%) translateY(0);
+
 }
+
 </style>
+
 </head>
 
 <body>
 
+
 <header class="header">
 
-<button class="back" onclick="history.back()">←</button>
+<button
+class="back"
+onclick="goBack()"
+>
+
+←
+
+</button>
 
 <div class="logo">
+
 Reitoon
+
 </div>
 
-<div class="space"></div>
+<div class="header-space"></div>
 
 </header>
 
+
 <main class="container">
 
-<h1 class="title">
+
+<h1 class="page-title">
+
 My <span>Studio</span>
+
 </h1>
 
 <p class="subtitle">
-Kelola semua cerita dan film yang kamu buat.
+
+Kelola semua cerita dan project yang kamu buat di Reitoon.
+
 </p>
+
 
 <section class="stats">
 
 <div class="stat">
-<strong id="storyCount">0</strong>
-<span>Stories</span>
-</div>
 
-<div class="stat">
-<strong>0</strong>
-<span>Views</span>
-</div>
+<strong id="totalStories">
 
-<div class="stat">
-<strong>Rp0</strong>
-<span>Earnings</span>
-</div>
+0
 
-</section>
+</strong>
 
-<section class="empty" id="emptyState">
+<span>
 
-<div class="empty-icon">
-✨
-</div>
+Stories
 
-<h2>
-Belum ada cerita
-</h2>
-
-<p>
-Buat cerita pertama kamu dan mulai membangun dunia kreatif di Reitoon.
-</p>
-
-<a class="create-button" href="create.html">
-🚀 Create Your Story
-</a>
-
-</section>
-
-<section class="story-card" id="storyCard">
-
-<div class="story-cover" id="storyCover">
-
-<span>🎬</span>
-
-</div>
-
-<div class="story-content">
-
-<div class="story-header">
-
-<h2 id="storyTitle">
-My Story
-</h2>
-
-<span class="status" id="storyStatus">
-DRAFT
 </span>
 
 </div>
 
-<div class="story-info">
+<div class="stat">
 
-<p>
-<strong>Genre:</strong>
-<span id="storyGenre"></span>
-</p>
+<strong id="publishedStories">
 
-<p>
-<strong>Deskripsi:</strong>
-<span id="storyDescription"></span>
-</p>
+0
 
-<p>
-<strong>Dibuat:</strong>
-<span id="storyDate"></span>
-</p>
+</strong>
+
+<span>
+
+Published
+
+</span>
 
 </div>
 
-<div class="actions">
+<div class="stat">
 
-<button class="action primary" onclick="publishStory()">
-🚀 Publish
-</button>
+<strong id="draftStories">
 
-<button class="action" onclick="editStory()">
-✏️ Edit
-</button>
+0
 
-<button class="action delete" onclick="deleteStory()">
-🗑️ Hapus
-</button>
+</strong>
 
-</div>
+<span>
+
+Draft
+
+</span>
 
 </div>
 
 </section>
 
+
+<a
+class="create-button"
+href="create.html"
+>
+
+✨ Buat Cerita Baru
+
+</a>
+
+
+<div
+id="storyContainer"
+>
+
+</div>
+
+
 </main>
+
 
 <nav class="bottom-nav">
 
-<a class="nav-item" href="index.html">
-<span class="nav-icon">🏠</span>
+
+<a
+class="nav-item"
+href="index.html"
+>
+
+<span class="nav-icon">
+
+🏠
+
+</span>
+
 Home
+
 </a>
 
-<a class="nav-item" href="watch.html">
-<span class="nav-icon">▶️</span>
+
+<a
+class="nav-item"
+href="watch.html"
+>
+
+<span class="nav-icon">
+
+▶️
+
+</span>
+
 Watch
+
 </a>
 
-<a class="nav-item" href="create.html">
-<span class="nav-icon">✨</span>
+
+<a
+class="nav-item"
+href="create.html"
+>
+
+<span class="nav-icon">
+
+✨
+
+</span>
+
 Create
+
 </a>
 
-<a class="nav-item active" href="studio.html">
-<span class="nav-icon">🎥</span>
+
+<a
+class="nav-item active"
+href="studio.html"
+>
+
+<span class="nav-icon">
+
+🎥
+
+</span>
+
 Studio
+
 </a>
 
-<a class="nav-item" href="profile.html">
-<span class="nav-icon">👤</span>
+
+<a
+class="nav-item"
+href="profile.html"
+>
+
+<span class="nav-icon">
+
+👤
+
+</span>
+
 Profile
+
 </a>
+
 
 </nav>
 
-<div class="toast" id="toast"></div>
+
+<div
+class="toast"
+id="toast"
+>
+
+</div>
+
 
 <script>
 
+
 let story=null;
+
+
+/* LOAD STORY */
 
 function loadStory(){
 
-const savedStory=localStorage.getItem("reitoon_story");
+const savedStory=
+
+localStorage.getItem(
+"reitoon_story"
+);
+
 
 if(!savedStory){
 
-document.getElementById("emptyState").style.display="block";
+showEmpty();
 
-document.getElementById("storyCard").style.display="none";
-
-document.getElementById("storyCount").textContent="0";
+updateStats();
 
 return;
 
 }
 
-story=JSON.parse(savedStory);
 
-document.getElementById("emptyState").style.display="none";
+story=
+JSON.parse(savedStory);
 
-document.getElementById("storyCard").style.display="block";
 
-document.getElementById("storyCount").textContent="1";
+updateStats();
 
-document.getElementById("storyTitle").textContent=story.title;
-
-document.getElementById("storyGenre").textContent=story.genre;
-
-document.getElementById("storyDescription").textContent=story.description;
-
-document.getElementById("storyDate").textContent=story.createdAt;
-
-document.getElementById("storyStatus").textContent=
-story.published?"PUBLISHED":"DRAFT";
-
-if(story.cover){
-
-document.getElementById("storyCover").style.backgroundImage=
-"url('"+story.cover+"')";
-
-document.querySelector(".story-cover span").style.display="none";
+renderStory();
 
 }
 
+
+/* UPDATE STATS */
+
+function updateStats(){
+
+const total=
+
+story ? 1 : 0;
+
+const published=
+
+story && story.published
+? 1
+: 0;
+
+const draft=
+
+story && !story.published
+? 1
+: 0;
+
+
+document
+.getElementById(
+"totalStories"
+)
+.textContent=
+total;
+
+
+document
+.getElementById(
+"publishedStories"
+)
+.textContent=
+published;
+
+
+document
+.getElementById(
+"draftStories"
+)
+.textContent=
+draft;
+
 }
 
-function publishStory(){
 
-if(!story)return;
+/* RENDER */
 
-story.published=true;
+function renderStory(){
 
-story.status="PUBLISHED";
+const container=
 
-localStorage.setItem(
-"reitoon_story",
-JSON.stringify(story)
+document
+.getElementById(
+"storyContainer"
 );
 
-document.getElementById("storyStatus").textContent="PUBLISHED";
 
-showToast("🎉 Cerita berhasil dipublikasikan!");
+let coverHTML=
+
+story.cover
+
+?
+
+`
+
+<img
+src="${story.cover}"
+alt="Cover"
+>
+
+`
+
+:
+
+`
+
+🎬
+
+`;
+
+
+const statusHTML=
+
+story.published
+
+?
+
+`
+
+<span class="badge published">
+
+● Published
+
+</span>
+
+`
+
+:
+
+`
+
+<span class="badge draft">
+
+● Draft
+
+</span>
+
+`;
+
+
+container.innerHTML=
+
+`
+
+<section class="story-card">
+
+<div class="story-cover">
+
+${coverHTML}
+
+</div>
+
+<div class="story-content">
+
+<h2 class="story-title">
+
+${escapeHTML(story.title)}
+
+</h2>
+
+<div class="story-meta">
+
+<span class="badge">
+
+${escapeHTML(story.type || "Film")}
+
+</span>
+
+<span class="badge">
+
+${escapeHTML(story.genre || "Story")}
+
+</span>
+
+${statusHTML}
+
+</div>
+
+<p class="story-description">
+
+${escapeHTML(story.description)}
+
+</p>
+
+<div class="actions">
+
+<a
+class="action-button"
+href="create.html"
+>
+
+✏️ Edit
+
+</a>
+
+<a
+class="action-button"
+href="detail.html"
+>
+
+👁️ Preview
+
+</a>
+
+<button
+class="action-button publish"
+onclick="togglePublish()"
+>
+
+${story.published
+? "⏸️ Unpublish"
+: "🚀 Publish"}
+
+</button>
+
+<button
+class="action-button delete"
+onclick="deleteStory()"
+>
+
+🗑️ Hapus
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+`;
 
 }
 
-function editStory(){
 
-window.location.href="create.html";
+/* EMPTY */
+
+function showEmpty(){
+
+const container=
+
+document
+.getElementById(
+"storyContainer"
+);
+
+
+container.innerHTML=
+
+`
+
+<div class="empty">
+
+<div class="empty-icon">
+
+🎬
+
+</div>
+
+Belum ada cerita di Studio.
+
+<br>
+
+Buat cerita pertama kamu sekarang.
+
+</div>
+
+`;
 
 }
+
+
+/* PUBLISH */
+
+function togglePublish(){
+
+if(!story){
+
+return;
+
+}
+
+
+story.published=
+
+!story.published;
+
+
+localStorage.setItem(
+
+"reitoon_story",
+
+JSON.stringify(story)
+
+);
+
+
+renderStory();
+
+updateStats();
+
+
+showToast(
+
+story.published
+
+?
+
+"🚀 Cerita berhasil dipublish"
+
+:
+
+"⏸️ Cerita dipindahkan ke draft"
+
+);
+
+}
+
+
+/* DELETE */
 
 function deleteStory(){
 
-if(!confirm("Hapus cerita ini?"))return;
+if(!story){
 
-localStorage.removeItem("reitoon_story");
-
-showToast("🗑️ Cerita berhasil dihapus");
-
-setTimeout(function(){
-
-location.reload();
-
-},800);
+return;
 
 }
 
+
+const confirmDelete=
+
+confirm(
+
+"Yakin ingin menghapus cerita ini?"
+
+);
+
+
+if(!confirmDelete){
+
+return;
+
+}
+
+
+localStorage.removeItem(
+"reitoon_story"
+);
+
+
+story=null;
+
+
+updateStats();
+
+showEmpty();
+
+
+showToast(
+"🗑️ Cerita berhasil dihapus"
+);
+
+}
+
+
+/* ESCAPE */
+
+function escapeHTML(text){
+
+const div=
+document.createElement(
+"div"
+);
+
+div.textContent=
+text || "";
+
+return div.innerHTML;
+
+}
+
+
+/* TOAST */
+
 function showToast(message){
 
-const toast=document.getElementById("toast");
+const toast=
 
-toast.textContent=message;
+document
+.getElementById(
+"toast"
+);
 
-toast.classList.add("show");
+
+toast.textContent=
+message;
+
+
+toast.classList.add(
+"show"
+);
+
 
 setTimeout(function(){
 
-toast.classList.remove("show");
+toast.classList.remove(
+"show"
+);
 
 },2500);
 
 }
+
+
+/* BACK */
+
+function goBack(){
+
+if(document.referrer){
+
+history.back();
+
+}else{
+
+window.location.href=
+"index.html";
+
+}
+
+}
+
 
 loadStory();
 
 </script>
 
 </body>
+
 </html>
