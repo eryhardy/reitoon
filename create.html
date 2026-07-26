@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08070d">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+name="theme-color"
+content="#08070d"
+>
+
 <title>Create - Reitoon</title>
 
 <style>
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -14,444 +25,1031 @@ padding:0;
 }
 
 :root{
+
 --bg:#08070d;
 --surface:#191722;
---surface2:#211f2b;
---text:#fff;
+--surface-light:#211f2b;
+--text:#ffffff;
 --muted:#aaa3b0;
 --pink:#ff2f8d;
 --purple:#762dff;
---border:rgba(255,255,255,.1);
+--border:rgba(255,255,255,.10);
+
 }
 
 body{
+
 min-height:100vh;
+
 background:
-radial-gradient(circle at 100% 0%,rgba(255,40,145,.14),transparent 35%),
-radial-gradient(circle at 0% 30%,rgba(112,45,255,.1),transparent 30%),
+
+radial-gradient(
+circle at 100% 0%,
+rgba(255,40,145,.14),
+transparent 35%
+),
+
+radial-gradient(
+circle at 0% 30%,
+rgba(112,45,255,.10),
+transparent 30%
+),
+
 var(--bg);
+
 color:var(--text);
-font-family:Arial,Helvetica,sans-serif;
+
+font-family:
+Arial,
+Helvetica,
+sans-serif;
+
 padding-bottom:100px;
+
 }
 
 .header{
+
 height:76px;
+
 display:flex;
+
 align-items:center;
+
 justify-content:space-between;
+
 padding:16px 20px;
+
 background:rgba(8,7,13,.94);
+
 border-bottom:1px solid var(--border);
+
 position:sticky;
+
 top:0;
+
 z-index:20;
+
 }
 
 .back{
+
 width:42px;
+
 height:42px;
+
 border-radius:14px;
+
 border:1px solid var(--border);
+
 background:var(--surface);
-color:#fff;
+
+color:white;
+
 font-size:20px;
+
 cursor:pointer;
+
 }
 
 .logo{
+
 font-size:29px;
+
 font-weight:800;
-background:linear-gradient(135deg,#fff,var(--pink),var(--purple));
+
+background:
+
+linear-gradient(
+135deg,
+white,
+var(--pink),
+var(--purple)
+);
+
 -webkit-background-clip:text;
+
 -webkit-text-fill-color:transparent;
+
 }
 
-.space{
+.header-space{
+
 width:42px;
+
 }
 
 .container{
+
+width:100%;
+
 max-width:600px;
+
 margin:auto;
+
 padding:25px 16px;
+
 }
 
-h1{
+.title{
+
 font-size:30px;
+
 margin-bottom:8px;
+
 }
 
-h1 span{
-background:linear-gradient(135deg,var(--pink),var(--purple));
+.title span{
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
 -webkit-background-clip:text;
+
 -webkit-text-fill-color:transparent;
+
 }
 
 .subtitle{
+
 color:var(--muted);
-font-size:14px;
+
+font-size:13px;
+
 line-height:1.5;
-margin-bottom:25px;
+
+margin-bottom:20px;
+
+}
+
+.ai-project{
+
+display:none;
+
+padding:17px;
+
+border-radius:19px;
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,47,141,.15),
+rgba(118,45,255,.15)
+);
+
+border:1px solid rgba(255,47,141,.35);
+
+margin-bottom:20px;
+
+}
+
+.ai-project.show{
+
+display:block;
+
+}
+
+.ai-project-title{
+
+font-size:15px;
+
+font-weight:bold;
+
+margin-bottom:7px;
+
+}
+
+.ai-project-info{
+
+color:var(--muted);
+
+font-size:11px;
+
+line-height:1.5;
+
+margin-bottom:13px;
+
+}
+
+.use-ai-button{
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+border-radius:12px;
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+color:white;
+
+font-weight:bold;
+
+cursor:pointer;
+
 }
 
 .form-card{
+
 padding:20px;
-border-radius:22px;
+
+border-radius:21px;
+
 background:var(--surface);
+
 border:1px solid var(--border);
+
 }
 
 .form-group{
-margin-bottom:18px;
+
+margin-bottom:17px;
+
 }
 
 label{
+
 display:block;
-font-size:13px;
+
+font-size:12px;
+
 font-weight:bold;
-margin-bottom:8px;
+
+margin-bottom:7px;
+
 }
 
 input,
-select,
-textarea{
-width:100%;
-padding:14px;
-border-radius:13px;
-border:1px solid var(--border);
-background:#100f17;
-color:#fff;
-outline:none;
-font-size:14px;
-font-family:Arial,Helvetica,sans-serif;
-}
+
+textarea,
 
 select{
-appearance:auto;
+
+width:100%;
+
+padding:14px;
+
+border-radius:12px;
+
+border:1px solid var(--border);
+
+outline:none;
+
+background:#100f17;
+
+color:white;
+
+font-family:inherit;
+
+font-size:13px;
+
 }
 
 textarea{
-height:120px;
+
+height:130px;
+
 resize:none;
+
+line-height:1.5;
+
 }
 
 input:focus,
-select:focus,
-textarea:focus{
+
+textarea:focus,
+
+select:focus{
+
 border-color:var(--pink);
+
 }
 
 .cover-box{
-height:170px;
-border:1px dashed rgba(255,255,255,.25);
+
+padding:18px;
+
 border-radius:16px;
-display:flex;
-align-items:center;
-justify-content:center;
+
+border:1px dashed rgba(255,255,255,.20);
+
+background:rgba(255,255,255,.02);
+
 text-align:center;
-color:var(--muted);
-margin-bottom:18px;
-overflow:hidden;
-position:relative;
+
 }
 
-.cover-box img{
-width:100%;
-height:100%;
-object-fit:cover;
+.cover-preview{
+
 display:none;
-}
 
-.cover-box span{
-font-size:13px;
-}
-
-.cover-input{
-margin-top:10px;
-}
-
-.create-button{
 width:100%;
+
+height:190px;
+
+object-fit:cover;
+
+border-radius:14px;
+
+margin-bottom:12px;
+
+}
+
+.cover-preview.show{
+
+display:block;
+
+}
+
+.cover-button{
+
+display:inline-block;
+
+padding:12px 16px;
+
+border-radius:12px;
+
+background:var(--surface-light);
+
+border:1px solid var(--border);
+
+font-size:12px;
+
+cursor:pointer;
+
+}
+
+input[type="file"]{
+
+display:none;
+
+}
+
+.save-button{
+
+width:100%;
+
 padding:15px;
+
 border:none;
+
 border-radius:14px;
-background:linear-gradient(135deg,var(--pink),var(--purple));
-color:#fff;
-font-size:15px;
+
+background:
+
+linear-gradient(
+135deg,
+var(--pink),
+var(--purple)
+);
+
+color:white;
+
+font-size:14px;
+
 font-weight:bold;
+
 cursor:pointer;
+
+margin-top:5px;
+
 }
 
-.cancel-button{
+.reset-button{
+
 width:100%;
-padding:14px;
-margin-top:10px;
-border:1px solid var(--border);
-border-radius:14px;
-background:var(--surface2);
-color:#fff;
-font-weight:bold;
-cursor:pointer;
-}
 
-.toast{
-position:fixed;
-left:50%;
-bottom:95px;
-transform:translateX(-50%) translateY(20px);
-padding:13px 18px;
+padding:13px;
+
 border-radius:14px;
-background:var(--surface2);
+
 border:1px solid var(--border);
+
+background:var(--surface-light);
+
+color:white;
+
 font-size:13px;
-opacity:0;
-pointer-events:none;
-transition:.3s;
-z-index:100;
-white-space:nowrap;
-}
 
-.toast.show{
-opacity:1;
-transform:translateX(-50%) translateY(0);
+cursor:pointer;
+
+margin-top:10px;
+
 }
 
 .bottom-nav{
+
 position:fixed;
+
 bottom:0;
+
 left:0;
+
 right:0;
+
 height:76px;
+
 display:flex;
+
 justify-content:space-around;
+
 align-items:center;
+
 background:rgba(14,13,21,.96);
+
+backdrop-filter:blur(18px);
+
 border-top:1px solid var(--border);
+
 z-index:30;
+
 }
 
 .nav-item{
+
 color:var(--muted);
+
 text-decoration:none;
+
 text-align:center;
+
 font-size:10px;
+
 min-width:60px;
+
 }
 
 .nav-icon{
+
 display:block;
+
 font-size:21px;
+
 margin-bottom:4px;
+
 }
 
 .nav-item.active{
+
 color:var(--pink);
+
 }
+
+.toast{
+
+position:fixed;
+
+left:50%;
+
+bottom:95px;
+
+transform:translateX(-50%) translateY(20px);
+
+background:var(--surface-light);
+
+border:1px solid var(--border);
+
+border-radius:14px;
+
+padding:13px 18px;
+
+font-size:12px;
+
+opacity:0;
+
+pointer-events:none;
+
+transition:.3s;
+
+z-index:100;
+
+white-space:nowrap;
+
+}
+
+.toast.show{
+
+opacity:1;
+
+transform:translateX(-50%) translateY(0);
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header class="header">
 
-<button class="back" onclick="history.back()">←</button>
+<button
+class="back"
+onclick="goBack()"
+>
+
+←
+
+</button>
 
 <div class="logo">
+
 Reitoon
+
 </div>
 
-<div class="space"></div>
+<div class="header-space"></div>
 
 </header>
 
 <main class="container">
 
-<h1>Create <span>Story</span></h1>
+<h1 class="title">
+
+Create <span>Story</span>
+
+</h1>
 
 <p class="subtitle">
-Buat cerita dan film original kamu bersama Reitoon.
+
+Buat cerita baru atau lanjutkan project yang dibuat dengan AI Studio.
+
 </p>
 
-<div class="form-card">
+
+<!-- AI PROJECT -->
+
+<section
+class="ai-project"
+id="aiProject"
+>
+
+<div class="ai-project-title">
+
+🤖 Project AI Tersedia
+
+</div>
+
+<div
+class="ai-project-info"
+id="aiProjectInfo"
+>
+
+</div>
+
+<button
+class="use-ai-button"
+onclick="useAIProject()"
+>
+
+✨ Gunakan Project AI Ini
+
+</button>
+
+</section>
+
+
+<!-- FORM -->
+
+<section class="form-card">
 
 <div class="form-group">
 
-<label>Judul Film / Cerita</label>
+<label>
+
+Judul Cerita
+
+</label>
 
 <input
 type="text"
-id="title"
+id="storyTitle"
 placeholder="Contoh: Love Beyond Time"
 >
 
 </div>
 
+
 <div class="form-group">
 
-<label>Genre</label>
+<label>
 
-<select id="genre">
+Jenis Cerita
 
-<option value="">Pilih Genre</option>
-<option>Romance</option>
-<option>Drama</option>
-<option>Action</option>
-<option>Fantasy</option>
-<option>Comedy</option>
-<option>Horror</option>
-<option>Mystery</option>
+</label>
+
+<select id="storyType">
+
+<option value="Film">
+
+🎬 Film
+
+</option>
+
+<option value="Series">
+
+📺 Series
+
+</option>
+
+<option value="Short Film">
+
+🎞️ Short Film
+
+</option>
+
+<option value="Animation">
+
+🎨 Animation
+
+</option>
 
 </select>
 
 </div>
 
+
 <div class="form-group">
 
-<label>Deskripsi Cerita</label>
+<label>
+
+Genre
+
+</label>
+
+<select id="storyGenre">
+
+<option value="Romance">
+
+Romance
+
+</option>
+
+<option value="Action">
+
+Action
+
+</option>
+
+<option value="Drama">
+
+Drama
+
+</option>
+
+<option value="Fantasy">
+
+Fantasy
+
+</option>
+
+<option value="Comedy">
+
+Comedy
+
+</option>
+
+<option value="Horror">
+
+Horror
+
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+
+Deskripsi Cerita
+
+</label>
 
 <textarea
-id="description"
-placeholder="Tuliskan sinopsis cerita kamu..."
+id="storyDescription"
+placeholder="Tuliskan deskripsi cerita kamu..."
 ></textarea>
 
 </div>
 
+
 <div class="form-group">
 
-<label>Upload Cover Film</label>
+<label>
+
+Cover Cerita
+
+</label>
 
 <div class="cover-box">
 
-<img id="coverPreview">
+<img
+id="coverPreview"
+class="cover-preview"
+>
 
-<span id="coverText">
-🖼️ Pilih gambar cover film
-</span>
+<label
+class="cover-button"
+for="coverInput"
+>
 
-</div>
+🖼️ Pilih Cover
+
+</label>
 
 <input
-class="cover-input"
 type="file"
 id="coverInput"
 accept="image/*"
+onchange="previewCover(event)"
 >
 
 </div>
 
+</div>
+
+
 <button
-class="create-button"
+class="save-button"
 onclick="saveStory()"
 >
 
-✨ Simpan Cerita
+💾 Simpan Cerita
 
 </button>
+
 
 <button
-class="cancel-button"
-onclick="window.location.href='studio.html'"
+class="reset-button"
+onclick="resetForm()"
 >
 
-🎬 Buka Studio
+🔄 Reset Form
 
 </button>
 
-</div>
+</section>
 
 </main>
 
+
 <nav class="bottom-nav">
 
-<a class="nav-item" href="index.html">
-<span class="nav-icon">🏠</span>
+<a
+class="nav-item"
+href="index.html"
+>
+
+<span class="nav-icon">
+
+🏠
+
+</span>
+
 Home
+
 </a>
 
-<a class="nav-item" href="watch.html">
-<span class="nav-icon">▶️</span>
+
+<a
+class="nav-item"
+href="watch.html"
+>
+
+<span class="nav-icon">
+
+▶️
+
+</span>
+
 Watch
+
 </a>
 
-<a class="nav-item active" href="create.html">
-<span class="nav-icon">✨</span>
+
+<a
+class="nav-item active"
+href="create.html"
+>
+
+<span class="nav-icon">
+
+✨
+
+</span>
+
 Create
+
 </a>
 
-<a class="nav-item" href="studio.html">
-<span class="nav-icon">🎥</span>
+
+<a
+class="nav-item"
+href="studio.html"
+>
+
+<span class="nav-icon">
+
+🎥
+
+</span>
+
 Studio
+
 </a>
 
-<a class="nav-item" href="profile.html">
-<span class="nav-icon">👤</span>
+
+<a
+class="nav-item"
+href="profile.html"
+>
+
+<span class="nav-icon">
+
+👤
+
+</span>
+
 Profile
+
 </a>
 
 </nav>
 
-<div class="toast" id="toast"></div>
+
+<div
+class="toast"
+id="toast"
+></div>
+
 
 <script>
 
-let coverData="";
+let selectedCover="";
 
-document
-.getElementById("coverInput")
-.addEventListener("change",function(event){
+let aiProject=null;
 
-const file=event.target.files[0];
 
-if(!file)return;
+/* LOAD AI PROJECT */
 
-const reader=new FileReader();
+function loadAIProject(){
 
-reader.onload=function(e){
+const savedAI=
+localStorage.getItem(
+"reitoon_ai_project"
+);
 
-coverData=e.target.result;
-
-const preview=document.getElementById("coverPreview");
-
-preview.src=coverData;
-
-preview.style.display="block";
-
-document.getElementById("coverText").style.display="none";
-
-};
-
-reader.readAsDataURL(file);
-
-});
-
-function saveStory(){
-
-const title=document
-.getElementById("title")
-.value
-.trim();
-
-const genre=document
-.getElementById("genre")
-.value;
-
-const description=document
-.getElementById("description")
-.value
-.trim();
-
-if(!title){
-
-showToast("⚠️ Judul cerita wajib diisi");
+if(!savedAI){
 
 return;
 
 }
 
-if(!genre){
+aiProject=
+JSON.parse(savedAI);
 
-showToast("⚠️ Pilih genre cerita");
+const aiBox=
+document.getElementById(
+"aiProject"
+);
+
+const aiInfo=
+document.getElementById(
+"aiProjectInfo"
+);
+
+aiBox.classList.add("show");
+
+aiInfo.textContent=
+
+"Judul: "+
+aiProject.title+
+" | Genre: "+
+aiProject.genre+
+" | AI: "+
+aiProject.type;
+
+}
+
+
+/* GUNAKAN PROJECT AI */
+
+function useAIProject(){
+
+if(!aiProject){
+
+return;
+
+}
+
+document
+.getElementById("storyTitle")
+.value=
+aiProject.title;
+
+document
+.getElementById("storyGenre")
+.value=
+aiProject.genre;
+
+document
+.getElementById("storyDescription")
+.value=
+aiProject.prompt;
+
+showToast(
+"🤖 Project AI berhasil dimuat"
+);
+
+}
+
+
+/* PREVIEW COVER */
+
+function previewCover(event){
+
+const file=
+event.target.files[0];
+
+if(!file){
+
+return;
+
+}
+
+const reader=
+new FileReader();
+
+reader.onload=function(e){
+
+selectedCover=
+e.target.result;
+
+const preview=
+document.getElementById(
+"coverPreview"
+);
+
+preview.src=
+selectedCover;
+
+preview.classList.add("show");
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+
+/* SIMPAN CERITA */
+
+function saveStory(){
+
+const title=
+document
+.getElementById("storyTitle")
+.value
+.trim();
+
+const type=
+document
+.getElementById("storyType")
+.value;
+
+const genre=
+document
+.getElementById("storyGenre")
+.value;
+
+const description=
+document
+.getElementById("storyDescription")
+.value
+.trim();
+
+if(!title){
+
+showToast(
+"Masukkan judul cerita"
+);
 
 return;
 
@@ -459,7 +1057,9 @@ return;
 
 if(!description){
 
-showToast("⚠️ Deskripsi cerita wajib diisi");
+showToast(
+"Masukkan deskripsi cerita"
+);
 
 return;
 
@@ -467,44 +1067,88 @@ return;
 
 const story={
 
-id:Date.now(),
-
 title:title,
+
+type:type,
 
 genre:genre,
 
 description:description,
 
-cover:coverData,
-
-status:"DRAFT",
+cover:selectedCover,
 
 published:false,
 
-createdAt:new Date().toLocaleDateString("id-ID")
+createdAt:
+new Date().toISOString()
 
 };
 
 localStorage.setItem(
+
 "reitoon_story",
+
 JSON.stringify(story)
+
 );
 
-showToast("✅ Cerita berhasil disimpan");
+showToast(
+"✅ Cerita berhasil disimpan"
+);
 
 setTimeout(function(){
 
-window.location.href="studio.html";
+window.location.href=
+"studio.html";
 
 },1000);
 
 }
 
+
+/* RESET */
+
+function resetForm(){
+
+document
+.getElementById("storyTitle")
+.value="";
+
+document
+.getElementById("storyDescription")
+.value="";
+
+document
+.getElementById("storyGenre")
+.value="Romance";
+
+selectedCover="";
+
+document
+.getElementById("coverPreview")
+.classList.remove("show");
+
+document
+.getElementById("coverPreview")
+.src="";
+
+showToast(
+"Form berhasil direset"
+);
+
+}
+
+
+/* TOAST */
+
 function showToast(message){
 
-const toast=document.getElementById("toast");
+const toast=
+document
+.getElementById("toast");
 
-toast.textContent=message;
+toast.textContent=
+message;
 
 toast.classList.add("show");
 
@@ -516,7 +1160,29 @@ toast.classList.remove("show");
 
 }
 
+
+/* BACK */
+
+function goBack(){
+
+if(document.referrer){
+
+history.back();
+
+}else{
+
+window.location.href=
+"index.html";
+
+}
+
+}
+
+
+loadAIProject();
+
 </script>
 
 </body>
+
 </html>
