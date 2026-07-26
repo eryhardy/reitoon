@@ -1,173 +1,780 @@
-<!DOCTYPE html><html lang="id"><head>  <meta charset="UTF-8">  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="theme-color" content="#08080d">  <title>Watch - Reitoon</title>  <link rel="stylesheet" href="style.css">  <style>
+<!DOCTYPE html><html lang="id"><head>  <meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+«»
+
+<meta
+name="theme-color"
+content="#08070d"
+
+«»
+
+  <title>Watch - Reitoon</title>  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    :root {
+
+      --bg: #08070d;
+
+      --surface: #191722;
+
+      --surface-light: #211f2b;
+
+      --text: #ffffff;
+
+      --muted: #aaa3b0;
+
+      --pink: #ff2f8d;
+
+      --pink-light: #ff4ca0;
+
+      --purple: #762dff;
+
+      --border: rgba(255,255,255,0.10);
+
+    }
+
 
     body {
-      overflow-x: hidden;
-    }
 
-    .watch-page {
+      min-height: 100vh;
+
+      background:
+
+        radial-gradient(
+          circle at 100% 0%,
+          rgba(255,40,145,0.14),
+          transparent 35%
+        ),
+
+        radial-gradient(
+          circle at 0% 30%,
+          rgba(112,45,255,0.10),
+          transparent 30%
+        ),
+
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       padding-bottom: 100px;
+
+      overflow-x: hidden;
+
     }
 
-    .watch-header {
-      padding: 22px 20px 10px;
-    }
 
-    .watch-header h1 {
-      font-size: 34px;
-      margin-top: 8px;
-    }
+    /* HEADER */
 
-    .watch-header p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-      margin-top: 8px;
-    }
+    .header {
 
-    .search-bar {
-      margin: 15px 20px;
-    }
+      height: 76px;
 
-    .category-scroll {
       display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding: 0 20px 22px;
-      scrollbar-width: none;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 16px 20px;
+
+      background: rgba(8,7,13,0.94);
+
+      border-bottom: 1px solid var(--border);
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 20;
+
+      backdrop-filter: blur(18px);
+
     }
 
-    .category-scroll::-webkit-scrollbar {
-      display: none;
+
+    .back-button {
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 14px;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      color: white;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
     }
+
+
+    .logo {
+
+      font-size: 28px;
+
+      font-weight: 800;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          white,
+          var(--pink),
+          var(--purple)
+        );
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+
+    .header-space {
+
+      width: 42px;
+
+    }
+
+
+    /* MAIN */
+
+    .container {
+
+      width: 100%;
+
+      max-width: 600px;
+
+      margin: auto;
+
+      padding: 24px 16px;
+
+    }
+
+
+    .section-label {
+
+      color: var(--pink-light);
+
+      font-size: 10px;
+
+      font-weight: bold;
+
+      letter-spacing: 1.5px;
+
+    }
+
+
+    .page-title {
+
+      font-size: 32px;
+
+      margin-top: 8px;
+
+    }
+
+
+    .subtitle {
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+      margin-top: 8px;
+
+    }
+
+
+    /* SEARCH */
+
+    .search-box {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-top: 22px;
+
+      padding: 14px 16px;
+
+      border-radius: 14px;
+
+      background: var(--surface);
+
+      border: 1px solid var(--border);
+
+    }
+
+
+    .search-box span {
+
+      font-size: 16px;
+
+    }
+
+
+    .search-box input {
+
+      width: 100%;
+
+      border: none;
+
+      outline: none;
+
+      background: transparent;
+
+      color: white;
+
+      font-size: 14px;
+
+    }
+
+
+    .search-box input::placeholder {
+
+      color: var(--muted);
+
+    }
+
+
+    /* CATEGORY */
+
+    .categories {
+
+      display: flex;
+
+      gap: 9px;
+
+      overflow-x: auto;
+
+      padding: 18px 0 4px;
+
+      scrollbar-width: none;
+
+    }
+
+
+    .categories::-webkit-scrollbar {
+
+      display: none;
+
+    }
+
 
     .category-button {
+
       flex-shrink: 0;
+
+      padding: 10px 16px;
+
+      border-radius: 20px;
+
       border: 1px solid var(--border);
+
       background: var(--surface);
+
       color: var(--muted);
-      padding: 10px 17px;
-      border-radius: 22px;
+
       font-size: 12px;
+
       cursor: pointer;
+
     }
 
-    .category-button.active-category {
-      background: linear-gradient(
-        135deg,
-        var(--pink),
-        var(--purple)
-      );
+
+    .category-button.active {
+
       color: white;
+
       border-color: transparent;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple)
+        );
+
     }
+
+
+    /* SECTION */
+
+    .section-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin: 28px 0 14px;
+
+    }
+
+
+    .section-header h2 {
+
+      font-size: 21px;
+
+      margin-top: 5px;
+
+    }
+
+
+    /* MOVIE GRID */
+
+    .movie-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 14px;
+
+    }
+
 
     .movie-card {
+
+      min-width: 0;
+
       cursor: pointer;
+
     }
+
 
     .movie-poster {
-      cursor: pointer;
-    }
 
-    .movie-card:active {
-      transform: scale(0.98);
-    }
+      height: 220px;
 
-    .play-button {
-      opacity: 1 !important;
-    }
+      border-radius: 16px;
 
-    .movie-poster::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0,0,0,0.35),
-        transparent 55%
-      );
-      pointer-events: none;
-    }
-
-    .play-button {
       position: relative;
-      z-index: 2;
+
+      overflow: hidden;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #32194f,
+          #161622
+        );
+
+    }
+
+
+    .poster-one {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #b43f8f,
+          #24152f
+        );
+
+    }
+
+
+    .poster-two {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #333c69,
+          #11131d
+        );
+
+    }
+
+
+    .poster-three {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #364d4c,
+          #12171c
+        );
+
+    }
+
+
+    .poster-four {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #854f91,
+          #1c1629
+        );
+
+    }
+
+
+    .poster-five {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #a85570,
+          #22151e
+        );
+
+    }
+
+
+    .poster-six {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #384c72,
+          #111522
+        );
+
+    }
+
+
+    .movie-badge {
+
+      position: absolute;
+
+      top: 9px;
+
+      left: 9px;
+
+      padding: 5px 8px;
+
+      border-radius: 7px;
+
+      background: rgba(0,0,0,0.55);
+
+      font-size: 8px;
+
+      font-weight: bold;
+
+    }
+
+
+    .new-badge {
+
+      color: var(--pink-light);
+
+    }
+
+
+    .play-button {
+
+      width: 48px;
+
+      height: 48px;
+
+      border-radius: 50%;
+
       border: none;
+
+      background: rgba(255,255,255,0.92);
+
+      color: #111;
+
+      font-size: 16px;
+
       cursor: pointer;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
     }
 
-    .empty-message {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
+
+    .movie-info {
+
+      padding: 10px 2px;
+
+    }
+
+
+    .movie-info h3 {
+
+      font-size: 13px;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+    }
+
+
+    .movie-info p {
+
       color: var(--muted);
-      font-size: 14px;
+
+      font-size: 10px;
+
+      margin-top: 5px;
+
     }
 
-  </style></head><body>  <div class="app-container watch-page"><!-- HEADER -->
 
-<header class="top-header">
+    /* USER STORY */
 
-  <a
-    href="index.html"
-    style="text-decoration:none;"
-  >
+    .user-story {
 
-    <img
-      src="reitoon-logo.png"
-      alt="Reitoon"
-      class="reitoon-logo"
-    >
+      display: none;
 
-  </a>
+    }
 
 
-  <div class="header-actions">
+    .user-story .movie-poster {
 
-    <button
-      class="icon-button"
-      onclick="window.location.href='index.html'"
-    >
+      background:
 
-      ←
+        linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple)
+        );
 
-    </button>
-
-  </div>
-
-</header>
+    }
 
 
-<!-- PAGE HEADER -->
+    /* EMPTY */
 
-<section class="watch-header">
+    .empty-state {
 
-  <span class="section-label">
+      display: none;
 
-    REITOON LIBRARY
+      text-align: center;
 
-  </span>
+      padding: 45px 20px;
+
+      margin-top: 20px;
+
+      border-radius: 20px;
+
+      border: 1px dashed rgba(255,255,255,0.20);
+
+      background: rgba(255,255,255,0.02);
+
+    }
 
 
-  <h1>
+    .empty-state div {
 
-    Watch
+      font-size: 42px;
 
-  </h1>
+      margin-bottom: 12px;
+
+    }
 
 
-  <p>
+    .empty-state h3 {
 
-    Temukan cerita baru dan tonton film favoritmu di Reitoon.
+      font-size: 18px;
 
-  </p>
+      margin-bottom: 8px;
 
-</section>
+    }
+
+
+    .empty-state p {
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
+    }
+
+
+    /* BOTTOM NAV */
+
+    .bottom-nav {
+
+      position: fixed;
+
+      bottom: 0;
+
+      left: 0;
+
+      right: 0;
+
+      height: 76px;
+
+      display: flex;
+
+      justify-content: space-around;
+
+      align-items: center;
+
+      background: rgba(14,13,21,0.96);
+
+      backdrop-filter: blur(18px);
+
+      border-top: 1px solid var(--border);
+
+      z-index: 30;
+
+    }
+
+
+    .nav-item {
+
+      color: var(--muted);
+
+      text-decoration: none;
+
+      text-align: center;
+
+      font-size: 10px;
+
+      min-width: 60px;
+
+    }
+
+
+    .nav-icon {
+
+      display: block;
+
+      font-size: 21px;
+
+      margin-bottom: 4px;
+
+    }
+
+
+    .nav-item.active {
+
+      color: var(--pink);
+
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 420px) {
+
+      .container {
+
+        padding-left: 14px;
+
+        padding-right: 14px;
+
+      }
+
+
+      .movie-grid {
+
+        gap: 10px;
+
+      }
+
+
+      .movie-poster {
+
+        height: 190px;
+
+      }
+
+
+      .page-title {
+
+        font-size: 29px;
+
+      }
+
+    }
+
+  </style></head><body>  <!-- HEADER -->  <header class="header"><button
+  class="back-button"
+  onclick="goBack()"
+>
+
+  ←
+
+</button>
+
+
+<div class="logo">
+
+  Reitoon
+
+</div>
+
+
+<div class="header-space"></div>
+
+  </header>  <!-- MAIN -->  <main class="container"><span class="section-label">
+
+  REITOON LIBRARY
+
+</span>
+
+
+<h1 class="page-title">
+
+  Watch
+
+</h1>
+
+
+<p class="subtitle">
+
+  Temukan cerita baru dan tonton film favoritmu di Reitoon.
+
+</p>
 
 
 <!-- SEARCH -->
 
-<div class="search-bar">
+<div class="search-box">
+
 
   <span>
 
@@ -178,20 +785,22 @@
 
   <input
     type="text"
-    id="watchSearch"
+    id="searchInput"
     placeholder="Cari film atau drama..."
   >
+
 
 </div>
 
 
-<!-- CATEGORY -->
+<!-- CATEGORIES -->
 
-<div class="category-scroll">
+<div class="categories">
+
 
   <button
-    class="category-button active-category"
-    onclick="filterMovies('all', this)"
+    class="category-button active"
+    onclick="filterCategory('all', this)"
   >
 
     All
@@ -201,7 +810,7 @@
 
   <button
     class="category-button"
-    onclick="filterMovies('drama', this)"
+    onclick="filterCategory('drama', this)"
   >
 
     Drama
@@ -211,7 +820,7 @@
 
   <button
     class="category-button"
-    onclick="filterMovies('romance', this)"
+    onclick="filterCategory('romance', this)"
   >
 
     Romance
@@ -221,7 +830,7 @@
 
   <button
     class="category-button"
-    onclick="filterMovies('action', this)"
+    onclick="filterCategory('action', this)"
   >
 
     Action
@@ -231,31 +840,24 @@
 
   <button
     class="category-button"
-    onclick="filterMovies('fantasy', this)"
+    onclick="filterCategory('comedy', this)"
   >
 
-    Fantasy
+    Comedy
 
   </button>
 
-
-  <button
-    class="category-button"
-    onclick="filterMovies('thriller', this)"
-  >
-
-    Thriller
-
-  </button>
 
 </div>
 
 
 <!-- TRENDING -->
 
-<section class="content-section">
+<section>
+
 
   <div class="section-header">
+
 
     <div>
 
@@ -274,6 +876,7 @@
 
     </div>
 
+
   </div>
 
 
@@ -283,16 +886,79 @@
   >
 
 
-    <!-- LOVE BEYOND TIME -->
+    <!-- USER STORY -->
+
+    <article
+      class="movie-card user-story"
+      id="userStoryCard"
+      onclick="openUserStory()"
+    >
+
+
+      <div class="movie-poster">
+
+
+        <span
+          class="movie-badge"
+        >
+
+          YOUR STORY
+
+        </span>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openUserStory()"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3
+          id="userStoryTitle"
+        >
+
+          My Story
+
+        </h3>
+
+
+        <p
+          id="userStoryGenre"
+        >
+
+          Original Story
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- FILM 1 -->
 
     <article
       class="movie-card"
       data-category="romance"
       data-title="Love Beyond Time"
-      onclick="openMovie('love-beyond-time')"
+      onclick="openMovie('Love Beyond Time')"
     >
 
+
       <div class="movie-poster poster-one">
+
 
         <span class="movie-badge">
 
@@ -303,17 +969,19 @@
 
         <button
           class="play-button"
-          onclick="event.stopPropagation(); openMovie('love-beyond-time')"
+          onclick="event.stopPropagation(); openMovie('Love Beyond Time')"
         >
 
           ▶
 
         </button>
 
+
       </div>
 
 
       <div class="movie-info">
+
 
         <h3>
 
@@ -328,21 +996,25 @@
 
         </p>
 
+
       </div>
+
 
     </article>
 
 
-    <!-- THE LAST KINGDOM -->
+    <!-- FILM 2 -->
 
     <article
       class="movie-card"
       data-category="action"
       data-title="The Last Kingdom"
-      onclick="openMovie('the-last-kingdom')"
+      onclick="openMovie('The Last Kingdom')"
     >
 
+
       <div class="movie-poster poster-two">
+
 
         <span class="movie-badge">
 
@@ -353,17 +1025,19 @@
 
         <button
           class="play-button"
-          onclick="event.stopPropagation(); openMovie('the-last-kingdom')"
+          onclick="event.stopPropagation(); openMovie('The Last Kingdom')"
         >
 
           ▶
 
         </button>
 
+
       </div>
 
 
       <div class="movie-info">
+
 
         <h3>
 
@@ -378,21 +1052,25 @@
 
         </p>
 
+
       </div>
+
 
     </article>
 
 
-    <!-- HIDDEN TRUTH -->
+    <!-- FILM 3 -->
 
     <article
       class="movie-card"
       data-category="drama"
       data-title="Hidden Truth"
-      onclick="openMovie('hidden-truth')"
+      onclick="openMovie('Hidden Truth')"
     >
 
+
       <div class="movie-poster poster-three">
+
 
         <span class="movie-badge">
 
@@ -403,17 +1081,19 @@
 
         <button
           class="play-button"
-          onclick="event.stopPropagation(); openMovie('hidden-truth')"
+          onclick="event.stopPropagation(); openMovie('Hidden Truth')"
         >
 
           ▶
 
         </button>
 
+
       </div>
 
 
       <div class="movie-info">
+
 
         <h3>
 
@@ -428,21 +1108,25 @@
 
         </p>
 
+
       </div>
+
 
     </article>
 
 
-    <!-- FIRST MEETING -->
+    <!-- FILM 4 -->
 
     <article
       class="movie-card"
       data-category="romance"
       data-title="First Meeting"
-      onclick="openMovie('first-meeting')"
+      onclick="openMovie('First Meeting')"
     >
 
+
       <div class="movie-poster poster-four">
+
 
         <span class="movie-badge new-badge">
 
@@ -453,17 +1137,19 @@
 
         <button
           class="play-button"
-          onclick="event.stopPropagation(); openMovie('first-meeting')"
+          onclick="event.stopPropagation(); openMovie('First Meeting')"
         >
 
           ▶
 
         </button>
 
+
       </div>
 
 
       <div class="movie-info">
+
 
         <h3>
 
@@ -478,21 +1164,25 @@
 
         </p>
 
+
       </div>
+
 
     </article>
 
 
-    <!-- ONE LAST CHANCE -->
+    <!-- FILM 5 -->
 
     <article
       class="movie-card"
       data-category="drama"
       data-title="One Last Chance"
-      onclick="openMovie('one-last-chance')"
+      onclick="openMovie('One Last Chance')"
     >
 
+
       <div class="movie-poster poster-five">
+
 
         <span class="movie-badge new-badge">
 
@@ -503,17 +1193,19 @@
 
         <button
           class="play-button"
-          onclick="event.stopPropagation(); openMovie('one-last-chance')"
+          onclick="event.stopPropagation(); openMovie('One Last Chance')"
         >
 
           ▶
 
         </button>
 
+
       </div>
 
 
       <div class="movie-info">
+
 
         <h3>
 
@@ -528,21 +1220,25 @@
 
         </p>
 
+
       </div>
+
 
     </article>
 
 
-    <!-- MIDNIGHT STORY -->
+    <!-- FILM 6 -->
 
     <article
       class="movie-card"
-      data-category="thriller"
+      data-category="action"
       data-title="Midnight Story"
-      onclick="openMovie('midnight-story')"
+      onclick="openMovie('Midnight Story')"
     >
 
+
       <div class="movie-poster poster-six">
+
 
         <span class="movie-badge new-badge">
 
@@ -553,17 +1249,19 @@
 
         <button
           class="play-button"
-          onclick="event.stopPropagation(); openMovie('midnight-story')"
+          onclick="event.stopPropagation(); openMovie('Midnight Story')"
         >
 
           ▶
 
         </button>
 
+
       </div>
 
 
       <div class="movie-info">
+
 
         <h3>
 
@@ -578,7 +1276,9 @@
 
         </p>
 
+
       </div>
+
 
     </article>
 
@@ -586,217 +1286,218 @@
   </div>
 
 
-  <div
-    class="empty-message"
-    id="emptyMessage"
-  >
-
-    Film tidak ditemukan 🔍
-
-  </div>
-
 </section>
 
 
-<!-- BOTTOM NAVIGATION -->
+<!-- EMPTY -->
 
-<nav class="bottom-navigation">
-
-
-  <a
-    href="index.html"
-    class="nav-item"
-    style="text-decoration:none;"
-  >
-
-    <span class="nav-icon">
-
-      🏠
-
-    </span>
+<section
+  class="empty-state"
+  id="emptyState"
+>
 
 
-    <span class="nav-label">
+  <div>
 
-      Home
+    🎬
 
-    </span>
-
-  </a>
+  </div>
 
 
-  <a
-    href="watch.html"
-    class="nav-item active"
-    style="text-decoration:none;"
-  >
+  <h3>
 
-    <span class="nav-icon">
+    Belum ada cerita
 
-      ▶️
-
-    </span>
+  </h3>
 
 
-    <span class="nav-label">
+  <p>
 
-      Watch
+    Buat cerita pertamamu melalui menu Create.
 
-    </span>
-
-  </a>
+  </p>
 
 
-  <a
-    href="create.html"
-    class="nav-item create-nav-button"
-    style="text-decoration:none;"
-  >
+</section>
 
-    <span class="create-nav-icon">
+  </main>  <!-- BOTTOM NAV -->  <nav class="bottom-nav"><a
+  class="nav-item"
+  href="index.html"
+>
 
-      ＋
+  <span class="nav-icon">
 
-    </span>
+    🏠
 
+  </span>
 
-    <span class="nav-label">
+  Home
 
-      Create
-
-    </span>
-
-  </a>
+</a>
 
 
-  <a
-    href="studio.html"
-    class="nav-item"
-    style="text-decoration:none;"
-  >
+<a
+  class="nav-item active"
+  href="watch.html"
+>
 
-    <span class="nav-icon">
+  <span class="nav-icon">
 
-      🎬
+    ▶️
 
-    </span>
+  </span>
 
+  Watch
 
-    <span class="nav-label">
-
-      Studio
-
-    </span>
-
-  </a>
+</a>
 
 
-  <a
-    href="profile.html"
-    class="nav-item"
-    style="text-decoration:none;"
-  >
+<a
+  class="nav-item"
+  href="create.html"
+>
 
-    <span class="nav-icon">
+  <span class="nav-icon">
 
-      👤
+    ✨
 
-    </span>
+  </span>
 
+  Create
 
-    <span class="nav-label">
-
-      Profile
-
-    </span>
-
-  </a>
+</a>
 
 
-</nav>
+<a
+  class="nav-item"
+  href="studio.html"
+>
 
-  </div>  <script>
+  <span class="nav-icon">
+
+    🎥
+
+  </span>
+
+  Studio
+
+</a>
 
 
-    /* OPEN DETAIL FILM */
+<a
+  class="nav-item"
+  href="profile.html"
+>
 
-    function openMovie(movieId) {
+  <span class="nav-icon">
 
-      window.location.href =
-        "detail.html?movie=" + movieId;
+    👤
+
+  </span>
+
+  Profile
+
+</a>
+
+  </nav>  <script>
+
+
+    let currentCategory = "all";
+
+
+    /* LOAD PUBLISHED STORY */
+
+    function loadPublishedStory() {
+
+
+      const savedStory =
+
+        localStorage.getItem(
+          "reitoon_story"
+        );
+
+
+      if (!savedStory) {
+
+        return;
+
+      }
+
+
+      const story =
+
+        JSON.parse(savedStory);
+
+
+      const storyCard =
+
+        document
+        .getElementById(
+          "userStoryCard"
+        );
+
+
+      document
+        .getElementById(
+          "userStoryTitle"
+        )
+        .textContent =
+        story.title;
+
+
+      document
+        .getElementById(
+          "userStoryGenre"
+        )
+        .textContent =
+        story.genre +
+        " · Original";
+
+
+      storyCard.style.display =
+        "block";
+
+
+      storyCard.dataset.category =
+
+        story.genre
+        .toLowerCase();
+
+
+      storyCard.dataset.title =
+
+        story.title
+        .toLowerCase();
+
 
     }
 
 
     /* SEARCH */
 
-    const searchInput =
-      document.getElementById(
-        "watchSearch"
+    document
+      .getElementById(
+        "searchInput"
+      )
+      .addEventListener(
+        "input",
+        applyFilters
       );
 
 
-    searchInput.addEventListener(
-      "input",
-      function () {
+    /* CATEGORY */
 
-        const keyword =
-          this.value.toLowerCase().trim();
+    function filterCategory(
 
-
-        const movies =
-          document.querySelectorAll(
-            ".movie-card"
-          );
-
-
-        let visibleMovies = 0;
-
-
-        movies.forEach(
-          function(movie) {
-
-            const title =
-              movie.dataset.title.toLowerCase();
-
-
-            if (
-              title.includes(keyword)
-            ) {
-
-              movie.style.display =
-                "block";
-
-              visibleMovies++;
-
-            } else {
-
-              movie.style.display =
-                "none";
-
-            }
-
-          }
-        );
-
-
-        document
-          .getElementById("emptyMessage")
-          .style.display =
-          visibleMovies === 0
-            ? "block"
-            : "none";
-
-      }
-    );
-
-
-    /* FILTER CATEGORY */
-
-    function filterMovies(
       category,
+
       button
+
     ) {
+
+
+      currentCategory =
+        category;
 
 
       document
@@ -804,10 +1505,10 @@
           ".category-button"
         )
         .forEach(
-          function(item) {
+          item => {
 
             item.classList.remove(
-              "active-category"
+              "active"
             );
 
           }
@@ -815,50 +1516,1872 @@
 
 
       button.classList.add(
-        "active-category"
+        "active"
       );
 
 
+      applyFilters();
+
+
+    }
+
+
+    /* FILTER SYSTEM */
+
+    function applyFilters() {
+
+
+      const keyword =
+
+        document
+        .getElementById(
+          "searchInput"
+        )
+        .value
+        .toLowerCase();
+
+
       const movies =
-        document.querySelectorAll(
+
+        document
+        .querySelectorAll(
           ".movie-card"
         );
 
 
-      let visibleMovies = 0;
+      let visibleCount = 0;
 
 
       movies.forEach(
-        function(movie) {
+        movie => {
+
+
+          const title =
+
+            movie.dataset.title ||
+            "";
+
+
+          const category =
+
+            movie.dataset.category ||
+            "";
+
+
+          const matchesSearch =
+
+            title
+            .toLowerCase()
+            .includes(
+              keyword
+            );
+
+
+          const matchesCategory =
+
+            currentCategory === "all" ||
+
+            category
+            .toLowerCase()
+            .includes(
+              currentCategory
+            );
+
 
           if (
-            category === "all" ||
-            movie.dataset.category === category
+
+            matchesSearch &&
+            matchesCategory
+
           ) {
+
 
             movie.style.display =
               "block";
 
-            visibleMovies++;
+
+            visibleCount++;
+
 
           } else {
+
 
             movie.style.display =
               "none";
 
+
           }
+
 
         }
       );
 
 
       document
-        .getElementById("emptyMessage")
+        .getElementById(
+          "emptyState"
+        )
         .style.display =
-        visibleMovies === 0
-          ? "block"
-          : "none";
+
+        visibleCount === 0
+        ? "block"
+        : "none";
+
 
     }
+
+
+    /* OPEN USER STORY */
+
+    function openUserStory() {
+
+
+      window.location.href =
+
+        "detail.html?type=user";
+
+    }
+
+
+    /* OPEN SAMPLE MOVIE */
+
+    function openMovie(title) {
+
+
+      window.location.href =
+
+        "detail.html?title=" +
+
+        encodeURIComponent(
+          title
+        );
+
+    }
+
+
+    /* BACK */
+
+    function goBack() {
+
+
+      if (
+
+        document.referrer
+
+      ) {
+
+
+        history.back();
+
+
+      } else {
+
+
+        window.location.href =
+
+          "index.html";
+
+
+      }
+
+
+    }
+
+
+    loadPublishedStory();
+
+
+  </script></body></html><!DOCTYPE html><html lang="id"><head>  <meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+«»
+
+<meta
+name="theme-color"
+content="#08070d"
+
+«»
+
+  <title>Watch - Reitoon</title>  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    :root {
+
+      --bg: #08070d;
+
+      --surface: #191722;
+
+      --surface-light: #211f2b;
+
+      --text: #ffffff;
+
+      --muted: #aaa3b0;
+
+      --pink: #ff2f8d;
+
+      --pink-light: #ff4ca0;
+
+      --purple: #762dff;
+
+      --border: rgba(255,255,255,0.10);
+
+    }
+
+
+    body {
+
+      min-height: 100vh;
+
+      background:
+
+        radial-gradient(
+          circle at 100% 0%,
+          rgba(255,40,145,0.14),
+          transparent 35%
+        ),
+
+        radial-gradient(
+          circle at 0% 30%,
+          rgba(112,45,255,0.10),
+          transparent 30%
+        ),
+
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      padding-bottom: 100px;
+
+      overflow-x: hidden;
+
+    }
+
+
+    /* HEADER */
+
+    .header {
+
+      height: 76px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 16px 20px;
+
+      background: rgba(8,7,13,0.94);
+
+      border-bottom: 1px solid var(--border);
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 20;
+
+      backdrop-filter: blur(18px);
+
+    }
+
+
+    .back-button {
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 14px;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      color: white;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+    }
+
+
+    .logo {
+
+      font-size: 28px;
+
+      font-weight: 800;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          white,
+          var(--pink),
+          var(--purple)
+        );
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+
+    .header-space {
+
+      width: 42px;
+
+    }
+
+
+    /* MAIN */
+
+    .container {
+
+      width: 100%;
+
+      max-width: 600px;
+
+      margin: auto;
+
+      padding: 24px 16px;
+
+    }
+
+
+    .section-label {
+
+      color: var(--pink-light);
+
+      font-size: 10px;
+
+      font-weight: bold;
+
+      letter-spacing: 1.5px;
+
+    }
+
+
+    .page-title {
+
+      font-size: 32px;
+
+      margin-top: 8px;
+
+    }
+
+
+    .subtitle {
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+      margin-top: 8px;
+
+    }
+
+
+    /* SEARCH */
+
+    .search-box {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-top: 22px;
+
+      padding: 14px 16px;
+
+      border-radius: 14px;
+
+      background: var(--surface);
+
+      border: 1px solid var(--border);
+
+    }
+
+
+    .search-box span {
+
+      font-size: 16px;
+
+    }
+
+
+    .search-box input {
+
+      width: 100%;
+
+      border: none;
+
+      outline: none;
+
+      background: transparent;
+
+      color: white;
+
+      font-size: 14px;
+
+    }
+
+
+    .search-box input::placeholder {
+
+      color: var(--muted);
+
+    }
+
+
+    /* CATEGORY */
+
+    .categories {
+
+      display: flex;
+
+      gap: 9px;
+
+      overflow-x: auto;
+
+      padding: 18px 0 4px;
+
+      scrollbar-width: none;
+
+    }
+
+
+    .categories::-webkit-scrollbar {
+
+      display: none;
+
+    }
+
+
+    .category-button {
+
+      flex-shrink: 0;
+
+      padding: 10px 16px;
+
+      border-radius: 20px;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface);
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      cursor: pointer;
+
+    }
+
+
+    .category-button.active {
+
+      color: white;
+
+      border-color: transparent;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple)
+        );
+
+    }
+
+
+    /* SECTION */
+
+    .section-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin: 28px 0 14px;
+
+    }
+
+
+    .section-header h2 {
+
+      font-size: 21px;
+
+      margin-top: 5px;
+
+    }
+
+
+    /* MOVIE GRID */
+
+    .movie-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 14px;
+
+    }
+
+
+    .movie-card {
+
+      min-width: 0;
+
+      cursor: pointer;
+
+    }
+
+
+    .movie-poster {
+
+      height: 220px;
+
+      border-radius: 16px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #32194f,
+          #161622
+        );
+
+    }
+
+
+    .poster-one {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #b43f8f,
+          #24152f
+        );
+
+    }
+
+
+    .poster-two {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #333c69,
+          #11131d
+        );
+
+    }
+
+
+    .poster-three {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #364d4c,
+          #12171c
+        );
+
+    }
+
+
+    .poster-four {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #854f91,
+          #1c1629
+        );
+
+    }
+
+
+    .poster-five {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #a85570,
+          #22151e
+        );
+
+    }
+
+
+    .poster-six {
+
+      background:
+
+        linear-gradient(
+          145deg,
+          #384c72,
+          #111522
+        );
+
+    }
+
+
+    .movie-badge {
+
+      position: absolute;
+
+      top: 9px;
+
+      left: 9px;
+
+      padding: 5px 8px;
+
+      border-radius: 7px;
+
+      background: rgba(0,0,0,0.55);
+
+      font-size: 8px;
+
+      font-weight: bold;
+
+    }
+
+
+    .new-badge {
+
+      color: var(--pink-light);
+
+    }
+
+
+    .play-button {
+
+      width: 48px;
+
+      height: 48px;
+
+      border-radius: 50%;
+
+      border: none;
+
+      background: rgba(255,255,255,0.92);
+
+      color: #111;
+
+      font-size: 16px;
+
+      cursor: pointer;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+    }
+
+
+    .movie-info {
+
+      padding: 10px 2px;
+
+    }
+
+
+    .movie-info h3 {
+
+      font-size: 13px;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+    }
+
+
+    .movie-info p {
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      margin-top: 5px;
+
+    }
+
+
+    /* USER STORY */
+
+    .user-story {
+
+      display: none;
+
+    }
+
+
+    .user-story .movie-poster {
+
+      background:
+
+        linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple)
+        );
+
+    }
+
+
+    /* EMPTY */
+
+    .empty-state {
+
+      display: none;
+
+      text-align: center;
+
+      padding: 45px 20px;
+
+      margin-top: 20px;
+
+      border-radius: 20px;
+
+      border: 1px dashed rgba(255,255,255,0.20);
+
+      background: rgba(255,255,255,0.02);
+
+    }
+
+
+    .empty-state div {
+
+      font-size: 42px;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .empty-state h3 {
+
+      font-size: 18px;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    .empty-state p {
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
+    }
+
+
+    /* BOTTOM NAV */
+
+    .bottom-nav {
+
+      position: fixed;
+
+      bottom: 0;
+
+      left: 0;
+
+      right: 0;
+
+      height: 76px;
+
+      display: flex;
+
+      justify-content: space-around;
+
+      align-items: center;
+
+      background: rgba(14,13,21,0.96);
+
+      backdrop-filter: blur(18px);
+
+      border-top: 1px solid var(--border);
+
+      z-index: 30;
+
+    }
+
+
+    .nav-item {
+
+      color: var(--muted);
+
+      text-decoration: none;
+
+      text-align: center;
+
+      font-size: 10px;
+
+      min-width: 60px;
+
+    }
+
+
+    .nav-icon {
+
+      display: block;
+
+      font-size: 21px;
+
+      margin-bottom: 4px;
+
+    }
+
+
+    .nav-item.active {
+
+      color: var(--pink);
+
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 420px) {
+
+      .container {
+
+        padding-left: 14px;
+
+        padding-right: 14px;
+
+      }
+
+
+      .movie-grid {
+
+        gap: 10px;
+
+      }
+
+
+      .movie-poster {
+
+        height: 190px;
+
+      }
+
+
+      .page-title {
+
+        font-size: 29px;
+
+      }
+
+    }
+
+  </style></head><body>  <!-- HEADER -->  <header class="header"><button
+  class="back-button"
+  onclick="goBack()"
+>
+
+  ←
+
+</button>
+
+
+<div class="logo">
+
+  Reitoon
+
+</div>
+
+
+<div class="header-space"></div>
+
+  </header>  <!-- MAIN -->  <main class="container"><span class="section-label">
+
+  REITOON LIBRARY
+
+</span>
+
+
+<h1 class="page-title">
+
+  Watch
+
+</h1>
+
+
+<p class="subtitle">
+
+  Temukan cerita baru dan tonton film favoritmu di Reitoon.
+
+</p>
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+
+  <span>
+
+    🔍
+
+  </span>
+
+
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Cari film atau drama..."
+  >
+
+
+</div>
+
+
+<!-- CATEGORIES -->
+
+<div class="categories">
+
+
+  <button
+    class="category-button active"
+    onclick="filterCategory('all', this)"
+  >
+
+    All
+
+  </button>
+
+
+  <button
+    class="category-button"
+    onclick="filterCategory('drama', this)"
+  >
+
+    Drama
+
+  </button>
+
+
+  <button
+    class="category-button"
+    onclick="filterCategory('romance', this)"
+  >
+
+    Romance
+
+  </button>
+
+
+  <button
+    class="category-button"
+    onclick="filterCategory('action', this)"
+  >
+
+    Action
+
+  </button>
+
+
+  <button
+    class="category-button"
+    onclick="filterCategory('comedy', this)"
+  >
+
+    Comedy
+
+  </button>
+
+
+</div>
+
+
+<!-- TRENDING -->
+
+<section>
+
+
+  <div class="section-header">
+
+
+    <div>
+
+      <span class="section-label">
+
+        WATCH NOW
+
+      </span>
+
+
+      <h2>
+
+        🔥 Trending
+
+      </h2>
+
+    </div>
+
+
+  </div>
+
+
+  <div
+    class="movie-grid"
+    id="movieGrid"
+  >
+
+
+    <!-- USER STORY -->
+
+    <article
+      class="movie-card user-story"
+      id="userStoryCard"
+      onclick="openUserStory()"
+    >
+
+
+      <div class="movie-poster">
+
+
+        <span
+          class="movie-badge"
+        >
+
+          YOUR STORY
+
+        </span>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openUserStory()"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3
+          id="userStoryTitle"
+        >
+
+          My Story
+
+        </h3>
+
+
+        <p
+          id="userStoryGenre"
+        >
+
+          Original Story
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- FILM 1 -->
+
+    <article
+      class="movie-card"
+      data-category="romance"
+      data-title="Love Beyond Time"
+      onclick="openMovie('Love Beyond Time')"
+    >
+
+
+      <div class="movie-poster poster-one">
+
+
+        <span class="movie-badge">
+
+          TRENDING
+
+        </span>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('Love Beyond Time')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          Love Beyond Time
+
+        </h3>
+
+
+        <p>
+
+          Romance · Drama
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- FILM 2 -->
+
+    <article
+      class="movie-card"
+      data-category="action"
+      data-title="The Last Kingdom"
+      onclick="openMovie('The Last Kingdom')"
+    >
+
+
+      <div class="movie-poster poster-two">
+
+
+        <span class="movie-badge">
+
+          #2
+
+        </span>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('The Last Kingdom')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          The Last Kingdom
+
+        </h3>
+
+
+        <p>
+
+          Action · Fantasy
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- FILM 3 -->
+
+    <article
+      class="movie-card"
+      data-category="drama"
+      data-title="Hidden Truth"
+      onclick="openMovie('Hidden Truth')"
+    >
+
+
+      <div class="movie-poster poster-three">
+
+
+        <span class="movie-badge">
+
+          #3
+
+        </span>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('Hidden Truth')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          Hidden Truth
+
+        </h3>
+
+
+        <p>
+
+          Mystery · Drama
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- FILM 4 -->
+
+    <article
+      class="movie-card"
+      data-category="romance"
+      data-title="First Meeting"
+      onclick="openMovie('First Meeting')"
+    >
+
+
+      <div class="movie-poster poster-four">
+
+
+        <span class="movie-badge new-badge">
+
+          NEW
+
+        </span>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('First Meeting')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          First Meeting
+
+        </h3>
+
+
+        <p>
+
+          Romance
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- FILM 5 -->
+
+    <article
+      class="movie-card"
+      data-category="drama"
+      data-title="One Last Chance"
+      onclick="openMovie('One Last Chance')"
+    >
+
+
+      <div class="movie-poster poster-five">
+
+
+        <span class="movie-badge new-badge">
+
+          NEW
+
+        </span>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('One Last Chance')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          One Last Chance
+
+        </h3>
+
+
+        <p>
+
+          Drama
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+    <!-- FILM 6 -->
+
+    <article
+      class="movie-card"
+      data-category="action"
+      data-title="Midnight Story"
+      onclick="openMovie('Midnight Story')"
+    >
+
+
+      <div class="movie-poster poster-six">
+
+
+        <span class="movie-badge new-badge">
+
+          NEW
+
+        </span>
+
+
+        <button
+          class="play-button"
+          onclick="event.stopPropagation(); openMovie('Midnight Story')"
+        >
+
+          ▶
+
+        </button>
+
+
+      </div>
+
+
+      <div class="movie-info">
+
+
+        <h3>
+
+          Midnight Story
+
+        </h3>
+
+
+        <p>
+
+          Thriller · Action
+
+        </p>
+
+
+      </div>
+
+
+    </article>
+
+
+  </div>
+
+
+</section>
+
+
+<!-- EMPTY -->
+
+<section
+  class="empty-state"
+  id="emptyState"
+>
+
+
+  <div>
+
+    🎬
+
+  </div>
+
+
+  <h3>
+
+    Belum ada cerita
+
+  </h3>
+
+
+  <p>
+
+    Buat cerita pertamamu melalui menu Create.
+
+  </p>
+
+
+</section>
+
+  </main>  <!-- BOTTOM NAV -->  <nav class="bottom-nav"><a
+  class="nav-item"
+  href="index.html"
+>
+
+  <span class="nav-icon">
+
+    🏠
+
+  </span>
+
+  Home
+
+</a>
+
+
+<a
+  class="nav-item active"
+  href="watch.html"
+>
+
+  <span class="nav-icon">
+
+    ▶️
+
+  </span>
+
+  Watch
+
+</a>
+
+
+<a
+  class="nav-item"
+  href="create.html"
+>
+
+  <span class="nav-icon">
+
+    ✨
+
+  </span>
+
+  Create
+
+</a>
+
+
+<a
+  class="nav-item"
+  href="studio.html"
+>
+
+  <span class="nav-icon">
+
+    🎥
+
+  </span>
+
+  Studio
+
+</a>
+
+
+<a
+  class="nav-item"
+  href="profile.html"
+>
+
+  <span class="nav-icon">
+
+    👤
+
+  </span>
+
+  Profile
+
+</a>
+
+  </nav>  <script>
+
+
+    let currentCategory = "all";
+
+
+    /* LOAD PUBLISHED STORY */
+
+    function loadPublishedStory() {
+
+
+      const savedStory =
+
+        localStorage.getItem(
+          "reitoon_story"
+        );
+
+
+      if (!savedStory) {
+
+        return;
+
+      }
+
+
+      const story =
+
+        JSON.parse(savedStory);
+
+
+      const storyCard =
+
+        document
+        .getElementById(
+          "userStoryCard"
+        );
+
+
+      document
+        .getElementById(
+          "userStoryTitle"
+        )
+        .textContent =
+        story.title;
+
+
+      document
+        .getElementById(
+          "userStoryGenre"
+        )
+        .textContent =
+        story.genre +
+        " · Original";
+
+
+      storyCard.style.display =
+        "block";
+
+
+      storyCard.dataset.category =
+
+        story.genre
+        .toLowerCase();
+
+
+      storyCard.dataset.title =
+
+        story.title
+        .toLowerCase();
+
+
+    }
+
+
+    /* SEARCH */
+
+    document
+      .getElementById(
+        "searchInput"
+      )
+      .addEventListener(
+        "input",
+        applyFilters
+      );
+
+
+    /* CATEGORY */
+
+    function filterCategory(
+
+      category,
+
+      button
+
+    ) {
+
+
+      currentCategory =
+        category;
+
+
+      document
+        .querySelectorAll(
+          ".category-button"
+        )
+        .forEach(
+          item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+          }
+        );
+
+
+      button.classList.add(
+        "active"
+      );
+
+
+      applyFilters();
+
+
+    }
+
+
+    /* FILTER SYSTEM */
+
+    function applyFilters() {
+
+
+      const keyword =
+
+        document
+        .getElementById(
+          "searchInput"
+        )
+        .value
+        .toLowerCase();
+
+
+      const movies =
+
+        document
+        .querySelectorAll(
+          ".movie-card"
+        );
+
+
+      let visibleCount = 0;
+
+
+      movies.forEach(
+        movie => {
+
+
+          const title =
+
+            movie.dataset.title ||
+            "";
+
+
+          const category =
+
+            movie.dataset.category ||
+            "";
+
+
+          const matchesSearch =
+
+            title
+            .toLowerCase()
+            .includes(
+              keyword
+            );
+
+
+          const matchesCategory =
+
+            currentCategory === "all" ||
+
+            category
+            .toLowerCase()
+            .includes(
+              currentCategory
+            );
+
+
+          if (
+
+            matchesSearch &&
+            matchesCategory
+
+          ) {
+
+
+            movie.style.display =
+              "block";
+
+
+            visibleCount++;
+
+
+          } else {
+
+
+            movie.style.display =
+              "none";
+
+
+          }
+
+
+        }
+      );
+
+
+      document
+        .getElementById(
+          "emptyState"
+        )
+        .style.display =
+
+        visibleCount === 0
+        ? "block"
+        : "none";
+
+
+    }
+
+
+    /* OPEN USER STORY */
+
+    function openUserStory() {
+
+
+      window.location.href =
+
+        "detail.html?type=user";
+
+    }
+
+
+    /* OPEN SAMPLE MOVIE */
+
+    function openMovie(title) {
+
+
+      window.location.href =
+
+        "detail.html?title=" +
+
+        encodeURIComponent(
+          title
+        );
+
+    }
+
+
+    /* BACK */
+
+    function goBack() {
+
+
+      if (
+
+        document.referrer
+
+      ) {
+
+
+        history.back();
+
+
+      } else {
+
+
+        window.location.href =
+
+          "index.html";
+
+
+      }
+
+
+    }
+
+
+    loadPublishedStory();
+
 
   </script></body></html>
