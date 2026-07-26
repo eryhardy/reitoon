@@ -1,438 +1,299 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08070d">
-<title>Studio - Reitoon</title><style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-:root{
---bg:#08070d;
---surface:#191722;
---surface-light:#211f2b;
---text:#fff;
---muted:#aaa3b0;
---pink:#ff2f8d;
---purple:#762dff;
---border:rgba(255,255,255,.1)
-}
-
-body{
-min-height:100vh;
-background:
-radial-gradient(circle at 100% 0%,rgba(255,40,145,.14),transparent 35%),
-radial-gradient(circle at 0% 30%,rgba(112,45,255,.1),transparent 30%),
-var(--bg);
-color:white;
-font-family:Arial,Helvetica,sans-serif;
-padding-bottom:100px
-}
-
-.header{
-height:76px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:16px 20px;
-background:rgba(8,7,13,.94);
-border-bottom:1px solid var(--border);
-position:sticky;
-top:0;
-z-index:10
-}
-
-.back{
-width:42px;
-height:42px;
-border-radius:14px;
-border:1px solid var(--border);
-background:var(--surface);
-color:white;
-font-size:20px
-}
-
-.logo{
-font-size:29px;
-font-weight:800;
-background:linear-gradient(135deg,#fff,var(--pink),var(--purple));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent
-}
-
-.container{
-max-width:600px;
-margin:auto;
-padding:26px 16px
-}
-
-h1{font-size:30px}
-h1 span{
-background:linear-gradient(135deg,var(--pink),var(--purple));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent
-}
-
-.subtitle{
-color:var(--muted);
-font-size:14px;
-margin-top:8px;
-line-height:1.5
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-top:22px
-}
-
-.stat{
-text-align:center;
-padding:15px 6px;
-border-radius:16px;
-background:var(--surface);
-border:1px solid var(--border)
-}
-
-.stat strong{
-display:block;
-font-size:19px
-}
-
-.stat span{
-display:block;
-font-size:10px;
-color:var(--muted);
-margin-top:5px
-}
-
-.story-list{
-margin-top:22px
-}
-
-.story-card{
-overflow:hidden;
-border-radius:20px;
-background:var(--surface);
-border:1px solid var(--border);
-margin-bottom:15px
-}
-
-.story-cover{
-width:100%;
-height:190px;
-object-fit:cover;
-display:block;
-background:
-linear-gradient(135deg,#302044,#16121f);
-}
-
-.story-content{
-padding:16px
-}
-
-.story-title{
-font-size:19px;
-margin-bottom:7px
-}
-
-.story-meta{
-font-size:12px;
-color:var(--pink);
-margin-bottom:9px
-}
-
-.story-description{
-font-size:12px;
-color:var(--muted);
-line-height:1.5
-}
-
-.status{
-display:inline-block;
-margin-top:12px;
-font-size:10px;
-padding:6px 10px;
-border-radius:20px;
-background:rgba(255,47,141,.14);
-border:1px solid rgba(255,47,141,.3)
-}
-
-.actions{
-display:flex;
-gap:8px;
-margin-top:15px
-}
-
-.action{
-flex:1;
-padding:11px 7px;
-border-radius:11px;
-border:1px solid var(--border);
-background:var(--surface-light);
-color:white;
-font-size:11px
-}
-
-.action.publish{
-border:none;
-background:linear-gradient(135deg,var(--pink),var(--purple))
-}
-
-.action.delete{
-color:#ff6b8a
-}
-
-.empty{
-text-align:center;
-padding:55px 20px;
-border:1px dashed rgba(255,255,255,.2);
-border-radius:22px;
-margin-top:22px
-}
-
-.empty-icon{
-font-size:50px;
-margin-bottom:15px
-}
-
-.empty h2{
-font-size:20px;
-margin-bottom:8px
-}
-
-.empty p{
-font-size:13px;
-color:var(--muted);
-line-height:1.5;
-margin-bottom:20px
-}
-
-.create-btn{
-display:inline-block;
-padding:14px 20px;
-border-radius:13px;
-background:linear-gradient(135deg,var(--pink),var(--purple));
-color:white;
-text-decoration:none;
-font-weight:bold;
-font-size:13px
-}
-
-.bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-height:76px;
-display:flex;
-justify-content:space-around;
-align-items:center;
-background:rgba(14,13,21,.96);
-border-top:1px solid var(--border);
-z-index:20
-}
-
-.nav-item{
-color:var(--muted);
-text-decoration:none;
-text-align:center;
-font-size:10px;
-min-width:60px
-}
-
-.nav-icon{
-display:block;
-font-size:21px;
-margin-bottom:4px
-}
-
-.nav-item.active{color:var(--pink)}
-
-@media(max-width:600px){
-.story-cover{height:170px}
-}
-</style></head><body><header class="header"><button class="back" onclick="history.back()">←</button>
-
-<div class="logo">Reitoon</div><div style="width:42px"></div></header><main class="container"><h1>My <span>Studio</span></h1><p class="subtitle">
-Kelola semua cerita dan project kamu di satu tempat.
-</p><section class="stats"><div class="stat">
-<strong id="totalStories">0</strong>
-<span>Total Story</span>
-</div><div class="stat">
-<strong id="totalViews">0</strong>
-<span>Views</span>
-</div><div class="stat">
-<strong>Rp0</strong>
-<span>Earnings</span>
-</div></section><section class="story-list" id="storyList"></section><section class="empty" id="empty"><div class="empty-icon">✨</div><h2>Belum ada cerita</h2><p>
-Mulai buat cerita pertama kamu dan bangun dunia kreatifmu bersama Reitoon.
-</p><a class="create-btn" href="create.html">
-🚀 Create Your Story
-</a></section></main><nav class="bottom-nav"><a class="nav-item" href="index.html">
-<span class="nav-icon">🏠</span>
-Home
-</a><a class="nav-item" href="watch.html">
-<span class="nav-icon">▶️</span>
-Watch
-</a><a class="nav-item" href="create.html">
-<span class="nav-icon">✨</span>
-Create
-</a><a class="nav-item active" href="studio.html">
-<span class="nav-icon">🎥</span>
-Studio
-</a><a class="nav-item" href="profile.html">
-<span class="nav-icon">👤</span>
-Profile
-</a></nav><script>
-
-function loadStories(){
-
-const stories=
-JSON.parse(localStorage.getItem("reitoon_stories"))||[];
-
-document.getElementById("totalStories")
-.textContent=stories.length;
-
-let totalViews=0;
-
-stories.forEach(story=>{
-totalViews+=story.views||0;
-});
-
-document.getElementById("totalViews")
-.textContent=totalViews;
-
-const list=document.getElementById("storyList");
-
-const empty=document.getElementById("empty");
-
-if(stories.length===0){
-
-empty.style.display="block";
-
-return;
-
-}
-
-empty.style.display="none";
-
-list.innerHTML="";
-
-stories.forEach(story=>{
-
-const card=document.createElement("article");
-
-card.className="story-card";
-
-const cover=story.cover
-?story.cover
-:"";
-
-card.innerHTML=`
-
-${cover
-?`<img class="story-cover" src="${cover}">`
-:`<div class="story-cover"></div>`
-}
-
-<div class="story-content">
-
-<h2 class="story-title">
-${story.title}
-</h2>
-
-<div class="story-meta">
-${story.type} · ${story.genre}
-</div>
-
-<p class="story-description">
-${story.description}
-</p>
-
-<span class="status">
-${story.status==="published"?"PUBLISHED":"DRAFT"}
-</span>
-
-<div class="actions">
-
-<button class="action publish"
-onclick="publishStory(${story.id})">
-🚀 Publish
-</button>
-
-<button class="action"
-onclick="viewStory(${story.id})">
-👁️ View
-</button>
-
-<button class="action delete"
-onclick="deleteStory(${story.id})">
-🗑️ Delete
-</button>
-
-</div>
-
-</div>
-
-`;
-
-list.appendChild(card);
-
-});
-
-}
-
-function publishStory(id){
-
-let stories=
-JSON.parse(localStorage.getItem("reitoon_stories"))||[];
-
-const story=stories.find(item=>item.id===id);
-
-if(!story)return;
-
-story.status="published";
-
-localStorage.setItem(
-"reitoon_stories",
-JSON.stringify(stories)
-);
-
-alert("🎉 Cerita berhasil dipublikasikan ke Watch!");
-
-loadStories();
-
-}
-
-function viewStory(id){
-
-window.location.href=
-"detail.html?story="+id;
-
-}
-
-function deleteStory(id){
-
-if(!confirm("Hapus cerita ini?"))return;
-
-let stories=
-JSON.parse(localStorage.getItem("reitoon_stories"))||[];
-
-stories=stories.filter(
-story=>story.id!==id
-);
-
-localStorage.setItem(
-"reitoon_stories",
-JSON.stringify(stories)
-);
-
-loadStories();
-
-}
-
-loadStories();
-
-</script></body>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#08070d"
+  >
+
+  <title>Studio - Reitoon</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+<body>
+
+  <header class="top-header">
+
+    <button
+      class="back-button"
+      onclick="history.back()"
+    >
+      ←
+    </button>
+
+    <div class="brand-name">
+      Reitoon
+    </div>
+
+    <div style="width:42px;"></div>
+
+  </header>
+
+
+  <main class="container">
+
+    <span class="section-label">
+      CREATOR CENTER
+    </span>
+
+    <h1 style="font-size:31px;margin-top:8px;">
+      My <span style="color:#ff2f8d;">Studio</span>
+    </h1>
+
+    <p style="color:#aaa3b0;font-size:14px;margin-top:8px;">
+      Kelola cerita dan project kamu.
+    </p>
+
+
+    <section class="stats">
+
+      <div class="stat">
+
+        <strong id="storyCount">
+          0
+        </strong>
+
+        <span>
+          Stories
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong>
+          0
+        </strong>
+
+        <span>
+          Views
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong>
+          Rp0
+        </strong>
+
+        <span>
+          Earnings
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <section
+      id="emptyState"
+      class="form-card"
+      style="text-align:center;padding:45px 20px;"
+    >
+
+      <div style="font-size:48px;">
+        ✨
+      </div>
+
+      <h2 style="margin-top:12px;">
+        Belum ada cerita
+      </h2>
+
+      <p style="color:#aaa3b0;font-size:13px;margin:10px 0 20px;">
+        Buat cerita pertama kamu di Reitoon.
+      </p>
+
+      <a
+        href="create.html"
+        class="create-button"
+        style="display:inline-block;text-decoration:none;"
+      >
+        🚀 Create Story
+      </a>
+
+    </section>
+
+
+    <section
+      id="storyCard"
+      class="story-card"
+      style="display:none;padding:18px;"
+    >
+
+      <h2 id="storyTitle">
+        My Story
+      </h2>
+
+      <p
+        id="storyType"
+        style="color:#ff2f8d;margin-top:10px;"
+      ></p>
+
+      <p
+        id="storyGenre"
+        style="color:#aaa3b0;font-size:13px;margin-top:6px;"
+      ></p>
+
+      <p
+        id="storyDescription"
+        style="color:#aaa3b0;font-size:13px;line-height:1.6;margin-top:15px;"
+      ></p>
+
+
+      <div style="display:flex;gap:10px;margin-top:20px;">
+
+        <button
+          class="primary-button"
+          onclick="generateFilm()"
+        >
+          🎬 Generate Film
+        </button>
+
+        <button
+          class="action-button"
+          onclick="deleteStory()"
+        >
+          🗑️
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <nav class="bottom-navigation">
+
+    <a class="nav-item" href="index.html">
+      <span class="nav-icon">🏠</span>
+      Home
+    </a>
+
+    <a class="nav-item" href="watch.html">
+      <span class="nav-icon">▶️</span>
+      Watch
+    </a>
+
+    <a class="nav-item" href="create.html">
+      <span class="nav-icon">✨</span>
+      Create
+    </a>
+
+    <a class="nav-item active" href="studio.html">
+      <span class="nav-icon">🎥</span>
+      Studio
+    </a>
+
+    <a class="nav-item" href="profile.html">
+      <span class="nav-icon">👤</span>
+      Profile
+    </a>
+
+  </nav>
+
+
+  <script>
+
+    function loadStory() {
+
+      const saved =
+        localStorage.getItem(
+          "reitoon_story"
+        );
+
+      if (!saved) return;
+
+      const story =
+        JSON.parse(saved);
+
+
+      document
+        .getElementById("emptyState")
+        .style.display = "none";
+
+
+      document
+        .getElementById("storyCard")
+        .style.display = "block";
+
+
+      document
+        .getElementById("storyCount")
+        .textContent = "1";
+
+
+      document
+        .getElementById("storyTitle")
+        .textContent =
+          story.title;
+
+
+      document
+        .getElementById("storyType")
+        .textContent =
+          "🎬 " + story.type;
+
+
+      document
+        .getElementById("storyGenre")
+        .textContent =
+          "Genre: " + story.genre;
+
+
+      document
+        .getElementById("storyDescription")
+        .textContent =
+          story.description;
+
+    }
+
+
+    function generateFilm() {
+
+      alert(
+        "🎬 Fitur AI Film akan menggunakan AI Credit."
+      );
+
+    }
+
+
+    function deleteStory() {
+
+      if (
+        !confirm(
+          "Hapus cerita ini?"
+        )
+      ) return;
+
+      localStorage.removeItem(
+        "reitoon_story"
+      );
+
+      location.reload();
+
+    }
+
+
+    loadStory();
+
+  </script>
+
+</body>
 </html>
