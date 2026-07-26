@@ -882,17 +882,11 @@
 
     function openMovie(title) {
 
-      alert(
+  window.location.href =
+    "detail.html?title=" +
+    encodeURIComponent(title);
 
-        "🎬 " +
-        title +
-        "\n\n" +
-        "Halaman pemutar film akan segera tersedia."
-
-      );
-
-    }
-
+}
   </script>
 
 
